@@ -1,0 +1,63 @@
+---
+permalink: sm-storage/create-pool-automatically.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, pool, automatically 
+summary: A criação de pools é iniciada automaticamente quando System Manager detecta unidades não atribuídas no array de storage. Você pode usar a criação automática de pools para configurar facilmente todas as unidades não atribuídas no array de storage em um único pool e para adicionar unidades a pools existentes. 
+---
+= Crie um pool automaticamente no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A criação de pools é iniciada automaticamente quando SANtricity System Manager detecta unidades não atribuídas no array de storage. Você pode usar a criação automática de pools para configurar facilmente todas as unidades não atribuídas no array de storage em um único pool e para adicionar unidades a pools existentes.
+
+.Antes de começar
+Você pode abrir a caixa de diálogo Pool Auto-Configuration quando uma destas condições for verdadeira:
+
+* Pelo menos uma unidade não atribuída foi detectada que pode ser adicionada a um pool existente com tipos de unidade semelhantes.
+* Onze (11) ou mais unidades não atribuídas foram detectadas que podem ser usadas para criar um novo pool (caso não possam ser adicionadas a um pool existente devido a tipos de unidade diferentes).
+
+
+.Sobre esta tarefa
+Tenha em mente o seguinte:
+
+* Ao adicionar unidades a um array de storage, System Manager detecta automaticamente as unidades e solicita que você crie um único pool ou vários pools com base no tipo de unidade e na configuração atual.
+* Se os pools já tiverem sido definidos, System Manager automaticamente lhe oferecerá a opção de adicionar as unidades compatíveis a um pool existente. Quando novas unidades são adicionadas a um pool existente, System Manager redistribui automaticamente os dados pela nova capacidade, que agora inclui as novas unidades que você adicionou.
+* Ao configurar um array de storage EF600 ou EF300, certifique-se de que cada controlador tenha acesso a um número igual de unidades nos primeiros 12 slots e a um número igual de unidades nos últimos 12 slots. Essa configuração ajuda os controladores a usar ambos os barramentos PCIe do lado das unidades de forma mais eficaz.
+
+
+Você pode abrir a caixa de diálogo Pool Auto-Configuration usando qualquer um dos seguintes métodos:
+
+* Quando é detectada capacidade não atribuída, a recomendação de Autoconfiguração do Pool aparece na página inicial, na área de Notificações. Clique em *Exibir Autoconfiguração do Pool* para abrir a caixa de diálogo.
+* Você também pode abrir a caixa de diálogo de Autoconfiguração do Pool na página Pools e Volume Groups, conforme descrito na tarefa a seguir.
+
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o menu: mais [Iniciar configuração automática do pool].
++
+A tabela de resultados lista novos pools, pools existentes com unidades adicionadas ou ambos. Um novo pool recebe um nome com um número sequencial por padrão.
+
++
+System Manager executa as seguintes tarefas:
+
++
+** Cria um único pool se houver um número suficiente de unidades com o mesmo tipo de unidade (HDD ou SSD) e capacidade semelhante.
+** Cria vários pools se a capacidade não atribuída consistir em diferentes tipos de drives.
+** Adiciona as unidades a um pool existente se um pool já estiver definido no array de storage e você adicionar novas unidades do mesmo tipo ao pool.
+** Adiciona as unidades do mesmo tipo de unidade ao pool existente e usa os outros tipos de unidade para criar pools diferentes se as novas unidades forem de tipos diferentes.
+
+
+. Para alterar o nome de um novo pool, clique no ícone *Editar* (o lápis).
+. Para visualizar características adicionais do pool, posicione o cursor sobre ou toque no ícone *Detalhes* (a página).
++
+Informações sobre o tipo de unidade, capacidade de segurança, capacidade de garantia de dados (DA), proteção contra perda na prateleira e proteção contra perda na gaveta aparecem.
+
++
+Para os arrays de storage EF600 e EF300, as configurações de provisionamento de recursos e tamanhos de bloco de volume também são exibidas.
+
+. Clique em *Accept*.
+

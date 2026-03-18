@@ -1,0 +1,101 @@
+---
+permalink: sm-storage/types-of-copy-volume-operations.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: Você pode realizar uma operação de Copy Volume offline ou uma operação de Copy Volume online. Uma operação offline lê dados de um volume de origem e os copia para um volume de destino. Uma operação online usa um volume de Snapshot como origem e copia seus dados para um volume de destino. 
+---
+= Saiba mais sobre os tipos de operações de cópia de volume no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode realizar uma operação de Cópia de Volume _offline_ ou uma operação de Cópia de Volume _online_. Uma operação offline lê dados de um volume de origem e os copia para um volume de destino. Uma operação online usa um volume de snapshot como origem e copia seus dados para um volume de destino.
+
+Para garantir a integridade de dados, toda a atividade de E/S para o volume de destino é suspensa durante qualquer tipo de operação de Copy Volume. Essa suspensão ocorre porque o estado dos dados no volume de destino fica inconsistente até que o procedimento seja concluído.
+
+As operações de Copy Volume offline e online são descritas abaixo.
+
+
+
+== Operação de cópia de volume offline
+
+A relação de Copy Volume offline é entre um volume de origem e um volume de destino. Uma cópia offline lê dados do volume de origem e os copia para um volume de destino, enquanto suspende todas as atualizações no volume de origem com a cópia em andamento. Todas as atualizações no volume de origem são suspensas para evitar que inconsistências cronológicas sejam criadas no volume de destino.
+
+[cols="25h,~"]
+|===
+2+| O que você precisa saber sobre operações de cópia offline 
+
+
+ a| 
+Solicitações de leitura e gravação
+ a| 
+* Os volumes de origem que participam de uma cópia offline estão disponíveis para atividades de E/S somente leitura enquanto uma operação de Copy Volume tiver o status de In Progress ou Pending.
+* As solicitações de gravação são permitidas após a cópia offline ser concluída.
+* Para evitar mensagens de erro de proteção contra gravação, não acesse um volume de origem que esteja participando de uma operação de Copy Volume com o status de In Progress.
+
+
+
+
+ a| 
+Sistema de arquivos journaling
+ a| 
+* Se o volume de origem tiver sido formatado com um sistema de arquivos journaling, qualquer tentativa de emitir uma solicitação de leitura para o volume de origem poderá ser rejeitada pelos controladores do array de storage, e uma mensagem de erro poderá aparecer.
+* O driver do sistema de arquivos com journaling emite uma solicitação de gravação antes de tentar emitir a solicitação de leitura. O controlador rejeita a solicitação de gravação, e a solicitação de leitura pode não ser emitida devido à solicitação de gravação rejeitada. Essa condição pode resultar na exibição de uma mensagem de erro, que indica que o volume de origem está protegido contra gravação.
+* Para evitar que esse problema ocorra, não tente acessar um volume de origem que esteja participando de uma cópia offline enquanto a operação Copy Volume estiver com o status de In Progress.
+
+
+|===
+
+
+== Operação de cópia de volume online
+
+A relação de Copy Volume online é entre um volume de snapshot e um volume de destino. Você pode iniciar uma operação de Copy Volume enquanto o volume de origem estiver online e disponível para gravação de dados. Essa função é realizada criando um snapshot do volume e usando o snapshot como o volume de origem real para a cópia.
+
+Ao iniciar uma operação de Copy Volume para um volume de origem, System Manager cria uma imagem pontual do volume base e uma relação de cópia entre a imagem pontual do volume base e um volume de destino. Usar a imagem pontual como volume de origem permite que o array de storage continue gravando no volume de origem enquanto a cópia está em andamento.
+
+Durante uma operação de cópia online, ocorre uma queda no desempenho devido ao copy-on-write. Após a conclusão da cópia online, o desempenho do volume base é restaurado.
+
+[cols="25h,~"]
+|===
+2+| O que você precisa saber sobre operações de cópia online 
+
+
+ a| 
+Que tipo de volumes podem ser usados?
+ a| 
+* O volume para o qual a imagem pontual é criada é conhecido como volume base e deve ser um volume padrão ou um volume fino no array de storage.
+* Um volume de destino pode ser um volume padrão em um grupo de volume ou um volume padrão em um pool. Um volume de destino não pode ser um volume fino ou um volume base em um grupo de snapshot.
+* Você pode usar a função online Copy Volume para copiar dados de um volume thin para um volume standard em um pool que reside no mesmo array de storage. Mas você não pode usar a função Copy Volume para copiar dados de um volume standard para um volume thin.
+
+
+
+
+ a| 
+Desempenho do volume base
+ a| 
+* Se o volume de snapshot usado como origem da cópia estiver ativo, o desempenho do volume base será prejudicado devido às operações de copy-on-write. Quando a cópia for concluída, o snapshot será desativado e o desempenho do volume base será restaurado. Embora o snapshot esteja desativado, o volume de capacidade reservada e a relação de cópia permanecem intactos.
+
+
+
+
+ a| 
+Tipos de volumes criados
+ a| 
+* Um volume de snapshot e um volume de capacidade reservada são criados durante a operação de cópia online.
+* O volume de snapshot não é um volume real que contém dados; em vez disso, é uma referência aos dados que estavam contidos em um volume em um momento específico.
+* Para cada snapshot que é tirado, um volume de capacidade reservada é criado para armazenar os dados do snapshot. O volume de capacidade reservada é usado apenas para gerenciar a imagem do snapshot.
+
+
+
+
+ a| 
+Volume de capacidade reservada
+ a| 
+* Antes que um bloco de dados no volume de origem seja modificado, o conteúdo do bloco a ser modificado é copiado para o volume de capacidade reservada para salvaguarda.
+* Como o volume de capacidade reservada armazena cópias dos dados originais nesses blocos de dados, alterações subsequentes nesses blocos de dados são gravadas somente no volume de origem.
+* A operação de cópia online utiliza menos espaço de disco do que uma cópia física completa porque os únicos blocos de dados armazenados no volume de capacidade reservada são aqueles que foram alterados desde o momento da criação do snapshot.
+
+
+|===

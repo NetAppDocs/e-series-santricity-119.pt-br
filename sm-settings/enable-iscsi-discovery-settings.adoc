@@ -1,0 +1,62 @@
+---
+permalink: sm-settings/enable-iscsi-discovery-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, iscsi, discovery, settings, 
+summary: Você pode habilitar configurações relacionadas à descoberta de dispositivos de armazenamento em uma rede iSCSI. 
+---
+= Ative as configurações de descoberta iSCSI no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode habilitar configurações relacionadas à descoberta de dispositivos de armazenamento em uma rede iSCSI.
+
+As Configurações de Descoberta de Destino permitem que você registre as informações iSCSI do array de storage usando o protocolo Internet Storage Name Service (iSNS) e também determine se deve permitir sessões de descoberta sem nome.
+
+.Antes de começar
+Se o servidor iSNS usar um endereço IP estático, esse endereço deverá estar disponível para o registro no iSNS. Tanto IPv4 quanto IPv6 são suportados.
+
+.Sobre esta tarefa
+Você pode habilitar as seguintes configurações relacionadas à descoberta iSCSI:
+
+* *Habilitar o servidor iSNS para registrar um alvo* -- Quando habilitado, o array de storage registra seu Nome Qualificado iSCSI (IQN) e informações de porta no servidor iSNS. Essa configuração permite a descoberta iSNS, para que um iniciador possa recuperar o IQN e as informações de porta do servidor iSNS.
+* *Habilitar sessões de descoberta sem nome* -- Quando as sessões de descoberta sem nome estão habilitadas, o iniciador (host iSCSI) não precisa fornecer o IQN do alvo (controlador) durante a sequência de login para uma conexão do tipo descoberta. Quando desabilitadas, os hosts precisam fornecer o IQN para estabelecer uma sessão de descoberta com o controlador. No entanto, o IQN do alvo é sempre necessário para uma sessão normal (com suporte a E/S). Desabilitar essa configuração pode impedir que hosts iSCSI não autorizados se conectem ao controlador usando apenas seu endereço IP.
+
+
+[NOTE]
+====
+As configurações e funções do iSCSI só são exibidas na página Configurações se o seu array de storage for compatível com iSCSI.
+
+====
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *configurações iSCSI*, clique em *Exibir/Editar configurações de descoberta de destino*.
++
+A caixa de diálogo Configurações de Descoberta de Destino é exibida. Abaixo do campo *Ativar servidor iSNS*..., a caixa de diálogo indica se o controlador já está registrado.
+
+. Para registrar o controlador, selecione *Habilitar servidor iSNS para registrar meu destino* e, em seguida, selecione uma das seguintes:
++
+** *Obter configuração automaticamente do servidor DHCP* -- Selecione esta opção se você quiser configurar o servidor iSNS usando um servidor DHCP (Dynamic Host Configuration Protocol). Esteja ciente de que, se você usar esta opção, todas as portas iSCSI no controlador também devem ser configuradas para usar DHCP. Se necessário, atualize as configurações da porta iSCSI do controlador para habilitar esta opção.
++
+[NOTE]
+====
+Para que o servidor DHCP forneça o endereço do servidor iSNS, você deve configurar o servidor DHCP para usar a Opção 43 -- "`Vendor Specific Information.`" Esta opção precisa conter o endereço IPv4 do servidor iSNS nos bytes de dados 0xa-0xd (10-13).
+
+====
+** *Especificar configuração estática manualmente* -- Selecione esta opção se você quiser inserir um endereço IP estático para o servidor iSNS. (Se desejar, você pode cortar e colar endereços nos campos.) No campo, insira um endereço IPv4 ou um endereço IPv6. Se você configurou ambos, IPv4 é o padrão. Insira também uma porta TCP de escuta (use o padrão 3205 ou insira um valor entre 49152 e 65535).
+
+
+. ${post_edited_translations.segment}
++
+** ${post_edited_translations.segment}
+** Quando desabilitado, as sessões de descoberta são impedidas, a menos que o iniciador forneça o IQN de destino. Desabilitar sessões de descoberta sem nome fornece segurança adicional.
+
+
+. Clique em *Salvar*.
+
+
+.Resultados
+Uma barra de progresso aparece enquanto o System Manager tenta registrar o controlador com o servidor iSNS. Este processo pode levar até cinco minutos.

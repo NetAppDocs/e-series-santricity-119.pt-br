@@ -1,0 +1,110 @@
+---
+permalink: sm-storage/requirements-and-guidelines-for-snapshots.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, requirements, guidelines, snapshots 
+summary: Ao criar e usar Snapshots, revise os seguintes requisitos e diretrizes. 
+---
+= Requisitos e diretrizes para Snapshots no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao criar e usar Snapshots, revise os seguintes requisitos e diretrizes.
+
+
+
+== Snapshot imagens instantâneas e grupos de instantâneos
+
+* Cada imagem de Snapshot está associada a exatamente um grupo de Snapshot.
+* Um grupo de Snapshot é criado na primeira vez que você cria uma imagem de Snapshot agendada ou instantânea para um objeto associado. Isso cria capacidade reservada.
++
+Você pode visualizar os grupos de Snapshot na página Pools & Volume Groups.
+
+* Imagens de Snapshot agendadas não ocorrem quando o array de storage está offline ou desligado.
+* Se você excluir um grupo de Snapshot que possui um agendamento de Snapshot, o agendamento de Snapshot também será excluído.
+* Se você tiver um volume de Snapshot que não precisa mais, pode reutilizá-lo, juntamente com qualquer capacidade reservada associada, em vez de excluí-lo. Isso cria um volume de Snapshot diferente do mesmo volume base. Você pode reassociar o volume de Snapshot ou o volume de Snapshot do grupo de consistência à mesma imagem de Snapshot ou a uma imagem de Snapshot diferente, desde que a imagem de Snapshot esteja no mesmo volume base.
+
+
+
+
+== Grupo de consistência Snapshot
+
+* Um grupo de consistência de Snapshot contém um grupo de Snapshot para cada volume que é membro do grupo de consistência de Snapshot.
+* Você pode associar um grupo de consistência de Snapshot a apenas um agendamento.
+* Se você excluir um grupo de consistência de Snapshot que tenha um agendamento de Snapshot, o agendamento de Snapshot também será excluído.
+* Não é possível gerenciar individualmente um grupo de Snapshot que está associado a um grupo de consistência de Snapshot. Em vez disso, você deve executar as operações de gerenciamento (criar imagem de Snapshot, excluir imagem de Snapshot ou grupo de Snapshot e reverter imagem de Snapshot) no nível do grupo de consistência de Snapshot.
+
+
+
+
+== Volume base
+
+* Um volume de Snapshot deve ter as mesmas configurações de Data Assurance (DA) e segurança que o volume base associado.
+* Não é possível criar um volume de Snapshot de um volume base com falha.
+* Se o volume base residir em um grupo de volume, os volumes membros de qualquer grupo de consistência de Snapshot associado podem residir em um pool ou em um grupo de volume.
+* Se um volume base reside em um pool, todos os volumes membros de qualquer grupo de consistência de Snapshot associado devem residir no mesmo pool que o volume base.
+
+
+
+
+== Capacidade reservada
+
+* A capacidade reservada está associada a apenas um volume base.
+* O uso de um agendamento pode resultar em um grande número de imagens de Snapshot. Certifique-se de ter capacidade reservada suficiente para os Snapshots agendados.
+* O volume de capacidade reservada para um grupo de consistência de Snapshot deve ter as mesmas configurações de Data Assurance (DA) e segurança que o volume base associado ao volume membro do grupo de consistência de Snapshot.
+
+
+
+
+== Imagens Snapshot pendentes
+
+A criação de Snapshot pode permanecer no estado Pendente nas seguintes condições:
+
+* O volume base que contém esta imagem de Snapshot é membro de um grupo de espelhamento assíncrono.
+* O volume base está atualmente em uma operação de sincronização. A criação da imagem Snapshot é concluída assim que a operação de sincronização é concluída.
+
+
+
+
+== Número máximo de imagens Snapshot
+
+* Se um volume for membro de um grupo de consistência de Snapshot, System Manager cria um grupo de Snapshot para esse volume membro. Esse grupo de Snapshot é contabilizado no número máximo permitido de grupos de Snapshot por volume base.
+* Se você tentar criar uma Snapshot em um grupo de Snapshot ou grupo de consistência de Snapshot, mas o grupo associado tiver atingido o número máximo de Snapshots, você tem duas opções:
++
+** Ative a exclusão automática para o grupo de Snapshot ou grupo de consistência de Snapshot.
+** Exclua manualmente uma ou mais imagens de Snapshot do grupo de Snapshot ou grupo de consistência de Snapshot e tente a operação novamente.
+
+
+
+
+
+
+== Exclusão automática
+
+Se o grupo de Snapshot ou grupo de consistência de Snapshot estiver habilitado para exclusão automática, System Manager exclui a imagem de Snapshot mais antiga quando o sistema cria uma nova para o grupo.
+
+
+
+== Operação de reverter
+
+* Não é possível executar as seguintes ações enquanto uma operação de reverter estiver em andamento:
++
+** Exclua a imagem Snapshot que está sendo usada para o rollback.
+** Crie uma nova imagem de Snapshot para um volume base que está participando de uma operação de reverter.
+** Altere a política Repository-Full do grupo de Snapshot associado.
+
+
+* Não é possível iniciar uma operação de reverter enquanto qualquer uma destas operações estiver em andamento:
++
+** Expansão de capacidade (adicionar capacidade a um pool ou grupo de volume)
+** Expansão de volume (aumentar a capacidade de um volume)
+** Alteração do nível RAID para um grupo de volume
+** Alteração do tamanho do segmento para um volume
+
+
+* Não é possível iniciar uma operação de reverter se o volume base estiver participando de uma cópia de volume.
+* Não é possível iniciar uma operação de reverter se o volume base for um volume secundário em um espelho remoto.
+* Uma operação de reverter falha se qualquer parte da capacidade utilizada no volume de repositório de Snapshot associado tiver setores ilegíveis.
+

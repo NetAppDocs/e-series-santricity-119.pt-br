@@ -1,0 +1,24 @@
+---
+permalink: um-manage/launch-considerations.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, considerations, access system manager 
+summary: Você seleciona um ou mais arrays de storage e usa a opção Launch para abrir SANtricity System Manager quando quiser configurar e gerenciar arrays de storage. 
+---
+= Saiba como acessar o SANtricity System Manager a partir do Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você seleciona um ou mais arrays de storage e usa a opção Launch para abrir SANtricity System Manager quando quiser configurar e gerenciar arrays de storage.
+
+System Manager é um aplicativo integrado nos controladores, que está conectado à rede através de uma porta de gerenciamento Ethernet. Ele inclui todas as funções baseadas em array.
+
+Para acessar System Manager, você deve ter:
+
+* Um dos modelos de array listados aqui: link:https://docs.netapp.com/us-en/e-series/getting-started/learn-hardware-concept.html["Visão geral do hardware E-Series"^]
+* Uma conexão fora de banda com um cliente de gerenciamento de rede com um navegador web.
+
+
+image::../media/single2800.gif[Conexão fora de banda com o cliente de gerenciamento de rede usando um navegador web.]

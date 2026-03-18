@@ -1,0 +1,45 @@
+---
+permalink: sm-settings/enable-certificate-revocation-checking.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, certificate, revocation checking, 
+summary: ${post_edited_translations.segment} 
+---
+= ${post_edited_translations.segment}
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+${post_edited_translations.segment}
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+* Um servidor DNS está configurado em ambos os controladores, o que permite o uso de um domínio totalmente qualificado para o servidor OCSP. Esta tarefa está disponível na página Hardware.
+* Se você deseja especificar seu próprio servidor OCSP, você deve saber a URL desse servidor.
+
+
+.Sobre esta tarefa
+A verificação automática de revogação é útil nos casos em que a CA emitiu um certificado indevidamente ou uma chave privada foi comprometida.
+
+Durante essa tarefa, você pode configurar um servidor OCSP ou usar o servidor especificado no arquivo de certificado. O servidor OCSP determina se a CA revogou algum certificado antes da data de expiração programada e, em seguida, bloqueia o usuário de acessar um site se o certificado estiver revogado.
+
+.Passos
+. Selecione menu:Configurações[Certificados].
+. Selecione a guia *Trusted*.
++
+[NOTE]
+====
+Você também pode ativar a verificação de revogação na guia *Key Management*.
+
+====
+. Clique em *Tarefas incomuns* e, em seguida, selecione *Ativar verificação de revogação* no menu suspenso.
+. Selecione *Desejo ativar a verificação de revogação*, para que uma marca de seleção apareça na caixa de seleção e campos adicionais apareçam na caixa de diálogo.
+. No campo *Endereço do servidor OCSP*, você pode opcionalmente inserir uma URL para um servidor OCSP. Se você não inserir um endereço, o sistema usará a URL do servidor OCSP do arquivo de certificado.
+. Clique em *Test Address* para garantir que o sistema consiga abrir uma conexão com o URL especificado.
+. Clique em *Salvar*.
+
+
+.Resultados
+Se o array de storage tentar se conectar a um servidor com um certificado revogado, a conexão é negada e um evento é registrado.

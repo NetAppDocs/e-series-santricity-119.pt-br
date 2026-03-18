@@ -1,0 +1,30 @@
+---
+permalink: sm-hardware/change-shelf-ids.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, shelf, ids, 
+summary: O ID da prateleira é um número que identifica exclusivamente uma prateleira no array de storage. As prateleiras são numeradas consecutivamente, começando com 00 ou 01, no canto superior esquerdo de cada visualização da prateleira. 
+---
+= Alterar IDs de shelf no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O ID da prateleira é um número que identifica exclusivamente uma prateleira no array de storage. As prateleiras são numeradas consecutivamente, começando com 00 ou 01, no canto superior esquerdo de cada visualização da prateleira.
+
+.Sobre esta tarefa
+O firmware do controlador atribui automaticamente o ID da prateleira, mas você pode alterar esse número se quiser criar um esquema de organização diferente.
+
+.Passos
+. Selecione *Hardware*.
+. Selecione a lista suspensa para a Prateleira do Controlador ou Prateleira da Unidade e, em seguida, selecione *Alterar ID*.
+. Na caixa de diálogo Change Shelf ID, selecione a lista suspensa para exibir os números disponíveis.
++
+Esta caixa de diálogo não exibe os IDs atualmente atribuídos às prateleiras ativas.
+
+. Selecione um número disponível e clique em *Save*.
++
+Dependendo do número selecionado, a ordem das prateleiras pode ser reorganizada na página Hardware. Se desejar, você pode usar as setas para cima/para baixo no canto superior direito de cada prateleira para reajustar a ordem.
+
+

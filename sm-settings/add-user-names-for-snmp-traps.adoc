@@ -1,0 +1,36 @@
+---
+permalink: sm-settings/add-user-names-for-snmp-traps.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, users, snmpv3, traps, 
+summary: Você pode adicionar até 256 usuários para SNMPv3 traps. 
+---
+= Adicionar usuários para traps SNMPv3 no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar até 256 usuários para SNMPv3 traps.
+
+.Passos
+. Selecione o menu: configurações [Alertas].
+. Selecione a guia *SNMP*.
++
+Os destinos das armadilhas e os nomes de usuário aparecem na tabela.
+
+. Selecione *Configurar Users*.
++
+A caixa de diálogo Configurar usuários SNMPv3 é aberta.
+
+. Selecione *Add*.
+. Insira as seguintes informações e clique em *Add*.
++
+** *Nome de usuário* -- Digite um nome para identificar o usuário, que pode ter até 31 caracteres.
+** *ID do mecanismo* -- Selecione o ID do mecanismo, que é usado para gerar chaves de autenticação e criptografia para mensagens e deve ser exclusivo no domínio administrativo. Na maioria dos casos, você deve selecionar *Local*. Se você tiver uma configuração não padrão, selecione *Personalizado*; outro campo aparecerá onde você deverá inserir o ID do mecanismo autorizado como uma string hexadecimal, com um número par de caracteres entre 10 e 32 caracteres.
+** *Credenciais de autenticação* -- Selecione um protocolo de autenticação, que garante a identidade dos usuários. Em seguida, insira uma senha de autenticação, que é necessária quando o protocolo de autenticação é definido ou alterado. A senha deve ter entre 8 e 128 caracteres.
+** *Credenciais de privacidade* -- Selecione um protocolo de privacidade, que é usado para criptografar o conteúdo das mensagens. Em seguida, insira uma senha de privacidade, que é necessária quando o protocolo de privacidade é definido ou alterado. A senha deve ter entre 8 e 128 caracteres.
+
+
+

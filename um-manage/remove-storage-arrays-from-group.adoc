@@ -1,0 +1,24 @@
+---
+permalink: um-manage/remove-storage-arrays-from-group.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, remove, storage, arrays, group 
+summary: Você pode remover um ou mais arrays de storage gerenciados de um grupo se não quiser mais gerenciá-los a partir de um grupo de storage específico. 
+---
+= Remover arrays de storage de um grupo no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover um ou mais arrays de storage gerenciados de um grupo se não quiser mais gerenciá-los a partir de um grupo de storage específico.
+
+.Sobre esta tarefa
+Remover arrays de storage de um grupo não afeta o array de storage nem seus dados de forma alguma. Se o seu array de storage for gerenciado pelo System Manager, você ainda pode gerenciá-lo usando seu navegador. Se um array de storage for removido acidentalmente de um grupo, ele pode ser adicionado novamente.
+
+.Passos
+. Na página Gerenciar, selecione o menu: Gerenciar Grupos[Remover arrays de storage do grupo].
+. Na lista suspensa, selecione o grupo que contém os arrays de storage que você deseja remover e, em seguida, clique na caixa de seleção ao lado de cada array de storage que você deseja remover do grupo.
+. Clique em *Remover*.
+

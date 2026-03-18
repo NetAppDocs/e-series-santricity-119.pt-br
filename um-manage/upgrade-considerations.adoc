@@ -1,0 +1,42 @@
+---
+permalink: um-manage/upgrade-considerations.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, upgrade, considerations 
+summary: Antes de usar Unified Manager para atualizar vários arrays de storage, revise as principais considerações como parte do seu planejamento. 
+---
+= Saiba mais sobre como atualizar vários arrays de storage com SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de usar SANtricity Unified Manager para atualizar vários arrays de storage, revise as principais considerações como parte do seu planejamento.
+
+
+
+== Versões atuais
+
+Você pode visualizar as versões atuais do software SANtricity OS na página Gerenciar do Unified Manager para cada array de storage. A versão é exibida na coluna Software SANtricity OS. As informações do firmware do controlador e da NVSRAM estão disponíveis em uma caixa de diálogo pop-up ao clicar na versão do SANtricity OS em cada linha.
+
+
+
+== Outros componentes que exigem atualização
+
+Como parte do processo de atualização, você também pode precisar atualizar o driver multipath/failover do host ou o driver HBA para que o host possa interagir corretamente com os controladores.
+
+Para informações sobre compatibilidade, consulte o https://imt.netapp.com/matrix/#welcome["NetApp Matriz de interoperabilidade"^]. Veja também os procedimentos nos Guias Rápidos para o seu sistema operacional. Os Guias Rápidos estão disponíveis em https://docs.netapp.com/us-en/e-series/index.html["Documentação do E-Series e SANtricity"^].
+
+
+
+== Controladores duplos
+
+Se um array de storage contiver dois controladores e você tiver um driver multipath instalado, o array de storage poderá continuar processando operações de E/S enquanto a atualização ocorre. Durante a atualização, o seguinte processo ocorre:
+
+. O controlador A faz failover de todas as suas LUNs para o controlador B.
+. A atualização ocorre no controlador A.
+. O controlador A recupera seus LUNs e todos os LUNs do controlador B.
+. A atualização ocorre no controlador B.
+
+
+Após a conclusão da atualização, pode ser necessário redistribuir manualmente os volumes entre os controladores para garantir que os volumes retornem ao controlador proprietário correto.

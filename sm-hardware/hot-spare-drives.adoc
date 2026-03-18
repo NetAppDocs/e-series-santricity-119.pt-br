@@ -1,0 +1,84 @@
+---
+permalink: sm-hardware/hot-spare-drives.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hot, spare, drives, raid1, raid6, raid5 
+summary: Hot spares atuam como unidades de espera em grupos de volume RAID 1, RAID 5 ou RAID 6 para System Manager. 
+---
+= Saiba mais sobre hot spare drives no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hot spares atuam como unidades de espera em grupos de volume RAID 1, RAID 5 ou RAID 6 para SANtricity System Manager.
+
+São unidades totalmente funcionais que não contêm dados. Se uma unidade falhar no grupo de volume, o controlador reconstrói automaticamente os dados da unidade com falha para uma unidade designada como hot spare.
+
+Os hot spares não são dedicados a grupos de volumes específicos. Eles podem ser usados para qualquer unidade com falha no array de storage, desde que o hot spare e a unidade compartilhem estes atributos:
+
+* Capacidade igual (ou maior capacidade para o hot spare)
+* Mesmo tipo de mídia (por exemplo, HDD ou SSD)
+* Mesmo tipo de interface (por exemplo, SAS)
+
+
+
+
+== Como identificar hot spares
+
+Você pode atribuir hot spares através do Assistente de Configuração Inicial ou na página de Hardware. Para determinar se hot spares estão atribuídos, acesse a página de Hardware e procure por baias de unidade exibidas em rosa.
+
+
+
+== Como funciona a cobertura de hot spare
+
+A cobertura de hot spare funciona da seguinte forma:
+
+* Você reserva uma unidade não atribuída como hot spare para grupos de volume RAID 1, RAID 5 ou RAID 6.
++
+[NOTE]
+====
+Hot spares não podem ser usados para pools, que possuem um método diferente de proteção de dados. Em vez de reservar uma unidade adicional, os pools reservam capacidade de reserva (chamada de _preservation capacity_) dentro de cada unidade do pool. Se uma unidade falhar em um pool, o controlador reconstrói os dados nessa capacidade de reserva.
+
+====
+* Se uma unidade em um grupo de volume RAID 1, RAID 5 ou RAID 6 falhar, o controlador usa automaticamente os dados de redundância para reconstruir os dados da unidade com falha. O hot spare é automaticamente substituído pela unidade com falha, sem a necessidade de uma troca física.
+* Quando você substituir fisicamente a unidade com falha, uma operação de copyback ocorre da unidade hot spare para a unidade substituída. Se você tiver designado a unidade hot spare como membro permanente de um grupo de volume, a operação de copyback não será necessária.
+* A disponibilidade da proteção contra perda de bandeja e da proteção contra perda de gaveta para um grupo de volume depende da localização das unidades que compõem o grupo de volume. A proteção contra perda de bandeja e a proteção contra perda de gaveta podem ser perdidas devido a uma unidade com falha e à localização da unidade hot spare. Para garantir que a proteção contra perda de bandeja e a proteção contra perda de gaveta não sejam afetadas, você deve substituir uma unidade com falha para iniciar o processo de copyback.
+* O volume do array de storage permanece online e acessível enquanto você substitui a unidade com falha, porque a hot spare é automaticamente substituída pela unidade com falha.
+
+
+
+
+== Considerações sobre a capacidade da unidade hot spare
+
+Selecione uma unidade com capacidade igual ou superior à capacidade total da unidade que deseja proteger. Por exemplo, se você tiver uma unidade de 18 GiB com capacidade configurada de 8 GiB, poderá usar uma unidade de 9 GiB ou maior como hot spare. Geralmente, não atribua uma unidade como hot spare a menos que sua capacidade seja igual ou superior à capacidade da maior unidade no array de storage.
+
+[NOTE]
+====
+Caso não haja hot spares disponíveis com a mesma capacidade física, uma unidade com capacidade inferior poderá ser usada como hot spare se a "capacidade utilizada" da unidade for igual ou menor que a capacidade da unidade hot spare.
+
+====
+
+
+== Considerações sobre tipos de mídia e interface
+
+A unidade usada como hot spare deve ter o mesmo tipo de mídia e interface que as unidades que ela protegerá. Por exemplo, um HDD não pode servir como hot spare para SSDs.
+
+
+
+== Considerações sobre unidades com recursos de segurança
+
+Uma unidade com capacidade de segurança, como FDE ou FIPS, pode servir como hot spare para unidades com ou sem recursos de segurança. No entanto, uma unidade que não tem capacidade de segurança não pode servir como hot spare para unidades com recursos de segurança.
+
+Ao selecionar uma unidade com segurança habilitada para ser usada como hot spare, System Manager solicita que você execute uma Secure Erase antes de prosseguir. A Secure Erase redefine os atributos de segurança da unidade para secure-capable, mas não secure-enabled.
+
+[NOTE]
+====
+Ao ativar o recurso de Drive Security e, em seguida, criar um pool ou grupo de volume a partir de unidades com capacidade de segurança, as unidades tornam-se _secure-enabled_. O acesso de leitura e gravação fica disponível somente por meio de um controlador configurado com a chave de segurança correta. Essa segurança adicional impede o acesso não autorizado aos dados em uma unidade que foi fisicamente removida do array de storage.
+
+====
+
+
+== Número recomendado de hot spare
+
+Se você utilizou o assistente de Configuração Inicial para criar automaticamente hot spares, System Manager cria uma hot spare para cada 30 unidades de um determinado tipo de mídia e interface. Caso contrário, você pode criar manualmente hot spares entre os grupos de volume no array de storage.

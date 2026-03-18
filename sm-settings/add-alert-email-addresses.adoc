@@ -1,0 +1,29 @@
+---
+permalink: sm-settings/add-alert-email-addresses.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, email, addresses, alerts, 
+summary: Você pode adicionar até 20 destinatários para alertas por e-mail. 
+---
+= Adicionar endereços de e-mail para alertas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar até 20 destinatários para alertas por e-mail.
+
+.Passos
+. Selecione o menu: configurações [Alertas].
+. Selecione a guia *Email*.
+. Selecione *Add Emails*.
++
+A caixa de diálogo Adicionar Emails é aberta.
+
+. No campo vazio, insira um novo endereço de e-mail. Se desejar adicionar mais de um endereço, selecione *Adicionar outro e-mail* para abrir outro campo.
+. Clique em *Add*.
+
+
+.Resultados
+A guia Email da página de Alertas exibe os novos endereços de email.

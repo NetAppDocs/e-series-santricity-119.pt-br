@@ -1,0 +1,180 @@
+---
+permalink: sm-settings/faq-iscsi-protocol.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre o protocolo iSCSI para o SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== O que acontece quando uso um servidor iSNS para registro?
+
+Quando as informações do Internet Storage Name Service (iSNS) são utilizadas, os hosts (iniciadores) podem ser configurados para consultar o servidor iSNS para recuperar informações do alvo (controladores).
+
+Este registro fornece ao servidor iSNS o Nome Qualificado iSCSI (IQN) e as informações de porta do controlador, permitindo consultas entre os iniciadores (iSCSI hosts) e os alvos (controladores).
+
+
+
+== Quais métodos de registro são suportados automaticamente para iSCSI?
+
+A implementação do iSCSI suporta o método de descoberta Internet Storage Name Service (iSNS) ou o uso do comando Send Targets.
+
+O método iSNS permite a descoberta iSNS entre os iniciadores (iSCSI hosts) e os alvos (os controladores). Você registra o controlador de destino para fornecer ao servidor iSNS o Nome Qualificado iSCSI (IQN) e as informações de porta do controlador.
+
+Se você não configurar iSNS, o host iSCSI pode enviar o comando Send Targets durante uma sessão de descoberta iSCSI. Em resposta, o controlador retorna as informações da porta (por exemplo, o Target IQN, endereço IP da porta, porta de escuta e Target Port Group). Esse método de descoberta não é necessário se você usar iSNS, pois o iniciador do host pode recuperar os IPs de destino do servidor iSNS.
+
+
+
+== Como interpreto as estatísticas de iSER sobre InfiniBand?
+
+A caixa de diálogo Exibir estatísticas de iSER sobre InfiniBand exibe estatísticas do alvo local (protocolo) e estatísticas da interface iSER sobre InfiniBand (IB). Todas as estatísticas são somente leitura e não podem ser definidas.
+
+* *Estatísticas do alvo local (protocolo)* -- Fornece estatísticas para o iSER sobre InfiniBand alvo, mostrando o acesso em nível de bloco à sua mídia de armazenamento.
+* *iSER over InfiniBand Interface estatísticas* -- Fornece estatísticas para todas as portas iSER over InfiniBand na interface InfiniBand, incluindo estatísticas de desempenho e informações sobre erros de link associadas a cada porta do switch.
+
+
+Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de linha de base. Estatísticas brutas são todas as estatísticas que foram coletadas desde que os controladores foram iniciados. Estatísticas de linha de base são estatísticas de ponto no tempo que foram coletadas desde que você definiu o tempo de linha de base.
+
+
+
+== O que mais preciso fazer para configurar ou diagnosticar iSER sobre InfiniBand?
+
+A tabela a seguir lista as funções do SANtricity System Manager que você pode usar para configurar e gerenciar iSER sobre sessões InfiniBand.
+
+[NOTE]
+====
+As configurações iSER over InfiniBand estão disponíveis somente se o controlador do seu array de storage incluir uma porta de gerenciamento de host iSER over InfiniBand.
+
+====
+[cols="35h,~"]
+|===
+| Ação | Localização 
+
+
+ a| 
+Configurar iSER em portas InfiniBand
+ a| 
+. Selecione *Hardware*.
+. Selecione a guia *Controladores e Componentes*.
+. Selecione um controlador.
+. Selecione *Configurar iSER em InfiniBand ports*.
+
+
+ou
+
+. Selecione o menu: configurações [Sistema].
+. Desça até *iSER sobre configurações do InfiniBand*, e então selecione *Configurar iSER sobre portas do InfiniBand*.
+
+
+
+
+ a| 
+Veja estatísticas de iSER sobre InfiniBand
+ a| 
+. Selecione o menu: configurações [Sistema].
+. Desça até *iSER over InfiniBand configurações* e, em seguida, selecione *Exibir iSER over InfiniBand estatísticas*.
+
+
+|===
+
+
+== O que mais preciso fazer para configurar ou diagnosticar iSCSI?
+
+As sessões iSCSI podem ocorrer com hosts ou arrays de storage remotos em uma relação de espelhamento assíncrono. As tabelas a seguir listam as funções do SANtricity System Manager que você pode usar para configurar e gerenciar essas sessões iSCSI.
+
+[NOTE]
+====
+As configurações de iSCSI só estão disponíveis se o seu array de storage for compatível com iSCSI.
+
+====
+
+
+=== Configurar iSCSI
+
+[cols="1a,1a"]
+|===
+| Ação | Localização 
+
+
+ a| 
+Gerenciar configurações iSCSI
+ a| 
+. Selecione o menu: configurações [Sistema].
+. Deslize a tela para baixo até *iSCSI settings* para visualizar todas as funções de gerenciamento.
+
+
+
+
+ a| 
+Configurar portas iSCSI
+ a| 
+. Selecione *Hardware*.
+. Selecione a guia *Controladores e Componentes*.
+. Selecione um controlador.
+. Selecione *Configurar portas iSCSI*.
+
+
+
+
+ a| 
+Definir o segredo CHAP do host
+ a| 
+. Selecione o menu: configurações [Sistema].
+. Role para baixo até *iSCSI settings* e, em seguida, selecione *Configurar autenticação*.
+
+
+ou
+
+. Selecione o menu: storage [Hosts].
+. Selecione um membro host.
+. Clique no menu: Exibir/Editar configurações [Host Ports] tab.
+
+
+|===
+
+
+=== Diagnosticar iSCSI
+
+[cols="1a,1a"]
+|===
+| Ação | Localização 
+
+
+ a| 
+Visualizar ou encerrar sessões iSCSI
+ a| 
+. Selecione o menu: configurações [Sistema].
+. Role para baixo até *configurações iSCSI* e, em seguida, selecione *Exibir/Encerrar sessões iSCSI*.
+
+
+ou
+
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Visualizar/Encerrar sessões iSCSI*.
+
+
+
+
+ a| 
+Visualizar estatísticas iSCSI
+ a| 
+. Selecione o menu: configurações [Sistema].
+. Role para baixo até *configurações iSCSI* e, em seguida, selecione *Exibir pacotes de estatísticas iSCSI*.
+
+
+ou
+
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Exibir pacotes de estatísticas iSCSI*.
+
+
+|===

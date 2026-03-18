@@ -1,0 +1,160 @@
+---
+permalink: um-manage/create-asynchronous-mirrored-pair-um.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, create, asynchronous, mirrored, pair 
+summary: Para configurar espelhamento assíncrono, você cria um par espelhado que inclui um volume primário no array local e um volume secundário no array remoto. 
+---
+= Crie um par espelhado assíncrono no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurar espelhamento assíncrono, você cria um par espelhado que inclui um volume primário no array local e um volume secundário no array remoto.
+
+.Antes de começar
+Antes de criar um par espelhado, atenda aos seguintes requisitos para o Unified Manager:
+
+* O serviço Web Services Proxy deve estar em execução.
+* Unified Manager deve estar sendo executado em seu host local por meio de uma conexão HTTPS.
+* Unified Manager deve exibir certificados SSL válidos para o array de storage. Você pode aceitar um certificado autoassinado ou instalar seu próprio certificado de segurança usando Unified Manager e navegando até menu:Certificate[Certificate Management].
+
+
+Certifique-se também de atender aos seguintes requisitos para arrays de storage e volumes:
+
+* Cada array de storage deve ter dois controladores.
+* Os dois arrays de storage devem ser detectados no Unified Manager.
+* Cada controlador, tanto no array primário quanto no array secundário, deve ter uma porta de gerenciamento Ethernet configurada e deve estar conectado à sua rede.
+* Os arrays de storage possuem uma versão mínima de firmware de 7.84. (Cada um deles pode executar diferentes versões de sistema operacional.)
+* Você deve saber a senha dos arrays de storage local e remoto.
+* Você precisa ter capacidade livre suficiente no array de storage remoto para criar um volume secundário igual ou maior que o volume primário que você deseja espelhar.
+* Seus arrays de storage locais e remotos estão conectados por meio de uma estrutura Fibre Channel ou interface iSCSI.
+* Você criou tanto o volume primário quanto o volume secundário que deseja usar na relação de espelhamento assíncrono.
+* O volume secundário deve ser pelo menos tão grande quanto o volume primário.
+
+
+.Sobre esta tarefa
+O processo para criar um par espelhado assíncrono é um procedimento de várias etapas.
+
+
+
+== Etapa 1: crie ou selecione um grupo de consistência de espelhamento
+
+Nesta etapa, você cria um novo grupo de consistência de espelhamento ou seleciona um existente. Um grupo de consistência de espelhamento é um contêiner para os volumes primário e secundário (o par espelhado) e especifica o método de ressincronização desejado (manual ou automático) para todos os pares no grupo.
+
+.Passos
+. Na página *Gerenciar*, selecione o array de storage local que você deseja usar como fonte.
+. Selecione o menu: Ações[Create Asynchronous Mirrored Pair].
++
+O assistente Criar Par Espelhado Assíncrono é aberto.
+
+. Selecione um grupo de consistência de espelhamento existente ou crie um novo.
++
+Para selecionar um grupo existente, certifique-se de que *Um grupo de espelhamento de consistência existente* esteja selecionado e, em seguida, selecione o grupo na tabela. Um grupo de consistência pode incluir vários pares espelhados.
+
++
+Para criar um novo grupo, faça o seguinte:
+
++
+.. Selecione *A new mirror consistency group* e clique em *Avançar*.
+.. Insira um nome exclusivo que melhor descreva os dados nos volumes que serão espelhados entre os dois arrays de storage. Um nome pode conter apenas letras, números e os caracteres especiais sublinhado (_), hífen (-) e cerquilha (#). Um nome não pode exceder 30 caracteres e não pode conter espaços.
+.. Selecione o array de storage remoto no qual você deseja estabelecer uma relação de espelhamento com o array de storage local.
++
+[NOTE]
+====
+Se o seu array de storage estiver protegido por senha, o sistema solicitará uma senha.
+
+====
+.. Escolha se deseja sincronizar os pares espelhados manualmente ou automaticamente:
++
+*** *Manual* -- Selecione esta opção para iniciar manualmente a sincronização de todos os pares espelhados dentro deste grupo. Observe que, quando desejar realizar uma ressincronização posteriormente, você deve iniciar o System Manager para o array de storage primário, e então acessar menu:Storage[Asynchronous Mirroring], selecionar o grupo na guia *Mirror Consistency Groups* e, em seguida, selecionar menu:More[Manually resynchronize].
+*** *Automático* -- selecione o intervalo desejado em *Minutos*, *Horas* ou *Dias*, do início da atualização anterior até o início da próxima atualização. Por exemplo, se o intervalo de sincronização estiver definido em 30 minutos, e o processo de sincronização começar às 16:00, o próximo processo começará às 16:30.
+
+
+.. Selecione as configurações de alerta desejadas:
++
+*** Para sincronizações manuais, especifique o limite (definido pela porcentagem da capacidade restante) para quando você receber alertas.
+*** Para sincronizações automáticas, você pode configurar três métodos de alerta: quando a sincronização não for concluída dentro de um período específico, quando os dados do ponto de recuperação no array remoto forem mais antigos do que um limite de tempo específico e quando a capacidade reservada estiver próxima de um limite específico (definido pela porcentagem da capacidade restante).
+
+
+
+
+. Selecione *Próximo* e vá para <<Passo 2: selecione o volume primário>>.
++
+Se você definiu um novo grupo de consistência de espelhamento, Unified Manager cria o grupo de consistência de espelhamento no array de storage local primeiro e, em seguida, cria o grupo de consistência de espelhamento no array de storage remoto. Você pode visualizar e gerenciar o grupo de consistência de espelhamento ao iniciar o System Manager para cada array.
+
++
+[NOTE]
+====
+Se Unified Manager criar com sucesso o grupo de consistência de espelhamento no array de storage local, mas não conseguir criá-lo no array de storage remoto, ele excluirá automaticamente o grupo de consistência de espelhamento do array de storage local. Se ocorrer um erro enquanto Unified Manager estiver tentando excluir o grupo de consistência de espelhamento, você deverá excluí-lo manualmente.
+
+====
+
+
+
+
+== Passo 2: selecione o volume primário
+
+Nesta etapa, você seleciona o volume primário a ser usado no relacionamento de espelhamento e aloca sua capacidade reservada. Ao selecionar um volume primário no array de storage local, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Quaisquer volumes que não sejam elegíveis para uso não são exibidos nessa lista.
+
+Quaisquer volumes que você adicionar ao grupo de consistência de espelhamento no array de storage local terão a função principal na relação de espelhamento.
+
+.Passos
+. Na lista de volumes elegíveis, selecione um volume que deseja usar como volume primário e clique em *Next* para alocar a capacidade reservada.
+. Na lista de candidatos elegíveis, selecione a capacidade reservada para o volume primário.
++
+Mantenha as seguintes diretrizes em mente:
+
++
+** A configuração padrão para capacidade reservada é de 20% da capacidade do volume base, e geralmente essa capacidade é suficiente. Se você alterar a porcentagem, clique em *Atualizar candidatos*.
+** A capacidade necessária varia, dependendo da frequência e do tamanho das gravações de E/S no volume primário e de quanto tempo você precisa manter a capacidade.
+** Em geral, escolha uma capacidade maior para a capacidade reservada se uma ou ambas as seguintes condições existirem:
++
+*** Você pretende manter o par espelhado por um longo período de tempo.
+*** Uma grande porcentagem dos blocos de dados será alterada no volume primário devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume primário.
+
+
+
+
+. Selecione *Próximo* e vá para <<Etapa 3: selecione o volume secundário>>.
+
+
+
+
+== Etapa 3: selecione o volume secundário
+
+Nesta etapa, você seleciona o volume secundário a ser usado na relação de espelhamento e aloca sua capacidade reservada. Ao selecionar um volume secundário no array de storage remoto, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Quaisquer volumes que não sejam elegíveis para uso não são exibidos nessa lista.
+
+Quaisquer volumes que você adicionar ao grupo de consistência de espelhamento no array de storage remoto terão a função secundária na relação de espelhamento.
+
+.Passos
+. Na lista de volumes elegíveis, selecione um volume que deseja usar como volume secundário no par espelhado e clique em *Avançar* para alocar a capacidade reservada.
+. Na lista de candidatos elegíveis, selecione capacidade reservada para o volume secundário.
++
+Mantenha as seguintes diretrizes em mente:
+
++
+** A configuração padrão para capacidade reservada é de 20% da capacidade do volume base, e geralmente essa capacidade é suficiente. Se você alterar a porcentagem, clique em *Atualizar candidatos*.
+** A capacidade necessária varia, dependendo da frequência e do tamanho das gravações de E/S no volume primário e de quanto tempo você precisa manter a capacidade.
+** Em geral, escolha uma capacidade maior para a capacidade reservada se uma ou ambas as seguintes condições existirem:
++
+*** Você pretende manter o par espelhado por um longo período de tempo.
+*** Uma grande porcentagem dos blocos de dados será alterada no volume primário devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume primário.
+
+
+
+
+. Selecione *Concluir* para finalizar a sequência de espelhamento assíncrono.
+
+
+.Resultados
+Unified Manager executa as seguintes ações:
+
+* Inicia a sincronização inicial entre o array de storage local e o array de storage remoto.
+* Cria a capacidade reservada para o par espelhado no array de storage local e no array de storage remoto.
+
+
+
+NOTE: Se o volume que está sendo espelhado for um volume fino, somente os blocos provisionados (capacidade alocada em vez da capacidade relatada) são transferidos para o volume secundário durante a sincronização inicial. Isso reduz a quantidade de dados que deve ser transferida para concluir a sincronização inicial.

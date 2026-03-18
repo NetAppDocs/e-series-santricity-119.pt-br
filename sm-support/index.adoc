@@ -1,0 +1,14 @@
+---
+permalink: sm-support/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= SANtricity System Manager 11.9
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página de Suporte fornece acesso a recursos de suporte técnico.

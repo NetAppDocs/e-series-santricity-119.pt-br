@@ -1,0 +1,94 @@
+---
+permalink: sm-settings/configure-nvme-over-roce-ports-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, nvme, roce, ports, 
+summary: 'Se o seu controlador incluir uma conexão para NVMe sobre RoCE (RDMA sobre Converged Ethernet), você pode configurar as configurações da porta NVMe na página System.' 
+---
+= Configurar as portas NVMe sobre RoCE no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o seu controlador incluir uma conexão para NVMe sobre RoCE (RDMA sobre Converged Ethernet), você pode configurar as configurações da porta NVMe na página System.
+
+.Antes de começar
+* Seu controlador deve incluir uma porta host NVMe over RoCE; caso contrário, as configurações de NVMe over RoCE não estarão disponíveis no System Manager.
+* Você deve saber o endereço IP da conexão do host.
+
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *NVMe sobre ROCE configurações*, selecione *Configurar NVMe sobre portas ROCE*.
+. Selecione o controlador com a porta NVMe sobre RoCE que deseja configurar. Clique em *Next*.
+. Selecione a porta HIC que deseja configurar na lista suspensa. Clique em *Next*.
+. Configurar as configurações da porta.
++
+Para visualizar todas as configurações de porta, clique no link *Mostrar mais configurações de porta* à direita da caixa de diálogo.
+
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="1a,1a"]
+|===
+| Configuração da porta | Descrição 
+
+
+ a| 
+Velocidade da porta Ethernet configurada
+ a| 
+Selecione a velocidade que corresponda à capacidade de velocidade do SFP na porta.
+
+
+
+ a| 
+Habilitar IPv4 / Habilitar IPv6
+ a| 
+Selecione uma ou ambas as opções para ativar o suporte para redes IPv4 e IPv6.
+
+
+NOTE: Se você quiser desativar o acesso à porta, desmarque ambas as caixas de seleção.
+
+
+
+ a| 
+Tamanho do MTU (Disponível clicando em *Mostrar mais configurações de porta*.)
+ a| 
+Se necessário, insira um novo tamanho em bytes para o Maximum Transmission Unit (MTU).
+
+O tamanho padrão da Unidade Máxima de Transmissão (MTU) é de 1500 bytes por quadro. Você deve inserir um valor entre 1500 e 9000.
+
+|===
+====
++
+Se você selecionou *Habilitar IPv4*, uma caixa de diálogo é aberta para selecionar as configurações de IPv4 após você clicar em *Avançar*. Se você selecionou *Habilitar IPv6*, uma caixa de diálogo é aberta para selecionar as configurações de IPv6 após você clicar em *Avançar*. Se você selecionou ambas as opções, a caixa de diálogo para as configurações de IPv4 é aberta primeiro e, em seguida, após você clicar em *Avançar*, a caixa de diálogo para as configurações de IPv6 é aberta.
+
+. Configurar as definições de IPv4 e/ou IPv6, seja automaticamente ou manualmente.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="1a,1a"]
+|===
+| Configuração da porta | Descrição 
+
+
+ a| 
+Obter configuração automaticamente
+ a| 
+Selecione esta opção para obter a configuração automaticamente.
+
+
+
+ a| 
+Especificar manualmente a configuração estática
+ a| 
+Selecione esta opção e insira um endereço estático nos campos. (Se desejar, você pode copiar e colar endereços nos campos.) Para IPv4, inclua a máscara de sub-rede e o gateway. Para IPv6, inclua o endereço IP roteável e o endereço IP do roteador. Se você estiver configurando um array de storage EF600 com um HIC compatível com 200Gb, esta caixa de diálogo exibirá dois conjuntos de campos para parâmetros de rede, um para uma porta física (externa) e outro para uma porta virtual (interna). Você deve atribuir parâmetros exclusivos para ambas as portas. Essas configurações permitem que o host estabeleça um caminho entre cada porta e que o HIC atinja o desempenho máximo. Se você não atribuir um endereço IP à porta virtual, o HIC funcionará com aproximadamente metade de sua velocidade máxima.
+
+|===
+====
+. Clique em *Concluir*.
+

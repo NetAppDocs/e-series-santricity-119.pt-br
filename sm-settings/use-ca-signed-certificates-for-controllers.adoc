@@ -1,0 +1,133 @@
+---
+permalink: sm-settings/use-ca-signed-certificates-for-controllers.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ca-signed, certificates, controllers, 
+summary: Você pode obter certificados assinados por CA para comunicações seguras entre os controladores e o navegador usado para acessar System Manager. 
+---
+= Use certificados assinados por CA para controladores no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode obter certificados assinados por CA para comunicações seguras entre os controladores e o navegador usado para acessar SANtricity System Manager.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+* Você precisa saber o endereço IP ou os nomes DNS de cada controlador.
+
+
+.Sobre esta tarefa
+Utilizar certificados assinados por uma CA é um procedimento de três etapas.
+
+
+
+== Etapa 1: preencha os CSRs para os controladores
+
+Primeiro, você deve gerar um arquivo de solicitação de assinatura de certificado (CSR) para cada controlador no array de storage.
+
+.Sobre esta tarefa
+Esta tarefa descreve como gerar um arquivo CSR a partir do System Manager. O CSR fornece informações sobre sua organização e, ou o endereço IP ou o nome DNS do controlador. Durante esta tarefa, um arquivo CSR é gerado se o array de storage tiver um controlador e dois arquivos CSR se tiver dois controladores.
+
+[NOTE]
+====
+Alternativamente, você pode gerar um arquivo CSR usando uma ferramenta como OpenSSL e pode pular para <<Etapa 2: enviar os arquivos CSR>>.
+
+====
+.Passos
+. Selecione menu:Configurações[Certificados].
+. Na aba Array Management, selecione *Complete CSR*.
++
+[NOTE]
+====
+Se você vir uma caixa de diálogo solicitando que aceite um certificado autoassinado para o segundo controlador, clique em *Accept Self-Signed Certificate* para prosseguir.
+
+====
+. Insira as seguintes informações e clique em *Avançar*:
++
+** *Organização* -- O nome completo e legal da sua empresa ou organização. Inclua sufixos, como Inc. ou Corp.
+** *Unidade organizacional (opcional)* -- A divisão da sua organização que está lidando com o certificado.
+** *Cidade/Localidade* -- A cidade onde seu array de storage ou empresa está localizado.
+** *Estado/Região (opcional)* -- O estado ou região onde seu array de storage ou empresa está localizado.
+** *Código ISO do país* -- O código ISO (Organização Internacional de Normalização) de dois dígitos do seu país, como US.
+
+
++
+[CAUTION]
+====
+Alguns campos podem estar preenchidos previamente com as informações apropriadas, como o endereço IP do controlador. Não altere os valores preenchidos previamente, a menos que tenha certeza de que estão incorretos. Por exemplo, se você ainda não concluiu um CSR, o endereço IP do controlador está definido como "`localhost.`" Nesse caso, você deve alterar "`localhost`" para o nome DNS ou endereço IP do controlador.
+
+====
+. Verifique ou insira as seguintes informações sobre o controlador A em seu array de storage:
++
+** *Nome comum do Controlador A* -- O endereço IP ou o nome DNS do controlador A é exibido por padrão. Certifique-se de que este endereço esteja correto; ele deve corresponder exatamente ao que você digita para acessar System Manager no navegador. O nome DNS não pode começar com um caractere curinga.
+** *Endereços IP alternativos do Controlador A* -- Se o nome comum for um endereço IP, você pode, opcionalmente, inserir quaisquer endereços IP adicionais ou aliases para o controlador A. Para múltiplas entradas, use um formato separado por vírgulas.
+** *Nomes DNS alternativos do controlador A* -- Se o nome comum for um nome DNS, insira quaisquer nomes DNS adicionais para o controlador A. Para várias entradas, use o formato separado por vírgulas. Se não houver nomes DNS alternativos, mas você tiver inserido um nome DNS no primeiro campo, copie esse nome aqui. O nome DNS não pode começar com um caractere curinga. Se o array de storage tiver apenas um controlador, o botão *Finish* estará disponível.
++
+Se o array de storage tiver dois controladores, o botão *Next* estará disponível.
+
+
+
++
+[NOTE]
+====
+Não clique no link *Pular esta etapa* ao criar inicialmente uma solicitação CSR. Este link é fornecido em situações de recuperação de erros. Em casos raros, uma solicitação CSR pode falhar em um controlador, mas não no outro. Este link permite que você pule a etapa de criação de uma solicitação CSR no controlador A, caso ela já esteja definida, e continue para a próxima etapa para recriar uma solicitação CSR no controlador B.
+
+====
+. Se houver apenas um controlador, clique em *Concluir*. Se houver dois controladores, clique em *Avançar* para inserir as informações do controlador B (como acima) e, em seguida, clique em *Concluir*.
++
+Para um único controlador, um arquivo CSR é baixado para o seu sistema local. Para dois controladores, dois arquivos CSR são baixados. O local da pasta de download depende do seu navegador.
+
+. Vá para <<Etapa 2: enviar os arquivos CSR>>.
+
+
+
+
+== Etapa 2: enviar os arquivos CSR
+
+Após criar os arquivos de solicitação de assinatura de certificado (CSR), envie os arquivos para uma autoridade certificadora (CA). E-Series systems exigem o formato PEM (codificação ASCII Base64) para certificados assinados, que inclui os seguintes tipos de arquivo: .pem, .crt, .cer ou .key.
+
+.Passos
+. Localize os arquivos CSR baixados.
+. Envie os arquivos CSR para uma Autoridade Certificadora (por exemplo, Verisign ou DigiCert), e solicite certificados assinados no formato PEM.
++
+[CAUTION]
+====
+*Após enviar um arquivo CSR para a CA, NÃO gere outro arquivo CSR.* Sempre que você gera um CSR, o sistema cria um par de chaves privada e pública. A chave pública faz parte do CSR, enquanto a chave privada é mantida no keystore do sistema. Quando você recebe os certificados assinados e os importa, o sistema garante que tanto a chave privada quanto a pública sejam o par original. Se as chaves não corresponderem, os certificados assinados não funcionarão e você deve solicitar novos certificados à CA.
+
+====
+. Quando a CA retornar os certificados assinados, vá para <<Etapa 3: importar certificados assinados para controladores>>.
+
+
+
+
+== Etapa 3: importar certificados assinados para controladores
+
+Após receber os certificados assinados da Certificate Authority (CA), importe os arquivos dos controladores.
+
+.Antes de começar
+* A Autoridade Certificadora (CA) retornou arquivos de certificado assinados. Esses arquivos incluem o certificado raiz, um ou mais certificados intermediários e os certificados do servidor.
+* Se a CA forneceu um arquivo de certificado em cadeia (por exemplo, um arquivo .p7b), você deve descompactar o arquivo em cadeia em arquivos individuais: o certificado raiz, um ou mais certificados intermediários e os certificados de servidor que identificam os controladores. Você pode usar o utilitário do Windows `certmgr` para descompactar os arquivos (clique com o botão direito e selecione menu:All Tasks[Export]). A codificação Base-64 é recomendada. Quando as exportações forem concluídas, um arquivo CER será exibido para cada arquivo de certificado na cadeia.
+* Você copiou os arquivos de certificado para o sistema host onde acessa System Manager.
+
+
+.Passos
+. Selecione o menu: Configurações[Certificados]
+. Na guia Array Management, selecione *Import*.
++
+Uma caixa de diálogo é aberta para importar o(s) arquivo(s) de certificado.
+
+. Clique nos botões *Procurar* para primeiro selecionar os arquivos de certificado raiz e intermediário e, em seguida, selecione cada certificado de servidor para os controladores. Os arquivos raiz e intermediário são os mesmos para ambos os controladores. Somente os certificados de servidor são exclusivos para cada controlador. Se você gerou o CSR a partir de uma ferramenta externa, você também deve importar o arquivo de chave privada que foi criado junto com o CSR.
++
+Os nomes dos arquivos são exibidos na caixa de diálogo.
+
+. Clique em *Importar*.
++
+Os arquivos são carregados e validados.
+
+
+
+.Resultado
+A sessão é encerrada automaticamente. Você deve fazer login novamente para que os certificados entrem em vigor. Ao fazer login novamente, os novos certificados assinados pela CA são usados para sua sessão.

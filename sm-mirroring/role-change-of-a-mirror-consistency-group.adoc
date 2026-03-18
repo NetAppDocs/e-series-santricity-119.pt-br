@@ -1,0 +1,61 @@
+---
+permalink: sm-mirroring/role-change-of-a-mirror-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, role, change, mirror, consistency, group, secondary, mirror, consistency, group, 
+summary: Você pode alterar a função entre pares espelhados em um grupo de consistência de espelhamento. Você pode fazer isso rebaixando o grupo de consistência de espelhamento primário para a função secundária ou promovendo o grupo de consistência de espelhamento secundário para a função primária. 
+---
+= Alterar funções do grupo de consistência de espelhamento no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar a função entre pares espelhados em um grupo de consistência de espelhamento. Você pode fazer isso rebaixando o grupo de consistência de espelhamento primário para a função secundária ou promovendo o grupo de consistência de espelhamento secundário para a função primária.
+
+Analise as seguintes informações sobre a operação de alteração de função:
+
+* A alteração de função afeta todos os pares espelhados dentro do grupo de consistência de espelhamento selecionado.
+* Quando um grupo de consistência de espelhamento é rebaixado para a função secundária, todos os pares espelhados dentro desse grupo de consistência de espelhamento também são rebaixados para a função secundária e vice-versa.
+* Quando o grupo de consistência de espelhamento primário é rebaixado para a função secundária, os hosts que foram atribuídos aos volumes membros desse grupo não têm mais acesso de gravação a eles.
+* Quando um grupo de consistência de espelhamento é promovido à função primária, qualquer host que esteja acessando os volumes membros desse grupo agora poderá gravar neles.
+* Se o array de storage local não conseguir se comunicar com o array de storage remoto, você pode forçar a mudança de função no array de storage local.
+
+
+
+
+== Forçar mudança de função
+
+Você pode forçar uma mudança de função entre grupos de consistência de espelhamento quando um problema de comunicação entre o array de storage local e o array de storage remoto estiver impedindo a promoção dos volumes membros dentro do grupo de consistência de espelhamento secundário ou o rebaixamento dos volumes membros dentro do grupo de consistência de espelhamento primário.
+
+Você pode forçar o grupo de consistência de espelhamento no lado secundário a fazer a transição para a função primária. Em seguida, o host de recuperação poderá acessar os volumes de membros recém-promovidos dentro desse grupo de consistência de espelhamento, e as operações de negócios podem continuar.
+
+
+
+== Quando uma promoção forçada é permitida e quando não é permitida?
+
+A promoção forçada de um grupo de consistência de espelhamento só é permitida se todos os volumes membros do grupo de consistência de espelhamento tiverem sido sincronizados e possuírem pontos de recuperação consistentes.
+
+A promoção forçada de um grupo de consistência de espelhamento não é permitida nas seguintes condições:
+
+* Qualquer um dos volumes membros de um grupo de consistência de espelhamento está em processo de sincronização inicial.
+* Qualquer um dos volumes membros de um grupo de consistência de espelhamento não possui uma imagem pontual do ponto de recuperação (por exemplo, devido a um erro de capacidade reservada total).
+* O grupo de consistência de espelhamento não contém volumes membros.
+* O grupo de consistência de espelhamento está nos estados Falha, Alteração de função pendente ou Alteração de função em andamento, ou se algum dos volumes membros associados ou volumes de capacidade reservada estiver com falha.
+
+
+
+
+== Conflito de função do grupo de espelhamento
+
+Quando um problema de comunicação entre os arrays de storage local e remoto é resolvido, ocorre uma condição de Conflito de Função de Grupo de Espelhamento. Use o Recovery Guru para recuperar desse erro. Uma promoção forçada não é permitida ao resolver um conflito de função dupla.
+
+Para evitar a condição de conflito de função do grupo de espelhamento e as etapas de recuperação subsequentes, aguarde até que a conexão entre os arrays de storage esteja operacional para forçar a alteração de função.
+
+
+
+== Estado de mudança de função em andamento
+
+Se dois arrays de storage em uma configuração de espelhamento se tornarem desconectados, e o lado primário de um grupo de consistência de espelhamento for forçado a ser rebaixado para a função secundária, e o lado secundário de um grupo de consistência de espelhamento for forçado a ser promovido para a função primária, então, quando a comunicação for restaurada, os grupos de consistência de espelhamento em ambos os arrays de storage serão colocados no estado de Mudança de Função em Andamento.
+
+O sistema concluirá o processo de mudança de função transferindo os registros de alterações, resincronizando, definindo o estado do grupo de consistência de espelhamento de volta para um estado operacional normal e continuando com as sincronizações periódicas.

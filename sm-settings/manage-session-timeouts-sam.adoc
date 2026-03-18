@@ -1,0 +1,42 @@
+---
+permalink: sm-settings/manage-session-timeouts-sam.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, manage, session, timeouts, 
+summary: É possível configurar tempos limite no SANtricity System Manager, para que as sessões inativas dos usuários sejam desconectadas após um período especificado. 
+---
+= Gerenciar os tempos limite de sessão no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível configurar tempos limite no SANtricity System Manager, para que as sessões inativas dos usuários sejam desconectadas após um período especificado.
+
+.Sobre esta tarefa
+Por padrão, o tempo limite da sessão para System Manager é de 30 minutos. Você pode ajustar esse tempo ou pode desativar completamente os tempos limite de sessão.
+
+[NOTE]
+====
+Se o Access Management estiver configurado usando os recursos de Security Assertion Markup Language (SAML) incorporados no array, pode ocorrer um tempo limite de sessão quando a sessão SSO do usuário atingir seu limite máximo. Isso pode ocorrer antes do tempo limite da sessão do System Manager.
+
+====
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Na seção Geral, selecione *Ativar/Desativar tempo limite da sessão*.
++
+A caixa de diálogo Ativar/Desativar Tempo Limite da Sessão é aberta.
+
+. Use os controles giratórios para aumentar ou diminuir o tempo em minutos.
++
+O tempo limite mínimo que você pode definir para System Manager é 15 minutos.
+
++
+[NOTE]
+====
+Para desativar os tempos limite de sessão, desmarque a caixa de seleção *Definir a duração de tempo...*.
+
+====
+. Clique em *Salvar*.
+

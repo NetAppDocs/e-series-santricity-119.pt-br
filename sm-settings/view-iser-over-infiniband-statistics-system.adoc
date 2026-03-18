@@ -1,0 +1,34 @@
+---
+permalink: sm-settings/view-iser-over-infiniband-statistics-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, iser, over, infiniBand, statistics, 
+summary: Se o controlador do seu array de storage incluir uma porta iSER sobre InfiniBand, você pode visualizar dados sobre as conexões do host. 
+---
+= Visualize estatísticas de iSER sobre InfiniBand no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o controlador do seu array de storage incluir uma porta iSER sobre InfiniBand, você pode visualizar dados sobre as conexões do host.
+
+.Sobre esta tarefa
+System Manager exibe os seguintes tipos de estatísticas de iSER sobre InfiniBand. Todas as estatísticas são somente leitura e não podem ser definidas.
+
+* *Estatísticas do alvo local (protocolo)* -- Fornece estatísticas para o iSER sobre InfiniBand alvo, mostrando o acesso em nível de bloco à sua mídia de armazenamento.
+* *iSER sobre estatísticas da interface InfiniBand* -- Fornece estatísticas para todas as portas iSER na interface InfiniBand, incluindo estatísticas de desempenho e informações sobre erros de link associadas a cada porta do switch.
+
+
+Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de linha de base. Estatísticas brutas são todas as estatísticas que foram coletadas desde que os controladores foram iniciados. Estatísticas de linha de base são estatísticas de ponto no tempo que foram coletadas desde que você definiu o tempo de linha de base.
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Selecione *Exibir iSER em InfiniBand Estatísticas*.
+. Clique em uma aba para visualizar os diferentes conjuntos de estatísticas.
+. *Opcional:* Para definir a linha de base, clique em *Definir nova linha de base*.
++
+A definição da linha de base estabelece um novo ponto de partida para a coleta das estatísticas. A mesma linha de base é usada para todas as estatísticas de iSER sobre InfiniBand.
+
+

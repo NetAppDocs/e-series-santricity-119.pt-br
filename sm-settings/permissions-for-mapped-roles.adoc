@@ -1,0 +1,27 @@
+---
+permalink: sm-settings/permissions-for-mapped-roles.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, permissions, mapped, roles, 
+summary: 'Os recursos de RBAC (controle de acesso baseado em funções) aplicados no array de storage incluem perfis de usuário predefinidos com uma ou mais funções atribuídas. Cada função inclui permissões para acessar tarefas no SANtricity System Manager.' 
+---
+= Saiba sobre permissões para funções mapeadas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os recursos de RBAC (controle de acesso baseado em funções) aplicados no array de storage incluem perfis de usuário predefinidos com uma ou mais funções atribuídas. Cada função inclui permissões para acessar tarefas no SANtricity System Manager.
+
+Os perfis de usuário e as funções mapeadas podem ser acessados no menu:Configurações [Gerenciamento de acesso > Funções de usuário local] na interface de usuário de qualquer System Manager.
+
+As funções conferem ao usuário acesso às tarefas, conforme a seguir:
+
+* *Administrador de armazenamento* -- acesso completo de leitura/gravação aos objetos de armazenamento (por exemplo, volumes e conjuntos de discos), mas sem acesso à configuração de segurança.
+* *Administrador de segurança* -- Acesso à configuração de segurança no Gerenciamento de Acesso, gerenciamento de certificados, gerenciamento do log de auditoria e a capacidade de ativar ou desativar a interface de gerenciamento legada (SYMbol).
+* *Administrador de suporte* -- Acesso a todos os recursos de hardware no array de storage, dados de falhas, eventos MEL e atualizações de firmware do controlador. Sem acesso a objetos de armazenamento ou à configuração de segurança.
+* *Monitor* -- Acesso somente leitura a todos os objetos de storage, mas sem acesso à configuração de segurança.
+
+
+Se um usuário não tiver permissões para uma determinada tarefa, essa tarefa ficará acinzentada ou não será exibida na interface de usuário.

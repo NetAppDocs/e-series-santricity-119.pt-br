@@ -1,0 +1,102 @@
+---
+permalink: sm-storage/start-snapshot-image-rollback-for-consistency-group-member-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, start, snapshot, image, rollback, snapshot, consistency, group, member, volumes 
+summary: Você pode executar uma operação de reverter para alterar o conteúdo dos volumes membros do grupo de consistência de Snapshot para corresponder ao conteúdo que está salvo em uma imagem de Snapshot. 
+---
+= Iniciar reverter imagem de Snapshot para volumes membros do grupo de consistência de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode executar uma operação de reverter para alterar o conteúdo dos volumes membros do grupo de consistência de Snapshot para corresponder ao conteúdo que está salvo em uma imagem de Snapshot.
+
+A operação de reverter não altera o conteúdo das imagens de Snapshot associadas ao grupo de consistência.
+
+.Antes de começar
+* Existe capacidade reservada suficiente para iniciar uma operação de reverter.
+* A imagem de Snapshot selecionada está como Ideal e o volume selecionado está como Ideal.
+* O volume selecionado não possui uma operação de reverter já em andamento.
+
+
+.Sobre esta tarefa
+A sequência de início de reverter permite iniciar o reverter em uma imagem de Snapshot de um grupo de consistência de Snapshot, oferecendo opções para adicionar capacidade de storage. Você não pode iniciar mais de uma operação de reverter para um grupo de consistência de Snapshot ao mesmo tempo.
+
+[NOTE]
+====
+O host tem acesso imediato aos novos volumes revertidos, mas os volumes membros existentes não permitem mais acesso de leitura e gravação do host após o início do reverter. Você pode criar uma imagem de Snapshot dos volumes membros imediatamente antes de iniciar o reverter para preservar os volumes base pré-reverter para fins de recuperação.
+
+====
+O processo para iniciar o rollback de uma imagem de Snapshot de um grupo de consistência de Snapshot é um procedimento de várias etapas.
+
+
+
+== Passo 1: selecionar membros
+
+Você deve selecionar os volumes membros que serão revertidos.
+
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Selecione a guia *Snapshot Images*.
+. Selecione a imagem de Snapshot do grupo de consistência de Snapshot e, em seguida, selecione menu:Rollback[Start].
++
+A caixa de diálogo Iniciar reverter é exibida.
+
+. Selecione o volume ou volumes do membro.
+. Clique em *Avançar* e faça um dos seguintes:
++
+** Se algum dos volumes de membro selecionados estiver associado a mais de um objeto de capacidade reservada que armazena imagens de Snapshot, a caixa de diálogo Revisar Capacidade será exibida. Vá para <<Etapa 2: analisar a capacidade>>.
+** Se nenhum dos volumes de membro selecionados estiver associado a mais de um objeto de capacidade reservada que armazena imagens de Snapshot, a caixa de diálogo Editar Prioridade será exibida. Vá para <<Etapa 3: editar prioridade>>.
+
+
+
+
+
+
+== Etapa 2: analisar a capacidade
+
+Se você selecionou volumes membros associados a mais de um objeto de capacidade reservada, como um grupo de Snapshot e um volume de capacidade reservada, você pode revisar e aumentar a capacidade reservada para o(s) volume(s) revertido(s).
+
+.Passos
+. Ao lado de qualquer volume de membro com capacidade reservada muito baixa (ou zero), clique no link *Increase capacity* na coluna *Edit*.
++
+A caixa de diálogo Increase Reserved Capacity é exibida.
+
+. Use o seletor giratório para ajustar a porcentagem de capacidade e, em seguida, clique em *Increase*.
++
+Se não houver capacidade livre no pool ou grupo de volume que contém o objeto de storage selecionado e o array de storage tiver Unassigned Capacity, você pode adicionar capacidade. Você pode criar um novo pool ou grupo de volume e tentar novamente esta operação usando a nova capacidade livre nesse pool ou grupo de volume.
+
+. Clique em *Próximo* e vá para <<Etapa 3: editar prioridade>>.
++
+A caixa de diálogo Edit Priority é exibida.
+
+
+
+
+
+== Etapa 3: editar prioridade
+
+Você pode editar a prioridade da operação de reverter, se necessário.
+
+.Sobre esta tarefa
+A prioridade de reverter determina quantos recursos do sistema são dedicados à operação de reverter, em detrimento do desempenho do sistema.
+
+.Passos
+. Use o controle deslizante para ajustar a prioridade de reverter conforme necessário.
+. Confirme que deseja realizar esta operação e, em seguida, clique em *Concluir*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Restaura os volumes membros do grupo de consistência de Snapshot com o conteúdo salvo na imagem de Snapshot selecionada.
+* Torna os volumes revertidos imediatamente disponíveis para acesso do host. Não é necessário aguardar a conclusão da operação de reverter.
+
+
+.Depois que você terminar
+Selecione o menu: Home [View Operations in Progress] para visualizar o progresso da operação de reverter.
+
+Se a operação de reverter não for bem-sucedida, a operação será pausada. Você pode retomar a operação pausada e, se ainda assim não for bem-sucedida, siga o procedimento do Recovery Guru para corrigir o problema ou entre em contato com o suporte técnico.

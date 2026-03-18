@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/rtv-how-remote-storage-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage 
+summary: O recurso de armazenamento remoto permite importar dados de um sistema de storage remoto para um sistema de storage E-Series local. Esse recurso é útil quando você deseja agilizar a migração de dados com o mínimo de tempo de inatividade, como durante atualizações de equipamentos. 
+---
+= Como o armazenamento remoto funciona no software SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso de armazenamento remoto permite importar dados de um sistema de storage remoto para um sistema de storage E-Series local. Esse recurso é útil quando você deseja agilizar a migração de dados com o mínimo de tempo de inatividade, como durante atualizações de equipamentos.
+
+Para configurar o recurso de armazenamento remoto, você deve configurar o hardware e, em seguida, usar System Manager para criar um objeto de armazenamento remoto. Assim que essa configuração for concluída, o processo de importação começa.
+
+
+
+== Configuração de hardware
+
+Utilize o seguinte fluxo de trabalho para preparar as conexões de hardware.
+
+Essas etapas são descritas com mais detalhes no guia do usuário para o recurso Remote Storage, que está disponível no centro de documentação E-Series e SANtricity em  https://docs.netapp.com/us-en/e-series/remote-storage-volumes/index.html["Visão geral dos volumes de storage remoto"^], e no  https://www.netapp.com/pdf.html?item=/media/28697-tr-4893-deploy.pdf["Relatório técnico de storage remoto"^].
+
+
+NOTE: SANtricity Remote Storage Volumes atualmente não é suportado em sistemas E4000.
+
+No sistema de storage E-Series:
+
+. Certifique-se de que cada controlador tenha uma conexão iSCSI com o sistema de storage remoto. Com essa conexão, o sistema E-Series local atua como um iniciador iSCSI que pode ser configurado como um host no sistema remoto.
+. Crie um volume de destino para a operação de importação. Certifique-se de que o volume tenha uma capacidade igual ou superior à do volume de origem no sistema de storage remoto, tenha um tamanho de bloco correspondente e não esteja mapeado. Consulte link:create-volumes.html["Criar volumes"].
+. Obtenha o iSCSI Qualified Name (IQN) do sistema E-Series local a partir da interface do System Manager. O IQN será usado posteriormente para configurar o sistema E-Series local como host no sistema de storage remoto. No System Manager, acesse: menu:Settings[Sistema > iSCSI settings > Target IQN].
+
+
+No sistema de storage remoto:
+
+. Configure o sistema E-Series local como host no sistema remoto, utilizando seu IQN. Certifique-se de definir o tipo de host apropriado, conforme a seguir:
++
+** Se o sistema remoto for um modelo E-Series, consulte link:overview-hosts.html["Visão geral de hosts e clusters de hosts"]. Use um tipo de host "Factory Default".
+** Se o sistema remoto for de outro fornecedor, selecione um tipo de host apropriado com base nas opções disponíveis.
+
+
+. Interrompa todas as operações de E/S, desmonte todos os sistemas de arquivos e remova todas as atribuições a hosts ou aplicativos para o volume de origem.
+. Atribua o volume ao host do sistema de storage E-Series local recém-criado.
+. Para o volume de origem selecionado, reúna as seguintes informações do sistema de storage remoto para que a importação possa ser criada:
++
+** iSCSI Qualified Name (IQN)
+** endereço IP iSCSI
+** Número LUN do volume de origem
+
+
+
+
+
+
+== Configuração do System Manager
+
+Utilize o seguinte fluxo de trabalho para criar um objeto de storage remoto para a importação:
+
+. Usando o assistente de Remote Storage na interface do System Manager, mapeie um dispositivo de storage remoto (a origem para a importação de dados) para um volume de destino no sistema E-Series. Ao selecionar *Concluir*, o processo de importação começa.
+. Acompanhe a importação na caixa de diálogo Exibir operações ou no painel Operações em andamento. Se necessário, você também pode pausar e retomar o processo.
+. Opcionalmente, interrompa a conexão entre os volumes de origem e destino quando a importação for concluída ou mantenha a conexão para importações futuras.
+

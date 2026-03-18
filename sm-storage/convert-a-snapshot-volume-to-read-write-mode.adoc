@@ -1,0 +1,68 @@
+---
+permalink: sm-storage/convert-a-snapshot-volume-to-read-write-mode.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, convert, snapshot, volume, read-write mode 
+summary: Você pode converter um volume de snapshot somente leitura ou um volume de snapshot de grupo de consistência para o modo de leitura e gravação, se necessário. 
+---
+= Converter volume de Snapshot para modo de leitura/gravação no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode converter um volume de snapshot somente leitura ou um volume de snapshot de grupo de consistência para o modo de leitura e gravação, se necessário.
+
+Um volume de Snapshot que é convertido para acesso de leitura e gravação contém sua própria capacidade reservada. Essa capacidade é usada para salvar quaisquer modificações subsequentes feitas pelo aplicativo host no volume base sem afetar a imagem de Snapshot referenciada.
+
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Selecione a guia *Snapshot Volumes*.
++
+A tabela Snapshot Volumes é exibida e mostra todos os volumes de snapshot associados ao array de storage.
+
+. Selecione o volume de Snapshot somente leitura que deseja converter e clique em *Converter para Read/Write*.
++
+A caixa de diálogo Converter para Leitura/Gravação é exibida com a etapa *Reservar Capacidade* ativada. A tabela Volume Candidate exibe apenas os candidatos que suportam a capacidade reservada especificada.
+
+. Para alocar a capacidade reservada para o volume Snapshot de leitura e gravação, execute uma das seguintes ações:
++
+** *Aceite as configurações padrão* -- Use esta opção recomendada para alocar a capacidade reservada para o volume de Snapshot com as configurações padrão.
+** *Aloque suas próprias configurações de capacidade reservada para atender às suas necessidades de storage de dados* -- Aloque a capacidade reservada seguindo as diretrizes abaixo.
++
+*** A configuração padrão para capacidade reservada é 40% da capacidade do volume base, e geralmente essa capacidade é suficiente.
+*** A capacidade necessária varia, dependendo da frequência e do tamanho das gravações de E/S no volume.
+
+
+
+
+. Selecione *Avançar* para revisar ou editar as configurações.
++
+A caixa de diálogo Edit Settings é exibida.
+
+. Aceite ou especifique as configurações para o volume de Snapshot conforme apropriado e, em seguida, selecione *Concluir* para converter o volume de Snapshot.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações de capacidade reservada*
+
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use a caixa de seleção para ajustar o ponto percentual em que o sistema envia uma notificação de alerta quando a capacidade reservada para um grupo de Snapshot estiver quase cheia.
+
+Quando a capacidade reservada para o volume de Snapshot excede o limite especificado, o sistema envia um alerta, permitindo que você aumente a capacidade reservada ou exclua objetos desnecessários.
+
+|===
+====
+

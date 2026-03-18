@@ -1,0 +1,47 @@
+---
+permalink: sm-settings/add-on-feature-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add-on, feature, terms 
+summary: Saiba como os termos dos recursos adicionais se aplicam ao seu array de storage. 
+---
+= Aprenda sobre a terminologia de recursos adicionais no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos dos recursos adicionais se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Identificador de ativação de recurso
+ a| 
+Um Identificador de Habilitação de Recurso é uma sequência de caracteres exclusiva que identifica o array de storage. Esse identificador garante que, ao obter o recurso premium, ele seja associado somente a esse array de storage. Essa sequência de caracteres é exibida em Complementos na página Sistema.
+
+
+
+ a| 
+Arquivo de chave de feature
+ a| 
+Um arquivo de chave de recurso é um arquivo que você recebe para desbloquear e ativar um recurso premium ou pacote de recursos.
+
+
+
+ a| 
+Pacote de recursos
+ a| 
+Um pacote de recursos é um pacote que altera os atributos do array de storage (por exemplo, alterando o protocolo de Fibre Channel para iSCSI). Pacotes de recursos exigem uma chave especial para habilitá-los.
+
+
+
+ a| 
+Recurso premium
+ a| 
+Um recurso premium é uma opção extra que requer uma chave para ser ativado. Ele não está incluído na configuração padrão do System Manager.
+
+|===

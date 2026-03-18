@@ -1,0 +1,35 @@
+---
+permalink: sm-storage/ssd-cache-restrictions.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd, cache, restrictions 
+summary: Saiba mais sobre as restrições ao usar o SSD Cache em seu array de storage. 
+---
+= Saiba mais sobre as restrições de cache SSD no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre as restrições ao usar o SSD Cache em seu array de storage.
+
+
+
+== Restrições
+
+* Qualquer volume atribuído ao uso do SSD Cache de um controlador não é elegível para transferência automática de load balance.
+* Atualmente, apenas um SSD Cache é suportado por array de storage.
+* A capacidade máxima utilizável de SSD Cache em um array de storage é de 10 TB.
+* O SSD Cache não é compatível com imagens de snapshot.
+* Se você importar ou exportar volumes que estão com SSD Cache ativado ou desativado, os dados em cache não serão importados ou exportados.
+* Não é possível remover a última unidade em um SSD Cache sem primeiro excluir o SSD Cache.
+
+
+
+
+== Restrições com Drive Security
+
+* Você só pode habilitar a segurança no SSD Cache ao criar o SSD Cache. Você não pode habilitar a segurança posteriormente, como pode em um volume.
+* Se você misturar unidades com capacidade de segurança com unidades sem capacidade de segurança no SSD Cache, não poderá ativar a Drive Security para essas unidades.
+* Os volumes com segurança habilitada devem ter um SSD Cache com segurança habilitada.
+

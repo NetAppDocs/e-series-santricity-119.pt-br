@@ -1,0 +1,26 @@
+---
+permalink: sm-support/re-enable-drive-ports.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, re-enable, drive, ports 
+summary: Você pode indicar ao controlador que uma ação corretiva foi tomada para recuperar de uma condição de fiação incorreta. 
+---
+= Reative as portas de unidade no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode indicar ao controlador que uma ação corretiva foi tomada para recuperar de uma condição de fiação incorreta.
+
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Re-enable Drive Ports* e confirme que deseja realizar a operação.
++
+Essa opção aparece somente quando o array de storage tem portas de unidade desativadas.
+
++
+O controlador reativa quaisquer portas SAS que tenham sido desativadas quando uma falha de fiação foi detectada.
+
+

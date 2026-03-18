@@ -1,0 +1,28 @@
+---
+permalink: sm-storage/snapshot-rollback.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, rollback 
+summary: Uma operação de reverter retorna um volume base a um estado anterior, determinado pelo Snapshot selecionado. 
+---
+= Saiba mais sobre reverter de Snapshot no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Uma operação de reverter retorna um volume base a um estado anterior, determinado pelo Snapshot selecionado.
+
+Para reverter, você pode selecionar uma imagem de Snapshot de qualquer uma das seguintes fontes:
+
+* *Snapshot image rollback*, para uma restauração completa de um volume base.
+* *Reverter grupo de consistência do Snapshot*, que pode ser usada para reverter um ou mais volumes.
+
+
+Durante o reverter, o recurso de Snapshots preserva todas as imagens de snapshot no grupo. Ele também permite que o host acesse o volume base durante esse processo, se necessário para operações de E/S.
+
+Quando uma reverter é iniciada, um processo em segundo plano percorre os endereços de bloco lógico (LBAs) do volume base e, em seguida, encontra os dados copy-on-write na imagem de Snapshot de rollback a serem restaurados. Como o volume base é acessível ao host para leituras e gravações, e todos os dados gravados anteriormente estão disponíveis imediatamente, o volume de capacidade reservada deve ser grande o suficiente para conter todas as alterações enquanto o rollback está sendo processado. A transferência de dados continua como uma operação em segundo plano até que o rollback seja concluído.
+
+image::../media/sam1130-dwg-snapshots-rollback-overview.gif[Visão geral do reverter de Snapshot]
+
+^1^ Volume base; ^2^ Objetos Snapshot em um grupo; ^3^ Capacidade reservada do grupo de Snapshot

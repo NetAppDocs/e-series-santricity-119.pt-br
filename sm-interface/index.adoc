@@ -1,0 +1,14 @@
+---
+permalink: sm-interface/index.html 
+sidebar: sidebar 
+keywords: santricity, system, manager, 
+summary: SANtricity System Manager 11.9 
+---
+= SANtricity System Manager 11.9
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager é uma interface Web que permite gerenciar um array de storage em uma única visualização.

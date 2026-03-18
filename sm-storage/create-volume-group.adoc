@@ -1,0 +1,282 @@
+---
+permalink: sm-storage/create-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, volume, group 
+summary: Você usa um grupo de volume para criar um ou mais volumes que são acessíveis ao host. Um grupo de volume é um contêiner para volumes com características compartilhadas, como nível RAID e capacidade. 
+---
+= Crie um grupo de volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você usa um grupo de volume para criar um ou mais volumes que são acessíveis ao host. Um grupo de volume é um contêiner para volumes com características compartilhadas, como nível RAID e capacidade.
+
+Com unidades de maior capacidade e a possibilidade de distribuir volumes entre controladores, criar mais de um volume por grupo de volume é uma boa maneira de aproveitar sua capacidade de storage e proteger seus dados.
+
+.Antes de começar
+Consulte estas diretrizes antes de criar um grupo de volume:
+
+* Você precisa de pelo menos uma unidade não atribuída.
+* Existem limites para o número de unidades que você pode ter em um único grupo de volume. Esses limites variam de acordo com o nível RAID.
+* Para ativar a proteção contra perda de gaveta/prateleira, você deve criar um grupo de volume que utilize unidades localizadas em pelo menos três prateleiras ou gavetas, a menos que esteja usando RAID 1, onde duas prateleiras/gavetas são o mínimo.
+* Se você possui um array de storage EF600 ou EF300 e planeja criar um grupo de volume manualmente, certifique-se de que cada controlador tenha acesso a um número igual de unidades nos primeiros 12 slots e a um número igual de unidades nos últimos 12 slots. Essa configuração ajuda os controladores a utilizarem ambos os barramentos PCIe do lado das unidades de forma mais eficaz. Atualmente, o System Manager permite a seleção de unidades no recurso Avançado ao criar um grupo de volume.
+* Analise como a sua escolha de nível RAID afeta a capacidade resultante do grupo de volume:
++
+** Se você selecionar RAID 1, deverá adicionar duas unidades por vez para garantir que um par espelhado seja selecionado. O espelhamento e o striping (conhecido como RAID 10 ou RAID 1+0) são obtidos quando quatro ou mais unidades são selecionadas.
+** Se você selecionar RAID 5, deverá adicionar no mínimo três unidades para criar o grupo de volume.
+** Se você selecionar RAID 6, deverá adicionar no mínimo cinco unidades para criar o grupo de volume.
+
+
+
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Clique no menu: criar [grupo de volume].
++
+A caixa de diálogo Criar grupo de volume é exibida.
+
+. Digite um nome para o grupo de volume.
+. Selecione o nível RAID que melhor atenda às suas necessidades de storage e proteção de dados.
++
+A tabela de grupos de volumes candidatos é exibida e mostra apenas os candidatos que suportam o nível RAID selecionado.
+
+. *Opcional:* se você tiver mais de um tipo de unidade em seu array de storage, selecione o tipo de unidade que deseja usar.
++
+A tabela de grupos de volumes candidatos é exibida e mostra apenas os candidatos que suportam o tipo de unidade selecionado e o nível RAID.
+
+. *Opcional:* você pode selecionar o método automático ou o método manual para definir quais unidades usar no grupo de volume. O método automático é a seleção padrão.
++
+Para selecionar unidades manualmente, clique no link *Selecionar unidades manualmente (avançado)*. Ao clicar, ele muda para *Selecionar unidades automaticamente (avançado)*.
+
++
+O método Manual permite selecionar quais unidades específicas compõem o grupo de volume. Você pode selecionar unidades não atribuídas específicas para obter a capacidade que você necessita. Se o array de storage contiver unidades com diferentes tipos de mídia ou diferentes tipos de interface, você pode escolher apenas a capacidade não configurada para um único tipo de unidade para criar o novo grupo de volume.
+
++
+[NOTE]
+====
+Somente especialistas que entendem de redundância de unidade e configurações ideais de unidade devem usar o método Manual.
+
+====
+. Com base nas características da unidade exibidas, selecione as unidades que deseja usar no grupo de volume e clique em *Criar*.
++
+As características da unidade exibidas dependem se você selecionou o método automático ou o método manual.
+
++
+.Características da unidade do método automático
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Característica | Usar 
+
+
+ a| 
+Capacidade livre
+ a| 
+Mostra a capacidade disponível em GiB. Selecione um grupo de volume candidato com capacidade para as necessidades de storage da sua aplicação.
+
+
+
+ a| 
+Total de drives
+ a| 
+Mostra o número de unidades disponíveis para este grupo de volume. Selecione um candidato a grupo de volume com o número de unidades que você deseja.
+
+
+
+ a| 
+Tamanho do bloco de drive (somente EF300 e EF600)
+ a| 
+Mostra o tamanho do bloco (tamanho do setor) que as unidades no grupo podem gravar. Valores podem incluir:
+
+** 512 -- tamanho do setor de 512 bytes.
+** 4K -- tamanho do setor de 4.096 bytes.
+
+
+
+
+ a| 
+Compatível com segurança
+ a| 
+Indica se este grupo de volumes candidato é composto inteiramente por unidades com capacidade de segurança, que podem ser unidades Full Disk Encryption (FDE) ou Federal Information Processing Standard (FIPS).
+
+** Você pode proteger seu grupo de volume com Drive Security, mas todas as unidades devem ser compatíveis com segurança para usar esse recurso.
+** Se você deseja criar um grupo de volume somente FDE, procure por *Sim - FDE* na coluna Secure-Capable. Se você deseja criar um grupo de volume somente FIPS, procure por *Sim - FIPS* ou *Sim - FIPS (Misto)*. "Misto" indica uma mistura de unidades nível 140-2 e 140-3. Se você usar uma mistura desses níveis, esteja ciente de que o grupo de volume operará no nível de segurança mais baixo (140-2).
+** Você pode criar um grupo de volume composto por unidades que podem ou não ser compatíveis com segurança, ou que apresentem uma combinação de níveis de segurança. Se as unidades no grupo de volume incluírem unidades que não sejam compatíveis com segurança, você não poderá tornar o grupo de volume seguro.
+
+
+
+
+ a| 
+Ativar segurança?
+ a| 
+Oferece a opção de ativar o recurso Drive Security para unidades compatíveis com segurança. Se o grupo de volumes for compatível com segurança e você tiver configurado uma chave de segurança, você pode ativar o Drive Security marcando a caixa de seleção.
+
+
+NOTE: A única maneira de remover Drive Security depois de ativada é excluir o grupo de volume e apagar as unidades.
+
+
+
+ a| 
+Compatível com DA
+ a| 
+Indica se Data Assurance (DA) está disponível para este grupo. Data Assurance (DA) verifica e corrige erros que possam ocorrer durante a transferência de dados pelos controladores até as unidades de disco.
+
+Se você deseja usar o DA, selecione um grupo de volumes compatível com DA. (Para unidades compatíveis com DA, DA é ativado automaticamente nos volumes criados no pool.)
+
+Um grupo de volume pode conter unidades compatíveis com DA ou não compatíveis com DA, mas todas as unidades devem ser compatíveis com DA para que você possa usar esse recurso.
+
+
+
+ a| 
+Resource Provisioning Capable (somente EF300 e EF600)
+ a| 
+Mostra se o Resource Provisioning está disponível para este grupo. Resource Provisioning é um recurso disponível nos storage arrays EF300 e EF600, que permite que os volumes sejam colocados em uso imediatamente, sem processo de inicialização em segundo plano.
+
+
+
+ a| 
+Proteção contra perda de shelf
+ a| 
+Indica se a proteção contra perda de prateleira está disponível. A proteção contra perda de prateleira garante acessibilidade aos dados nos volumes de um grupo de volumes caso ocorra uma perda total de comunicação com a prateleira.
+
+
+
+ a| 
+Proteção contra perda de gavetas
+ a| 
+Indica se a proteção contra perda de gaveta está disponível, recurso fornecido apenas se você estiver usando um drive shelf que contém gavetas. A proteção contra perda de gaveta garante acessibilidade aos dados nos volumes de um grupo de volume caso ocorra uma perda total de comunicação com uma unidade única em um drive shelf.
+
+
+
+ a| 
+Tamanhos de bloco de volume suportados (EF300 e EF600 only)
+ a| 
+Mostra os tamanhos de bloco que podem ser criados para os volumes no grupo:
+
+** 512n -- 512 bytes nativo.
+** 512e -- 512 bytes emulados.
+** 4K -- 4.096 bytes.
+
+
+|===
+====
++
+.Características da unidade do método manual
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Característica | Usar 
+
+
+ a| 
+Tipo de mídia
+ a| 
+Indica o tipo de mídia. Os seguintes tipos de mídia são suportados:
+
+** Disco rígido
+** Unidade de estado sólido (SSD)
+
+
+Todas as unidades em um grupo de volume devem ser do mesmo tipo de mídia (todas SSDs ou todas hard drives). Grupos de volume não podem conter uma mistura de tipos de mídia ou tipos de interface.
+
+
+
+ a| 
+Tamanho do bloco de drive (somente EF300 e EF600)
+ a| 
+Mostra o tamanho do bloco (tamanho do setor) que as unidades no grupo podem gravar. Valores podem incluir:
+
+** 512 -- tamanho do setor de 512 bytes.
+** 4K -- tamanho do setor de 4.096 bytes.
+
+
+
+
+ a| 
+Capacidade da unidade
+ a| 
+Indica a capacidade da unidade.
+
+** Sempre que possível, selecione unidades que tenham uma capacidade igual às capacidades das unidades atuais no grupo de volume.
+** Se precisar adicionar unidades não atribuídas com capacidade menor, esteja ciente de que a capacidade utilizável de cada unidade atualmente no grupo de volume é reduzida. Portanto, a capacidade da unidade é a mesma em todo o grupo de volume.
+** Caso precise adicionar unidades não atribuídas com maior capacidade, esteja ciente de que a capacidade utilizável das unidades não atribuídas que você adicionar será reduzida para corresponder às capacidades atuais das unidades no grupo de volume.
+
+
+
+
+ a| 
+Bandeja
+ a| 
+Indica a localização da bandeja da unidade.
+
+
+
+ a| 
+Slot
+ a| 
+Indica a localização do slot da unidade.
+
+
+
+ a| 
+Velocidade (rpm)
+ a| 
+Indica a velocidade da unidade.
+
+
+
+ a| 
+Tamanho do setor lógico
+ a| 
+Indica o tamanho e o formato do setor.
+
+
+
+ a| 
+Compatível com segurança
+ a| 
+Indica se este grupo de volumes candidato é composto inteiramente por unidades com capacidade de segurança, que podem ser unidades Full Disk Encryption (FDE) ou Federal Information Processing Standard (FIPS).
+
+** Você pode proteger seu grupo de volume com Drive Security, mas todas as unidades devem ser compatíveis com segurança para usar esse recurso.
+** Se você deseja criar um grupo de volume somente FDE, procure por *Sim - FDE* na coluna Secure-Capable. Se você deseja criar um grupo de volume somente FIPS, procure por *Sim - FIPS* ou *Sim - FIPS (Misto)*. "Misto" indica uma mistura de unidades nível 140-2 e 140-3. Se você usar uma mistura desses níveis, esteja ciente de que o grupo de volume operará no nível de segurança mais baixo (140-2).
+** Você pode criar um grupo de volume composto por unidades que podem ou não ser compatíveis com segurança, ou que apresentem uma combinação de níveis de segurança. Se as unidades no grupo de volume incluírem unidades que não sejam compatíveis com segurança, você não poderá tornar o grupo de volume seguro.
+
+
+
+
+ a| 
+Compatível com DA
+ a| 
+Indica se o Data Assurance (DA) está disponível para este grupo. O Data Assurance (DA) verifica e corrige erros que possam ocorrer durante a comunicação de dados pelos controladores até as unidades de disco.
+
+Se você deseja usar o DA, selecione um grupo de volumes compatível com DA. (Para unidades compatíveis com DA, DA é ativado automaticamente nos volumes criados no pool.)
+
+Um grupo de volume pode conter unidades compatíveis com DA ou não compatíveis com DA, mas todas as unidades devem ser compatíveis com DA para que você possa usar esse recurso.
+
+
+
+ a| 
+Tamanhos de bloco de volume suportados (EF300 e EF600 only)
+ a| 
+Mostra os tamanhos de bloco que podem ser criados para os volumes no grupo:
+
+** 512n -- 512 bytes nativo.
+** 512e -- 512 bytes emulados.
+** 4K -- 4.096 bytes.
+
+
+
+
+ a| 
+Resource Provisioning Capable (somente EF300 e EF600)
+ a| 
+Mostra se o Resource Provisioning está disponível para este grupo. Resource Provisioning é um recurso disponível nos storage arrays EF300 e EF600, que permite que os volumes sejam colocados em uso imediatamente, sem processo de inicialização em segundo plano.
+
+|===
+====
+

@@ -1,0 +1,61 @@
+---
+permalink: sm-storage/rtv-remote-storage-requirements.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage, requirements 
+summary: Antes de usar o recurso Remote Storage, revise os seguintes requisitos e restrições. 
+---
+= Saiba mais sobre os requisitos do recurso Remote Storage no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de usar o recurso Remote Storage, revise os seguintes requisitos e restrições.
+
+
+
+== Protocolos suportados
+
+Os seguintes protocolos são suportados:
+
+* iSCSI
+* IPv4
+
+
+Para obter informações atualizadas sobre suporte e configuração do E-Series, consulte o  https://imt.netapp.com/matrix/#welcome["NetApp Ferramenta de Matriz de Interoperabilidade"^].
+
+
+
+== Requisitos de hardware
+
+O sistema de storage E-Series deve incluir:
+
+* Dois controladores (modo duplex)
+* Conexões iSCSI para ambos os controladores E-Series se comunicarem com o sistema de storage remoto através de uma ou mais conexões iSCSI
+* SANtricity OS 11.71 ou superior
+* Recurso de storage remoto ativado no ID do submodelo (SMID)
+
+
+O sistema remoto pode ser um sistema de storage E-Series ou um sistema de outro fornecedor. Deve incluir:
+
+* Interfaces compatíveis com iSCSI
+
+
+
+
+== Restrições
+
+O recurso Remote Storage possui as seguintes restrições:
+
+* O espelhamento deve ser desativado.
+* O volume de destino no sistema E-Series não deve ter Snapshots.
+* O volume de destino no sistema E-Series não deve ser mapeado para nenhum host antes do início da importação.
+* O volume de destino no sistema E-Series deve ter resource-provisioning desativado.
+* O mapeamento direto do volume de storage remoto para um host ou vários hosts não é suportado.
+* Web Services Proxy não é suportado.
+* Segredos CHAP do iSCSI não são suportados.
+* SMcli não é suportado.
+* VMware Datastore não é compatível.
+* Apenas um sistema de storage no par de relacionamento/importação pode ser atualizado por vez quando houver um par de importação presente.
+

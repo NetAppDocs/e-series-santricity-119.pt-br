@@ -1,0 +1,39 @@
+---
+permalink: sm-storage/delete-snapshot-image.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, image 
+summary: Você exclui imagens de Snapshot para limpar a imagem de Snapshot mais antiga de um grupo de Snapshot ou grupo de consistência. 
+---
+= Excluir uma imagem de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você exclui imagens de Snapshot para limpar a imagem de Snapshot mais antiga de um grupo de Snapshot ou grupo de consistência.
+
+.Sobre esta tarefa
+Você pode excluir uma única imagem de snapshot ou pode excluir imagens de snapshot de grupos de consistência de snapshot que tenham o mesmo carimbo de data/hora de criação. Você também pode excluir imagens de snapshot de um grupo de snapshot.
+
+Não é possível excluir uma imagem de snapshot se ela não for a imagem de snapshot mais antiga do volume base associado ou do grupo de consistência de snapshot.
+
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Clique na guia *Snapshot Images*.
+. Selecione a imagem de Snapshot que deseja excluir e confirme que deseja realizar a operação.
++
+Se você selecionou uma imagem de Snapshot de um grupo de consistência de Snapshot, selecione cada volume membro que deseja excluir e confirme que deseja executar a operação.
+
+. Clique em *Delete*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Exclui a imagem do Snapshot do array de storage.
+* Libera a capacidade reservada para reutilização dentro do grupo de Snapshot ou grupo de consistência de Snapshot.
+* Desativa todos os volumes de snapshot associados que existem para a imagem de snapshot excluída.
+* A partir de uma exclusão de grupo de consistência de snapshot, move qualquer volume membro associado à imagem de snapshot excluída para o estado Parado.
+

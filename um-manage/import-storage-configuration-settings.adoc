@@ -1,0 +1,67 @@
+---
+permalink: um-manage/import-storage-configuration-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, storage, configuration, settings 
+summary: Você pode importar a configuração de storage de um array de storage para outros arrays de storage. Essa operação em lote economiza tempo quando você precisa configurar vários arrays na rede. 
+---
+= Importar as configurações de configuração de storage no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode importar a configuração de storage de um array de storage para outros arrays de storage. Essa operação em lote economiza tempo quando você precisa configurar vários arrays na rede.
+
+.Antes de começar
+* O storage é configurado no SANtricity System Manager para o array de storage que você deseja usar como origem.
+* A configuração existente para os arrays de storage de destino é salva no System Manager (menu: Configurações [Sistema > Salvar Configuração do Array de Storage]).
+* Os arrays de origem e destino devem atender a estes requisitos:
++
+** As prateleiras onde os controladores residem devem ser idênticas.
+** Os IDs das prateleiras devem ser idênticos.
+** Os módulos de expansão devem ser populados nos mesmos slots com os mesmos tipos de unidades.
+** O tipo de gabinete RBOD deve ser idêntico.
+** Os HICs, incluindo os recursos de Data Assurance do host, devem ser idênticos.
+** Os arrays de destino devem estar em status Ótimo.
+** A capacidade de volume no array de destino é maior do que a capacidade do array de origem.
+
+
+* Você compreende as seguintes restrições:
++
+** A importação de uma configuração duplex para simplex não é suportada; no entanto, a importação de simplex para duplex é permitida.
+** Volumes de pool de discos de 64 TB ou maiores no array de origem impedirão o processo de importação nos targets.
+** Volumes finos não estão incluídos no processo de importação.
+
+
+
+
+.Sobre esta tarefa
+As configurações importadas incluem volumes configurados (somente volumes espessos e não repositório), grupos de volumes, pools e atribuições de hot spare.
+
+.Passos
+. Na página Manage, clique em *Import Settings*.
++
+O assistente de Configurações de Importação é aberto.
+
+. Na caixa de diálogo Selecionar configurações, selecione *configuração de storage* e clique em *Avançar*.
++
+Uma caixa de diálogo é aberta para selecionar o array de storage de origem.
+
+. Na caixa de diálogo Selecionar Origem, selecione o array com as configurações que deseja importar e clique em *Avançar*.
+. Na caixa de diálogo Selecionar Destinos, selecione um ou mais arrays para receber as novas configurações.
++
+[NOTE]
+====
+Matrizes de armazenamento com firmware inferior a 8.50 não estão disponíveis para seleção. Além disso, uma matriz não aparecerá nesta caixa de diálogo se Unified Manager não conseguir se comunicar com essa matriz (por exemplo, se estiver offline ou se apresentar problemas de certificado, senha ou rede).
+
+====
+. Clique em *Concluir*.
++
+A página Operações exibe os resultados da operação de importação. Se a operação falhar, você pode clicar na linha correspondente para ver mais informações.
+
+
+
+.Resultados
+Os arrays de storage de destino agora estão configurados com a mesma configuração de storage do array de origem.

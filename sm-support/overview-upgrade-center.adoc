@@ -1,0 +1,118 @@
+---
+permalink: sm-support/overview-upgrade-center.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, upgrade, center 
+summary: Utilize o Upgrade Center para baixar o software e firmware mais recentes e atualizar seu array de storage para obter os recursos e correções de bugs mais recentes. 
+---
+= Saiba mais sobre como atualizar o software SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilize o Upgrade Center para baixar o software e firmware mais recentes e para atualizar seus controladores e unidades.
+
+
+
+== Visão geral da upgrade do controlador
+
+Você pode atualizar o software e firmware do seu array de storage para obter todos os recursos mais recentes e correções de bugs.
+
+
+
+=== Componentes incluídos na atualização do controlador do OS
+
+Diversos componentes do array de storage contêm software ou hardware que você pode querer atualizar ocasionalmente.
+
+* *Software de gerenciamento* -- System Manager é o software que gerencia o array de storage.
+* *Controller firmware* -- O firmware do controlador gerencia a E/S entre hosts e volumes.
+* *Controller NVSRAM* -- O Controller NVSRAM é um arquivo de controlador que especifica as configurações padrão para os controladores.
+* *IOM firmware* -- O firmware do módulo de E/S (IOM) gerencia a conexão entre um controlador e um compartimento de unidades. Ele também monitora o status dos componentes.
+* *Software supervisor* -- O software supervisor é a máquina virtual em um controlador na qual o software é executado.
+
+
+image::../media/sam1130-dwg-upgrade-firmware-locations.gif[Locais de upgrade do firmware]
+
+^1^ Prateleira do controlador; ^2^ Prateleira da unidade; ^3^ Software, firmware do controlador, NVSRAM do controlador, software supervisor; ^4^ firmware da unidade; ^5^ firmware do IOM; ^6^ firmware da unidade
+
+Você pode visualizar suas versões atuais de software e firmware na caixa de diálogo Inventário de Software e Firmware. Acesse o menu:suporte[Upgrade Center] e clique no link para *Software e Firmware Inventory*.
+
+Como parte do processo de upgrade, o driver multipath/failover e/ou o driver HBA do host também pode precisar ser atualizado para que o host possa interagir corretamente com os controladores. Para determinar se este é o caso, consulte a  https://imt.netapp.com/matrix/#welcome["Ferramenta de Matriz de Interoperabilidade"^].
+
+
+
+=== Quando interromper E/S
+
+Se o seu array de storage contiver dois controladores e você tiver um driver multipath instalado, o array de storage poderá continuar processando E/S enquanto a atualização ocorre. Durante a atualização, o controlador A transfere todos os seus volumes para o controlador B, atualiza, retoma seus volumes e todos os volumes do controlador B e, em seguida, atualiza o controlador B.
+
+
+
+=== Verificação de integridade pré-upgrade
+
+Uma verificação de integridade pré-atualização é executada como parte do processo de upgrade. A verificação de integridade pré-atualização avalia todos os componentes do array de storage para garantir que o upgrade possa prosseguir. As seguintes condições podem impedir o upgrade:
+
+* Unidades atribuídas com falha
+* Hot spares em uso
+* Grupos de volume incompletos
+* Operações exclusivas em andamento
+* Volumes ausentes
+* Controlador em estado não ideal
+* Número excessivo de eventos de log de eventos
+* Falha na validação do banco de dados de configuração
+* Unidades com versões antigas do DACstore
+
+
+Você também pode executar a verificação de integridade separadamente, sem realizar um upgrade.
+
+
+
+== Visão geral do upgrade da unidade
+
+O firmware da unidade controla as características operacionais de baixo nível de uma unidade. Periodicamente, os fabricantes de unidades lançam atualizações de firmware para adicionar novos recursos, melhorar o desempenho e corrigir defeitos.
+
+
+
+=== Upgrades de firmware da unidade online e offline
+
+Existem dois tipos de upgrade do formware da unidade: online e offline.
+
+
+
+==== Online
+
+Durante uma atualização online, as unidades são atualizadas sequencialmente, uma de cada vez. O array de storage continua processando E/S enquanto a atualização ocorre. Você não precisa interromper a E/S. Se uma unidade puder fazer uma atualização online, o método online será usado automaticamente.
+
+As unidades que podem fazer um upgrade online incluem o seguinte:
+
+* Drives em um pool Ótimo
+* Unidades em um grupo de volume redundante ideal (RAID 1, RAID 5 e RAID 6)
+* Unidades não atribuídas
+* Unidades hot spare de reserva
+
+
+Fazer um upgrade do formware da unidade online pode levar várias horas, expondo o array de storage a possíveis falhas de volume. A falha de volume pode ocorrer nesses casos:
+
+* Em um grupo de volume RAID 1 ou RAID 5, uma unidade falha enquanto outra unidade no grupo de volume está sendo atualizada.
+* Em um pool ou grupo de volume RAID 6, duas unidades falham enquanto uma unidade diferente no pool ou grupo de volume está sendo atualizada.
+
+
+
+
+==== Offline (paralelo)
+
+Durante uma atualização offline, todas as unidades do mesmo tipo de unidade são atualizadas ao mesmo tempo. Esse método requer a interrupção da atividade de E/S nos volumes associados às unidades selecionadas. Como várias unidades podem ser atualizadas simultaneamente (em paralelo), o tempo total de inatividade é significativamente reduzido. Se uma unidade só puder fazer uma atualização offline, o método offline será utilizado automaticamente.
+
+As seguintes unidades DEVEM usar o método offline:
+
+* Unidades em um grupo de volume não redundante (RAID 0)
+* Unidades em um pool ou grupo de volume não otimizados
+* Unidades no cache SSD
+
+
+
+
+=== Compatibilidade
+
+Cada arquivo de firmware da unidade contém informações sobre o tipo de unidade na qual o firmware é executado. Você pode baixar o arquivo de firmware especificado apenas para uma unidade compatível. System Manager verifica automaticamente a compatibilidade durante o processo de upgrade.

@@ -1,0 +1,88 @@
+---
+permalink: sm-interface/faq-storage-system-setup.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre a configuração do sistema de storage para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== E se eu não vir todos os meus componentes de hardware?
+
+Se você não visualizar todos os componentes de hardware na caixa de diálogo Verificar Hardware, isso pode significar que uma drive shelf não está conectada corretamente ou que uma shelf incompatível está instalada no array de storage.
+
+Verifique se todas as gavetas de disco estão conectadas corretamente. Se tiver dúvidas sobre quais gavetas de disco são compatíveis, entre em contato com o suporte técnico.
+
+
+
+== E se eu não vir todos os meus hosts?
+
+Se você não visualizar seus hosts conectados, então a detecção automática falhou, os hosts estão conectados incorretamente ou nenhum host está conectado no momento.
+
+Você pode configurar hosts posteriormente, após concluir a configuração. Você pode criar hosts manualmente da seguinte forma:
+
+* Você pode criar hosts manualmente e associar os identificadores de porta de host apropriados acessando menu:Storage[Hosts]. Hosts que foram criados manualmente também são exibidos no assistente de *Initial Setup*.
+* O destino e o host devem estar configurados para o tipo de porta do host (por exemplo, iSCSI ou NVMe sobre RoCE), e uma sessão com o storage deve ser estabelecida antes que a detecção automática funcione.
+
+
+
+
+== Como a identificação de aplicativos me ajuda a gerenciar meu array de storage?
+
+Ao identificar aplicativos, SANtricity System Manager recomenda automaticamente uma configuração de volume que otimiza o storage com base no tipo de aplicativo.
+
+A otimização de volumes por aplicação pode tornar as operações de storage mais eficientes. Características como tipo de I/O, tamanho do segmento, propriedade do controlador e cache de leitura e gravação estão incluídas na configuração do volume. Além disso, você pode visualizar dados de desempenho por aplicação e por carga de trabalho para avaliar a latência, IOPS e MiB/s das aplicações e suas respectivas cargas de trabalho.
+
+
+
+== O que é uma workload?
+
+Para algumas aplicações na sua rede, como SQL Server ou Exchange, você pode definir uma carga de trabalho que otimize o storage para essa aplicação.
+
+Uma carga de trabalho é um objeto de storage que suporta uma aplicação. Você pode definir uma ou mais cargas de trabalho, ou instâncias, por aplicação. Para algumas aplicações, o sistema configura a carga de trabalho para conter volumes com características subjacentes semelhantes. Essas características de volume são otimizadas com base no tipo de aplicação que a carga de trabalho suporta. Por exemplo, se você criar uma carga de trabalho que suporte uma aplicação Microsoft SQL Server e, posteriormente, criar volumes para essa carga de trabalho, as características subjacentes do volume serão otimizadas para suportar Microsoft SQL Server.
+
+Durante a criação de volumes, o sistema solicita que você responda a perguntas sobre o uso da carga de trabalho. Por exemplo, se você estiver criando volumes para Microsoft Exchange, será perguntado quantas caixas de correio você precisa, quais são os requisitos médios de capacidade da caixa de correio e quantas cópias do banco de dados você deseja. O sistema usa essas informações para criar uma configuração de volume ideal para você, que pode ser editada conforme necessário.
+
+
+
+== Como configuro o método de entrega para AutoSupport?
+
+Para acessar as tarefas de configuração para os métodos de entrega do AutoSupport, vá ao menu:Suporte[Central de Suporte] e, em seguida, clique na guia *AutoSupport*.
+
+Os seguintes protocolos são suportados: HTTPS e SMTP.
+
+
+
+== Como posso saber se devo aceitar a configuração de pool recomendada?
+
+Se você aceita a configuração de pool recomendada depende de alguns fatores.
+
+Determine o tipo de storage mais adequado às suas necessidades respondendo às seguintes perguntas:
+
+* Você prefere vários pools de menor capacidade, em vez dos maiores pools possíveis?
+* Você prefere grupos de volume RAID em vez de pools?
+* Você prefere provisionar seus discos manualmente, em vez de receber uma configuração recomendada?
+
+
+Se você respondeu Sim a alguma dessas perguntas, considere rejeitar a configuração de pool recomendada.
+
+
+
+== SANtricity System Manager não detectou nenhum host. O que devo fazer?
+
+Se você não visualizar seus hosts conectados, então a detecção automática falhou, os hosts estão conectados incorretamente ou nenhum host está conectado no momento.
+
+Você pode configurar hosts posteriormente, após concluir a configuração. Você pode criar hosts manualmente da seguinte forma:
+
+* Você pode criar hosts manualmente e associar os identificadores de porta de host apropriados acessando menu:Storage[Hosts]. Hosts que foram criados manualmente também são exibidos no assistente de *Initial Setup*.
+* O destino e o host devem estar configurados para o tipo de porta do host (por exemplo, iSCSI ou NVMe sobre RoCE), e uma sessão com o storage deve ser estabelecida antes que a detecção automática funcione.
+

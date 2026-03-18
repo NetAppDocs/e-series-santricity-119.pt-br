@@ -1,0 +1,35 @@
+---
+permalink: sm-storage/rtv-manage-progress-of-remote-volume-import.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage, imports 
+summary: Após o início do processo de importação, você pode visualizar e tomar medidas sobre o seu progresso. 
+---
+= Gerencie o progresso das importações de storage remoto no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após o início do processo de importação, você pode visualizar e tomar medidas sobre o seu progresso.
+
+.Sobre esta tarefa
+Para cada operação de importação, a caixa de diálogo Operações em Andamento exibe uma porcentagem de conclusão e o tempo restante estimado. As ações incluem alterar a prioridade da importação, interromper e retomar operações e desconectar-se da operação.
+
+Você também pode visualizar as operações em andamento na página inicial (menu:Home[Mostrar operações em andamento]).
+
+.Passos
+. Na página Remote Storage, selecione *View Operations*.
++
+A caixa de diálogo Operações em andamento é exibida.
+
+. Se desejar, utilize os links na coluna *Ações* para interromper e retomar, alterar a prioridade ou desconectar de uma operação.
++
+** *Alterar Prioridade* -- Selecione *Alterar Prioridade* para alterar a prioridade de processamento de uma operação em andamento ou pendente. Atribua uma prioridade à operação e clique em *OK*.
+** *Parar* -- Selecione *Parar* para pausar a cópia de dados do dispositivo de storage remoto. A relação entre o par de importação permanece intacta e você pode selecionar *Retomar* quando estiver pronto para continuar a operação de importação.
+** *Retomar* -- Selecione *Retomar* para iniciar um processo interrompido ou com falha a partir do ponto em que parou. Em seguida, aplique uma prioridade à operação Retomar e clique em *OK*. Esta operação _não_ reinicia a importação desde o início. Se você quiser reiniciar o processo desde o início, será necessário selecionar *Desconectar* e, em seguida, recriar a importação por meio do assistente Import Remote Storage.
+** *Desconectar* -- Selecione *Desconectar* para interromper a relação entre os volumes de origem e destino de uma operação de importação que foi interrompida, concluída ou falhou.
+
+
+

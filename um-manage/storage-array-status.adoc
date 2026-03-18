@@ -1,0 +1,72 @@
+---
+permalink: um-manage/storage-array-status.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, storage, array, status, communication, 
+summary: Unified Manager exibe o status de cada array de storage que foi descoberto. 
+---
+= Visualize o status do array de storage no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity Unified Manager exibe o status de cada array de storage que foi descoberto.
+
+Acesse a página *Gerenciar - Tudo*. Nessa página, você pode visualizar o status da conexão entre o Web Services Proxy e esse array de storage.
+
+Os indicadores de status são descritos na tabela a seguir.
+
+[cols="25h,~"]
+|===
+| Status | Indica 
+
+
+ a| 
+Ideal
+ a| 
+O array de storage está em estado ideal. Não há problemas com o certificado e a senha é válida.
+
+
+
+ a| 
+Senha inválida
+ a| 
+Foi fornecida uma senha inválida para o array de storage.
+
+
+
+ a| 
+Certificado não confiável
+ a| 
+Uma ou mais conexões com o array de storage não são confiáveis porque o certificado HTTPS é autoassinado e não foi importado, ou o certificado é assinado por uma CA e os certificados raiz e intermediários da CA não foram importados.
+
+
+
+ a| 
+Precisa de atenção
+ a| 
+Existe um problema com o array de storage que requer sua intervenção para corrigi-lo.
+
+
+
+ a| 
+Confinamento
+ a| 
+O array de storage está em estado bloqueado.
+
+
+
+ a| 
+Desconhecido
+ a| 
+O array de storage nunca foi contatado. Isso pode ocorrer quando o Web Services Proxy está sendo inicializado e ainda não estabeleceu contato com o array de storage, ou o array de storage está offline e nunca foi contatado desde que o Web Services Proxy foi iniciado.
+
+
+
+ a| 
+Offline
+ a| 
+O Web Services Proxy havia contatado anteriormente o array de storage, mas agora perdeu toda a conexão com ele.
+
+|===

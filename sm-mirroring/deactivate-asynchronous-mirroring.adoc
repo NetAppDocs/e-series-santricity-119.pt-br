@@ -1,0 +1,37 @@
+---
+permalink: sm-mirroring/deactivate-asynchronous-mirroring.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, deactivate, asynchronous, mirroring, remote, 
+summary: Você pode desativar o espelhamento assíncrono nos arrays de storage locais e remotos para restabelecer o uso normal das portas dedicadas nos arrays de storage. 
+---
+= Desativar espelhamento assíncrono no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode desativar o espelhamento assíncrono nos arrays de storage locais e remotos para restabelecer o uso normal das portas dedicadas nos arrays de storage.
+
+.Antes de começar
+* Você deve ter excluído todos os relacionamentos de espelhamento. Verifique se todos os grupos de consistência de espelhamento e pares espelhados foram excluídos dos arrays de storage local e remoto.
+* O array de storage local e o array de storage remoto devem ser conectados por meio de uma estrutura Fibre Channel ou interface iSCSI.
+
+
+.Sobre esta tarefa
+Ao desativar o espelhamento assíncrono, nenhuma atividade de espelhamento poderá ocorrer nos arrays de storage local e remoto.
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione o menu: tarefas incomuns [Desativar].
++
+O sistema exibe uma confirmação.
+
+. Selecione *Yes* para confirmar.
+
+
+.Resultados
+* Os canais de host HBA do controlador que eram dedicados à comunicação de espelhamento assíncrono agora podem aceitar solicitações de leitura e gravação do host.
+* Nenhum dos volumes neste array de storage pode participar de relações de espelhamento como volumes primários ou volumes secundários.
+

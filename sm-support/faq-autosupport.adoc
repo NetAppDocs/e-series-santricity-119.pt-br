@@ -1,0 +1,313 @@
+---
+permalink: sm-support/faq-autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= AutoSupport FAQ para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== Que dados estou coletando?
+
+O recurso AutoSupport e a funcionalidade de Coleta Manual de Dados de Suporte oferecem maneiras de coletar dados em um pacote de suporte ao cliente para solução de problemas remota e análise de problemas pelo suporte técnico.
+
+O pacote de suporte ao cliente reúne todos os tipos de informações sobre o array de storage em um único arquivo compactado. As informações coletadas incluem a configuração física, a configuração lógica, informações de versão, eventos, arquivos de log e dados de desempenho. As informações são usadas apenas pelo suporte técnico para resolver problemas com o array de storage.
+
+
+
+== O que os dados de setores ilegíveis me mostram?
+
+Você pode exibir dados detalhados sobre setores ilegíveis detectados nas unidades do seu array de storage.
+
+O registro de setores ilegíveis mostra o setor ilegível mais recente primeiro. O registro contém as seguintes informações sobre os volumes que contêm os setores ilegíveis. Os campos podem ser classificados.
+
+[cols="25h,~"]
+|===
+| Campo | Descrição 
+
+
+ a| 
+Volume afetado
+ a| 
+Exibe o rótulo do volume. Se um volume ausente contiver setores ilegíveis, o World Wide Identifier será exibido para o volume ausente.
+
+
+
+ a| 
+Número da unidade lógica (LUN)
+ a| 
+Exibe o LUN do volume. Se o volume não tiver um LUN, a caixa de diálogo mostra NA.
+
+
+
+ a| 
+Designado para
+ a| 
+Mostra os hosts ou clusters de hosts que têm acesso ao volume. Se o volume não for acessível por um host, cluster de hosts ou mesmo um Default Cluster, a caixa de diálogo mostra NA.
+
+|===
+Para ver informações adicionais sobre os setores ilegíveis, clique no sinal de mais (+) ao lado de um volume.
+
+[cols="25h,~"]
+|===
+| Campo | Descrição 
+
+
+ a| 
+Data/Hora
+ a| 
+Mostra a data e a hora em que o setor ilegível foi detectado.
+
+
+
+ a| 
+Endereço de bloco lógico de volume
+ a| 
+Exibe o endereço do bloco lógico (LBA) do volume.
+
+
+
+ a| 
+Localização da unidade
+ a| 
+Mostra a prateleira da unidade, a gaveta (se a sua prateleira da unidade tiver gavetas) e a localização da bay.
+
+
+
+ a| 
+Endereço do bloco lógico da unidade
+ a| 
+Mostra o LBA da unidade.
+
+
+
+ a| 
+Tipo de falha
+ a| 
+Exibe um dos seguintes tipos de falha:
+
+* *Físico* -- Um erro de mídia física.
+* *Lógico* -- Um erro de leitura em outra parte da faixa que causa dados ilegíveis. Por exemplo, um setor ilegível devido a erros de mídia em outra parte do volume.
+* *Inconsistente* -- dados de redundância inconsistentes.
+* *Garantia de Dados* -- Um erro de Data Assurance.
+
+
+|===
+
+
+== O que é uma health image?
+
+Uma imagem de integridade é um despejo de dados brutos da memória do processador do controlador que o suporte técnico pode usar para diagnosticar um problema com um controlador.
+
+O firmware gera automaticamente uma imagem de integridade quando detecta determinados erros. Em certos cenários de resolução de problemas, o suporte técnico pode solicitar que você recupere o arquivo de imagem de integridade e o envie para eles.
+
+
+
+== O que as funcionalidades do AutoSupport fazem?
+
+O recurso AutoSupport é composto por três funcionalidades individuais que você ativa separadamente.
+
+* *Básico AutoSupport* -- Permite que seu array de storage colete e envie dados automaticamente para o suporte técnico.
+* *AutoSupport OnDemand* -- Permite que o suporte técnico solicite a retransmissão de um despacho anterior do AutoSupport quando necessário para solucionar um problema. Todas as transmissões são iniciadas a partir do array de storage, não do servidor AutoSupport. O array de storage verifica periodicamente com o servidor AutoSupport se há alguma solicitação de retransmissão pendente e responde de acordo.
+* *Diagnóstico Remoto* -- Permite que o suporte técnico solicite um novo, atualizado AutoSupport dispatch quando necessário para solucionar um problema. Todas as transmissões são iniciadas a partir do array de storage, não do AutoSupport server. O array de storage verifica periodicamente com o AutoSupport server se há novas solicitações pendentes e responde de acordo.
+
+
+
+
+== Que tipo de dados é coletado por meio do recurso AutoSupport?
+
+O recurso AutoSupport contém três tipos de despacho padrão: despachos de eventos, despachos agendados e despachos sob demanda e de diagnóstico remoto.
+
+Os dados do AutoSupport não contêm quaisquer dados de usuário.
+
+* *Despachos de eventos*
++
+Quando ocorrem eventos no sistema que justificam uma notificação proativa ao suporte técnico, o recurso AutoSupport envia automaticamente um despacho acionado por evento.
+
++
+** Enviado quando ocorre um evento de suporte no array de storage gerenciado.
+** Inclui uma visão geral abrangente do que estava acontecendo com o array de storage no momento em que o evento ocorreu.
+
+
+* *Despachos programados*
++
+O recurso AutoSupport envia automaticamente vários despachos em uma programação regular.
+
++
+** *Despachos diários* -- Enviados uma vez por dia durante um intervalo de tempo configurável pelo usuário. Inclui os registros de eventos do sistema e dados de desempenho atuais.
+** *Boletins semanais* -- Enviados uma vez por semana durante um intervalo de tempo e dia configuráveis pelo usuário. Inclui informações de configuração e estado do sistema.
+
+
+* *AutoSupport OnDemand e despachos de diagnóstico remoto*
++
+** *AutoSupport OnDemand* -- Permite que o suporte técnico solicite a retransmissão de um despacho anterior do AutoSupport quando necessário para solucionar um problema. Todas as transmissões são iniciadas a partir do array de storage, não do servidor AutoSupport. O array de storage verifica periodicamente com o servidor AutoSupport se há alguma solicitação de retransmissão pendente e responde de acordo.
+** *Diagnóstico Remoto* -- Permite que o suporte técnico solicite um novo, atualizado AutoSupport dispatch quando necessário para solucionar um problema. Todas as transmissões são iniciadas a partir do array de storage, não do AutoSupport server. O array de storage verifica periodicamente com o AutoSupport server se há novas solicitações pendentes e responde de acordo.
+
+
+
+
+
+
+== Como configuro o método de entrega para o recurso AutoSupport?
+
+O recurso AutoSupport suporta os protocolos HTTPS e SMTP para o envio de despachos AutoSupport ao suporte técnico.
+
+.Antes de começar
+* O recurso AutoSupport deve estar ativado. Você pode verificar se ele está ativado na página AutoSupport.
+* Um servidor DNS deve ser instalado e configurado na sua rede. O endereço do servidor DNS deve ser configurado no System Manager (essa tarefa está disponível na página Hardware).
+
+
+.Sobre esta tarefa
+Analise os diferentes protocolos:
+
+* *HTTPS* -- Permite que você se conecte diretamente ao servidor de suporte técnico de destino usando HTTPS. Se você quiser habilitar AutoSupport OnDemand ou Diagnóstico Remoto, o método de entrega do AutoSupport deve ser definido como HTTPS.
+* *E-mail* -- Permite usar um servidor de e-mail como método de entrega para o envio de despachos AutoSupport.
+
+
+[NOTE]
+====
+*Diferenças entre os métodos HTTPS e Email*. O método de entrega por Email, que utiliza SMTP, apresenta algumas diferenças importantes em relação ao método de entrega HTTPS. Primeiro, o tamanho dos despachos para o método Email é limitado a 5MB, o que significa que algumas coletas de dados do ASUP não serão despachadas. Segundo, o recurso AutoSupport OnDemand está disponível apenas no método de entrega HTTPS.
+
+====
+.Passos
+. Selecione o menu:Suporte [Support Center > AutoSupport] tab.
+. Selecione *Configurar AutoSupport Delivery Method*.
++
+Uma caixa de diálogo aparece, que lista os métodos de entrega do despacho.
+
+. Selecione o método de entrega desejado e, em seguida, selecione os parâmetros para esse método de entrega. Faça um dos seguintes procedimentos:
++
+** Se você selecionou HTTPS, selecione um dos seguintes parâmetros de entrega:
++
+*** *Diretamente* -- Este parâmetro de entrega é a seleção padrão. Escolher esta opção permite que você se conecte diretamente ao sistema de suporte técnico de destino usando o protocolo HTTPS.
+*** *Via servidor proxy* -- Escolher esta opção permite especificar os detalhes do servidor proxy HTTP necessários para estabelecer conexão com o sistema de suporte técnico de destino. Você deve especificar o endereço do host e o número da porta. No entanto, você só precisa inserir os detalhes de autenticação do host (nome de usuário e senha) se necessário.
+*** *Via script de autoconfiguração de proxy (PAC)* -- Especifique o local de um arquivo de script de autoconfiguração de proxy (PAC). Um arquivo PAC permite que o sistema escolha automaticamente o servidor proxy apropriado para estabelecer uma conexão com o sistema de suporte técnico de destino.
+
+
+** Se você selecionou Email, insira as seguintes informações:
++
+*** O endereço do servidor de e-mail como um domínio totalmente qualificado, endereço IPv4 ou endereço IPv6.
+*** O endereço de e-mail que aparece no campo De do e-mail de despacho do AutoSupport.
+*** *Opcional; caso deseje realizar um teste de configuração.* O endereço de e-mail para onde será enviada uma confirmação quando o sistema AutoSupport receber o despacho de teste.
+*** Se desejar criptografar as mensagens, selecione *SMTPS* ou *STARTTLS* para o tipo de criptografia e, em seguida, selecione o número da porta para as mensagens criptografadas. Caso contrário, selecione *None*.
+*** Caso necessário, insira um nome de usuário e uma senha para autenticação com o remetente de saída e o servidor de e-mail.
+
+
+
+
+. Clique em *Testar configuração* para testar a conexão com o servidor de suporte técnico usando os parâmetros de entrega especificados. Se você habilitou o recurso AutoSupport On-Demand, o sistema também testará a conexão para entrega de despacho AutoSupport OnDemand.
++
+Se o teste de configuração falhar, verifique suas configurações e execute o teste novamente. Se o teste continuar falhando, entre em contato com o suporte técnico.
+
+. Clique em *Salvar*.
+
+
+
+
+== O que são dados de configuração?
+
+Ao selecionar Coletar dados de configuração, o sistema salva o estado atual do banco de dados de configuração RAID.
+
+O banco de dados de configuração RAID inclui todos os dados para grupos de volumes e pools de discos no controlador. O recurso Coletar Dados de Configuração salva as mesmas informações que o comando da interface de linha de comando para  `save storageArray dbmDatabase`.
+
+
+
+== O que preciso saber antes de atualizar o software SANtricity OS?
+
+Antes de atualizar o software e firmware do seu controlador, esteja ciente destes itens.
+
+* Você leu o documento e o arquivo `readme.txt` e determinou que deseja fazer a atualização.
+* Você sabe se deseja atualizar o firmware do seu IOM.
++
+Normalmente, você deve atualizar todos os componentes ao mesmo tempo. No entanto, você pode optar por não atualizar o firmware do IOM se não quiser atualizá-lo como parte da atualização do software do controlador SANtricity OS ou se o suporte técnico tiver instruído você a fazer o downgrade do firmware do IOM (você só pode fazer o downgrade do firmware usando a interface de linha de comando).
+
+* Você sabe se deseja atualizar o arquivo NVSRAM do controlador.
++
+Normalmente, você deve atualizar todos os componentes ao mesmo tempo. No entanto, você pode optar por não atualizar o arquivo NVSRAM do controlador se o seu arquivo tiver sido modificado ou for uma versão personalizada e você não quiser sobrescrevê-lo.
+
+* Você sabe se deseja ativar agora ou mais tarde.
++
+Os motivos para ativar mais tarde podem incluir:
+
++
+** *Horário do dia* -- A ativação do software e firmware pode demorar bastante, então talvez seja melhor esperar até que as cargas de E/S estejam mais leves. Os controladores fazem failover durante a ativação, portanto o desempenho pode ser inferior ao normal até que a atualização seja concluída.
+** *Tipo de pacote* -- Você pode querer testar o novo software e firmware em um array de storage antes de atualizar os arquivos em outros arrays de storage.
+
+
+
+
+Esses componentes fazem parte da atualização do software do controlador SANtricity OS:
+
+* *Software de gerenciamento* -- System Manager é o software que gerencia o array de storage.
+* *Controller firmware* -- O firmware do controlador gerencia a E/S entre hosts e volumes.
+* *Controller NVSRAM* -- O Controller NVSRAM é um arquivo de controlador que especifica as configurações padrão para os controladores.
+* *IOM firmware* -- O firmware do módulo de E/S (IOM) gerencia a conexão entre um controlador e um compartimento de unidades. Ele também monitora o status dos componentes.
+* *Software supervisor* -- O software supervisor é a máquina virtual em um controlador na qual o software é executado.
+
+
+Como parte do processo de upgrade, o driver multipath/failover do host e/ou o driver HBA também podem precisar ser atualizados para que o host possa interagir corretamente com os controladores.
+
+[NOTE]
+====
+Para determinar se este é o caso, consulte o https://mysupport.netapp.com/matrix["NetApp Ferramenta de Matriz de Interoperabilidade"^].
+
+====
+Se o seu array de storage contiver apenas um controlador ou se você não tiver um driver multipath instalado, interrompa a atividade de E/S para o array de storage para evitar erros de aplicativo. Se o seu array de storage tiver dois controladores e você tiver um driver multipath instalado, não é necessário interromper a atividade de E/S.
+
+
+CAUTION: Não faça alterações no array de storage enquanto o upgrade estiver em andamento.
+
+
+
+== O que preciso saber antes de suspender a sincronização automática do IOM?
+
+Suspender a sincronização automática do IOM impede que o firmware do IOM seja atualizado na próxima vez que ocorrer uma atualização do software do controlador SANtricity OS.
+
+Normalmente, o software do controlador e o firmware do IOM são atualizados em conjunto. Você pode suspender a sincronização automática do IOM se tiver uma versão especial do firmware do IOM que deseja preservar em seu gabinete. Caso contrário, você retornará ao firmware do IOM incluído no software do controlador na próxima vez que fizer um upgrade do software do controlador.
+
+
+
+== Por que a atualização do meu firmware está progredindo tão lentamente?
+
+O progresso da atualização do firmware depende da carga geral do sistema.
+
+Durante um upgrade online do firmware da unidade, se uma transferência de volume ocorrer durante o processo de reconstrução rápida, o sistema inicia uma reconstrução completa no volume que foi transferido. Essa operação pode levar um tempo considerável. O tempo real de reconstrução completa depende de vários fatores, incluindo a quantidade de atividade de E/S ocorrendo durante a operação de reconstrução, o número de unidades no grupo de volume, a configuração de prioridade de reconstrução e o desempenho da unidade.
+
+
+
+== O que preciso saber antes de atualizar o firmware da unidade?
+
+Antes de atualizar o firmware da unidade, esteja ciente destes itens.
+
+* Como medida de precaução, faça backup dos seus dados usando backup de disco para disco, cópia de volume (para um grupo de volume não afetado pelo upgrade de firmware planejado) ou espelhamento remoto.
+* Você pode optar por atualizar apenas algumas unidades para testar o comportamento do novo firmware e garantir que ele está funcionando corretamente. Se o novo firmware estiver funcionando corretamente, atualize as unidades restantes.
+* Se você tiver alguma unidade com defeito, conserte-a antes de iniciar o upgrade do firmware.
+* Se as unidades puderem realizar uma atualização offline, interrompa a atividade de E/S em todos os volumes associados às unidades. Quando a atividade de E/S é interrompida, nenhuma operação de configuração associada a esses volumes pode ocorrer.
+* Não remova nenhuma unidade durante o upgrade do firmware da unidade.
+* Não faça nenhuma alteração de configuração no array de storage durante o upgrade do firmware da unidade.
+
+
+
+
+== Como escolho qual tipo de upgrade realizar?
+
+Você escolhe o tipo de upgrade a ser realizado na unidade, dependendo do estado do pool ou grupo de volume.
+
+* *Online*
++
+Se o pool ou grupo de volume suportar redundância e estiver Ótimo, você pode usar o método Online para fazer o upgrade do firmware da unidade. O método Online baixa o firmware _enquanto o array de storage está processando E/S_ para os volumes associados que utilizam essas unidades. Você não precisa interromper a E/S para os volumes associados que utilizam essas unidades. Essas unidades são atualizadas uma de cada vez para os volumes associados às unidades. Se a unidade não estiver atribuída a um pool ou grupo de volume, seu firmware pode ser atualizado pelo método Online ou Offline. O desempenho do sistema pode ser impactado ao usar o método Online para fazer o upgrade do firmware da unidade.
+
+* *Offline*
++
+Se o pool ou grupo de volume não suportar redundância (RAID 0) ou estiver degradado, você deve usar o método Offline para upgrade do firmware da unidade. O método Offline fará o upgrade do firmware _somente enquanto toda a atividade de I/O estiver parada_ nos volumes associados que utilizam essas unidades. Você deve parar toda a I/O para quaisquer volumes associados que utilizem essas unidades. Se a unidade não estiver atribuída a um pool ou grupo de volume, seu firmware pode ser atualizado pelo método Online ou Offline.
+
+

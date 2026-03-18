@@ -1,0 +1,56 @@
+---
+permalink: sm-storage/consolidate-volume-group-free-capacity.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, consolidate, free capacity, volume group 
+summary: Use a opção Consolidar Capacidade Livre para consolidar as extensões livres existentes em um grupo de volume. Ao executar esta ação, você pode criar volumes adicionais a partir da quantidade máxima de capacidade livre em um grupo de volume. 
+---
+= Consolide a capacidade livre para um grupo de volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Use a opção Consolidar Capacidade Livre para consolidar as extensões livres existentes em um grupo de volume. Ao executar esta ação, você pode criar volumes adicionais a partir da quantidade máxima de capacidade livre em um grupo de volume.
+
+.Antes de começar
+* O grupo de volume deve conter pelo menos uma área de capacidade livre.
+* Todos os volumes do grupo de volume devem estar online e em status Ótimo.
+* Operações de modificação de volume não devem estar em andamento, como a alteração do tamanho do segmento de um volume.
+
+
+.Sobre esta tarefa
+Não é possível cancelar a operação depois de iniciada. Seus dados permanecem acessíveis durante a operação de consolidação.
+
+Você pode abrir a caixa de diálogo Consolidate Free Capacity usando qualquer um dos seguintes métodos:
+
+* Quando pelo menos uma área de capacidade livre é detectada para um grupo de volume, a recomendação "Consolidar capacidade livre" aparece na página inicial na área de Notificações. Clique no link *Consolidar capacidade livre* para abrir a caixa de diálogo.
+* Você também pode abrir a caixa de diálogo Consolidate Free Capacity na página Pools & Volume Groups, conforme descrito na tarefa a seguir.
+
+
+.Mais informações sobre áreas de capacidade livre
+[%collapsible]
+====
+Uma área de capacidade livre é a capacidade livre que pode resultar da exclusão de um volume ou do não uso de toda a capacidade livre disponível durante a criação do volume. Ao criar um volume em um grupo de volume que possui uma ou mais áreas de capacidade livre, a capacidade do volume é limitada à maior área de capacidade livre nesse grupo de volume. Por exemplo, se um grupo de volume tiver um total de 15 GiB de capacidade livre e a maior área de capacidade livre for 10 GiB, o maior volume que você pode criar é 10 GiB.
+
+Você consolida a capacidade livre em um grupo de volume para melhorar o desempenho de gravação. A capacidade livre do seu grupo de volume ficará fragmentada com o tempo, à medida que o host grava, modifica e exclui arquivos. Eventualmente, a capacidade disponível não estará localizada em um único bloco contíguo, mas estará espalhada em pequenos fragmentos por todo o grupo de volume. Isso causa ainda mais fragmentação de arquivos, já que o host precisa gravar novos arquivos como fragmentos para que caibam nos intervalos disponíveis de clusters livres.
+
+Ao consolidar a capacidade livre em um grupo de volume selecionado, você notará uma melhoria no desempenho do sistema de arquivos sempre que o host gravar novos arquivos. O processo de consolidação também ajudará a evitar que novos arquivos sejam fragmentados no futuro.
+
+====
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o grupo de volume com capacidade livre que deseja consolidar e, em seguida, selecione menu:Tarefas incomuns[Consolidar capacidade livre do grupo de volume].
++
+A caixa de diálogo Consolidate Free Capacity é exibida.
+
+. Digite  `consolidate` para confirmar que deseja realizar esta operação.
+. Clique em *Consolidate*.
++
+System Manager começa a consolidar (desfragmentar) as áreas de capacidade livre do grupo de volume em uma quantidade contígua para tarefas subsequentes de configuração de storage.
+
+
+
+.Depois que você terminar
+Selecione o menu: Home [View Operations in Progress] para visualizar o progresso da operação Consolidate Free Capacity. Esta operação pode ser demorada e pode afetar o desempenho do sistema.

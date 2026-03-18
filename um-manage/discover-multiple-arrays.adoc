@@ -1,0 +1,129 @@
+---
+permalink: um-manage/discover-multiple-arrays.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, discover, multiple, storage, arrays 
+summary: Você descobre vários arrays para detectar todos os arrays de storage na sub-rede onde reside o servidor de gerenciamento e para adicionar automaticamente os arrays descobertos ao seu domínio de gerenciamento. 
+---
+= Descubra vários arrays de storage no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você descobre vários arrays para detectar todos os arrays de storage na sub-rede onde reside o servidor de gerenciamento e para adicionar automaticamente os arrays descobertos ao seu domínio de gerenciamento.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security Admin.
+* O array de storage deve ser configurado e configurado corretamente.
+* As senhas do array de storage devem ser configuradas usando o bloco Access Management do System Manager.
+* Para resolver problemas com certificados não confiáveis, você deve ter arquivos de certificado confiáveis de uma Autoridade Certificadora (CA), e os arquivos de certificado devem estar disponíveis em seu sistema local.
+
+
+A descoberta de arrays é um procedimento em várias etapas.
+
+
+
+== Etapa 1: insira o endereço de rede
+
+Você insere um intervalo de endereços de rede para pesquisar na sub-rede local. Qualquer array de storage acessado com sucesso aparece na página Discover e pode ser adicionado ao seu domínio de gerenciamento.
+
+Se você precisar interromper a operação de descoberta por qualquer motivo, clique em *Stop Discovery*.
+
+.Passos
+. Na página Manage, selecione *Add/Discover*.
++
+A caixa de diálogo Adicionar/Descobrir é exibida.
+
+. Selecione o botão de opção *Descobrir todos os arrays de storage dentro de um intervalo de rede*.
+. Insira o endereço de rede inicial e o endereço de rede final para pesquisar em sua sub-rede local e clique em *Start Discovery*.
++
+O processo de descoberta é iniciado. Este processo de descoberta pode levar vários minutos para ser concluído. A tabela na página Descobrir é preenchida à medida que os arrays de storage são descobertos.
+
++
+[NOTE]
+====
+Se nenhum array gerenciável for detectado, verifique se os arrays de storage estão conectados corretamente à sua rede e se os endereços atribuídos estão dentro do intervalo. Clique em *New Discovery Parameters* para retornar à página Add/Discover.
+
+====
+. Revise a lista de arrays de storage descobertos.
+. Selecione a caixa de seleção ao lado de qualquer array de storage que você queira adicionar ao seu domínio de gerenciamento e clique em *Next*.
++
+Unified Manager realiza uma verificação de credencial em cada array que você adiciona ao domínio de gerenciamento. Pode ser necessário resolver quaisquer certificados autoassinados e certificados não confiáveis associados a esse array.
+
+. Clique em *Avançar* para prosseguir para a próxima etapa do assistente.
+
+
+
+
+== Etapa 2: resolver certificados autoassinados durante a descoberta
+
+Como parte do processo de descoberta, o sistema verifica se os arrays de storage estão usando certificados de uma fonte confiável.
+
+.Passos
+. Faça uma das seguintes ações:
++
+** Se você confiar nas conexões com os arrays de storage descobertos, prossiga para o próximo cartão no assistente. Os certificados autoassinados serão marcados como confiáveis e os arrays de storage serão adicionados ao Unified Manager.
+** Se você não confiar nas conexões com os arrays de storage, selecione *Cancelar* e valide a estratégia de certificado de segurança de cada array de storage antes de adicioná-los ao Unified Manager.
+
+
+. Clique em *Avançar* para prosseguir para a próxima etapa do assistente.
+
+
+
+
+== Etapa 3: resolver certificados não confiáveis durante a descoberta
+
+Certificados não confiáveis ocorrem quando um array de storage tenta estabelecer uma conexão segura com o Unified Manager, mas a conexão falha ao ser confirmada como segura. Durante o processo de descoberta do array, você pode resolver certificados não confiáveis importando um certificado de autoridade certificadora (CA) (ou certificado assinado por uma CA) emitido por uma terceira parte confiável.
+
+Você pode precisar instalar certificados de CA confiáveis adicionais se alguma das seguintes condições for verdadeira:
+
+* Você adicionou recentemente um array de storage.
+* Um ou ambos os certificados expiraram.
+* Um ou ambos os certificados estão revogados.
+* Um ou ambos os certificados estão sem um certificado raiz ou intermediário.
+
+
+.Passos
+. Selecione a caixa de seleção ao lado de qualquer array de storage para o qual você deseja resolver certificados não confiáveis e, em seguida, selecione o botão **Import**.
++
+Uma caixa de diálogo é aberta para importar os arquivos de certificado confiáveis.
+
+. Clique em *Procurar* para selecionar os arquivos de certificado para os arrays de storage.
++
+Os nomes dos arquivos são exibidos na caixa de diálogo.
+
+. Clique em *Importar*.
++
+Os arquivos são carregados e validados.
+
++
+[NOTE]
+====
+Qualquer array de storage com problemas de certificado não confiáveis que não forem resolvidos não será adicionado ao Unified Manager.
+
+====
+. Clique em *Avançar* para prosseguir para a próxima etapa do assistente.
+
+
+
+
+== Passo 4: forneça as senhas
+
+Você deve inserir as senhas dos arrays de storage que deseja adicionar ao seu domínio de gerenciamento.
+
+.Passos
+. Insira a senha para cada array de storage que você deseja adicionar ao Unified Manager.
+. *Opcional:* Associar arrays de storage a um grupo: na lista suspensa, selecione o grupo desejado para associar aos arrays de storage selecionados.
+. Clique em *Concluir*.
+
+
+.Depois que você terminar
+Os arrays de storage são adicionados ao seu domínio de gerenciamento e associados ao grupo selecionado (se especificado).
+
+[NOTE]
+====
+Pode levar vários minutos para o Unified Manager se conectar aos arrays de storage especificados.
+
+====

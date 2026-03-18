@@ -1,0 +1,57 @@
+---
+permalink: sm-mirroring/change-synchronization-settings-for-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, synchronization, settings, mirrored, pair, 
+summary: Você pode alterar a prioridade de sincronização e a política de ressincronização que o par espelhado usa para concluir a operação de ressincronização após uma interrupção de comunicação. 
+---
+= Alterar as configurações de sincronização para um par espelhado no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar a prioridade de sincronização e a política de ressincronização que o par espelhado usa para concluir a operação de ressincronização após uma interrupção de comunicação.
+
+.Sobre esta tarefa
+Você pode editar as configurações de sincronização de um par espelhado somente no array de storage que contém o volume primário.
+
+.Passos
+. Selecione o menu: Storage [Espelhamento Síncrono].
+. Selecione o par espelhado que deseja editar e, em seguida, selecione menu:More[Edit settings].
++
+O sistema exibe a caixa de diálogo View/Edit Settings.
+
+. Use a barra deslizante para editar a prioridade de sincronização.
++
+A prioridade de sincronização determina quanto dos recursos do sistema são usados para concluir a operação de ressincronização após uma interrupção de comunicação em comparação com as solicitações de E/S de serviço.
+
++
+.Mais sobre taxas de sincronização
+[%collapsible]
+====
+Existem cinco taxas de prioridade de sincronização:
+
+** Mais baixo
+** Baixo
+** Médio
+** Alto
+** Mais alto
+
+
+====
++
+Se a prioridade de sincronização estiver definida para a taxa mais baixa, a atividade de E/S terá prioridade e a operação de ressincronização levará mais tempo. Se a prioridade de sincronização estiver definida para a taxa mais alta, a operação de ressincronização terá prioridade, mas a atividade de E/S para o array de storage pode ser afetada.
+
+. Edite a política de ressincronização conforme apropriado.
++
+Você pode ressincronizar os pares espelhados no array de storage remoto manualmente ou automaticamente.
+
++
+** *Manual* (opção recomendada) -- Selecione esta opção para exigir que a sincronização seja retomada manualmente após a restauração da comunicação com um par espelhado. Esta opção oferece a melhor oportunidade para recuperação de dados.
+** *Automático* -- selecione esta opção para iniciar a ressincronização automaticamente após a comunicação ser restaurada em um par espelhado.
+
+
+. Selecione *Save*.
+

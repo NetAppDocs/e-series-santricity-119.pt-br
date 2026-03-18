@@ -1,0 +1,46 @@
+---
+permalink: um-certificates/overview-access-management-um.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, access management, authentication 
+summary: O Gerenciamento de Acesso é um método de configurar autenticação no SANtricity Unified Manager. 
+---
+= Saiba mais sobre o gerenciamento de acesso do SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O Gerenciamento de Acesso é um método de configurar autenticação no SANtricity Unified Manager.
+
+
+
+== Quais métodos de autenticação estão disponíveis?
+
+Os seguintes métodos de autenticação estão disponíveis:
+
+* *Funções de usuário locais* -- A autenticação é gerenciada por meio de recursos de RBAC (controle de acesso baseado em funções). As funções de usuário locais incluem perfis de usuário predefinidos e funções com permissões de acesso específicas.
+* *Serviços de diretório* -- A autenticação é gerenciada por meio de um servidor LDAP (Lightweight Directory Access Protocol) e um serviço de diretório, como o Microsoft Active Directory.
+* *SAML* -- A autenticação é gerenciada por meio de um Identity Provider (IdP) usando SAML 2.0.
+
+
+Saiba mais:
+
+* link:how-access-management-works-unified.html["Como funciona o gerenciamento de acessos"]
+* link:access-management-terminology-unified.html["Terminologia de gerenciamento de acesso"]
+* link:permissions-for-mapped-roles-unified.html["Permissões para funções mapeadas"]
+* link:access-management-with-saml.html["SAML"]
+
+
+
+
+== Como faço para configurar o Access Management?
+
+O software SANtricity vem pré-configurado para usar funções de usuário locais. Se você quiser usar LDAP, pode configurá-lo na página Access Management.
+
+Saiba mais:
+
+* link:access-management-with-local-user-roles-unified.html["Gerenciamento de acesso com funções de usuário locais"]
+* link:access-management-with-directory-services-unified.html["Gerenciamento de acesso com serviços de diretório"]
+* link:configure-saml.html["Configurar SAML"]
+

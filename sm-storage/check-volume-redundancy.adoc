@@ -1,0 +1,116 @@
+---
+permalink: sm-storage/check-volume-redundancy.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, check, volume, redundancy 
+summary: Com a orientação do suporte técnico ou conforme as instruções do Recovery Guru, você pode verificar a redundância de um volume em um pool ou grupo de volume para determinar se os dados nesse volume estão consistentes. Os dados de redundância são usados para reconstruir rapidamente as informações em uma unidade de substituição caso uma das unidades no pool ou grupo de volume apresente falha. 
+---
+= Verifique a redundância do volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Com a orientação do suporte técnico ou conforme as instruções do Recovery Guru, você pode verificar a redundância de um volume em um pool ou grupo de volume para determinar se os dados nesse volume são consistentes.
+
+Os dados de redundância são usados para reconstruir rapidamente as informações em uma unidade de substituição caso uma das unidades no pool ou grupo de volume falhe.
+
+.Antes de começar
+* O status do pool ou grupo de volume deve ser Ótimo.
+* O pool ou grupo de volume deve não ter operações de modificação de volume em andamento.
+* Você pode verificar redundância em qualquer nível RAID, exceto no RAID 0, porque RAID 0 não possui redundância de dados.
+
+
+[NOTE]
+====
+Verifique a redundância do volume somente quando instruído a fazê-lo pelo Recovery Guru e sob a orientação do suporte técnico.
+
+====
+.Sobre esta tarefa
+Você só pode executar essa verificação em um pool ou grupo de volume por vez. Uma verificação de redundância de volume executa as seguintes ações:
+
+* Analisa os blocos de dados em um volume RAID 3, RAID 5 ou RAID 6 e verifica as informações de redundância para cada bloco. (RAID 3 só pode ser atribuído a grupos de volume usando a interface de linha de comando.)
+* Compara os blocos de dados em unidades RAID 1 espelhadas.
+* Retorna erros de redundância se o firmware do controlador determinar que os dados são inconsistentes.
+
+
+[NOTE]
+====
+Executar imediatamente uma verificação de redundância no mesmo pool ou grupo de volume pode causar um erro. Para evitar esse problema, aguarde de um a dois minutos antes de executar outra verificação de redundância no mesmo pool ou grupo de volume.
+
+====
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o menu: tarefas incomuns [Verificar redundância de volume].
++
+A caixa de diálogo Verificar redundância é exibida.
+
+. Selecione os volumes que deseja verificar e, em seguida, digite  `check` para confirmar que deseja realizar esta operação.
+. Clique em *Check*.
++
+A operação de verificação de redundância de volumes é iniciada. Os volumes no pool ou grupo de volume são verificados sequencialmente, começando do topo da tabela na caixa de diálogo. Essas ações ocorrem à medida que cada volume é verificado:
+
++
+** O volume é selecionado na tabela de volumes.
+** O status da verificação de redundância é exibido na coluna *Status*.
+** A verificação é interrompida ao encontrar qualquer erro de mídia ou paridade e, em seguida, o erro é relatado.
++
+.Mais informações sobre o status da verificação de redundância
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Status | Descrição 
+
+
+ a| 
+Pendente
+ a| 
+Este é o primeiro volume a ser verificado e você ainda não clicou em Iniciar para iniciar a verificação de redundância.
+
+ou
+
+A operação de verificação de redundância está sendo realizada em outros volumes no pool ou grupo de volume.
+
+
+
+ a| 
+Verificando
+ a| 
+O volume está passando pela verificação de redundância.
+
+
+
+ a| 
+Aprovado
+ a| 
+O volume passou na verificação de redundância. Nenhuma inconsistência foi detectada nas informações de redundância.
+
+
+
+ a| 
+Falha
+ a| 
+O volume falhou na verificação de redundância. Foram detectadas inconsistências nas informações de redundância.
+
+
+
+ a| 
+Erro de mídia
+ a| 
+A mídia de armazenamento está defeituosa e ilegível. Siga as instruções exibidas no Recovery Guru.
+
+
+
+ a| 
+Erro de paridade
+ a| 
+A paridade não está correta para uma determinada parte dos dados. Um erro de paridade é potencialmente grave e pode causar perda permanente de dados.
+
+|===
+====
+
+
+. Clique em *Concluído* após o último volume no pool ou grupo de volume ter sido verificado.
+

@@ -1,0 +1,64 @@
+---
+permalink: sm-storage/delete-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, volume 
+summary: Normalmente, você exclui volumes se eles foram criados com parâmetros ou capacidade incorretos, não atendem mais às necessidades de configuração de storage ou são imagens de snapshot que não são mais necessárias para backup ou teste de aplicativos. 
+---
+= Excluir um volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Normalmente, você exclui volumes se eles foram criados com parâmetros ou capacidade incorretos, não atendem mais às necessidades de configuração de storage ou são imagens de snapshot que não são mais necessárias para backup ou teste de aplicativos.
+
+A exclusão de um volume aumenta a capacidade livre no pool ou volume group. Você pode selecionar um ou mais volumes para excluir.
+
+.Antes de começar
+Nos volumes que você planeja excluir, certifique-se do seguinte:
+
+* Todos os dados estão em backup.
+* Todas as operações de entrada/saída (E/S) são interrompidas.
+* Todos os dispositivos e sistemas de arquivos estão desmontados.
+
+
+.Sobre esta tarefa
+Não é possível excluir um volume que apresente uma destas condições:
+
+* O volume está sendo inicializado.
+* O volume está sendo reconstruído.
+* O volume faz parte de um grupo de volume que contém uma unidade que está passando por uma operação de copyback.
+* O volume está passando por uma operação de modificação, como uma alteração no tamanho do segmento, a menos que o volume esteja agora no status Failed.
+* O volume está mantendo qualquer tipo de reserva persistente.
+* O volume é um volume de origem ou um volume de destino em uma cópia de volume que possui o status de Pendente, Em andamento ou Falha.
+
+
+[CAUTION]
+====
+A exclusão de um volume causa a perda de todos os dados nesses volumes.
+
+====
+[NOTE]
+====
+Quando um volume excede um determinado tamanho (atualmente 128 TB), a exclusão está sendo realizada em segundo plano e o espaço liberado pode não estar disponível imediatamente.
+
+====
+.Passos
+. Selecione o menu: storage [Volumes].
+. Clique em *Delete*.
++
+A caixa de diálogo Excluir Volumes é exibida.
+
+. Selecione um ou mais volumes que você deseja excluir e confirme que deseja realizar a operação.
+. Clique em *Delete*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Exclui quaisquer imagens de Snapshot, agendamentos e volumes de Snapshot associados.
+* Remove quaisquer relações de espelhamento.
+* Aumenta a capacidade livre no pool ou grupo de volume.
+

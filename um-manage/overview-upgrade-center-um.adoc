@@ -1,0 +1,110 @@
+---
+permalink: um-manage/overview-upgrade-center-um.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, upgrade, center 
+summary: A partir do Centro de Atualização, você pode gerenciar upgrades do software SANtricity OS e da NVSRAM para vários arrays de storage. 
+---
+= Saiba mais sobre o Upgrade Center no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do Centro de Atualização, você pode gerenciar upgrades do software SANtricity OS e da NVSRAM para vários arrays de storage.
+
+
+
+== Como funcionam as atualizações?
+
+Você baixa o software mais recente do sistema operacional e, em seguida, atualiza um ou mais arrays.
+
+
+
+=== Fluxo de trabalho de atualização
+
+Os passos a seguir fornecem um fluxo de trabalho de alto nível para realizar atualizações de software.
+
+. Você baixa o arquivo de software SANtricity OS mais recente do site de suporte (um link está disponível no Unified Manager na página de suporte). Salve o arquivo no sistema host de gerenciamento (o host onde você acessa Unified Manager em um navegador) e, em seguida, descompacte o arquivo.
+. No Unified Manager, você carrega o arquivo de software do SANtricity OS e o arquivo NVSRAM no repositório (uma área do servidor Web Services Proxy onde os arquivos são armazenados). Você pode adicionar arquivos pelo menu:Upgrade Center[Upgrade SANtricity OS Software] ou pela Upgrade Center > Manage Software Repository.
+. Após os arquivos serem carregados no repositório, você pode então selecionar o arquivo a ser usado na atualização. Na página Upgrade SANtricity OS software (menu: Upgrade Center[Upgrade SANtricity OS software]), você seleciona o arquivo de software do SANtricity OS e o arquivo NVSRAM. Após selecionar um arquivo de software, uma lista de arrays de storage compatíveis aparece nesta página. Em seguida, você seleciona os arrays de storage que deseja atualizar com o novo software. (Você não pode selecionar arrays incompatíveis.)
+. Em seguida, você pode iniciar imediatamente a transferência e ativação do software ou optar por preparar os arquivos para ativação em outro momento. Durante o processo de atualização, Unified Manager executa as seguintes tarefas:
++
+.. Executa uma verificação de integridade nos arrays de storage para determinar se existem condições que possam impedir a conclusão da atualização. Se algum array falhar na verificação de integridade, você pode ignorar esse array específico e continuar a atualização para os demais, ou pode interromper todo o processo e solucionar problemas nos arrays que não foram aprovados.
+.. Transfere os arquivos de atualização para cada controlador.
+.. Reinicializa os controladores e ativa o novo software SANtricity OS, um controlador por vez. Durante a ativação, o arquivo SANtricity OS existente é substituído pelo novo arquivo.
++
+[NOTE]
+====
+Você também pode especificar que o software seja ativado em um momento posterior.
+
+====
+
+
+
+
+
+
+=== Atualização imediata ou faseada
+
+Você pode ativar a atualização imediatamente ou prepará-la para um momento posterior. Você pode optar por ativar mais tarde pelos seguintes motivos:
+
+* *Horário do dia* -- A ativação do software pode demorar bastante, então talvez seja melhor esperar até que a carga de E/S esteja mais leve. Dependendo da carga de E/S e do tamanho do cache, uma atualização do controlador geralmente leva de 15 a 25 minutos para ser concluída. Os controladores reinicializam e realizam failover durante a ativação, portanto o desempenho pode ser menor do que o normal até que a atualização seja concluída.
+* *Tipo de pacote* -- Você pode querer testar o novo software e firmware em um array de storage antes de atualizar os arquivos em outros arrays de storage.
+
+
+Para ativar o software em fase de testes, acesse o menu:Support[Upgrade Center] e clique em *Ativar* na área intitulada SANtricity OS Controller Software upgrade.
+
+
+
+=== Verificação de integridade
+
+Uma verificação de integridade é executada como parte do processo de atualização, mas você também pode executar uma verificação de integridade separadamente antes de começar (vá para menu:Upgrade Center[Pre-Upgrade Health Check]).
+
+A verificação de integridade avalia todos os componentes do sistema de storage para garantir que a atualização possa prosseguir. As seguintes condições podem impedir a atualização:
+
+* Unidades atribuídas com falha
+* Hot spares em uso
+* Grupos de volume incompletos
+* Operações exclusivas em andamento
+* Volumes ausentes
+* Controlador em estado não ideal
+* Número excessivo de eventos de log de eventos
+* Falha na validação do banco de dados de configuração
+* Unidades com versões antigas do DACstore
+
+
+
+
+== O que preciso saber antes de atualizar?
+
+Antes de atualizar vários arrays de storage, revise as principais considerações como parte do seu planejamento.
+
+
+
+=== Versões atuais
+
+Você pode visualizar as versões atuais do software SANtricity OS na página Gerenciar do Unified Manager para cada array de storage. A versão é exibida na coluna Software SANtricity OS. As informações do firmware do controlador e da NVSRAM estão disponíveis em uma caixa de diálogo pop-up ao clicar na versão do SANtricity OS em cada linha.
+
+
+
+=== Outros componentes que exigem atualização
+
+Como parte do processo de atualização, você também pode precisar atualizar o driver multipath/failover do host ou o driver HBA para que o host possa interagir corretamente com os controladores.
+
+Para informações sobre compatibilidade, consulte o https://imt.netapp.com/matrix/#welcome["NetApp Matriz de interoperabilidade"^]. Veja também os procedimentos nos Guias Rápidos para o seu sistema operacional. Os Guias Rápidos estão disponíveis em https://docs.netapp.com/us-en/e-series/index.html["Documentação do E-Series e SANtricity"^].
+
+
+
+=== Controladores duplos
+
+Se um array de storage contiver dois controladores e você tiver um driver multipath instalado, o array de storage poderá continuar processando operações de E/S enquanto a atualização ocorre. Durante a atualização, o seguinte processo ocorre:
+
+. O controlador A faz failover de todas as suas LUNs para o controlador B.
+. A atualização ocorre no controlador A.
+. O controlador A recupera seus LUNs e todos os LUNs do controlador B.
+. A atualização ocorre no controlador B.
+
+
+Após a conclusão da atualização, pode ser necessário redistribuir manualmente os volumes entre os controladores para garantir que os volumes retornem ao controlador proprietário correto.

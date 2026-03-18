@@ -1,0 +1,58 @@
+---
+permalink: sm-settings/how-alerts-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, alarm, alerts, 
+summary: Os alertas notificam os administradores sobre eventos importantes que ocorrem no array de storage. Os alertas podem ser enviados por e-mail, SNMP traps e syslog. 
+---
+= Como funcionam os alertas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os alertas notificam os administradores sobre eventos importantes que ocorrem no array de storage. Os alertas podem ser enviados por e-mail, SNMP traps e syslog.
+
+O processo de alertas funciona da seguinte forma:
+
+. Um administrador configura um ou mais dos seguintes métodos de alerta no System Manager:
++
+** *Email* -- As mensagens são enviadas para endereços de email.
+** *SNMP* -- Traps SNMP são enviados para um servidor SNMP.
+** *Syslog* -- As mensagens são enviadas para um servidor syslog.
+
+
+. Quando o monitor de eventos do array de storage detecta um problema, ele registra informações sobre esse problema no log de eventos (disponível em menu:Support[Event Log]). Por exemplo, os problemas podem incluir eventos como falha de bateria, um componente passando de Optimal para Offline ou erros de redundância no controlador.
+. Se o monitor de eventos determinar que o evento é "passível de alerta", ele então enviará uma notificação usando os métodos de alerta configurados (email, SNMP e/ou syslog). Todos os eventos críticos são considerados "passíveis de alerta", juntamente com alguns eventos de aviso e informativos.
+
+
+
+
+== Configuração de alertas
+
+Você pode configurar alertas no assistente de Configuração Inicial (somente para alertas por e-mail) ou na página Alertas. Para verificar a configuração atual, acesse menu:Configurações[Alertas].
+
+O bloco Alerts exibe a configuração de alertas, que pode ser uma das seguintes:
+
+* Não configurado.
+* Configurado; pelo menos um método de alerta está definido. Para determinar quais métodos de alerta estão configurados, posicione o cursor sobre o bloco.
+
+
+
+
+== Informações de alertas
+
+Os alertas podem incluir os seguintes tipos de informação:
+
+* Nome do array de storage.
+* Tipo de erro de evento relacionado a uma entrada do log de eventos.
+* Data e hora em que o evento ocorreu.
+* Breve descrição do evento.
+
+
+[NOTE]
+====
+Os alertas do syslog seguem o padrão de mensagens RFC 5424.
+
+====

@@ -1,0 +1,45 @@
+---
+permalink: um-manage/activate-pending-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, activate, staged, os, software 
+summary: Você pode optar por ativar o arquivo de software imediatamente ou aguardar um momento mais conveniente. Este procedimento pressupõe que você escolheu ativar o arquivo de software em um momento posterior. 
+---
+= Ative o software do sistema operacional em modo de preparação no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode optar por ativar o arquivo de software imediatamente ou aguardar um momento mais conveniente. Este procedimento pressupõe que você escolheu ativar o arquivo de software em um momento posterior.
+
+.Sobre esta tarefa
+Você pode transferir os arquivos de firmware sem ativá-los. Você pode optar por ativar depois pelos seguintes motivos:
+
+* *Horário do dia* -- A ativação do software pode demorar bastante, então talvez seja melhor esperar até que as cargas de E/S estejam mais leves. Os controladores reinicializam e realizam failover durante a ativação, portanto o desempenho pode ser inferior ao normal até que a atualização seja concluída.
+* *Tipo de pacote* -- Você pode querer testar o novo software e firmware em um array de storage antes de atualizar os arquivos em outros arrays de storage.
+
+
+[NOTE]
+====
+Não é possível interromper o processo de ativação depois que ele começa.
+
+====
+.Passos
+. Na tela principal, selecione *Gerenciar*. Se necessário, clique na coluna Status para classificar, na parte superior da página, todos os arrays de storage com o status "OS Upgrade (awaiting activation)."
+. Selecione um ou mais arrays de storage para os quais deseja ativar o software e, em seguida, selecione menu:Upgrade Center[Activate Staged OS Software].
++
+As seguintes ações ocorrem durante a operação de upgrade:
+
++
+** Uma verificação de integridade pré-atualização é executada como parte do processo de ativação. A verificação de integridade pré-atualização avalia todos os componentes do array de storage para garantir que a ativação possa prosseguir.
+** Se alguma verificação de integridade falhar para um array de storage, a ativação será interrompida. Você pode clicar nas reticências (...) e selecionar *Salvar Log* para revisar os erros. Você também pode optar por ignorar o erro de verificação de integridade e então clicar em *Continuar* para prosseguir com a ativação.
+** Você pode cancelar a operação de ativação após a verificação de integridade pré-atualização. Com a conclusão bem-sucedida da verificação de integridade pré-atualização, a ativação ocorre. O tempo necessário para ativar depende da configuração do seu array de storage e dos componentes que você está ativando.
+
+
+. *Opcional:* Após a conclusão da ativação, você pode ver uma lista do que foi ativado para um array de storage específico clicando nas reticências (...) e, em seguida, selecionando *Salvar registro*.
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome  `activate_log-<date>.json`.
+
+

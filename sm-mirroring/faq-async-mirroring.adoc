@@ -1,0 +1,315 @@
+---
+permalink: sm-mirroring/faq-async-mirroring.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre espelhamento assíncrono para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== Como o espelhamento assíncrono difere do espelhamento síncrono?
+
+O recurso de espelhamento assíncrono difere do recurso de espelhamento síncrono de uma maneira essencial: captura o estado do volume de origem em um determinado momento e copia apenas os dados que foram alterados desde a última captura de imagem.
+
+Com espelhamento síncrono, o estado do volume primário não é capturado em um determinado momento, mas sim reflete todas as alterações que foram feitas no volume primário para o volume secundário. O volume secundário é idêntico ao volume primário em todos os momentos porque, com esse tipo de espelhamento, cada vez que uma gravação é feita no volume primário, uma gravação é feita no volume secundário. O host não recebe uma confirmação de que a gravação foi bem-sucedida até que o volume secundário seja atualizado com sucesso com as alterações feitas no volume primário.
+
+Com espelhamento assíncrono, o array de storage remoto não está totalmente sincronizado com o array de storage local, portanto, se o aplicativo precisar fazer a transição para o array de storage remoto devido a uma perda do array de storage local, algumas transações poderão ser perdidas.
+
+Comparação entre recursos de espelhamento:
+
+[cols="1a,1a"]
+|===
+| Espelhamento assíncrono | Espelhamento síncrono 
+
+
+ a| 
+*Método de replicação*
+
+
+
+ a| 
+* *Ponto no tempo*
++
+O espelhamento é feito sob demanda ou automaticamente de acordo com uma programação definida pelo usuário. As programações podem ser definidas com granularidade de minutos. O tempo mínimo entre sincronizações é 10 minutos.
+
+
+ a| 
+* *Contínuo*
++
+O espelhamento é executado automaticamente continuamente, copiando dados de cada gravação do host.
+
+
+
+
+
+ a| 
+*Capacidade reservada*
+
+
+
+ a| 
+* *Múltiplo*
++
+É necessário um volume de capacidade reservada para cada par espelhado.
+
+
+ a| 
+* *Único*
++
+É necessário um único volume de capacidade reservada para todos os volumes espelhados.
+
+
+
+
+
+ a| 
+*Comunicação*
+
+
+
+ a| 
+* *iSCSI e Fibre Channel*
++
+Suporta interfaces iSCSI e Fibre Channel entre arrays de storage.
+
+
+ a| 
+* *Fibre Channel*
++
+Suporta apenas interfaces Fibre Channel entre arrays de storage.
+
+
+
+
+
+ a| 
+*Distância*
+
+
+
+ a| 
+* *Ilimitado*
++
+Suporte para distâncias praticamente ilimitadas entre o array de storage local e o array de storage remoto, sendo a distância normalmente limitada apenas pelas capacidades da rede e pela tecnologia de extensão de canal.
+
+
+ a| 
+* *Restrito*
++
+Normalmente, deve estar a cerca de 10 km (6,2 milhas) do array de storage local para atender aos requisitos de latência e desempenho do aplicativo.
+
+
+
+|===
+
+
+== Por que não consigo acessar o recurso de espelhamento que escolhi?
+
+O espelhamento é configurado na interface SANtricity Unified Manager.
+
+[NOTE]
+====
+O espelhamento síncrono não está disponível no array de storage EF600/EF600C ou EF300/EF300C.
+
+====
+Para habilitar e configurar o espelhamento entre dois arrays, verifique o seguinte:
+
+* O serviço Web Services Proxy deve estar em execução. (Unified Manager é instalado em um sistema host juntamente com o Web Services Proxy.)
+* Unified Manager deve estar sendo executado em seu host local por meio de uma conexão HTTPS.
+* Os dois arrays de storage que você deseja usar para espelhamento devem ser detectados no Unified Manager.
+* Unified Manager deve ter certificados SSL válidos para os storage arrays. Você pode aceitar um certificado autoassinado ou instalar certificados assinados por CA a partir do Unified Manager.
+
+
+Para obter instruções de configuração, consulte o seguinte:
+
+* link:../um-manage/create-asynchronous-mirrored-pair-um.html["Criar par espelhado assíncrono (no Unified Manager)"]
+* link:../um-manage/create-synchronous-mirrored-pair-um.html["Criar par espelhado síncrono (no Unified Manager)"]
+
+
+
+
+== O que preciso saber antes de criar um grupo de consistência de espelhamento?
+
+Siga estas diretrizes antes de criar um grupo de consistência de espelhamento.
+
+[NOTE]
+====
+O espelhamento síncrono não está disponível no sistema de storage EF600/EF600C ou EF300/EF300C.
+
+====
+Você cria um grupo de consistência no Unified Manager no assistente Criar Pares Espelhados.
+
+Atenda aos seguintes requisitos para Unified Manager:
+
+* O serviço Web Services Proxy deve estar em execução.
+* Unified Manager deve estar sendo executado em seu host local por meio de uma conexão HTTPS.
+* Unified Manager deve exibir certificados SSL válidos para o array de storage. Você pode aceitar um certificado autoassinado ou instalar seu próprio certificado de segurança usando Unified Manager e navegando até menu:Certificate[Certificate Management].
+
+
+Certifique-se também de atender aos seguintes requisitos para arrays de storage:
+
+* Os dois arrays de storage devem ser detectados no Unified Manager.
+* Cada array de storage deve ter dois controladores.
+* Cada controlador, tanto no array primário quanto no array secundário, deve ter uma porta de gerenciamento Ethernet configurada e deve estar conectado à sua rede.
+* Os arrays de storage possuem uma versão mínima de firmware de 7.84. (Cada um deles pode executar diferentes versões de sistema operacional.)
+* Você deve saber a senha dos arrays de storage local e remoto.
+* Seus arrays de storage locais e remotos estão conectados por meio de uma estrutura Fibre Channel ou interface iSCSI.
+
+
+
+
+== Espelhamento assíncrono - o que preciso saber antes de criar um par espelhado?
+
+Você configura pares espelhados na interface SANtricity Unified Manager e, em seguida, gerencia os pares no SANtricity System Manager.
+
+Antes de criar um par espelhado, siga estas orientações.
+
+* Você precisa ter dois arrays de storage.
+* Cada array de storage deve ter dois controladores.
+* Cada controlador, tanto no array primário quanto no array secundário, deve ter uma porta de gerenciamento Ethernet configurada e deve estar conectado à sua rede.
+* Seus arrays de storage locais e remotos estão conectados por meio de uma estrutura Fibre Channel ou interface iSCSI.
+* Os arrays de storage possuem uma versão mínima de firmware de 7.84. (Cada um deles pode executar diferentes versões de sistema operacional.)
+* Você deve saber a senha dos arrays de storage local e remoto.
+* Você precisa ter capacidade livre suficiente no array de storage remoto para criar um volume secundário igual ou maior que o volume primário que você deseja espelhar.
+* Você instalou o Web Services Proxy e Unified Manager. Os pares espelhados são configurados na interface do Unified Manager.
+* Os dois arrays de storage são detectados no Unified Manager.
+* Seu array de storage deve conter pelo menos um grupo de consistência de espelhamento. Você cria um grupo de consistência no Unified Manager no assistente Criar Pares Espelhados.
+
+
+
+
+== O que preciso saber antes de aumentar minha capacidade reservada em um volume de par espelhado?
+
+Normalmente, você deve aumentar a capacidade reservada quando receber um aviso de que a capacidade reservada para um par espelhado está ficando cheia. Você só pode aumentar a capacidade reservada em incrementos de 8 GiB.
+
+Para operações de espelhamento assíncrono, a capacidade reservada geralmente corresponde a 20% do volume base. Escolha uma capacidade reservada maior se uma ou ambas estas condições existirem:
+
+* Você pretende manter o par espelhado por um longo período de tempo.
+* Uma grande porcentagem dos blocos de dados será alterada no volume primário devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume primário.
+
+
+Você pode aumentar a capacidade reservada para um par espelhado realizando uma destas ações:
+
+* Ajuste a porcentagem de capacidade para um volume de par espelhado selecionando menu:Storage[Pools and Volumes Groups] e, em seguida, clicando na guia *Reserved Capacity*.
+* Crie um novo volume usando a capacidade livre disponível em um pool ou volume group.
++
+Se não houver capacidade livre em nenhum pool ou grupo de volume, você pode adicionar capacidade não configurada na forma de unidades não utilizadas a um pool ou grupo de volume.
+
+
+
+
+
+== Por que não consigo aumentar a capacidade reservada com a quantidade solicitada?
+
+Você pode aumentar a capacidade reservada apenas em incrementos de 4 GiB.
+
+Revise as seguintes diretrizes:
+
+* Você deve ter capacidade livre suficiente no pool ou grupo de volume para que ele possa ser expandido se necessário.
++
+Se não houver capacidade livre em nenhum pool ou grupo de volume, você pode adicionar capacidade não atribuída na forma de drives não utilizados a um pool ou grupo de volume.
+
+* O volume no pool ou grupo de volume deve ter um status Ótimo e não deve estar em nenhum estado de modificação.
+* Deve haver capacidade livre no pool ou volume group que você deseja usar para aumentar a capacidade.
+
+
+Para operações de espelhamento assíncrono, a capacidade reservada normalmente corresponde a 20 por cento do volume base. Use uma porcentagem maior se você acredita que o volume base sofrerá muitas alterações ou se a expectativa de vida útil da operação de serviço de cópia de um objeto de storage for muito longa.
+
+
+
+== Por que eu alteraria essa porcentagem?
+
+A capacidade reservada é normalmente de 40% do volume base para operações de snapshot e de 20% do volume base para operações de espelhamento assíncrono.
+
+Normalmente, essa capacidade é suficiente. A capacidade necessária varia, dependendo da frequência e do tamanho das gravações de E/S no volume base e de quanto tempo você pretende usar a operação de serviço de cópia do objeto de armazenamento.
+
+Em geral, escolha uma porcentagem maior para a capacidade reservada se uma ou ambas estas condições existirem:
+
+* Se a vida útil da operação de serviço de cópia de um determinado objeto de storage for muito longa.
+* Se uma grande porcentagem dos blocos de dados for alterada no volume base devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume base.
+
+
+
+
+== Por que vejo mais de um candidato para capacidade reservada?
+
+Se houver mais de um volume em um pool ou grupo de volume que atenda à porcentagem de capacidade que você selecionou para o objeto de storage, você verá vários candidatos.
+
+Você pode atualizar a lista de candidatos recomendados alterando a porcentagem de espaço físico em disco que deseja reservar no volume base para operações de serviço de cópia. Os melhores candidatos são exibidos com base na sua seleção.
+
+
+
+== Por que vejo valores Não Disponível exibidos na tabela?
+
+A tabela lista os valores Não Disponível quando os dados localizados no array de storage remoto não estão disponíveis para exibição.
+
+Para exibir os dados do array de storage remoto, inicie System Manager a partir do Unified Manager.
+
+
+
+== Por que não vejo todos os meus pools e grupos de volume?
+
+Ao criar um volume secundário para o par espelhado assíncrono, o sistema exibe uma lista de todos os pools e grupos de volume elegíveis para esse par espelhado assíncrono. Qualquer pool ou grupo de volume que não seja elegível para uso não é exibido nessa lista.
+
+Pools ou grupos de volume podem não ser elegíveis por qualquer um dos seguintes motivos.
+
+* Os recursos de segurança de um pool ou grupo de volume não correspondem.
+* Um pool ou grupo de volume está em um estado não ideal.
+* A capacidade de um pool ou grupo de volume é muito pequena.
+
+
+
+
+== Espelhamento assíncrono - Por que não vejo todos os meus volumes?
+
+Ao selecionar um volume primário para um par espelhado, uma lista mostra todos os volumes elegíveis.
+
+Quaisquer volumes que não são elegíveis para uso não são exibidos nessa lista. Volumes podem não ser elegíveis por qualquer um dos seguintes motivos:
+
+* O volume não está otimizado.
+* O volume já está participando de uma relação de espelhamento.
+* Para volumes finos, a expansão automática deve estar ativada.
+
+
+
+NOTE: Para controladores EF600 e EF300, os volumes primário e secundário de um par espelhado assíncrono devem corresponder ao mesmo protocolo, nível de bandeja, tamanho de segmento, tipo de segurança e nível RAID. Pares espelhados assíncronos não elegíveis não aparecerão na lista de volumes disponíveis.
+
+
+
+== Espelhamento assíncrono - Por que não vejo todos os volumes no array de storage remoto?
+
+Ao selecionar um volume secundário no array de storage remoto, uma lista mostra todos os volumes elegíveis para esse par espelhado.
+
+Quaisquer volumes que não são elegíveis para uso não são exibidos nessa lista. Volumes podem não ser elegíveis por qualquer um dos seguintes motivos:
+
+* O volume não está otimizado.
+* O volume já está participando de uma relação de espelhamento.
+* Os atributos de volume fino entre o volume primário e o volume secundário não correspondem.
+* Se você estiver usando Data Assurance (DA), o volume primário e o volume secundário devem ter as mesmas configurações de DA.
++
+** Se o volume principal estiver habilitado para DA, o volume secundário também deve estar habilitado para DA.
+** Se o volume principal não estiver habilitado para DA, o volume secundário não deve estar habilitado para DA.
+
+
+
+
+
+
+== Por que eu atualizaria o endereço IP do meu array de storage remoto?
+
+Você atualiza o endereço IP do array de storage remoto quando o endereço IP de uma porta iSCSI muda e o array de storage local não consegue se comunicar com o array de storage remoto.
+
+Ao estabelecer uma relação de espelhamento assíncrono com uma conexão iSCSI, tanto o array de storage local quanto o array de storage remoto armazenam um registro do endereço IP do array de storage remoto na configuração de espelhamento assíncrono. Se o endereço IP de uma porta iSCSI for alterado, o array de storage remoto que estiver tentando usar essa porta encontrará um erro de comunicação.
+
+O array de storage com o endereço IP alterado envia uma mensagem para cada array de storage remoto associado aos grupos de consistência de espelhamento que estão configurados para espelhar por meio de uma conexão iSCSI. Os arrays de storage que recebem essa mensagem atualizam automaticamente seu endereço IP de destino remoto.
+
+Se o array de storage com o endereço IP alterado não conseguir enviar sua mensagem entre arrays para um array de storage remoto, o sistema enviará um alerta sobre o problema de conectividade. Use a opção Atualizar Endereço IP Remoto para restabelecer a conexão com o array de storage local.

@@ -1,0 +1,104 @@
+---
+permalink: sm-storage/capacity-for-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, capacity, volumes, 
+summary: Os discos do seu array de storage fornecem a capacidade de storage físico para seus dados. Antes de começar a armazenar dados, você deve configurar a capacidade alocada em componentes lógicos conhecidos como pools ou grupo de volume. Você usa esses objetos de storage para configurar, armazenar, manter e preservar dados no seu array de storage. 
+---
+= Como a capacidade é alocada para volumes no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os discos do seu array de storage fornecem a capacidade de storage físico para seus dados. Antes de começar a armazenar dados, você deve configurar a capacidade alocada em componentes lógicos conhecidos como pools ou grupo de volume. Você usa esses objetos de storage para configurar, armazenar, manter e preservar dados no seu array de storage.
+
+
+
+== Usando a capacidade para criar e expandir volumes
+
+Você pode criar volumes a partir da capacidade não atribuída ou da capacidade livre em um pool ou volume group.
+
+* Ao criar um volume a partir de capacidade não atribuída, você pode criar um pool ou volume group e o volume ao mesmo tempo.
+* Ao criar um volume a partir de capacidade livre, você está criando um volume adicional em um pool ou grupo de volume já existente.
+
+
+Após expandir a capacidade do volume, você deve aumentar manualmente o tamanho do sistema de arquivos para que corresponda. Como fazer isso depende do sistema de arquivos que você está usando. Consulte a documentação do seu sistema operacional para obter detalhes.
+
+
+
+== Tipos de capacidade para volumes espessos e volumes finos
+
+Você pode criar volumes espessos ou volumes finos. A capacidade relatada e a capacidade alocada são as mesmas para volumes espessos, mas são diferentes para volumes finos.
+
+* Para um volume espesso, a capacidade reportada do volume é igual à quantidade de storage físico alocada. Toda a capacidade de storage físico deve estar presente. O espaço fisicamente alocado é igual ao espaço reportado ao host.
++
+Normalmente, você define a capacidade reportada do volume espesso como a capacidade máxima que você prevê que o volume atingirá. Os volumes espessos oferecem alto desempenho e previsibilidade para seus aplicativos, principalmente porque toda a capacidade do usuário é reservada e alocada no momento da criação.
+
+* Para um volume fino, a capacidade relatada é a capacidade que é informada aos hosts, enquanto a capacidade alocada é a quantidade de espaço em disco que está atualmente alocada para gravação de dados.
++
+A capacidade reportada pode ser maior do que a capacidade alocada no array de storage. Volumes thin podem ser dimensionados para acomodar o crescimento sem levar em consideração os recursos atualmente disponíveis.
+
+
+
+[NOTE]
+====
+SANtricity System Manager não oferece uma opção para criar volumes thin. Se você deseja criar volumes thin, use o Command Line Interface (CLI).
+
+====
+
+
+== Limites de capacidade para volumes espessos
+
+A capacidade mínima para um volume espesso é de 1 MiB, e a capacidade máxima é determinada pelo número e capacidade das drives no pool ou grupo de volume.
+
+Ao aumentar a capacidade declarada para um volume espesso, tenha em mente as seguintes diretrizes:
+
+* Você pode especificar até três casas decimais (por exemplo, 65.375 GiB).
+* A capacidade deve ser menor (ou igual) à máxima disponível no grupo de volume.
++
+Ao criar um volume, uma capacidade adicional é pré-alocada para a migração de Dynamic Segment Size (DSS). A migração DSS é um recurso do software que permite alterar o tamanho do segmento de um volume.
+
+* Volumes maiores que 2 TiB são suportados por alguns sistemas operacionais (a capacidade máxima relatada é determinada pelo sistema operacional). Na verdade, alguns sistemas operacionais suportam volumes de até 128 TiB. Consulte a documentação do seu sistema operacional para obter mais detalhes.
+
+
+
+
+== Limites de capacidade para volumes finos
+
+É possível criar volumes thin com uma grande capacidade reportada e uma capacidade alocada relativamente pequena, o que é benéfico para a utilização do storage e eficiência. Os volumes thin podem ajudar a simplificar a administração do storage, pois a capacidade alocada pode aumentar conforme as necessidades do aplicativo mudam, sem interromper o aplicativo, permitindo uma melhor utilização do storage.
+
+Além da capacidade reportada e da capacidade alocada, os volumes thin também contêm capacidade escrita. A capacidade escrita é a quantidade de capacidade que foi escrita a partir da capacidade reservada alocada para volumes thin.
+
+A tabela a seguir lista os limites de capacidade para um volume fino.
+
+[cols="3*"]
+|===
+| Tipo de capacidade | Tamanho mínimo | Tamanho máximo 
+
+
+ a| 
+Denunciado
+ a| 
+32 MiB
+ a| 
+256 TiB
+
+
+
+ a| 
+Alocado
+ a| 
+4 MiB
+ a| 
+64 TiB
+
+|===
+Para um volume fino, se a capacidade máxima relatada de 256 TiB for atingida, você não poderá aumentar sua capacidade. Certifique-se de que a capacidade reservada do volume fino esteja definida para um tamanho maior que a capacidade máxima relatada.
+
+O sistema expande automaticamente a capacidade alocada com base no limite de capacidade alocada. O limite de capacidade alocada permite limitar o crescimento automático do thin volume a um valor inferior à capacidade reportada. Quando a quantidade de dados gravados se aproxima da capacidade alocada, você pode alterar o limite de capacidade alocada.
+
+Para alterar o limite de capacidade alocada, selecione menu:Storage [Volumes > guia Thin Volume Monitoring > Change Limit].
+
+Como System Manager não aloca a capacidade total ao criar um volume fino, pode haver capacidade livre insuficiente no pool. A falta de espaço pode bloquear gravações no pool, não apenas para os volumes finos, mas também para outras operações que exigem capacidade do pool (por exemplo, imagens de snapshot ou volumes de snapshot). No entanto, você ainda pode realizar operações de leitura no pool. Se essa situação ocorrer, você receberá um aviso de limite de alerta.

@@ -1,0 +1,49 @@
+---
+permalink: um-manage/import-autosupport-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, autosupport, settings 
+summary: Você pode importar uma configuração AutoSupport de um array de storage para outros arrays de storage. Essa operação em lote economiza tempo quando você precisa configurar vários arrays na rede. 
+---
+= Importar configurações do AutoSupport no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode importar uma configuração AutoSupport de um array de storage para outros arrays de storage. Essa operação em lote economiza tempo quando você precisa configurar vários arrays na rede.
+
+.Antes de começar
+* AutoSupport está configurado no System Manager para o array de storage que você deseja usar como fonte (menu:Support[Support Center]).
+* A configuração existente para os arrays de storage de destino é salva no System Manager (menu: Configurações [Sistema > Salvar Configuração do Array de Storage]).
+
+
+.Sobre esta tarefa
+As configurações importadas incluem os recursos separados (Básico AutoSupport, AutoSupport OnDemand e Diagnóstico Remoto), a janela de manutenção, o método de entrega e o cronograma de despacho.
+
+.Passos
+. Na página Manage, clique em *Import Settings*.
++
+O assistente de Configurações de Importação é aberto.
+
+. Na caixa de diálogo Selecionar configurações, selecione *AutoSupport* e clique em *Avançar*.
++
+Uma caixa de diálogo é aberta para selecionar o array de storage de origem.
+
+. Na caixa de diálogo Selecionar Origem, selecione o array com as configurações que deseja importar e clique em *Avançar*.
+. Na caixa de diálogo Selecionar Destinos, selecione um ou mais arrays para receber as novas configurações.
++
+[NOTE]
+====
+Matrizes de armazenamento com firmware inferior a 8.50 não estão disponíveis para seleção. Além disso, uma matriz não aparecerá nesta caixa de diálogo se Unified Manager não conseguir se comunicar com essa matriz (por exemplo, se estiver offline ou se apresentar problemas de certificado, senha ou rede).
+
+====
+. Clique em *Concluir*.
++
+A página Operações exibe os resultados da operação de importação. Se a operação falhar, você pode clicar na linha correspondente para ver mais informações.
+
+
+
+.Resultados
+Os arrays de storage de destino agora estão configurados com as mesmas configurações de AutoSupport que o array de origem.

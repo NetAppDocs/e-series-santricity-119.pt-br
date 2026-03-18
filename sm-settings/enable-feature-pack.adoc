@@ -1,0 +1,47 @@
+---
+permalink: sm-settings/enable-feature-pack.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, feature, pack, 
+summary: 'Um feature pack é um pacote que altera os atributos do array de storage (por exemplo, alterando o protocolo de Fibre Channel para iSCSI). Feature packs exigem uma chave especial para capacitação.' 
+---
+= Ativar o pacote de recursos no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um feature pack é um pacote que altera os atributos do array de storage (por exemplo, alterando o protocolo de Fibre Channel para iSCSI). Feature packs exigem uma chave especial para capacitação.
+
+.Antes de começar
+* Você seguiu as instruções apropriadas que descrevem a conversão e a preparação para os novos atributos do array de storage. Para instruções sobre a conversão do protocolo do host, consulte o guia de manutenção de hardware para o seu modelo de controlador.
+* O array de storage está offline, portanto nenhum host ou aplicação está acessando-o.
+* Todos os dados estão em backup.
+* Você obteve um arquivo de feature pack.
++
+O arquivo do pacote de recursos é carregado no cliente de gerenciamento (o sistema com um navegador para acessar System Manager).
+
+
+
+[NOTE]
+====
+Você deve agendar uma janela de manutenção de inatividade e interromper todas as operações de E/S entre o host e os controladores. Além disso, esteja ciente de que não será possível acessar os dados no array de storage até que a conversão seja concluída com sucesso.
+
+====
+.Sobre esta tarefa
+Esta tarefa descreve como usar System Manager para habilitar um pacote de recursos. Quando terminar, você deve reinicializar o array de storage.
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Complementos*, selecione *Change Feature Pack*.
+. Clique em *Procurar* e, em seguida, selecione o arquivo de chave.
++
+O nome do arquivo é exibido na caixa de diálogo.
+
+. Digite  `change` no campo.
+. Clique em *Change*.
++
+A migração do pacote de recursos é iniciada e os controladores reinicializam. Os dados de cache não gravados são excluídos, o que garante que não haja atividade de E/S. Ambos os controladores reinicializam automaticamente para que o novo pacote de recursos entre em vigor. O array de storage retorna a um estado responsivo após a conclusão da reinicialização.
+
+

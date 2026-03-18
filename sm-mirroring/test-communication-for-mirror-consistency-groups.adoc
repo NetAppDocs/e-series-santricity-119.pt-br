@@ -1,0 +1,76 @@
+---
+permalink: sm-mirroring/test-communication-for-mirror-consistency-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, test, communication, mirror, consistency, groups, 
+summary: Você pode testar o link de comunicação para diagnosticar possíveis problemas de comunicação entre o array de storage local e o array de storage remoto associado a um grupo de consistência de espelhamento. 
+---
+= Testar a comunicação para grupos de consistência de espelhamento no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode testar o link de comunicação para diagnosticar possíveis problemas de comunicação entre o array de storage local e o array de storage remoto associado a um grupo de consistência de espelhamento.
+
+.Antes de começar
+O grupo de consistência de espelhamento que você deseja testar deve existir nos arrays de storage local e remoto.
+
+.Sobre esta tarefa
+Você pode executar quatro testes diferentes:
+
+* *Conectividade* -- Verifica se os dois controladores possuem um caminho de comunicação. O teste de conectividade envia uma mensagem entre os arrays de storage e, em seguida, valida se o grupo de consistência de espelhamento correspondente no array de storage remoto existe. Também valida se os volumes membros do grupo de consistência de espelhamento no array de storage remoto correspondem aos volumes membros do grupo de consistência de espelhamento no array de storage local.
+* *Latência* -- Envia um comando SCSI Test Unit para cada volume espelhado no array de storage remoto associado ao grupo de consistência de espelhamento para testar a latência mínima, média e máxima.
+* *Largura de banda* -- Envia duas mensagens entre arrays para o array de storage remoto para testar a largura de banda mínima, média e máxima, bem como a velocidade de link negociada da porta no array que realiza o teste.
+* *Conexões de porta* -- Mostra a porta que está sendo usada para espelhamento no array de storage local e a porta que está recebendo os dados espelhados no array de storage remoto.
+
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Mirror Consistency Groups* e, em seguida, selecione o mirror consistency group que você deseja testar.
+. Selecione *Test Communication*.
++
+A caixa de diálogo Test Communication é exibida.
+
+. Selecione um ou mais testes de comunicação para executar entre os arrays de storage local e remoto associados ao grupo de consistência de espelho selecionado e clique em *Test*.
+. Analise as informações exibidas na janela Results.
++
+[cols="35h,~"]
+|===
+| Status do teste de comunicação | Descrição 
+
+
+ a| 
+Normal sem erros
+ a| 
+O grupo de consistência de espelhamento está se comunicando corretamente.
+
+
+
+ a| 
+Status aprovado (mas não normal)
+ a| 
+Verifique possíveis problemas de rede ou de conexão e tente o teste novamente.
+
+
+
+ a| 
+Status com falha
+ a| 
+A causa da falha é indicada. Consulte o Recovery Guru para corrigir o problema.
+
+
+
+ a| 
+Erro de conexão de porta
+ a| 
+O motivo pode ser que o array de storage local não esteja conectado ou que não seja possível contatar o array de storage remoto. Consulte o Recovery Guru para corrigir o problema.
+
+|===
+
+
+.Resultados
+Após a conclusão do teste de comunicação, esta caixa de diálogo exibe um status Normal, um status Aprovado ou um status Reprovado.
+
+Se o teste de comunicação retornar o status Failed, o teste continuará sendo executado após você fechar esta caixa de diálogo até que a comunicação entre os grupos de consistência de espelhamento seja restaurada.

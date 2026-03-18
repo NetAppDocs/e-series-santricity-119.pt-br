@@ -1,0 +1,103 @@
+---
+permalink: sm-storage/create-ssd-cache.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, ssd, cache 
+summary: 'Para acelerar dinamicamente o desempenho do sistema, você pode usar o recurso SSD Cache para armazenar em cache os dados acessados com mais frequência ("dados quentes") em Solid State Drives (SSDs) de menor latência. SSD Cache é usado exclusivamente para leituras do host.' 
+---
+= Criar um SSD Cache no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para acelerar dinamicamente o desempenho do sistema, você pode usar o recurso SSD Cache para armazenar em cache os dados acessados com mais frequência ("dados quentes") em Solid State Drives (SSDs) de menor latência. SSD Cache é usado exclusivamente para leituras do host.
+
+.Antes de começar
+Seu array de storage deve conter algumas unidades SSD.
+
+.Sobre esta tarefa
+Ao criar um novo SSD Cache, você pode usar uma single drive ou várias drives. Como o cache de leitura está no array de storage, o armazenamento em cache é compartilhado entre todos os aplicativos que usam o array de storage. Você seleciona os volumes que deseja armazenar em cache e, em seguida, o armazenamento em cache é automático e dinâmico.
+
+Siga estas orientações ao criar um novo SSD Cache.
+
+* Você pode habilitar a segurança no cache SSD somente ao criá-lo, não depois.
+* Apenas um SSD Cache é suportado por array de storage.
+* Se apenas um volume tiver o cache SSD ativado, todo o cache SSD será atribuído ao controlador proprietário desse volume.
+* A capacidade máxima de SSD Cache utilizável em um array de storage depende da capacidade do cache primário do controlador.
+* O SSD Cache não é compatível com imagens de snapshot.
+* Se você importar ou exportar volumes que estão com SSD Cache ativado ou desativado, os dados em cache não serão importados ou exportados.
+* Qualquer volume atribuído ao uso do SSD Cache de um controlador não é elegível para transferência automática de load balance.
+* Se os volumes associados tiverem a segurança habilitada, crie um SSD Cache com segurança habilitada.
+
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Clique no menu: criar [Cache SSD].
++
+A caixa de diálogo Criar SSD Cache é exibida.
+
+. Digite um nome para o SSD Cache.
+. Selecione o candidato a SSD Cache que deseja usar com base nas seguintes características.
++
+[cols="25h,~"]
+|===
+| Característica | Usar 
+
+
+ a| 
+Capacidade
+ a| 
+Exibe a capacidade disponível em GiB. Selecione a capacidade para as necessidades de storage da sua aplicação.
+
+A capacidade máxima do SSD Cache depende da capacidade do cache primário do controlador. Se você alocar mais do que o máximo para o SSD Cache, qualquer capacidade extra ficará inutilizável.
+
+A capacidade do SSD Cache conta para a sua capacidade total alocada.
+
+
+
+ a| 
+Total de drives
+ a| 
+Mostra o número de unidades disponíveis para este cache SSD. Selecione o candidato a SSD com o número de unidades que você deseja.
+
+
+
+ a| 
+Compatível com segurança
+ a| 
+Indica se o candidato a cache SSD é composto inteiramente de unidades com capacidade de segurança, que podem ser unidades Full Disk Encryption (FDE) ou Federal Information Processing Standard (FIPS).
+
+Se você deseja criar um cache SSD com segurança habilitada, procure por *Sim - FDE* ou *Sim - FIPS* na coluna Secure-capable.
+
+
+
+ a| 
+Ativar segurança?
+ a| 
+Oferece a opção de ativar o recurso de Segurança da Unidade em unidades compatíveis com segurança. Se você deseja criar um SSD Cache com segurança ativada, selecione a caixa de seleção Enable Security.
+
+[NOTE]
+====
+Uma vez ativada, a segurança não pode ser desativada. Você pode ativar a segurança no SSD Cache somente ao criá-lo, não depois.
+
+====
+
+
+ a| 
+Compatível com DA
+ a| 
+Indica se o Data Assurance (DA) está disponível para este candidato a SSD Cache. O Data Assurance (DA) verifica e corrige erros que possam ocorrer durante a transferência de dados pelos controladores até as unidades.
+
+Se você deseja usar DA, selecione um candidato a cache SSD que seja compatível com DA. Essa opção está disponível somente quando o recurso DA foi ativado.
+
+O cache SSD pode conter unidades compatíveis com DA e unidades não compatíveis com DA, mas todas as unidades devem ser compatíveis com DA para que você possa usar DA.
+
+|===
+. Associe o SSD Cache aos volumes para os quais você deseja implementar o armazenamento em cache de leitura SSD. Para habilitar o SSD Cache em volumes compatíveis imediatamente, selecione a caixa de seleção *Habilitar SSD Cache em volumes compatíveis existentes que estão mapeados para hosts*.
++
+Os volumes são compatíveis se compartilharem os mesmos recursos de Drive Security e DA.
+
+. Clique em *Create*.
+

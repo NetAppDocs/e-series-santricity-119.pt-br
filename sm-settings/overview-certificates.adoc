@@ -1,0 +1,48 @@
+---
+permalink: sm-settings/overview-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, certificates, 
+summary: 'Você pode usar System Manager para criar solicitações de assinatura de certificados (CSRs), importar certificados e gerenciar certificados existentes.' 
+---
+= Saiba mais sobre certificados no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar SANtricity System Manager para criar solicitações de assinatura de certificado (CSRs), importar certificados e gerenciar certificados existentes.
+
+
+
+== O que são certificados?
+
+_Certificados_ são arquivos digitais que identificam entidades online, como sites e servidores, para comunicações seguras na internet. Existem dois tipos de certificados: um _certificado assinado_ é validado por uma autoridade certificadora (CA) e um _certificado autoassinado_ é validado pelo proprietário da entidade em vez de uma terceira parte.
+
+Saiba mais:
+
+* link:how-certificates-work-sam.html["Como funcionam os certificados"]
+* link:certificate-terminology.html["Terminologia de certificado"]
+
+
+
+
+== Como faço para configurar certificados assinados?
+
+Você pode gerar uma solicitação de assinatura a partir de System Manager ou externamente usando um par de chaves privada e pública. A solicitação de assinatura é enviada a uma CA para gerar os arquivos de certificado. Assim que a CA retornar os arquivos de certificado, você os importa usando System Manager.
+
+Saiba mais:
+
+* link:use-ca-signed-certificates-for-controllers.html["Use certificados assinados por CA para os controladores"]
+* link:use-ca-signed-certificates-for-authentication-with-a-key-management-server.html["Use certificados assinados por CA para autenticação com um servidor de gerenciamento de chaves"]
+
+
+
+
+== Informações relacionadas
+
+Saiba mais sobre tarefas relacionadas a certificados:
+
+* link:view-imported-certificates.html["Visualizar informações do certificado importado"]
+* link:enable-certificate-revocation-checking.html["Ativar verificação de revogação de certificado"]
+

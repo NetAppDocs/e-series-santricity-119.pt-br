@@ -1,0 +1,195 @@
+---
+permalink: sm-support/upgrade-drive-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, upgrade, drive, firmware 
+summary: Você pode atualizar o firmware das suas unidades para garantir que tenha todos os recursos mais recentes e correções de bugs. 
+---
+= Upgrade do firmware da unidade no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode atualizar o firmware das suas unidades para garantir que tenha todos os recursos mais recentes e correções de bugs.
+
+.Antes de começar
+* Você fez backup dos seus dados usando backup de disco para disco, cópia de volume (para um grupo de volume não afetado pelo upgrade de firmware planejado) ou um espelhamento remoto.
+* O array de storage está com status Ótimo.
+* Todas as unidades estão com status Ótimo.
+* Nenhuma alteração de configuração está em execução no array de storage.
+* Se as unidades forem capazes apenas de um upgrade offline, a atividade de E/S em todos os volumes associados às unidades é interrompida.
+
+
+.Passos
+. Selecione o menu: suporte [Upgrade Center].
+. Faça o download dos novos arquivos do site de suporte para o seu cliente de gerenciamento.
+. Em upgrade do firmware da unidade, clique em *Iniciar upgrade*.
++
+Uma caixa de diálogo aparece, que lista os arquivos de firmware da unidade atualmente em uso.
+
+. Extraia (descompacte) os arquivos que você baixou do site de Support.
+. Clique em *Procurar* e selecione os novos arquivos de firmware da unidade que você baixou do site de suporte.
++
+Os arquivos de firmware da unidade têm um nome de arquivo semelhante a  `D_HUC101212CSS600_30602291_MS01_2800_0002` com a extensão de  `.dlp`.
+
++
+Você pode selecionar até quatro arquivos de firmware da unidade, um de cada vez. Se mais de um arquivo de firmware da unidade for compatível com a mesma unidade, você receberá um erro de conflito de arquivos. Decida qual arquivo de firmware da unidade deseja usar para o upgrade e remova o outro.
+
+. Clique em *Next*.
++
+A caixa de diálogo *Selecionar unidades* é exibida, que lista as unidades que você pode atualizar com os arquivos selecionados.
+
++
+Apenas as unidades compatíveis aparecem.
+
++
+O firmware selecionado para a unidade aparece na área de informações Firmware Proposto. Se precisar alterar o firmware, clique em *Voltar* para retornar à caixa de diálogo anterior.
+
+. Selecione o tipo de upgrade que deseja realizar:
++
+** *Online (padrão)* -- Mostra as unidades que suportam um download de firmware _enquanto o array de storage está processando E/S_. Você não precisa interromper a E/S nos volumes associados que usam essas unidades ao selecionar este método de upgrade. Essas unidades são atualizadas uma de cada vez enquanto o array de storage está processando E/S nessas unidades.
+** *Offline (paralelo)* -- Mostra as unidades que podem suportar um download de firmware _somente enquanto toda a atividade de E/S estiver interrompida_ em quaisquer volumes que utilizam essas unidades. Você deve interromper toda a atividade de E/S em quaisquer volumes que utilizam as unidades que você está atualizando ao selecionar este método de atualização. Unidades que não possuem redundância devem ser processadas como uma operação offline. Este requisito inclui qualquer unidade associada a cache SSD, um grupo de volume RAID 0 ou qualquer pool ou grupo de volume que esteja degradado. A atualização offline (paralela) geralmente é mais rápida do que o método online (padrão).
+
+
+. Na primeira coluna da tabela, selecione a(s) unidade(s) que deseja fazer upgrade.
+. Clique em *Iniciar* e confirme que deseja realizar a operação.
++
+Se precisar interromper a atualização, clique em *Parar*. Quaisquer downloads de firmware em andamento serão concluídos. Quaisquer downloads de firmware que ainda não tenham sido iniciados serão cancelados.
+
++
+[CAUTION]
+====
+Interromper o upgrade do formware da unidade pode resultar em perda de dados ou unidades indisponíveis.
+
+====
+. *Opcional:* Para ver uma lista do que foi atualizado, clique em *Salvar registro*.
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome  `drive_upgrade_log-timestamp.txt`.
+
+. Se algum dos seguintes erros ocorrer durante o procedimento de upgrade, tome a ação recomendada apropriada.
+
+
+.Erros e ações recomendadas
+[%collapsible]
+====
+[cols="40h,~"]
+|===
+| Se você se deparar com este erro de download de firmware... | Em seguida, faça o seguinte... 
+
+
+ a| 
+Unidades atribuídas com falha
+ a| 
+Uma possível causa da falha é que a unidade não possui a assinatura apropriada. Certifique-se de que a unidade afetada seja uma unidade autorizada. Entre em contato com o suporte técnico para mais informações.
+
+Ao substituir uma unidade, certifique-se de que a unidade de substituição tenha uma capacidade igual ou superior à da unidade com falha que está sendo substituída.
+
+Você pode substituir a unidade com falha enquanto o array de storage está recebendo E/S.
+
+
+
+ a| 
+Verificar array de storage
+ a| 
+* Certifique-se de que um endereço IP tenha sido atribuído a cada controlador.
+* Certifique-se de que todos os cabos conectados ao controlador não estão danificados.
+* Certifique-se de que todos os cabos estejam firmemente conectados.
+
+
+
+
+ a| 
+Unidades hot spare integradas
+ a| 
+Essa condição de erro precisa ser corrigida antes que você possa atualizar o firmware. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Grupos de volume incompletos
+ a| 
+Se um ou mais grupos de volumes ou pools de discos estiverem incompletos, você deve corrigir essa condição de erro antes de atualizar o firmware. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Operações exclusivas (exceto verificação de mídia/paridade em segundo plano) atualmente em execução em quaisquer grupos de volume
+ a| 
+Se uma ou mais operações exclusivas estiverem em andamento, as operações deverão ser concluídas antes que o firmware possa ser atualizado. Use System Manager para monitorar o progresso das operações.
+
+
+
+ a| 
+Volumes ausentes
+ a| 
+Você deve corrigir a condição de volume ausente antes que o firmware possa ser atualizado. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Qualquer controlador em um estado diferente do ideal
+ a| 
+Um dos controladores do array de storage precisa de atenção. Essa condição deve ser corrigida antes que o firmware possa ser atualizado. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Informações de partição de armazenamento incompatíveis entre os gráficos de objetos do controlador
+ a| 
+Ocorreu um erro ao validar os dados nos controladores. Entre em contato com o suporte técnico para resolver este problema.
+
+
+
+ a| 
+A verificação do controlador de banco de dados SPM falha
+ a| 
+Ocorreu um erro no banco de dados de mapeamento de partições de armazenamento em um controlador. Entre em contato com o suporte técnico para resolver esse problema.
+
+
+
+ a| 
+Validação do banco de dados de configuração (se compatível com a versão do controlador do array de storage)
+ a| 
+Ocorreu um erro no banco de dados de configuração de um controlador. Entre em contato com o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Verificações relacionadas ao MEL
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 10 eventos MEL informativos ou críticos de DDE foram relatados nos últimos 7 dias
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 2 eventos críticos MEL da página 2C foram relatados nos últimos 7 dias
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 2 eventos MEL críticos de canal de unidade degradado foram relatados nos últimos 7 dias
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 4 registros críticos de MEL nos últimos 7 dias
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+|===
+====
+.Depois que você terminar
+Seu upgrade do formware da unidade foi concluído. Você pode retomar as operações normais.

@@ -1,0 +1,193 @@
+---
+permalink: um-manage/faq-storage-mirroring.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre espelhamento de armazenamento para SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== O que preciso saber antes de criar um grupo de consistência de espelhamento?
+
+Siga estas diretrizes antes de criar um grupo de consistência de espelhamento.
+
+Atenda aos seguintes requisitos para Unified Manager:
+
+* O serviço Web Services Proxy deve estar em execução.
+* Unified Manager deve estar sendo executado em seu host local por meio de uma conexão HTTPS.
+* Unified Manager deve exibir certificados SSL válidos para o array de storage. Você pode aceitar um certificado autoassinado ou instalar seu próprio certificado de segurança usando Unified Manager e navegando até menu:Certificate[Certificate Management].
+
+
+Certifique-se também de atender aos seguintes requisitos para arrays de storage:
+
+* Os dois arrays de storage devem ser detectados no Unified Manager.
+* Cada array de storage deve ter dois controladores.
+* Cada controlador, tanto no array primário quanto no array secundário, deve ter uma porta de gerenciamento Ethernet configurada e deve estar conectado à sua rede.
+* Os arrays de storage possuem uma versão mínima de firmware de 7.84. (Cada um deles pode executar diferentes versões de sistema operacional.)
+* Você deve saber a senha dos arrays de storage local e remoto.
+* Seus arrays de storage locais e remotos estão conectados por meio de uma estrutura Fibre Channel ou interface iSCSI.
+
+
+[NOTE]
+====
+O espelhamento síncrono não está disponível no sistema de storage EF600/EF600C ou EF300/EF300C.
+
+====
+
+
+== O que preciso saber antes de criar um par espelhado?
+
+Antes de criar um par espelhado, siga estas orientações.
+
+* Você precisa ter dois arrays de storage.
+* Cada array de storage deve ter dois controladores.
+* Os dois arrays de storage devem ser detectados no Unified Manager.
+* Cada controlador, tanto no array primário quanto no array secundário, deve ter uma porta de gerenciamento Ethernet configurada e deve estar conectado à sua rede.
+* Os arrays de storage possuem uma versão mínima de firmware de 7.84. (Cada um deles pode executar diferentes versões de sistema operacional.)
+* Você deve saber a senha dos arrays de storage local e remoto.
+* Você precisa ter capacidade livre suficiente no array de storage remoto para criar um volume secundário igual ou maior que o volume primário que você deseja espelhar.
+* O espelhamento assíncrono é compatível com controladores que possuem portas de host Fibre Channel (FC) ou iSCSI, enquanto o espelhamento síncrono é compatível apenas com controladores que possuem portas de host FC.
+
+
+[NOTE]
+====
+O espelhamento síncrono não está disponível no sistema de storage EF600/EF600C ou EF300/EF300C.
+
+====
+
+
+== Por que eu alteraria essa porcentagem?
+
+A capacidade reservada é normalmente de 20 por cento do volume base para operações de espelhamento assíncrono. Geralmente essa capacidade é suficiente.
+
+A capacidade necessária varia dependendo da frequência e do tamanho das gravações de E/S no volume base e de quanto tempo você pretende usar a operação de serviço de cópia do objeto de storage. Em geral, escolha uma porcentagem maior para a capacidade reservada se uma ou ambas estas condições existirem:
+
+* Se a vida útil da operação de serviço de cópia de um determinado objeto de storage for muito longa.
+* Se uma grande porcentagem dos blocos de dados for alterada no volume base devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume base.
+
+
+
+
+== Por que vejo mais de um candidato para capacidade reservada?
+
+Se houver mais de um volume em um pool ou grupo de volume que atenda à porcentagem de capacidade que você selecionou para o objeto de storage, então você verá vários candidatos.
+
+Você pode atualizar a lista de candidatos recomendados alterando a porcentagem de espaço físico em disco que deseja reservar no volume base para operações de serviço de cópia. Os melhores candidatos são exibidos com base na sua seleção.
+
+
+
+== Por que não vejo todos os meus volumes?
+
+Ao selecionar um volume primário para um par espelhado, uma lista mostra todos os volumes elegíveis.
+
+Os volumes que não são elegíveis para uso não são exibidos nessa lista. Volumes podem não ser elegíveis por qualquer um dos seguintes motivos:
+
+* O volume não está otimizado.
+* O volume já está participando de uma relação de espelhamento.
+* Para espelhamento síncrono, os volumes primário e secundário em um par espelhado devem ser volumes padrão. Eles não podem ser volumes finos ou volumes de instantâneo.
+* Para espelhamento assíncrono, os volumes finos devem ter a expansão automática ativada.
+
+
+
+NOTE: Para controladores EF600 e EF300, os volumes primário e secundário de um par espelhado assíncrono devem corresponder ao mesmo protocolo, nível de bandeja, tamanho de segmento, tipo de segurança e nível RAID. Pares espelhados assíncronos não elegíveis não aparecerão na lista de volumes disponíveis.
+
+
+
+== Por que não vejo todos os volumes no array de storage remoto?
+
+Ao selecionar um volume secundário no array de storage remoto, uma lista mostra todos os volumes elegíveis para esse par espelhado.
+
+Quaisquer volumes que não são elegíveis para uso não são exibidos nessa lista. Volumes podem não ser elegíveis por qualquer um dos seguintes motivos:
+
+* O volume é um volume não padrão, como um volume snapshot.
+* O volume não está otimizado.
+* O volume já está participando de uma relação de espelhamento.
+* Para espelhamento assíncrono, os atributos de volume fino entre o volume primário e o volume secundário não correspondem.
+* Se você estiver usando Data Assurance (DA), o volume primário e o volume secundário devem ter as mesmas configurações de DA.
++
+** Se o volume principal estiver habilitado para DA, o volume secundário também deve estar habilitado para DA.
+** Se o volume principal não estiver habilitado para DA, o volume secundário não deve estar habilitado para DA.
+
+
+* Para espelhamento assíncrono, o volume primário e o volume secundário devem ter as mesmas capacidades de segurança de unidade.
++
+** Se o volume primário for compatível com FIPS, o volume secundário deve ser compatível com FIPS.
+** Se o volume primário for compatível com FDE, o volume secundário deve ser compatível com FDE.
+** Se o volume primário não estiver usando Drive Security, o volume secundário não deve estar usando Drive Security.
+
+
+
+
+
+
+== Qual o impacto da prioridade de sincronização nas taxas de sincronização?
+
+A prioridade de sincronização define quanto tempo de processamento é alocado para atividades de sincronização em relação ao desempenho do sistema.
+
+O controlador proprietário do volume primário executa essa operação em segundo plano. Ao mesmo tempo, o controlador proprietário processa gravações de E/S locais no volume primário e gravações remotas associadas no volume secundário. Como a ressincronização desvia recursos de processamento do controlador da atividade de E/S, a ressincronização pode ter um impacto no desempenho do aplicativo host.
+
+Tenha essas diretrizes em mente para ajudá-lo a determinar quanto tempo uma prioridade de sincronização pode levar e como as prioridades de sincronização podem afetar o desempenho do sistema.
+
+Estas taxas de prioridade estão disponíveis:
+
+* Mais baixo
+* Baixo
+* Médio
+* Alto
+* Mais alto
+
+
+A taxa de prioridade mais baixa oferece suporte ao desempenho do sistema, mas a ressincronização demora mais. A taxa de prioridade mais alta oferece suporte à ressincronização, mas o desempenho do sistema pode ser comprometido.
+
+Essas diretrizes aproximam, de forma geral, as diferenças entre as prioridades.
+
+[cols="45h,~"]
+|===
+| Taxa de prioridade para sincronização completa | Tempo decorrido em comparação com a taxa de sincronização mais alta 
+
+
+ a| 
+Mais baixo
+ a| 
+Aproximadamente oito vezes mais longo do que na taxa de prioridade mais alta.
+
+
+
+ a| 
+Baixo
+ a| 
+Aproximadamente seis vezes mais longo do que na taxa de prioridade mais alta.
+
+
+
+ a| 
+Médio
+ a| 
+Aproximadamente três vezes e meia mais longo do que na taxa de prioridade mais alta.
+
+
+
+ a| 
+Alto
+ a| 
+Aproximadamente duas vezes mais longo do que na taxa de prioridade mais alta.
+
+|===
+O tamanho do volume e as cargas de taxa de E/S do host afetam as comparações de tempo de sincronização.
+
+
+
+== Por que é recomendável usar uma política de sincronização manual?
+
+A ressincronização manual é recomendada porque permite gerenciar o processo de ressincronização de uma forma que oferece a melhor oportunidade para recuperar dados.
+
+Se você utiliza uma política de ressincronização automática e ocorrerem problemas intermitentes de comunicação durante a ressincronização, os dados no volume secundário podem ser corrompidos temporariamente. Quando a ressincronização é concluída, os dados são corrigidos.

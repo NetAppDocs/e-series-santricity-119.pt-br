@@ -1,0 +1,47 @@
+---
+indexpage:
+  title: Gerenciamento de múltiplos arrays com SANtricity Unified Manager 7
+  summary: A documentação do software SANtricity permite instalar, configurar e manter
+    seu array de storage.
+  keywords: santricity, install, setup, maintain, storage array
+  lead: A documentação do software SANtricity permite instalar, configurar e manter
+    seu array de storage.
+  tiles:
+  - title: Configurar
+    links:
+    - title: Visão geral da interface do SANtricity Unified Manager
+      url: "../um-admin/overview-interface-unified.html"
+    - title: Definir senha de administrador
+      url: "../um-admin/administrator-password-protection-unified.html"
+  - title: Descobrir arrays
+    links:
+    - title: Considerações sobre a descoberta
+      url: "../um-manage/considerations-for-discovering-arrays.html"
+    - title: Array único
+      url: "../um-manage/discover-single-array.html"
+    - title: Múltiplos arrays
+      url: "../um-manage/discover-multiple-arrays.html"
+  - title: Gerenciar arrays
+    links:
+    - title: Grupos de array de storage
+      url: "../um-manage/overview-manage-groups.html"
+    - title: Status do array de storage
+      url: "../um-manage/storage-array-status.html"
+    - title: Atualizar software
+      url: "../um-manage/upgrade-controller-firmware.html"
+  - title: Gerenciar acesso
+    links:
+    - title: Acesso do usuário
+      url: "../um-certificates/how-access-management-works-unified.html"
+    - title: Certificados
+      url: "../um-certificates/how-certificates-work-unified.html"
+    - title: Serviços de diretório
+      url: "../um-certificates/access-management-with-directory-services-unified.html"
+  - title: Gerenciar configurações
+    links:
+    - title: Importar configurações
+      url: "../um-manage/how-import-settings-works.html"
+    - title: Alterar configurações de senha
+      url: "../um-certificates/change-local-user-passwords-settings-unified.html"
+    - title: Alterar configurações do servidor de diretório
+      url: "../um-certificates/edit-directory-server-settings-unified.html"

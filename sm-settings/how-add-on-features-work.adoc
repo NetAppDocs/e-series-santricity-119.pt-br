@@ -1,0 +1,26 @@
+---
+permalink: sm-settings/how-add-on-features-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add-on, features, 
+summary: Os complementos são funcionalidades que não estão incluídas na configuração padrão do System Manager e podem exigir uma chave para serem ativados. Um complemento pode ser um recurso premium individual ou um pacote de recursos. 
+---
+= Como funcionam os recursos adicionais no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os complementos são funcionalidades que não estão incluídas na configuração padrão do SANtricity System Manager e podem exigir uma chave para serem ativados. Um complemento pode ser tanto um recurso premium individual quanto um pacote de recursos.
+
+Os passos a seguir fornecem uma visão geral para ativar um recurso premium ou pacote de recursos:
+
+. Obtenha as seguintes informações:
++
+** O número de série do chassi e o Identificador de Habilitação do Recurso, que identificam o array de storage para o recurso a ser instalado. Esses itens estão disponíveis no System Manager.
+** Código de ativação do recurso, que está disponível no site de suporte quando você compra o recurso.
+
+
+. Obtenha a chave de recurso entrando em contato com seu provedor de armazenamento ou acessando o site de ativação de recursos Premium. Forneça o número de série do chassi, o identificador de ativação e o código do recurso para ativação.
+. Usando o System Manager, habilite o recurso premium ou o pacote de recursos usando o arquivo de chave de recurso.
+

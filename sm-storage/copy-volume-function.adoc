@@ -1,0 +1,141 @@
+---
+permalink: sm-storage/copy-volume-function.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: A função Copiar Volume permite criar uma cópia pontual de um volume, criando dois volumes separados, o volume de origem e o volume de destino, no mesmo array de storage. 
+---
+= Saiba mais sobre cópia de volume no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A função Copiar Volume permite criar uma cópia pontual de um volume, criando dois volumes separados, o volume de origem e o volume de destino, no mesmo array de storage.
+
+Esta função realiza uma cópia byte a byte do volume de origem para o volume de destino, tornando os dados no volume de destino idênticos aos dados no volume de origem.
+
+
+
+== Cópia de dados para maior acesso
+
+À medida que os requisitos de storage de um volume mudam, você pode usar a função Copy Volume para copiar dados de pools ou grupos de volume que usam unidades de menor capacidade para pools ou grupos de volume que usam unidades de maior capacidade. Por exemplo, você pode usar a função Copy Volume para fazer o seguinte:
+
+* Mova os dados para unidades de disco maiores.
+* Troque para unidades com uma taxa de transferência de dados mais alta.
+* Mude para unidades que utilizam novas tecnologias para obter maior desempenho.
+* Alterar um volume fino para um volume espesso.
+
+
+Os volumes de origem e destino da cópia devem ter os mesmos tamanhos de bloco endereçáveis/lógicos (tamanho do setor) relatados pelo host.
+
+Os tamanhos de bloco de volume relatados são:
+
+* *Tamanho de bloco nativo* – o tamanho do bloco do volume corresponde ao tamanho do bloco da unidade, 512 ou 4K.
+* *Tamanho de bloco emulado de 512* - as unidades são 4K, mas o tamanho de bloco relatado é 512.
+
+
+
+
+== Alterar um volume fino para um volume espesso
+
+Se você deseja converter um volume fino em um volume espesso, use a operação Copy Volume para criar uma cópia do volume fino. O destino de uma operação Copy Volume é sempre um volume espesso.
+
+[NOTE]
+====
+System Manager não oferece uma opção para criar thin volumes. Se você deseja criar thin volumes, use a command line interface (CLI).
+
+====
+
+
+== Backup de dados
+
+A função Copy Volume permite fazer backup de um volume copiando dados de um volume para outro no mesmo array de storage. Você pode usar o volume de destino como backup do volume de origem, para testes de sistema ou para fazer backup em outro dispositivo, como uma unidade de fita.
+
+
+
+== Restaurar dados do volume de Snapshot para o volume base
+
+Se precisar restaurar dados para o volume base a partir do seu volume de Snapshot associado, você pode usar a função Copy Volume para copiar os dados do volume de Snapshot para o volume base. Você pode criar uma cópia de volume dos dados no volume de Snapshot e, em seguida, copiar os dados para o volume base.
+
+
+
+== Volumes de origem e destino
+
+A tabela a seguir especifica os tipos de volumes que podem ser usados como volumes de origem e de destino com a função Copy Volume.
+
+[cols="1a,1a,1a,1a"]
+|===
+| Tipo de volume | Volume de origem da cópia de volume off-line | Volume de origem da cópia de volume on-line | Volume de destino online e off-line 
+
+
+ a| 
+Volume espesso em um pool
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+Volume espesso em um grupo de volume
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+Volume fino
+ a| 
+Sim^1^
+ a| 
+Sim
+ a| 
+Não
+
+
+
+ a| 
+Volume de Snapshot
+ a| 
+Sim^2^
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+Volume base do Snapshot
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+
+
+
+ a| 
+Volume primário do espelho remoto
+ a| 
+Sim^3^
+ a| 
+Sim
+ a| 
+Não
+
+|===
+^1^ O volume de destino deve ter uma capacidade igual ou superior à capacidade relatada do volume fino.
+
+^2^ Você não poderá usar a cópia de volume Snapshot até que a operação de cópia online seja concluída.
+
+^3^ Se o volume de origem for um volume primário, a capacidade do volume de destino deve ser igual ou superior à capacidade utilizável do volume de origem.

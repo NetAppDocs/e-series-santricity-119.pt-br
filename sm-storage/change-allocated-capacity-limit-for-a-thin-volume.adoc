@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/change-allocated-capacity-limit-for-a-thin-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, allocated capacity, thin volume 
+summary: Para volumes finos capazes de alocar espaço sob demanda, você pode alterar o limite que restringe a capacidade alocada à qual um volume fino pode expandir automaticamente. 
+---
+= Altere o limite de capacidade alocada para um volume fino no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para volumes finos capazes de alocar espaço sob demanda, você pode alterar o limite que restringe a capacidade alocada à qual um volume fino pode expandir automaticamente.
+
+Você também pode alterar a porcentagem a partir da qual um alerta (limite de aviso excedido) é enviado para a área de Notificações na página inicial quando um volume thin está próximo do limite de capacidade alocada. Você pode optar por ativar ou desativar essa notificação de alerta.
+
+[NOTE]
+====
+Este recurso não está disponível nos sistemas de storage EF600/EF600C ou EF300/EF300C.
+
+====
+O sistema expande automaticamente a capacidade alocada com base no limite de capacidade alocada. O limite de capacidade alocada permite limitar o crescimento automático do thin volume a um valor inferior à capacidade reportada. Quando a quantidade de dados gravados se aproxima da capacidade alocada, você pode alterar o limite de capacidade alocada.
+
+Ao alterar o limite de capacidade alocada e o limite de aviso de um volume fino, você deve levar em consideração o espaço a ser consumido tanto pelos dados de usuário do volume quanto pelos dados dos serviços de cópia.
+
+.Passos
+. Selecione o menu: storage [Volumes].
+. Selecione a guia *Thin Volume Monitoring*.
++
+A visualização de Monitoramento de Thin Volume é exibida.
+
+. Selecione o volume fino que deseja alterar e, em seguida, selecione *Change Limit*.
++
+A caixa de diálogo Alterar Limite é exibida. O limite de capacidade alocada e a configuração do limite de aviso para o volume fino selecionado são exibidos nesta caixa de diálogo.
+
+. Altere o limite de capacidade alocada e o limite de aviso conforme necessário.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Alterar o limite de capacidade alocada para...
+ a| 
+O limite a partir do qual as gravações falham, impedindo que o volume fino consuma recursos adicionais. Esse limite é uma porcentagem do tamanho da capacidade relatada do volume.
+
+
+
+ a| 
+Avise-me quando... (limiar de aviso)
+ a| 
+Selecione a caixa de seleção se desejar que o sistema gere um alerta quando um volume fino estiver próximo do limite de capacidade alocada. O alerta é enviado para a área de Notificações na página inicial. Esse limite é uma porcentagem do tamanho da capacidade relatada do volume.
+
+Desmarque a caixa de seleção para desativar a notificação de alerta de limiar de aviso.
+
+|===
+====
+. Clique em *Salvar*.
+

@@ -1,0 +1,33 @@
+---
+permalink: sm-mirroring/volume-ownership-sync.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volume, ownership, sync, change, preferred, controller, owner, mirrored, pair, 
+summary: Você pode alterar o proprietário preferencial do controlador em um par espelhado. 
+---
+= Saiba mais sobre propriedade de volume no espelhamento síncrono no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar o proprietário preferencial do controlador em um par espelhado.
+
+[NOTE]
+====
+Este recurso não está disponível para espelhamento síncrono no sistema de storage EF600/EF600C ou EF300/EF300C.
+
+====
+Se o volume primário do par espelhado pertencer ao controlador A, então o volume secundário também será de propriedade do controlador A do array de storage remoto. Alterar o proprietário do volume primário alterará automaticamente o proprietário do volume secundário para garantir que ambos os volumes pertençam ao mesmo controlador. As alterações de propriedade atuais no lado primário se propagam automaticamente para as alterações de propriedade atuais correspondentes no lado secundário.
+
+Por exemplo, um volume primário pertence ao controlador A, e então você altera o proprietário do controlador para o controlador B. Nesse caso, a próxima gravação remota altera o proprietário do controlador do volume secundário do controlador A para B. Como as alterações de propriedade do controlador no lado secundário são controladas pelo lado primário, elas não exigem nenhuma intervenção especial do administrador de storage.
+
+
+
+== Reinicializações do controlador
+
+Uma reinicialização do controlador causa uma alteração na propriedade do volume no lado primário do controlador proprietário preferencial para o controlador alternativo no array de storage.
+
+Às vezes, uma gravação remota é interrompida por uma reinicialização do controlador ou um ciclo de energia do array de storage antes que possa ser gravada no volume secundário. Nesse caso, o controlador não precisa realizar uma sincronização completa do par espelhado.
+
+Quando uma gravação remota é interrompida durante uma reinicialização do controlador, o novo proprietário do controlador no lado primário lê as informações armazenadas em um arquivo de log no volume de capacidade reservada do proprietário do controlador preferencial. O novo proprietário do controlador então copia os blocos de dados afetados do volume primário para o volume secundário, eliminando a necessidade de uma sincronização completa dos volumes espelhados.

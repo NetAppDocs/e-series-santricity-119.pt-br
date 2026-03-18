@@ -1,0 +1,40 @@
+---
+permalink: sm-mirroring/suspend-and-resume-synchronization-for-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, suspend, resume, synchronization, mirrored, pair, 
+summary: Você pode usar a opção Suspender e a opção Retomar para controlar quando sincronizar os dados no volume primário e no volume secundário em um par espelhado. 
+---
+= Suspender e retomar a sincronização de pares espelhados no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a opção Suspender e a opção Retomar para controlar quando sincronizar os dados no volume primário e no volume secundário em um par espelhado.
+
+.Sobre esta tarefa
+Se um par espelhado for suspenso manualmente, o par espelhado não será sincronizado até que seja retomado manualmente.
+
+.Passos
+. Selecione o menu: Storage [Espelhamento Síncrono].
+. Selecione o par espelhado que você deseja suspender ou retomar e, em seguida, selecione menu:More[Suspend] ou menu:More[Resume].
++
+O sistema exibe uma confirmação.
+
+. Selecione *Yes* para confirmar.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Suspende ou retoma a transferência de dados entre o par espelhado sem remover a relação de espelhamento.
+* Para um par espelhado _suspenso_:
++
+** Exibe *Suspenso* na tabela Mirrored Pair.
+** Registra quaisquer dados que foram gravados no volume primário do par espelhado enquanto a sincronização estava suspensa.
+
+
+* Para um par espelhado _retomado_, grava os dados automaticamente no volume secundário do par espelhado quando a sincronização é retomada. Uma sincronização completa não é necessária.
+

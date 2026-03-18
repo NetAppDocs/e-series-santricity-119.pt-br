@@ -1,0 +1,38 @@
+---
+permalink: sm-settings/reset-management-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reset, management, certificates, 
+summary: Você pode reverter os certificados nos controladores de certificados assinados por CA para os certificados autoassinados definidos de fábrica. 
+---
+= Redefinir certificados de gerenciamento em SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode reverter os certificados nos controladores de certificados assinados por CA para os certificados autoassinados definidos de fábrica.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+* Os certificados assinados pela CA devem ser importados previamente.
+
+
+.Sobre esta tarefa
+A função Reset exclui os arquivos de certificado assinados pela CA de cada controlador. Os controladores voltarão então a usar certificados autoassinados.
+
+.Passos
+. Selecione menu:Configurações[Certificados].
+. Na guia Array Management, selecione *Reset*.
++
+Uma caixa de diálogo Confirm Reset Management Certificates será aberta.
+
+. Digite  `reset` no campo e clique em *Redefinir*.
++
+Após a atualização do navegador, o navegador pode bloquear o acesso ao site de destino e informar que o site está usando HTTP Strict Transport Security. Essa condição ocorre quando você volta a usar certificados autoassinados. Para limpar a condição que está bloqueando o acesso ao destino, você deve limpar os dados de navegação do navegador.
+
+
+
+.Resultados
+Os controladores voltam a usar certificados autoassinados. Como resultado, o sistema solicita aos usuários que aceitem manualmente o certificado autoassinado para suas sessões.

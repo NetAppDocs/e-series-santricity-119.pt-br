@@ -1,0 +1,14 @@
+---
+permalink: sm-storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= SANtricity System Manager 11.9
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode gerenciar o armazenamento do seu sistema por meio do SANtricity System Manager.

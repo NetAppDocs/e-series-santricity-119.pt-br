@@ -1,0 +1,81 @@
+---
+permalink: sm-storage/how-ssd-cache-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd cache, 
+summary: 'O recurso SSD Cache é uma solução baseada no controlador que armazena em cache os dados acessados com mais frequência ("dados quentes") em unidades de estado sólido (SSDs) de menor latência para acelerar dinamicamente o desempenho do sistema. SSD Cache é usado exclusivamente para leituras do host.' 
+---
+= Como o cache SSD funciona no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso SSD Cache é uma solução baseada no controlador que armazena em cache os dados acessados com mais frequência ("dados quentes") em unidades de estado sólido (SSDs) de menor latência para acelerar dinamicamente o desempenho do sistema. SSD Cache é usado exclusivamente para leituras do host.
+
+
+
+== Cache SSD versus cache primário
+
+O cache SSD é um cache secundário usado em conjunto com o cache primário na memória dinâmica de acesso aleatório (DRAM) do controlador.
+
+O cache SSD funciona de forma diferente do cache primário:
+
+* Para o cache primário, cada operação de E/S deve passar os dados pelo cache para realizar a operação.
++
+No cache primário, os dados são armazenados na DRAM após uma leitura do host.
+
+* O cache SSD é usado somente se for benéfico colocar os dados em cache para melhorar o desempenho geral do sistema.
++
+No SSD Cache, os dados são copiados de volumes e armazenados em dois volumes RAID internos (um por controladora) que são criados automaticamente quando você cria um SSD Cache.
+
+
+
+Os volumes RAID internos são usados para fins de processamento de cache interno. Esses volumes não são acessíveis nem exibidos na interface de usuário. No entanto, esses dois volumes são contabilizados no número total de volumes permitidos no array de storage.
+
+
+
+== Como o SSD Cache é utilizado
+
+Armazenamento em cache coloca dados em uma unidade de menor latência, para que as respostas a solicitações futuras desses dados possam ocorrer muito mais rapidamente. Se um programa solicitar dados que estão no cache (chamado de "acerto do cache"), então a unidade de menor latência pode atender a essa transação. Caso contrário, ocorre um "erro de cache" e os dados precisam ser acessados da unidade original, mais lenta. À medida que mais acertos do cache ocorrem, o desempenho geral melhora.
+
+Quando um programa host acessa as unidades do array de storage, os dados são armazenados no SSD Cache. Quando os mesmos dados são acessados novamente pelo programa host, eles são lidos do SSD Cache em vez dos discos rígidos. Os dados acessados com frequência são armazenados no SSD Cache. Os discos rígidos são acessados somente quando os dados não podem ser lidos do SSD Cache.
+
+O cache SSD é utilizado apenas quando é benéfico colocar os dados em cache para melhorar o desempenho geral do sistema.
+
+Quando a CPU precisa processar dados de leitura, ela segue os passos abaixo:
+
+. Verifique o cache DRAM.
+. Se não for encontrado no cache DRAM, então verifique o cache SSD.
+. Se não for encontrado no cache SSD, então obtenha do disco rígido. Se os dados forem considerados valiosos para armazenar em cache, então copie para o cache SSD.
+
+
+
+
+== Desempenho aprimorado
+
+Copiar os dados mais acessados (hot spot) para o cache SSD permite uma operação mais eficiente do disco rígido, redução da latência e velocidades de leitura e gravação aceleradas. Usar SSDs de alto desempenho para armazenar em cache dados de volumes de HDD melhora o desempenho de E/S e os tempos de resposta.
+
+Mecanismos simples de E/S de volume são usados para mover dados de e para o SSD Cache. Depois que os dados são armazenados em cache e salvos nos SSDs, as leituras subsequentes desses dados são realizadas no SSD Cache, eliminando assim a necessidade de acessar o volume do HDD.
+
+
+
+== Cache SSD e o recurso Drive Security
+
+Para usar o Cache SSD em um volume que também utiliza Drive Security (está com a segurança ativada), os recursos de Drive Security do volume e do Cache SSD devem corresponder. Se eles não corresponderem, o volume não terá a segurança ativada.
+
+
+
+== Implementar SSD Cache
+
+Para implementar o cache SSD, faça o seguinte:
+
+. Crie o cache SSD.
+. Associe o cache SSD aos volumes para os quais você deseja implementar armazenamento em cache SSD de leitura.
+
+
+[NOTE]
+====
+Qualquer volume atribuído ao uso do SSD Cache de um controlador não é elegível para transferência automática de load balance.
+
+====

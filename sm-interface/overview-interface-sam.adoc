@@ -1,0 +1,97 @@
+---
+permalink: sm-interface/overview-interface-sam.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, 
+summary: Você navega pela interface principal para acessar os recursos e tarefas do System Manager. 
+---
+= Saiba mais sobre a interface SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager é uma interface Web que permite gerenciar um array de storage em uma única visualização.
+
+
+
+== Página inicial
+
+A página inicial fornece uma visão geral do painel de controle para o gerenciamento diário do seu array de storage. Ao fazer login no System Manager, a página inicial é a primeira tela exibida.
+
+O painel de controle é composto por quatro áreas de resumo que contêm informações importantes sobre o estado e a integridade do seu array de storage. Você pode encontrar mais informações na área de resumo.
+
+[cols="25h,~"]
+|===
+| Área | Descrição 
+
+
+ a| 
+Notificações
+ a| 
+A área de Notificações exibe notificações de problemas que indicam o status do array de storage e seus componentes. Além disso, este portlet exibe alertas automatizados que podem ajudar você a solucionar problemas antes que eles afetem outras áreas do seu ambiente de storage.
+
+
+
+ a| 
+Desempenho
+ a| 
+A área Desempenho permite comparar e contrastar o uso de recursos ao longo do tempo. Você pode visualizar as métricas de desempenho do array de storage para tempo de resposta (IOPS), taxas de transferência (MiB/s) e a quantidade de capacidade de processamento utilizada (CPU).
+
+
+
+ a| 
+Capacidade
+ a| 
+A área Capacidade exibe um gráfico com a capacidade alocada, capacidade de storage livre e capacidade de storage não atribuída em seu array de storage.
+
+
+
+ a| 
+Hierarquia de armazenamento
+ a| 
+A área Hierarquia de Armazenamento fornece uma visão organizada dos vários componentes de hardware e objetos de storage gerenciados pelo seu array de storage. Clique na seta suspensa para executar uma determinada ação nesse componente de hardware ou objeto de storage.
+
+|===
+
+
+== Configurações de interface
+
+Você pode alterar as preferências de exibição e outras configurações na interface principal.
+
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Preferências de exibição
+ a| 
+Altere os valores de capacidade e o período de tempo no menu suspenso Preferências no canto superior direito da interface.
+
+
+
+ a| 
+Tempo limite da sessão
+ a| 
+Configure os tempos limite para que as sessões inativas dos usuários sejam desconectadas após um tempo especificado.
+
+
+
+ a| 
+Ajuda
+ a| 
+Acesse a documentação de ajuda e outros recursos no menu suspenso no canto superior direito da interface.
+
+|===
+
+
+== Logins e senhas de usuário
+
+O usuário atualmente conectado ao sistema é exibido no canto superior direito da interface.
+
+Para obter mais informações sobre usuários e senhas, consulte:
+
+* link:administrator-password-protection.html["Defina a proteção por senha de administrador"]
+* link:../sm-settings/change-passwords.html["Alterar senhas"]
+

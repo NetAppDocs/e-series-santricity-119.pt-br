@@ -1,0 +1,81 @@
+---
+permalink: um-manage/mirroring-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, mirroring, terminology 
+summary: Saiba como os termos de espelhamento se aplicam ao seu array de storage. 
+---
+= Saiba mais sobre a terminologia de espelhamento no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de espelhamento se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Array de storage local
+ a| 
+O array de storage local é o array de storage sobre o qual você está agindo.
+
+
+
+ a| 
+Grupo de consistência
+ a| 
+Um grupo de consistência de espelhamento é um contêiner para um ou mais pares espelhados. Para operações de espelhamento assíncrono, você deve criar um grupo de consistência de espelhamento. Todos os pares espelhados em um grupo são ressincronizados simultaneamente, preservando assim um ponto de recuperação consistente.
+
+Espelhamento síncrono não utiliza grupos de consistência de espelhamento.
+
+
+
+ a| 
+Par espelhado
+ a| 
+Um par espelhado é composto por dois volumes, um volume primário e um volume secundário.
+
+No espelhamento assíncrono, um par espelhado sempre pertence a um grupo de consistência de espelhamento. As operações de gravação são realizadas primeiro no volume primário e depois replicadas para o volume secundário. Cada par espelhado em um grupo de consistência de espelhamento compartilha as mesmas configurações de sincronização.
+
+
+
+ a| 
+Volume primário
+ a| 
+O volume primário de um par espelhado é o volume de origem a ser espelhado.
+
+
+
+ a| 
+Array de storage remoto
+ a| 
+O array de storage remoto é geralmente designado como o site secundário, que normalmente contém uma réplica dos dados em uma configuração de espelhamento.
+
+
+
+ a| 
+Capacidade reservada
+ a| 
+A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e objeto de armazenamento. Ela não é diretamente legível pelo host.
+
+Esses volumes são necessários para que o controlador possa salvar de forma persistente as informações necessárias para manter o espelhamento em estado operacional. Eles contêm informações como logs delta e dados de copy-on-write.
+
+
+
+ a| 
+Volume secundário
+ a| 
+O volume secundário de um par espelhado geralmente está localizado em um site secundário e contém uma réplica dos dados.
+
+
+
+ a| 
+Sincronização
+ a| 
+A sincronização ocorre na sincronização inicial entre o array de storage local e o array de storage remoto. A sincronização também ocorre quando os volumes primário e secundário ficam dessincronizados após uma interrupção na comunicação. Quando o link de comunicação volta a funcionar, quaisquer dados não replicados são sincronizados com o array de storage do volume secundário.
+
+|===

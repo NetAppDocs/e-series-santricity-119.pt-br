@@ -1,0 +1,64 @@
+---
+permalink: sm-hardware/unlock-or-reset-a-locked-nvme-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unlock, reset, locked, fips, nvme, drives, 
+summary: 'Se você inserir uma ou mais unidades NVMe ou FIPS bloqueadas em um array de storage, poderá desbloquear os dados da unidade adicionando o arquivo de chave de segurança associado às unidades. Se você não tiver uma chave de segurança, poderá realizar uma redefinição em cada unidade bloqueada inserindo seu Physical Security ID (PSID) para redefinir seus atributos de segurança e apagar os dados da unidade.' 
+---
+= Desbloquear ou redefinir unidades NVMe ou FIPS bloqueadas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você inserir uma ou mais unidades NVMe ou FIPS bloqueadas em um array de storage, poderá desbloquear os dados da unidade adicionando o arquivo de chave de segurança associado às unidades. Se você não tiver uma chave de segurança, poderá realizar uma redefinição em cada unidade bloqueada inserindo seu Physical Security ID (PSID) para redefinir seus atributos de segurança e apagar os dados da unidade.
+
+.Antes de começar
+* Para a opção Desbloquear, certifique-se de que o arquivo da chave de segurança (com uma extensão de `.slk`) esteja disponível no cliente de gerenciamento (o sistema com um navegador usado para acessar System Manager). Você também deve saber a frase secreta associada à chave.
+* Para a opção de Reset, você deve encontrar o PSID em cada unidade que deseja resetar. Para localizar o PSID, remova fisicamente a unidade e localize a sequência do PSID (máximo de 32 caracteres) na etiqueta da unidade e, em seguida, reinstale a unidade.
+
+
+.Sobre esta tarefa
+Esta tarefa descreve como desbloquear dados em unidades NVMe ou FIPS importando um arquivo de chave de segurança para o array de storage. Para situações em que a chave de segurança não está disponível, esta tarefa também descreve como realizar um reset em uma unidade bloqueada.
+
+[NOTE]
+====
+Se a unidade foi bloqueada usando um servidor externo de gerenciamento de chaves, selecione menu:Settings[Sistema > Gerenciamento de chaves de segurança] no System Manager para configurar o gerenciamento de chaves externas e desbloquear a unidade.
+
+====
+Você pode acessar o recurso Desbloqueio na página Hardware ou no menu: configurações [Sistema > Gerenciamento de chaves de segurança]. A tarefa abaixo fornece instruções a partir da página Hardware.
+
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar os controladores, clique na guia *Drives*.
++
+O gráfico muda para mostrar as unidades em vez dos controladores.
+
+. Selecione a unidade NVMe ou FIPS que você deseja desbloquear ou redefinir.
++
+O menu de contexto da unidade é aberto.
+
+. Selecione *Desbloquear* para aplicar o arquivo de chave de segurança ou *Reset* se você não tiver um arquivo de chave de segurança.
++
+Essas opções só aparecem se você selecionar uma unidade NVMe ou FIPS bloqueada.
+
++
+[CAUTION]
+====
+Durante uma operação de redefinição, todos os dados são apagados. Execute uma redefinição somente se você não tiver uma chave de segurança. Redefinir uma unidade bloqueada remove permanentemente todos os dados da unidade e redefine seus atributos de segurança para "secure-capable", mas não ativado. *Esta operação não é reversível.*
+
+====
+. Faça uma das seguintes ações:
++
+.. *Desbloquear*: Na caixa de diálogo *Desbloquear unidade segura*, clique em *Procurar* e selecione o arquivo de chave de segurança correspondente à unidade que deseja desbloquear. Em seguida, digite a senha e clique em *Desbloquear*.
+.. *Redefinir*: Na caixa de diálogo *Redefinir unidade bloqueada*, insira a string PSID no campo e, em seguida, digite  `RESET` para confirmar. Clique em *Redefinir*.
++
+Para uma operação de desbloqueio, basta realizar esta operação uma única vez para desbloquear todas as unidades NVMe ou FIPS. Para uma operação de redefinição, você deve selecionar individualmente cada unidade que deseja redefinir.
+
+
+
+
+
+.Resultados
+A unidade agora está disponível para uso em outro grupo de volume ou pool de discos, ou em outro array de storage.

@@ -1,0 +1,58 @@
+---
+permalink: sm-support/view-unreadable-sectors-log.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, unreadable, sectors, log 
+summary: Você pode salvar o registro de setores ilegíveis e enviar o arquivo para o suporte técnico para análise. 
+---
+= Visualize o registro de setores ilegíveis no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode salvar o registro de setores ilegíveis e enviar o arquivo para o suporte técnico para análise.
+
+.Sobre esta tarefa
+O registro de setores ilegíveis contém informações detalhadas sobre setores ilegíveis causados por unidades que reportam erros de mídia irrecuperáveis. Setores ilegíveis são detectados durante operações normais de E/S e durante operações de modificação, como reconstruções. Quando setores ilegíveis são detectados em um array de storage, um alerta Needs Attention é exibido para o array de storage. O Recovery Guru distingue qual condição de setor ilegível requer atenção. Quaisquer dados contidos em um setor ilegível não podem ser recuperados e devem ser considerados perdidos.
+
+O registro de setores ilegíveis pode armazenar até 1.000 setores ilegíveis. Quando o registro de setores ilegíveis atinge 1.000 entradas, as seguintes condições se aplicam:
+
+* Se novos setores ilegíveis forem detectados durante a reconstrução, a reconstrução falha e nenhuma entrada é registrada.
+* Para novos setores ilegíveis detectados durante a E/S, a E/S falha e nenhuma entrada é registrada.
++
+[NOTE]
+====
+Essas ações incluem gravações RAID 5 e gravações RAID 6 que teriam sido bem-sucedidas antes do overflow.
+
+====
+
+
+[CAUTION]
+====
+*Possível perda de dados* -- A recuperação de setores ilegíveis é um procedimento complexo que pode envolver diversos métodos diferentes. Execute esta operação somente quando instruído a fazê-lo pelo suporte técnico.
+
+====
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Exibir/Limpar setores ilegíveis*.
+. Para salvar o log de setores ilegíveis:
++
+.. Na primeira coluna da tabela, você pode selecionar volumes individuais para os quais deseja salvar o log de setores ilegíveis (clique na caixa de seleção ao lado de cada volume) ou selecionar todos os volumes (marque a caixa de seleção no cabeçalho da tabela).
++
+Para encontrar volumes específicos, você pode classificar qualquer uma das colunas ou digitar caracteres na caixa *Filter*.
+
+.. Clique em *Salvar*.
+
+
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome  `unreadable-sectors.txt`.
+
+. Se o suporte técnico instruir você a limpar o registro de setores ilegíveis, execute as seguintes etapas:
++
+.. Na primeira coluna da tabela, você pode selecionar volumes individuais para os quais deseja limpar o log de setores ilegíveis (clique na caixa de seleção ao lado de cada volume) ou selecionar todos os volumes (marque a caixa de seleção no cabeçalho da tabela).
+.. Clique em *Limpar* e confirme que você deseja realizar a operação.
+
+
+

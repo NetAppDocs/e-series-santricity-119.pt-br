@@ -1,0 +1,28 @@
+---
+permalink: um-certificates/view-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, view certificates 
+summary: 'Você pode visualizar informações resumidas de um certificado, que incluem a organização que utiliza o certificado, a autoridade que emitiu o certificado, o período de validade e as impressões digitais (identificadores únicos).' 
+---
+= Ver certificados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar informações resumidas de um certificado, que incluem a organização que utiliza o certificado, a autoridade que emitiu o certificado, o período de validade e as impressões digitais (identificadores únicos).
+
+.Antes de começar
+Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+
+.Passos
+. Selecione *Certificate Management*.
+. Selecione uma das seguintes abas:
++
+** *Gerenciamento* -- Exibe o certificado do sistema que hospeda o Web Services Proxy. Um certificado de gerenciamento pode ser autoassinado ou aprovado por uma autoridade certificadora (CA). Ele permite acesso seguro ao Unified Manager.
+** *Confiável* -- Mostra os certificados que Unified Manager pode acessar para arrays de storage e outros servidores remotos, como um servidor LDAP. Os certificados podem ser emitidos por uma autoridade certificadora (CA) ou podem ser autoassinados.
+
+
+. Para ver mais informações sobre um certificado, selecione a linha correspondente, selecione as reticências no final da linha e clique em *View* ou *Export*.
+

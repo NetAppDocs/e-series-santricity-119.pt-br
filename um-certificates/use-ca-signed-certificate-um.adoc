@@ -1,0 +1,108 @@
+---
+permalink: um-certificates/use-ca-signed-certificate-um.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, ca-signed, certificates 
+summary: Você pode obter e importar certificados assinados por CA para acesso seguro ao sistema de gerenciamento que hospeda Unified Manager. 
+---
+= Use certificados assinados por CA para o sistema de gerenciamento
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode obter e importar certificados assinados por CA para acesso seguro ao sistema de gerenciamento que hospeda SANtricity Unified Manager.
+
+.Antes de começar
+Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+
+.Sobre esta tarefa
+Utilizar certificados assinados por uma CA é um procedimento de três etapas.
+
+
+
+== Etapa 1: preencha um arquivo CSR
+
+Primeiro, você deve gerar um arquivo de solicitação de assinatura de certificado (CSR), que identifica sua organização e o sistema host onde o Web Services Proxy e Unified Manager estão instalados.
+
+[NOTE]
+====
+Alternativamente, você pode gerar um arquivo CSR usando uma ferramenta como OpenSSL e pular para <<Etapa 2: enviar o arquivo CSR>>.
+
+====
+.Passos
+. Selecione *Certificate Management*.
+. Na guia Management, selecione *Complete CSR*.
+. Insira as seguintes informações e clique em *Avançar*:
++
+** *Organização* -- O nome completo e legal da sua empresa ou organização. Inclua sufixos, como Inc. ou Corp.
+** *Unidade organizacional (opcional)* -- A divisão da sua organização que está lidando com o certificado.
+** *Cidade/Localidade* -- a cidade onde seu sistema host ou empresa está localizado.
+** *Estado/Região (opcional)* -- O estado ou região onde seu sistema host ou empresa está localizado.
+** *Código ISO do país* -- O código ISO (Organização Internacional de Normalização) de dois dígitos do seu país, como US.
+
+
+. Insira as seguintes informações sobre o sistema host onde o Web Services Proxy está instalado:
++
+** *Nome comum* -- O endereço IP ou o nome DNS do sistema host onde o Web Services Proxy está instalado. Certifique-se de que este endereço esteja correto; ele deve corresponder exatamente ao que você digita para acessar Unified Manager no navegador. Não inclua http:// ou https://. O nome DNS não pode começar com um caractere curinga.
+** *Endereços IP alternativos* -- Se o nome comum for um endereço IP, você pode, opcionalmente, inserir quaisquer endereços IP ou aliases adicionais para o sistema host. Para várias entradas, use o formato separado por vírgulas.
+** *Nomes DNS alternativos* -- Se o nome comum for um nome DNS, insira quaisquer nomes DNS adicionais para o sistema host. Para múltiplas entradas, use o formato separado por vírgulas. Se não houver nomes DNS alternativos, mas você tiver inserido um nome DNS no primeiro campo, copie esse nome aqui. O nome DNS não pode começar com um caractere curinga.
+
+
+. Certifique-se de que as informações do host estejam corretas. Se não estiverem, os certificados retornados pela CA falharão quando você tentar importá-los.
+. Clique em *Concluir*.
+. Vá para <<Etapa 2: enviar o arquivo CSR>>.
+
+
+
+
+== Etapa 2: enviar o arquivo CSR
+
+Após criar um arquivo de solicitação de assinatura de certificado (CSR), você o envia para uma Certificate Authority (CA) para receber certificados de gerenciamento assinados para o sistema que hospeda Unified Manager e o Web Services Proxy.
+
+
+NOTE: Os sistemas E-Series exigem o formato PEM (codificação ASCII Base64) para certificados assinados, que inclui os seguintes tipos de arquivo: .pem, .crt, .cer ou .key.
+
+.Passos
+. Localize o arquivo CSR baixado.
++
+A localização da pasta do download depende do seu navegador.
+
+. Envie o arquivo CSR para uma Autoridade Certificadora (por exemplo, Verisign ou DigiCert) e solicite certificados assinados no formato PEM.
++
+[CAUTION]
+====
+*Após enviar um arquivo CSR para a CA, NÃO gere outro arquivo CSR.* Sempre que você gera um CSR, o sistema cria um par de chaves privada e pública. A chave pública faz parte do CSR, enquanto a chave privada é mantida no keystore do sistema. Quando você recebe os certificados assinados e os importa, o sistema garante que tanto a chave privada quanto a pública sejam o par original. Se as chaves não corresponderem, os certificados assinados não funcionarão e você deve solicitar novos certificados à CA.
+
+====
+. Quando a CA retornar os certificados assinados, vá para <<Etapa 3: importar certificados de management>>.
+
+
+
+
+== Etapa 3: importar certificados de management
+
+Após receber os certificados assinados da Autoridade Certificadora (CA), importe os certificados no sistema host onde o Web Services Proxy e a interface Unified Manager estão instalados.
+
+.Antes de começar
+* Você recebeu certificados assinados da CA. Esses arquivos incluem o certificado raiz, um ou mais certificados intermediários e o certificado do servidor.
+* Se a CA forneceu um arquivo de certificado em cadeia (por exemplo, um arquivo .p7b), você deve descompactar o arquivo em cadeia em arquivos individuais: o certificado raiz, um ou mais certificados intermediários e o certificado do servidor. Você pode usar o utilitário do Windows `certmgr` para descompactar os arquivos (clique com o botão direito e selecione menu:All Tasks[Export]). A codificação Base-64 é recomendada. Quando as exportações forem concluídas, um arquivo CER será exibido para cada arquivo de certificado na cadeia.
+* Você copiou os arquivos de certificado para o sistema host onde o Web Services Proxy está em execução.
+
+
+.Passos
+. Selecione *Certificate Management*.
+. Na aba Management, selecione *Import*.
++
+Uma caixa de diálogo é aberta para importar os arquivos de certificado.
+
+. Clique em *Procurar* para selecionar primeiro os arquivos de certificado raiz e intermediário e, em seguida, selecione o certificado do servidor. Se você gerou o CSR a partir de uma ferramenta externa, você também deve importar o arquivo de chave privada criado juntamente com o CSR.
++
+Os nomes dos arquivos são exibidos na caixa de diálogo.
+
+. Clique em *Importar*.
+
+
+.Resultados
+Os arquivos são carregados e validados. As informações do certificado são exibidas na página de Certificate Management.

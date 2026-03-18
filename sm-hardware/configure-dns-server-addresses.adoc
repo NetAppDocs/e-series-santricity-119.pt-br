@@ -1,0 +1,60 @@
+---
+permalink: sm-hardware/configure-dns-server-addresses.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, dns, server, addresses, 
+summary: 'O Domain Name System (DNS) é usado para resolver nomes de domínio totalmente qualificados para os controladores e um servidor Network Time Protocol (NTP). As portas de gerenciamento no array de storage podem suportar protocolos IPv4 ou IPv6 simultaneamente.' 
+---
+= ${post_edited_translations.segment}
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O Domain Name System (DNS) é usado para resolver nomes de domínio totalmente qualificados para os controladores e um servidor Network Time Protocol (NTP). As portas de gerenciamento no array de storage podem suportar protocolos IPv4 ou IPv6 simultaneamente.
+
+.Antes de começar
+* ${post_edited_translations.segment}
+* Você conhece o endereço do servidor DNS primário e um servidor DNS de backup opcional. Esses endereços podem ser endereços IPv4 ou endereços IPv6.
+
+
+.Sobre esta tarefa
+Este procedimento descreve como especificar um endereço de servidor DNS primário e de backup. O servidor DNS de backup pode ser opcionalmente configurado para usar se um servidor DNS primário falhar.
+
+[NOTE]
+====
+Se você já configurou as portas de gerenciamento do array de storage com Dynamic Host Configuration Protocol (DHCP), e você tem um ou mais servidores DNS ou NTP associados à configuração DHCP, então você não precisa configurar manualmente DNS ou NTP. Neste caso, o array de storage já deveria ter obtido os endereços do servidor DNS/NTP automaticamente. No entanto, você ainda deve seguir as instruções abaixo para abrir a caixa de diálogo e certificar-se de que os endereços corretos são detectados.
+
+====
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar as unidades, clique na guia *Controllers & Components*.
++
+O gráfico muda para mostrar os controladores em vez das unidades de disco.
+
+. ${post_edited_translations.segment}
++
+O menu de contexto do controlador é exibido.
+
+. ${post_edited_translations.segment}
++
+${post_edited_translations.segment}
+
+. Selecione uma das seguintes opções:
++
+** *Obter automaticamente endereços de servidor DNS do servidor DHCP* -- Os endereços de servidor DNS detectados são exibidos.
++
+[NOTE]
+====
+Se o array de storage estiver configurado para usar um endereço DNS estático, nenhum servidor DNS será exibido.
+
+====
+** *Especifique manualmente os endereços do servidor DNS* -- Insira o endereço de um servidor DNS primário e o endereço de um servidor DNS de backup. O servidor de backup é opcional. (Esses campos de endereço aparecem depois que você seleciona o botão de opção.) Esses endereços podem ser endereços IPv4 ou endereços IPv6.
+
+
+. Clique em *Salvar*.
+. Repita estas etapas para o outro controlador.
+
+
+.Resultados
+A configuração de DNS é exibida nas configurações do controlador, guia *DNS / NTP*.

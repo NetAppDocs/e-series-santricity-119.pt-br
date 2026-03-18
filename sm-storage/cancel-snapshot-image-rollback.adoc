@@ -1,0 +1,43 @@
+---
+permalink: sm-storage/cancel-snapshot-image-rollback.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, cancel, snapshot, image, rollback 
+summary: 'Você pode cancelar um reverter ativo que esteja em andamento (copiando dados ativamente), um reverter pendente (em uma fila de espera aguardando recursos para iniciar) ou um reverter que tenha sido pausado devido a um erro.' 
+---
+= Cancelar o rollback da imagem de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode cancelar um reverter ativo que esteja em andamento (copiando dados ativamente), um reverter pendente (em uma fila de espera aguardando recursos para iniciar) ou um reverter que tenha sido pausado devido a um erro.
+
+.Sobre esta tarefa
+Ao cancelar uma operação de reverter que está em andamento, o volume base retorna a um estado inutilizável e aparece como falho. Portanto, considere cancelar uma operação de reverter somente quando existirem opções de recuperação para restaurar o conteúdo do volume base.
+
+[NOTE]
+====
+Se o grupo de snapshot no qual a imagem de snapshot reside tiver uma ou mais imagens de snapshot que foram excluídas automaticamente, a imagem de snapshot usada para a operação de reverter poderá não estar disponível para reverter futuros.
+
+====
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Clique na guia *Snapshot Images*.
+. Selecione o rollback ativo ou pausado e, em seguida, selecione menu:Rollback[Cancelar].
++
+A caixa de diálogo Confirm Cancel Rollback é exibida.
+
+. Clique em *Yes* para confirmar.
+
+
+.Resultados
+System Manager interrompe a operação de reverter. O volume base é utilizável, mas pode conter dados que são inconsistentes ou não estão intactos.
+
+.Depois que você terminar
+Após cancelar uma operação de reverter, você deve realizar uma das seguintes ações:
+
+* Reinicialize o conteúdo do volume base.
+* Execute uma nova operação de reverter para restaurar o volume base usando a mesma imagem de snapshot que foi usada na operação Cancelar Reverter ou uma imagem de snapshot diferente para executar a nova operação de reverter.
+

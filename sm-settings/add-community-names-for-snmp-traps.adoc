@@ -1,0 +1,32 @@
+---
+permalink: sm-settings/add-community-names-for-snmp-traps.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, communities, snmpv2c, traps, 
+summary: Você pode adicionar até 256 nomes de comunidade para traps SNMPv2c. 
+---
+= Adicionar comunidades para traps SNMPv2c no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar até 256 nomes de comunidade para traps SNMPv2c.
+
+.Passos
+. Selecione o menu: configurações [Alertas].
+. Selecione a guia *SNMP*.
++
+Os destinos das armadilhas e os nomes das comunidades aparecem na tabela.
+
+. Selecione *Configurar Communities*.
++
+A caixa de diálogo Configurar Comunidades é aberta.
+
+. Selecione *Add another community*.
+. Digite o novo nome da comunidade e clique em *Save*.
+
+
+.Resultados
+O novo nome da comunidade aparece na guia SNMP da página de Alertas.

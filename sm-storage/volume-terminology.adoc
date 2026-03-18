@@ -1,0 +1,254 @@
+---
+permalink: sm-storage/volume-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volume, terms 
+summary: Saiba como os termos de volume se aplicam ao seu array de storage. 
+---
+= Aprenda sobre a terminologia de volume no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de volume se aplicam ao seu array de storage.
+
+
+
+== Todos os tipos de volume
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Capacidade alocada
+ a| 
+Você utiliza a capacidade alocada para criar volumes e para operações de copy services.
+
+A capacidade alocada e a capacidade reportada são as mesmas para volumes espessos, mas são diferentes para volumes finos. Para um volume espesso, o espaço fisicamente alocado é igual ao espaço que é reportado ao host. Para um volume fino, a capacidade reportada é a capacidade que é reportada aos hosts, enquanto a capacidade alocada é a quantidade de espaço em disco que está atualmente alocada para gravação de dados.
+
+
+
+ a| 
+Aplicativo
+ a| 
+Um aplicativo é um software como SQL Server ou Exchange. Você define uma ou mais cargas de trabalho para suportar cada aplicativo. Para alguns aplicativos, o sistema recomenda automaticamente uma configuração de volume que otimiza o storage. Características como tipo de E/S, tamanho do segmento, propriedade do controlador e cache de leitura e gravação estão incluídas na configuração do volume.
+
+
+
+ a| 
+Capacidade
+ a| 
+Capacidade é a quantidade de dados que você pode armazenar em um volume.
+
+
+
+ a| 
+Propriedade do controlador
+ a| 
+A propriedade do controlador define qual controlador é designado como proprietário, ou controlador primário, do volume. Um volume pode ter um controlador preferencial (A ou B) que "possui" o volume. A propriedade do volume é ajustada automaticamente usando o recurso de Balanceamento Automático de Carga para corrigir quaisquer problemas de balanceamento de carga quando as cargas de trabalho são distribuídas entre os controladores. O Balanceamento Automático de Carga fornece balanceamento automático de carga de E/S e garante que o tráfego de E/S proveniente dos hosts seja gerenciado e balanceado dinamicamente entre ambos os controladores.
+
+
+
+ a| 
+Pré-busca de leitura de cache dinâmico
+ a| 
+O pré-carregamento dinâmico de leitura em cache permite que o controlador copie blocos de dados sequenciais adicionais para o cache enquanto lê blocos de dados de uma unidade para o cache. Esse armazenamento em cache aumenta a chance de que solicitações futuras de dados possam ser atendidas pelo cache. O pré-carregamento dinâmico de leitura em cache é importante para aplicativos multimídia que usam E/S sequencial. A taxa e a quantidade de dados pré-carregados no cache se ajustam automaticamente com base na taxa e no tamanho das solicitações de leitura do host. O acesso aleatório não faz com que dados sejam pré-carregados no cache. Esse recurso não se aplica quando o armazenamento em cache está desativado.
+
+Para um volume fino, a pré-busca de leitura em cache dinâmica está sempre desativada e não pode ser alterada.
+
+
+
+ a| 
+Área de capacidade livre
+ a| 
+Uma área de capacidade livre é a capacidade livre que pode resultar da exclusão de um volume ou do não uso de toda a capacidade livre disponível durante a criação do volume. Ao criar um volume em um grupo de volume que possui uma ou mais áreas de capacidade livre, a capacidade do volume é limitada à maior área de capacidade livre nesse grupo de volume. Por exemplo, se um grupo de volume tiver um total de 15 GiB de capacidade livre e a maior área de capacidade livre for 10 GiB, o maior volume que você pode criar é 10 GiB.
+
+Ao consolidar a capacidade livre, você pode criar volumes adicionais a partir da quantidade máxima de capacidade livre em um grupo de volumes.
+
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+Cluster de hosts
+ a| 
+Um cluster de hosts é um grupo de hosts. Você cria um cluster de hosts para facilitar a atribuição dos mesmos volumes a vários hosts.
+
+
+
+ a| 
+Drive hot spare
+ a| 
+Hot spare são suportados apenas com grupos de volume. Uma unidade hot spare não contém dados e atua como reserva caso uma unidade falhe em volumes RAID 1, RAID 3, RAID 5 ou RAID 6 contidos em um grupo de volume. A unidade hot spare adiciona mais um nível de redundância ao seu array de storage.
+
+
+
+ a| 
+LUN
+ a| 
+Um número de unidade lógica (LUN, na sigla em inglês) é o número atribuído ao espaço de endereçamento que um host usa para acessar um volume. O volume é apresentado ao host como capacidade na forma de um LUN.
+
+Cada host possui seu próprio espaço de endereçamento LUN. Portanto, o mesmo LUN pode ser usado por diferentes hosts para acessar volumes diferentes.
+
+
+
+ a| 
+Verificação de mídia
+ a| 
+Uma verificação de mídia permite detectar erros na mídia da unidade antes que sejam encontrados durante uma leitura ou gravação normal nas unidades. Uma verificação de mídia é executada como uma operação em segundo plano e examina todos os dados e informações de redundância em volumes de usuário definidos.
+
+
+
+ a| 
+Espaço de nomes
+ a| 
+Um namespace é um storage NVM formatado para acesso em bloco. É análogo a uma unidade lógica em SCSI, que se relaciona a um volume no array de storage.
+
+
+
+ a| 
+Pool
+ a| 
+Um pool é um conjunto de unidades agrupadas logicamente. Você pode usar um pool para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um pool ou de um grupo de volume.)
+
+
+
+ a| 
+Capacidade do pool ou grupo de volume
+ a| 
+A capacidade de um pool, volume ou grupo de volume é a capacidade em um array de storage que foi atribuída a um pool ou grupo de volume. Essa capacidade é usada para criar volumes e atender às diversas necessidades de capacidade das operações de serviços de cópia e objetos de armazenamento.
+
+
+
+ a| 
+Cache de leitura
+ a| 
+O cache de leitura é um buffer que armazena dados lidos das unidades. Os dados para uma operação de leitura podem já estar no cache de uma operação anterior, o que elimina a necessidade de acessar as unidades. Os dados permanecem no cache de leitura até serem liberados.
+
+
+
+ a| 
+Capacidade relatada
+ a| 
+A capacidade reportada é a capacidade que é informada ao host e pode ser acessada pelo host.
+
+A capacidade reportada e a capacidade alocada são as mesmas para volumes espessos, mas são diferentes para volumes finos. Para um volume espesso, o espaço fisicamente alocado é igual ao espaço reportado ao host. Para um volume fino, a capacidade reportada é a capacidade que é reportada aos hosts, enquanto a capacidade alocada é a quantidade de espaço em disco que está atualmente alocada para gravação de dados.
+
+
+
+ a| 
+Tamanho do segmento
+ a| 
+Um segmento é a quantidade de dados em kilobytes (KiB) armazenada em uma unidade antes que o array de storage passe para a próxima unidade na faixa (grupo RAID). O tamanho do segmento é igual ou menor que a capacidade do grupo de volume. O tamanho do segmento é fixo e não pode ser alterado para pools.
+
+
+
+ a| 
+Distribuição
+ a| 
+O striping é uma forma de armazenar dados no array de storage. O striping divide o fluxo de dados em blocos de um determinado tamanho (chamado de "tamanho do bloco") e, em seguida, grava esses blocos nas unidades uma a uma. Essa forma de armazenamento de dados é usada para distribuir e armazenar dados em várias unidades físicas. O striping é sinônimo de RAID 0 e distribui os dados por todas as unidades em um grupo RAID sem paridade.
+
+
+
+ a| 
+Volume
+ a| 
+Um volume é um contêiner no qual aplicativos, bancos de dados e sistemas de arquivos armazenam dados. É o componente lógico criado para que o host acesse o storage no array de storage.
+
+
+
+ a| 
+Atribuição de volume
+ a| 
+A atribuição de volume é como os LUNs do host são atribuídos a um volume.
+
+
+
+ a| 
+Nome do volume
+ a| 
+O nome de um volume é uma sequência de caracteres atribuída ao volume no momento de sua criação. Você pode aceitar o nome padrão ou fornecer um nome mais descritivo que indique o tipo de dados armazenados no volume.
+
+
+
+ a| 
+Grupo de volume
+ a| 
+Um grupo de volume é um contêiner para volumes com características compartilhadas. Um grupo de volume tem uma capacidade definida e nível RAID. Você pode usar um grupo de volume para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um grupo de volume ou de um pool.)
+
+
+
+ a| 
+Carga de trabalho
+ a| 
+Uma carga de trabalho é um objeto de storage que suporta uma aplicação. Você pode definir uma ou mais cargas de trabalho, ou instâncias, por aplicação. Para algumas aplicações, o sistema configura a carga de trabalho para conter volumes com características subjacentes semelhantes. Essas características de volume são otimizadas com base no tipo de aplicação que a carga de trabalho suporta. Por exemplo, se você criar uma carga de trabalho que suporte uma aplicação Microsoft SQL Server e, posteriormente, criar volumes para essa carga de trabalho, as características subjacentes do volume serão otimizadas para suportar Microsoft SQL Server.
+
+
+
+ a| 
+Cache de gravação
+ a| 
+O cache de gravação é um buffer que armazena dados do host que ainda não foram gravados nos discos. Os dados permanecem no cache de gravação até serem gravados nos discos. O armazenamento em cache pode aumentar o desempenho de E/S.
+
+
+
+ a| 
+Armazenamento em cache com espelhamento
+ a| 
+O armazenamento em cache com espelhamento ocorre quando os dados gravados na memória cache de um controlador também são gravados na memória cache do outro controlador. Portanto, se um controlador falhar, o outro pode concluir todas as operações de gravação pendentes. O espelhamento do cache de gravação está disponível somente se o armazenamento em cache de gravação estiver habilitado e houver dois controladores. O armazenamento em cache com espelhamento é a configuração padrão na criação do volume.
+
+
+
+ a| 
+Armazenamento em cache sem baterias
+ a| 
+A configuração de armazenamento em cache de gravação sem baterias permite que o armazenamento em cache continue mesmo quando as baterias estão ausentes, com defeito, completamente descarregadas ou não totalmente carregadas. Escolher armazenamento em cache de gravação sem baterias geralmente não é recomendado, pois os dados podem ser perdidos se houver uma queda de energia. Normalmente, o armazenamento em cache é desativado temporariamente pelo controlador até que as baterias sejam carregadas ou uma bateria com defeito seja substituída.
+
+|===
+
+
+== Específico para volumes finos
+
+[NOTE]
+====
+System Manager não oferece uma opção para criar volumes finos. Se você deseja criar volumes finos, use a interface de linha de comando (CLI).
+
+====
+[NOTE]
+====
+Volumes finos não estão disponíveis nos sistemas de storage EF600/EF600C ou EF300/EF300C.
+
+====
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Limite de capacidade alocada
+ a| 
+O limite de capacidade alocada é o teto de quanto a capacidade física alocada para um volume fino pode crescer.
+
+
+
+ a| 
+Capacidade escrita
+ a| 
+A capacidade de escrita é a quantidade de capacidade que foi escrita da capacidade reservada alocada para volumes finos.
+
+
+
+ a| 
+Limiar de alerta
+ a| 
+Você pode definir um limite de alerta para ser emitido quando a capacidade alocada para um volume fino atingir a porcentagem de preenchimento (o limite de alerta).
+
+|===

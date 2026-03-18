@@ -1,0 +1,16 @@
+---
+permalink: sm-storage/workflow-for-creating-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, workflow, create, volumes 
+summary: No SANtricity System Manager, você pode criar volumes seguindo estas etapas. 
+---
+= Como funciona a criação de volumes no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No SANtricity System Manager, você pode criar volumes seguindo estas etapas.
+
+image::../media/sam1130-flw-volumes-create.gif[Criar workflow de volumes]

@@ -1,0 +1,223 @@
+---
+permalink: sm-hardware/view-drive-status-and-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, drive, status, settings, media, 
+summary: Você pode visualizar o status e as configurações das unidades, como o tipo de mídia, o tipo de interface e a capacidade. 
+---
+= Visualize o status e as configurações da unidade no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar o status e as configurações das unidades, como o tipo de mídia, o tipo de interface e a capacidade.
+
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar os controladores, clique na guia *Drives*.
++
+O gráfico muda para mostrar as unidades em vez dos controladores.
+
+. Selecione a unidade para a qual deseja visualizar o status e as configurações.
++
+O menu de contexto da unidade é aberto.
+
+. Selecione *View settings*.
++
+A caixa de diálogo Drive Settings é aberta.
+
+. Para ver todas as configurações, clique em *Mostrar mais configurações* no canto superior direito da caixa de diálogo.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configurações | Descrição 
+
+
+ a| 
+Status
+ a| 
+Exibe os status Ideal, Offline, Falha não crítica e Falha. O status Ideal indica a condição de funcionamento desejada.
+
+
+
+ a| 
+Modo
+ a| 
+Exibe Atribuído, Não atribuído, Hot Spare Standby ou Hot Spare em uso.
+
+
+
+ a| 
+Localização
+ a| 
+Mostra a prateleira e o número do compartimento onde a unidade está localizada.
+
+
+
+ a| 
+Atribuído a/Pode proteger para/Protegendo
+ a| 
+Se a unidade estiver atribuída a um pool, grupo de volume ou cache SSD, este campo exibirá "Atribuído a." O valor pode ser um nome de pool, nome de grupo de volume ou nome de cache SSD. Se a unidade estiver atribuída a um hot spare e seu modo for Standby, este campo exibirá "Pode proteger para." Se o hot spare puder proteger um ou mais grupos de volume, os nomes dos grupos de volume aparecerão. Se não puder proteger um grupo de volume, exibirá 0 grupos de volume.
+
+Se a unidade estiver atribuída a um hot spare e seu modo for "Em uso", este campo exibirá "Protegendo". O valor é o nome do grupo de volume afetado.
+
+Se a unidade não estiver atribuída, este campo não aparece.
+
+
+
+ a| 
+Tipo de mídia
+ a| 
+Exibe o tipo de mídia de gravação que a unidade utiliza, que pode ser um disco rígido (HDD) ou um disco de estado sólido (SSD).
+
+
+
+ a| 
+Percentual de endurance utilizada (exibido apenas se houver unidades SSD presentes)
+ a| 
+A quantidade de dados gravados na unidade até o momento, dividida pelo limite teórico total de gravação.
+
+
+
+ a| 
+Tipo de interface
+ a| 
+Exibe o tipo de interface que a unidade utiliza, como SAS.
+
+
+
+ a| 
+Redundância de caminho de disco
+ a| 
+Mostra se as conexões entre a unidade e o controlador são redundantes (Yes) ou não (No).
+
+
+
+ a| 
+Capacidade (GiB)
+ a| 
+Mostra a capacidade utilizável (capacidade total configurada) da unidade.
+
+
+
+ a| 
+Velocidade (RPM)
+ a| 
+Mostra a velocidade em RPM (não aparece para SSDs).
+
+
+
+ a| 
+Taxa de transferência de dados atual
+ a| 
+Mostra a taxa de transferência de dados entre a unidade e o array de storage.
+
+
+
+ a| 
+Tamanho do setor lógico (bytes)
+ a| 
+Mostra o tamanho do setor lógico que a unidade usa.
+
+
+
+ a| 
+Tamanho do setor físico (bytes)
+ a| 
+Mostra o tamanho físico do setor que a unidade utiliza. Normalmente, o tamanho físico do setor é de 4096 bytes para discos rígidos.
+
+
+
+ a| 
+Versão do firmware da unidade
+ a| 
+Mostra o nível de revisão do firmware da unidade.
+
+
+
+ a| 
+Identificador mundial
+ a| 
+Exibe o identificador hexadecimal exclusivo do disco rígido.
+
+
+
+ a| 
+ID do produto
+ a| 
+Exibe o identificador do produto, que é atribuído pelo fabricante.
+
+
+
+ a| 
+Número de série
+ a| 
+Exibe o número de série da unidade.
+
+
+
+ a| 
+Fabricante
+ a| 
+Mostra o fornecedor da unidade.
+
+
+
+ a| 
+Data de fabricação
+ a| 
+Mostra a data em que a unidade foi fabricada.
+
+
+NOTE: Não disponível para unidades NVMe.
+
+
+
+ a| 
+Compatível com segurança
+ a| 
+Indica se a unidade é secure-capable (Sim) ou não (Não). Unidades secure-capable podem ser unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS) (nível 140-2 ou 140-3), que criptografam os dados durante gravações e descriptografam os dados durante leituras. Essas unidades são consideradas secure-_capable_ porque podem ser usadas para segurança adicional usando o recurso Drive Security. Se o recurso Drive Security estiver habilitado para grupos de volume e pools usados com essas unidades, as unidades se tornam secure-_enabled_.
+
+
+
+ a| 
+Habilitado para segurança
+ a| 
+Mostra se a unidade está secure-enabled (Yes) ou não (No). Unidades secure-enabled são usadas com o recurso Drive Security. Quando você habilita o recurso Drive Security e, em seguida, aplica Drive Security a um pool ou grupo de volume em unidades secure-capable, as unidades se tornam secure-enabled. O acesso de leitura/gravação está disponível somente por meio de um controlador configurado com a chave de segurança correta. Essa segurança adicional impede o acesso não autorizado aos dados em uma unidade que foi fisicamente removida do array de storage.
+
+
+
+ a| 
+Acessível para leitura/gravação
+ a| 
+Mostra se a unidade está acessível para leitura/gravação (Sim) ou não (Não).
+
+
+
+ a| 
+Identificador da chave de segurança da unidade
+ a| 
+Exibe a chave de segurança para unidades com segurança habilitada. Drive Security é um recurso do array de storage que fornece uma camada extra de segurança com unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS). Quando essas unidades são usadas com o recurso Drive Security, elas exigem uma chave de segurança para acesso aos seus dados. Quando as unidades são fisicamente removidas do array, elas não podem operar até serem instaladas em outro array, momento em que ficarão em estado Security Locked até que a chave de segurança correta seja fornecida.
+
+
+
+ a| 
+Compatível com Data Assurance (DA)
+ a| 
+Mostra se o recurso Data Assurance (DA) está ativado (Sim) ou não (Não). Data Assurance (DA) é um recurso que verifica e corrige erros que podem ocorrer durante a transferência de dados pelos controladores até as unidades. Data Assurance pode ser ativado no nível do pool ou do grupo de volume, com hosts que utilizam uma interface de I/O compatível com DA, como Fibre Channel.
+
+
+
+ a| 
+DULBE capaz
+ a| 
+Indica se a opção para Erro de Bloco Lógico Desalocado ou Não Escrito (DULBE) está habilitada (Sim) ou não (Não). DULBE é uma opção em unidades NVMe que permite que o EF300 ou EF600 array de storage suporte volumes com recursos provisionados.
+
+|===
+====
+. Clique em *Close*.
+

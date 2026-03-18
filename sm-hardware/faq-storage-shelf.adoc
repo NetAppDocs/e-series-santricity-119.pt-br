@@ -1,0 +1,180 @@
+---
+permalink: sm-hardware/faq-storage-shelf.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre compartimentos de armazenamento para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== O que é proteção contra perdas em prateleiras e proteção contra perdas em gavetas?
+
+A proteção contra perda de compartimento e a proteção contra perda de gaveta são atributos de pools e grupos de volume que permitem manter o acesso aos dados em caso de falha de um único compartimento ou gaveta.
+
+
+
+=== Proteção contra perda de compartimento
+
+Um shelf é o gabinete que contém as unidades ou as unidades e o controlador. A proteção contra perda de shelf garante acessibilidade aos dados nos volumes de um pool ou grupo de volume caso ocorra uma perda total de comunicação com um shelf de unidades. Um exemplo de perda total de comunicação pode ser a perda de energia do shelf de unidades ou a falha de ambos os módulos de E/S (IOMs).
+
+[NOTE]
+====
+A proteção contra perda de compartimento não é garantida se uma unidade já tiver falhado no pool ou grupo de volume. Nessa situação, a perda de acesso a um compartimento de unidades e, consequentemente, a outra unidade no pool ou grupo de volume causa perda de dados.
+
+====
+Os critérios para proteção contra perdas no compartimento de expansão dependem do método de proteção, conforme descrito na tabela a seguir:
+
+[cols="1a,1a,1a"]
+|===
+| Nível | Critérios para proteção contra perda de compartimento | Número mínimo de compartimentos necessários 
+
+
+ a| 
+Pool
+ a| 
+O pool deve incluir unidades de pelo menos cinco compartimentos e deve haver um número igual de unidades em cada compartimento. A proteção contra perda de compartimento não se aplica a compartimentos de alta capacidade; se o seu sistema contiver compartimentos de alta capacidade, consulte Proteção contra Perda de Gaveta.
+ a| 
+5
+
+
+
+ a| 
+RAID 6
+ a| 
+O grupo de volume contém no máximo duas unidades em um único compartimento.
+ a| 
+3
+
+
+
+ a| 
+RAID 3 ou RAID 5
+ a| 
+Cada unidade do grupo de volume está localizada em um compartimento separado.
+ a| 
+3
+
+
+
+ a| 
+RAID 1
+ a| 
+Cada disco rígido em um par RAID 1 deve estar localizado em um compartimento separado.
+ a| 
+2
+
+
+
+ a| 
+RAID 0
+ a| 
+Não é possível obter proteção contra perda de compartimento.
+ a| 
+Não aplicável
+
+|===
+
+
+=== Proteção contra perda de gaveta
+
+Uma gaveta é um dos compartimentos de uma prateleira que você puxa para acessar as unidades. Somente as prateleiras de alta capacidade possuem gavetas. A proteção contra perda de gaveta garante acessibilidade aos dados nos volumes em um pool ou grupo de volume caso ocorra uma perda total de comunicação com uma única gaveta. Um exemplo de perda total de comunicação pode ser a falta de energia na gaveta ou a falha de um componente interno dentro da gaveta.
+
+[NOTE]
+====
+A proteção contra perda de gaveta não é garantida se uma unidade já tiver falhado no pool ou grupo de volume. Nessa situação, a perda de acesso a uma gaveta (e consequentemente a outra unidade no pool ou grupo de volume) causa perda de dados.
+
+====
+Os critérios para proteção contra perda de gavetas dependem do método de proteção, conforme descrito na tabela a seguir:
+
+[cols="1a,1a,1a"]
+|===
+| Nível | Critérios para proteção contra perda de gaveta | Número mínimo de gavetas necessárias 
+
+
+ a| 
+Pool
+ a| 
+Os candidatos ao pool devem incluir unidades de todas as gavetas, e deve haver um número igual de unidades em cada gaveta.
+
+O pool deve incluir unidades de pelo menos cinco gavetas e deve haver um número igual de unidades em cada gaveta.
+
+Uma prateleira de 60 discos rígidos pode atingir a Proteção contra Perda de Gavetas quando o pool contém 15, 20, 25, 30, 35, 40, 45, 50, 55 ou 60 discos rígidos. Incrementos em múltiplos de 5 podem ser adicionados ao pool após a criação inicial.
+ a| 
+5
+
+
+
+ a| 
+RAID 6
+ a| 
+O grupo de volume contém no máximo duas unidades em uma única gaveta.
+ a| 
+3
+
+
+
+ a| 
+RAID 3 ou RAID 5
+ a| 
+Cada unidade no grupo de volume está localizada em uma gaveta separada.
+ a| 
+3
+
+
+
+ a| 
+RAID 1
+ a| 
+Cada unidade em um par espelhado deve estar localizada em uma gaveta separada.
+ a| 
+2
+
+
+
+ a| 
+RAID 0
+ a| 
+Não é possível alcançar a proteção contra perda de gaveta.
+ a| 
+Não aplicável
+
+|===
+
+
+== O que são ciclos de aprendizagem da bateria?
+
+Um ciclo de aprendizagem é um ciclo automático para calibrar o medidor inteligente de bateria.
+
+Um ciclo de aprendizagem consiste nestas fases:
+
+* Descarga controlada da bateria
+* Período de repouso
+* Cobrar
+
+
+As baterias são descarregadas até um limite predeterminado. Durante essa fase, o indicador de nível da bateria é calibrado.
+
+Um ciclo de aprendizagem requer estes parâmetros:
+
+* Baterias totalmente carregadas
+* Sem baterias superaquecidas
+
+
+Os ciclos de aprendizagem para sistemas de controladores duplex ocorrem simultaneamente. Para controladores com backup de energia proveniente de mais de uma bateria ou conjunto de células de bateria, os ciclos de aprendizagem ocorrem sequencialmente.
+
+Os ciclos de aprendizagem são programados para iniciar automaticamente em intervalos regulares, no mesmo horário e no mesmo dia da semana. O intervalo entre os ciclos é descrito em semanas.
+
+[NOTE]
+====
+Um ciclo de learn pode levar várias horas para ser concluído.
+
+====

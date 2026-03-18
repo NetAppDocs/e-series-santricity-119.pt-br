@@ -1,0 +1,38 @@
+---
+permalink: um-certificates/view-local-user-roles-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, view, local, user, roles 
+summary: 'Na guia Funções de Usuário Local, você pode visualizar o mapeamento dos usuários para as funções padrão. Esses mapeamentos fazem parte do RBAC (controle de acesso baseado em funções) aplicado no Web Services Proxy para SANtricity Unified Manager.' 
+---
+= Exibir funções de usuário locais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Na guia Funções de Usuário Local, você pode visualizar o mapeamento dos usuários para as funções padrão. Esses mapeamentos fazem parte do RBAC (controle de acesso baseado em funções) aplicado no Web Services Proxy para SANtricity Unified Manager.
+
+.Antes de começar
+Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de Access Management não serão exibidas.
+
+.Sobre esta tarefa
+Os usuários e mapeamentos não podem ser alterados. Somente as senhas podem ser modificadas.
+
+.Passos
+. Selecione *Access Management*.
+. Selecione a guia *Funções de usuário local*.
++
+Os usuários são apresentados na tabela:
+
++
+** *admin* -- Superadministrador com acesso a todas as funções do sistema. Este usuário inclui todas as funções.
+** *storage* -- O administrador responsável por todo provisionamento de storage. Este usuário inclui as seguintes funções: Storage Admin, Support Admin e Monitor.
+** *security* -- O usuário responsável pela configuração de segurança, incluindo Access Management e Certificate Management. Este usuário inclui as seguintes funções: Security Admin e Monitor.
+** *support* -- O usuário responsável pelos recursos de hardware, dados de falhas e upgrades de firmware. Este usuário inclui as seguintes funções: Support Admin e Monitor.
+** *monitor* -- Um usuário com acesso somente leitura ao sistema. Este usuário inclui apenas a função Monitor.
+** *rw* (leitura/gravação) -- Este usuário inclui as seguintes funções: Storage Admin, Support Admin e Monitor.
+** *ro* (somente leitura) -- Este usuário inclui apenas a função Monitor.
+
+
+

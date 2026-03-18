@@ -1,0 +1,36 @@
+---
+permalink: um-certificates/import-array-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, certificates, arrays 
+summary: 'Caso necessário, você pode importar certificados para os arrays de storage para que eles possam se autenticar com o sistema que hospeda SANtricity Unified Manager. Os certificados podem ser assinados por uma autoridade certificadora (CA) ou podem ser autoassinados.' 
+---
+= Importar certificados para arrays em SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Caso necessário, você pode importar certificados para os arrays de storage para que eles possam se autenticar com o sistema que hospeda SANtricity Unified Manager. Os certificados podem ser assinados por uma autoridade certificadora (CA) ou podem ser autoassinados.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+* Se você estiver importando certificados confiáveis, os certificados deverão ser importados para os controladores do array de storage usando System Manager.
+
+
+.Passos
+. Selecione *Certificate Management*.
+. Selecione a guia *Trusted*.
++
+Esta página exibe todos os certificados relatados para os arrays de storage.
+
+. Selecione menu:Import[Certificados] para importar um certificado de CA ou menu:Import[Self-signed storage array certificates] para importar um certificado autoassinado.
++
+Para limitar a visualização, você pode usar o campo de filtro *Mostrar certificados que são...* ou pode classificar as linhas de certificados clicando em um dos cabeçalhos de coluna.
+
+. Na caixa de diálogo, selecione o certificado e depois clique em *Importar*.
++
+O certificado é carregado e validado.
+
+

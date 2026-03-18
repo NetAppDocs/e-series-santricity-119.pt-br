@@ -1,0 +1,43 @@
+---
+permalink: sm-hardware/unassign-hot-spares.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, hot, spare, unassign, 
+summary: Você pode alterar uma hot spare de volta para uma unidade não atribuída. 
+---
+= Desatribuir hot spares no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar uma hot spare de volta para uma unidade não atribuída.
+
+.Antes de começar
+O hot spare deve estar no estado Ótimo, em modo de espera.
+
+.Sobre esta tarefa
+Não é possível remover a atribuição de um hot spare que esteja substituindo uma unidade com falha. Se o hot spare não estiver em status Ótimo, siga os procedimentos do Recovery Guru para corrigir quaisquer problemas antes de tentar remover a atribuição da unidade.
+
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar os controladores, clique na guia *Drives*.
++
+O gráfico muda para mostrar as unidades em vez dos controladores.
+
+. Selecione a hot spare drive (exibida em rosa) que você deseja desatribuir.
++
+Se houver linhas diagonais atravessando o compartimento rosa da unidade, o hot spare está atualmente em uso e não pode ser desatribuído.
+
++
+O menu de contexto da unidade é aberto.
+
+. Na lista suspensa da unidade, selecione *Unassign hot spare*.
++
+A caixa de diálogo mostra quaisquer grupos de volumes afetados pela remoção deste hot spare e se outros hot spares os estão protegendo.
+
+. Confirme a operação de desatribuição.
+
+
+.Resultados
+A unidade é retornada para Não Atribuído (mostrada em cinza).

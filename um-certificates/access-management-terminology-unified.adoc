@@ -1,0 +1,82 @@
+---
+permalink: um-certificates/access-management-terminology-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, access management, terminology 
+summary: Saiba como os termos de Access Management se aplicam ao SANtricity Unified Manager. 
+---
+= Saiba mais sobre a terminologia de gerenciamento de acesso do SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de Access Management se aplicam ao SANtricity Unified Manager.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Active Directory
+ a| 
+Active Directory (AD) é um serviço de diretório da Microsoft que utiliza LDAP para redes de domínio Windows.
+
+
+
+ a| 
+Vinculação
+ a| 
+As operações de bind são usadas para autenticar clientes no servidor de diretório. Bind geralmente requer credenciais de conta e senha, mas alguns servidores permitem operações de bind anônimas.
+
+
+
+ a| 
+CA
+ a| 
+Uma autoridade certificadora (CA) é uma entidade confiável que emite documentos eletrônicos, chamados certificados digitais, para segurança na Internet. Esses certificados identificam os proprietários de sites, permitindo conexões seguras entre clientes e servidores.
+
+
+
+ a| 
+Certificado
+ a| 
+Um certificado identifica o proprietário de um site para fins de segurança, o que impede que invasores se façam passar pelo site. O certificado contém informações sobre o proprietário do site e a identidade da entidade confiável que certifica (assina) essas informações.
+
+
+
+ a| 
+LDAP
+ a| 
+O Lightweight Directory Access Protocol (LDAP) é um protocolo de aplicação para acessar e manter serviços de informações de diretório distribuídos. Este protocolo permite que diversas aplicações e serviços se conectem ao servidor LDAP para validar usuários.
+
+
+
+ a| 
+RBAC
+ a| 
+O controle de acesso baseado em funções (RBAC) é um método de regular o acesso a recursos de computador ou de rede com base nas funções dos usuários individuais. Unified Manager inclui funções predefinidas.
+
+
+
+ a| 
+SAML
+ a| 
+A Linguagem de Marcação de Asserção de Segurança (SAML) é um padrão baseado em XML para autenticação e autorização entre duas entidades. O SAML permite autenticação multifator, na qual os usuários devem fornecer dois ou mais itens para comprovar sua identidade (por exemplo, uma senha e impressão digital). O recurso SAML incorporado do array de storage é compatível com SAML2.0 para declaração de identidade, autenticação e autorização.
+
+
+
+ a| 
+SSO
+ a| 
+Single sign-on (SSO) é um serviço de autenticação que permite que um único conjunto de credenciais de login acesse vários aplicativos.
+
+
+
+ a| 
+Proxy de Serviços Web
+ a| 
+O Proxy de Serviços Web, que fornece acesso por meio de mecanismos HTTPS padrão, permite que os administradores configurem serviços de gerenciamento para arrays de storage. O proxy pode ser instalado em hosts Windows ou Linux. A interface Unified Manager está disponível com o Proxy de Serviços Web.
+
+|===

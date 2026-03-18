@@ -1,0 +1,84 @@
+---
+permalink: sm-mirroring/synchronous-mirroring-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, synchronous, mirroring, terms 
+summary: Saiba como os termos de espelhamento síncrono se aplicam ao seu array de storage. 
+---
+= Saiba mais sobre a terminologia de espelhamento síncrono no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de espelhamento síncrono se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Array de storage local
+ a| 
+O array de storage local é o array de storage sobre o qual você está agindo.
+
+Quando você vê *Primário* na coluna Função Local, isso indica que o array de storage contém o volume que detém a função primária na relação de espelhamento. Quando você vê *Secundário* na coluna Função Local, isso indica que o array de storage contém o volume que detém a função secundária na relação de espelhamento.
+
+
+
+ a| 
+Par espelhado
+ a| 
+Um par espelhado é composto por dois volumes, um volume primário e um volume secundário.
+
+
+
+ a| 
+Volume primário
+ a| 
+O volume primário de um par espelhado é o volume de origem a ser espelhado.
+
+
+
+ a| 
+Objetivo de ponto de recuperação (RPO)
+ a| 
+O Recovery Point Objective (RPO) representa um objetivo que indica a diferença considerada aceitável entre o volume primário e o volume secundário em um par espelhado. Um RPO de zero indica que nenhuma diferença entre o volume primário e o volume secundário pode ser tolerada. Um RPO maior que zero indica que o volume secundário está menos atual ou atrasado em relação ao volume primário.
+
+
+
+ a| 
+Array de storage remoto
+ a| 
+O array de storage remoto é geralmente designado como o site secundário, que normalmente contém uma réplica dos dados em uma configuração de espelhamento.
+
+
+
+ a| 
+Capacidade reservada
+ a| 
+A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e objeto de armazenamento. Ela não é diretamente legível pelo host.
+
+
+
+ a| 
+Mudança de função
+ a| 
+A mudança de função consiste em atribuir a função principal ao volume secundário e vice-versa.
+
+
+
+ a| 
+Volume secundário
+ a| 
+O volume secundário de um par espelhado geralmente está localizado em um site secundário e contém uma réplica dos dados.
+
+
+
+ a| 
+Sincronização
+ a| 
+A sincronização ocorre na sincronização inicial entre o array de storage local e o array de storage remoto. A sincronização também ocorre quando os volumes primário e secundário ficam dessincronizados após uma interrupção na comunicação. Quando o link de comunicação volta a funcionar, quaisquer dados não replicados são sincronizados com o array de storage do volume secundário.
+
+|===

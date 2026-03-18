@@ -1,0 +1,34 @@
+---
+permalink: sm-mirroring/update-remote-ip-address.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, update, remote, ip, address, connection, 
+summary: Você pode atualizar o endereço IP iSCSI do seu array de storage remoto para restabelecer a conexão com o array de storage local. 
+---
+= Atualizar endereços IP do array de storage remoto no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode atualizar o endereço IP iSCSI do seu array de storage remoto para restabelecer a conexão com o array de storage local.
+
+.Antes de começar
+Tanto o array de storage local quanto o array de storage remoto devem ser configurados para espelhamento assíncrono usando uma conexão iSCSI.
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Mirror Consistency Groups*.
++
+A tabela Grupos de Consistência de Espelho exibe todos os grupos de consistência de espelho associados ao array de storage.
+
+. Selecione o grupo de consistência de espelhamento que você deseja atualizar e, em seguida, selecione menu:Mais[Atualizar endereço IP remoto].
++
+O sistema exibe a caixa de diálogo Atualizar endereço IP remoto.
+
+. Selecione *Atualizar* para atualizar o endereço IP iSCSI do seu array de storage remoto.
+
+
+.Resultados
+O sistema redefine o endereço IP do array de storage remoto para restabelecer a conexão com o array de storage local.

@@ -1,0 +1,152 @@
+---
+permalink: sm-settings/edit-directory-server-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, edit, directory, server, settings, role, mappings, 
+summary: Se você já configurou um servidor de diretório no Access Management, pode alterar suas configurações a qualquer momento. As configurações incluem as informações de conexão do servidor e os mapeamentos de grupo para função. 
+---
+= Editar as configurações do servidor de diretório e os mapeamentos de funções no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você já configurou um servidor de diretório no Access Management, pode alterar suas configurações a qualquer momento. As configurações incluem as informações de conexão do servidor e os mapeamentos de grupo para função.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de Access Management não serão exibidas.
+* É necessário definir um servidor de diretório.
+
+
+.Passos
+. Selecione o menu: Configurações [Access Management].
+. Selecione a guia *Directory Services*.
+. Se mais de um servidor estiver definido, selecione o servidor que você deseja editar na tabela.
+. Selecione *Visualizar/Editar Settings*.
++
+A caixa de diálogo Configurações do Servidor de Diretório é aberta.
+
+. Na guia Configurações do Servidor, altere as configurações desejadas.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações de configuração*
+
+
+
+ a| 
+Domínio(s)
+ a| 
+O(s) nome(s) de domínio do(s) servidor(es) LDAP. Para múltiplos domínios, insira os domínios em uma lista separada por vírgulas. O nome de domínio é usado no login (_username_@_domain_) para especificar em qual servidor de diretório autenticar.
+
+
+
+ a| 
+URL do servidor
+ a| 
+A URL para acessar o servidor LDAP no formato de  `ldap[s]://host:port`.
+
+
+
+ a| 
+Vincular conta (opcional)
+ a| 
+A conta de usuário somente leitura para consultas de pesquisa contra o servidor LDAP e para pesquisas dentro dos grupos.
+
+
+
+ a| 
+Senha de bind (opcional)
+ a| 
+A senha da conta de bind. (Este campo aparece quando uma conta de bind é inserida.)
+
+
+
+ a| 
+Teste a conexão com o servidor antes de salvar
+ a| 
+Verifica se o array de storage consegue se comunicar com a configuração do servidor LDAP. O teste ocorre após você clicar em *Salvar* na parte inferior da caixa de diálogo. Se esta caixa de seleção estiver marcada e o teste falhar, a configuração não será alterada. Você deve resolver o erro ou desmarcar a caixa de seleção para ignorar o teste e editar a configuração novamente.
+
+
+
+ a| 
+*Configurações de privilégios*
+
+
+
+ a| 
+DN base de pesquisa
+ a| 
+O contexto LDAP para pesquisar usuários, normalmente no formato de `CN=Users, DC=cpoc, DC=local`.
+
+
+
+ a| 
+Atributo de nome de usuário
+ a| 
+O atributo que está vinculado ao ID do usuário para autenticação. Por exemplo: `sAMAccountName`.
+
+
+
+ a| 
+Atributo(s) do grupo
+ a| 
+Uma lista de atributos de grupo do usuário, usada para mapeamento de grupo para função. Por exemplo:  `memberOf, managedObjects`.
+
+|===
+====
+. Na guia Mapeamento de Funções, altere o mapeamento desejado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Mapeamentos*
+
+
+
+ a| 
+Nome diferenciado do grupo
+ a| 
+O nome de domínio para o grupo de usuários LDAP a ser mapeado. Expressões regulares são suportadas. Esses caracteres especiais de expressão regular devem ser escapados com uma barra invertida (`\`) se não fizerem parte de um padrão de expressão regular: \.[]{}()<>*+-=!?^$|
+
+
+
+ a| 
+Funções
+ a| 
+As funções do array de storage a serem mapeadas para o DN do grupo. Você deve selecionar individualmente cada função que deseja incluir neste grupo. A função Monitor é necessária em combinação com as outras funções para fazer login no SANtricity System Manager. As funções do array de storage incluem o seguinte:
+
+** *Administrador de armazenamento* -- acesso completo de leitura/gravação aos objetos de armazenamento (por exemplo, volumes e conjuntos de discos), mas sem acesso à configuração de segurança.
+** *Administrador de segurança* -- Acesso à configuração de segurança no Gerenciamento de Acesso, gerenciamento de certificados, gerenciamento do log de auditoria e a capacidade de ativar ou desativar a interface de gerenciamento legada (SYMbol).
+** *Administrador de suporte* -- Acesso a todos os recursos de hardware no array de storage, dados de falhas, eventos MEL e atualizações de firmware do controlador. Sem acesso a objetos de armazenamento ou à configuração de segurança.
+** *Monitor* -- Acesso somente leitura a todos os objetos de storage, mas sem acesso à configuração de segurança.
+
+
+|===
+====
++
+[NOTE]
+====
+A função de Monitor é obrigatória para todos os usuários, incluindo o administrador. System Manager não funcionará corretamente para nenhum usuário sem a função de Monitor presente.
+
+====
+. Se desejar, clique em *Adicionar outro mapeamento* para inserir mais mapeamentos de grupo para função.
+. Clique em *Salvar*.
+
+
+.Resultados
+Após concluir esta tarefa, todas as sessões de usuário ativas são encerradas. Apenas a sua sessão de usuário atual é mantida.

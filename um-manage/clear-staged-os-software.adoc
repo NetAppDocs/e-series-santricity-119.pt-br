@@ -1,0 +1,28 @@
+---
+permalink: um-manage/clear-staged-os-software.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, clear, staged, os, software 
+summary: Você pode remover o software do sistema operacional em fase de preparação para garantir que uma versão pendente não seja ativada inadvertidamente em um momento posterior. Remover o software do sistema operacional em fase de preparação não afeta a versão atual em execução nos arrays de storage. 
+---
+= Limpar o software do sistema operacional em estágio no SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover o software do sistema operacional em fase de preparação para garantir que uma versão pendente não seja ativada inadvertidamente em um momento posterior. Remover o software do sistema operacional em fase de preparação não afeta a versão atual em execução nos arrays de storage.
+
+.Passos
+. Na tela principal, selecione *Gerenciar* e, em seguida, selecione menu:Upgrade Center[Clear Staged OS Software].
++
+A caixa de diálogo Limpar Software do SO em Estágio é aberta e lista todos os sistemas de storage detectados com software ou NVSRAM pendentes.
+
+. Se necessário, filtre ou classifique os sistemas de armazenamento na lista para que você possa visualizar todos os sistemas que possuem software em estágio.
+. Selecione as caixas de seleção para os sistemas de armazenamento com software pendente que você deseja limpar.
+. Clique em *Clear*.
++
+O status da operação é exibido na caixa de diálogo.
+
+

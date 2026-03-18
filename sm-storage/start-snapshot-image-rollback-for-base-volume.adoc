@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/start-snapshot-image-rollback-for-base-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, start, snapshot, image, rollback, base, volume 
+summary: Você pode executar uma operação de reverter para alterar o conteúdo de um volume base para corresponder ao conteúdo que está salvo em uma imagem de Snapshot. A operação de reverter não altera o conteúdo das imagens de Snapshot associadas ao volume base. 
+---
+= Iniciar o rollback da imagem de Snapshot para um volume base no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode executar uma operação de reverter para alterar o conteúdo de um volume base para corresponder ao conteúdo salvo em uma imagem de Snapshot.
+
+A operação de reverter não altera o conteúdo das imagens de Snapshot associadas ao volume base.
+
+.Antes de começar
+* Existe capacidade reservada suficiente para iniciar uma operação de reverter.
+* A imagem de Snapshot selecionada está como Ideal e o volume selecionado está como Ideal.
+* O volume selecionado não possui uma operação de reverter já em andamento.
+
+
+.Sobre esta tarefa
+A sequência de início de reverter permite iniciar o reverter em uma imagem de Snapshot de um volume base, oferecendo opções para adicionar capacidade de storage. Você não pode iniciar mais de uma operação de reverter para um volume base ao mesmo tempo.
+
+[NOTE]
+====
+O host pode acessar imediatamente o novo volume base revertido, mas o volume base existente não permite acesso de leitura e gravação ao host após o início do reverter. Você pode criar um Snapshot do volume base imediatamente antes de iniciar o reverter para preservar o volume base anterior à reversão para fins de recuperação.
+
+====
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Selecione a guia *Snapshot Images*.
+. Selecione a imagem do Snapshot e, em seguida, selecione menu: reverter[Iniciar].
++
+A caixa de diálogo Confirmar início de reverter é exibida.
+
+. *Opcional:* selecione a opção *Aumentar a capacidade* se necessário.
++
+A caixa de diálogo Increase Reserved Capacity é exibida.
+
++
+.. Use a caixa de rotação para ajustar a porcentagem de capacidade.
++
+Se não houver capacidade livre no pool ou grupo de volume que contém o objeto de storage selecionado e o array de storage tiver Unassigned Capacity, você pode adicionar capacidade. Você pode criar um novo pool ou grupo de volume e então tentar novamente esta operação usando a nova capacidade livre nesse pool ou grupo de volume.
+
+.. Clique em *Increase*.
+
+
+. Confirme que deseja realizar esta operação e, em seguida, clique em *Reverter*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Restaura o volume com o conteúdo salvo na imagem de Snapshot selecionada.
+* Torna os volumes revertidos imediatamente disponíveis para acesso do host. Não é necessário aguardar a conclusão da operação de reverter.
+
+
+.Depois que você terminar
+Selecione o menu: Home [View Operations in Progress] para visualizar o progresso da operação de reverter.
+
+Se a operação de reverter não for bem-sucedida, a operação será pausada. Você pode retomar a operação pausada e, se ainda assim não for bem-sucedida, siga o procedimento do Recovery Guru para corrigir o problema ou entre em contato com o suporte técnico.

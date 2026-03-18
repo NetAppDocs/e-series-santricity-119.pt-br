@@ -1,0 +1,39 @@
+---
+permalink: sm-storage/ssd-cache-and-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd, cache, volumes 
+summary: 'Você pode adicionar um volume ao SSD Cache como forma de melhorar o desempenho somente de leitura. SSD Cache consiste em um conjunto de unidades de estado sólido (SSD) que você agrupa logicamente em seu array de storage.' 
+---
+= Saiba mais sobre cache SSD e volumes no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar um volume ao SSD Cache como forma de melhorar o desempenho somente de leitura. SSD Cache consiste em um conjunto de unidades de estado sólido (SSD) que você agrupa logicamente em seu array de storage.
+
+
+
+== Volumes
+
+Mecanismos simples de E/S de volume são usados para mover dados de e para o SSD Cache. Depois que os dados são armazenados em cache e salvos nos SSDs, as leituras subsequentes desses dados são realizadas no SSD Cache, eliminando assim a necessidade de acessar o volume do HDD.
+
+O cache SSD é um cache secundário usado em conjunto com o cache primário na memória dinâmica de acesso aleatório (DRAM) do controlador.
+
+* No cache primário, os dados são armazenados na DRAM após uma leitura do host.
+* No SSD Cache, os dados são copiados de volumes e armazenados em dois volumes RAID internos (um por controladora) que são criados automaticamente quando você cria um SSD Cache.
+
+
+Os volumes RAID internos são usados para fins de processamento de cache interno. Esses volumes não são acessíveis nem exibidos na interface de usuário. No entanto, esses dois volumes são contabilizados no número total de volumes permitidos no array de storage.
+
+[NOTE]
+====
+Qualquer volume atribuído ao uso do SSD Cache de um controlador não é elegível para transferência automática de load balance.
+
+====
+
+
+== Recurso de segurança da unidade
+
+Para usar o Cache SSD em um volume que também utiliza Drive Security (está com a segurança ativada), os recursos de Drive Security do volume e do Cache SSD devem corresponder. Se eles não corresponderem, o volume não terá a segurança ativada.

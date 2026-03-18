@@ -1,0 +1,47 @@
+---
+permalink: sm-mirroring/change-the-reserved-capacity-settings-for-a-mirrored-pair-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, reserved, capacity, settings, mirrored, pair, volume, 
+summary: Você pode alterar as configurações de um volume de par espelhado para ajustar a porcentagem em que System Manager envia uma notificação de alerta quando a capacidade reservada para um volume de par espelhado está quase cheia. 
+---
+= Altere as configurações de capacidade reservada para um volume de par espelhado no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar as configurações de um volume de par espelhado para ajustar o ponto percentual em que SANtricity System Manager envia uma notificação de alerta quando a capacidade reservada para um volume de par espelhado está quase cheia.
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione a guia *Capacidade Reservada*.
+. Selecione o par de volumes espelhados que deseja editar e clique em *Visualizar/Editar Settings*.
++
+A caixa de diálogo Configurações de Capacidade Reservada do Volume do Par Espelhado é exibida.
+
+. Altere as configurações de capacidade reservada para o volume do par espelhado conforme apropriado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use o seletor giratório para ajustar o ponto percentual em que System Manager envia uma notificação de alerta quando a capacidade reservada para um par espelhado estiver quase cheia.
+
+Quando a capacidade reservada para o par espelhado excede o limite especificado, System Manager envia um alerta, permitindo que você aumente a capacidade reservada.
+
+
+NOTE: Alterar a configuração de alerta para um par espelhado altera a configuração de alerta para todos os pares espelhados que pertencem ao mesmo grupo de consistência de espelhamento.
+
+|===
+====
+. Clique em *Salvar* para aplicar suas alterações.
+

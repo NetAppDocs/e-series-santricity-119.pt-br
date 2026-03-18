@@ -1,0 +1,38 @@
+---
+permalink: sm-storage/redistribute-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, redistribute, volumes 
+summary: Você redistribui volumes para movê-los de volta aos seus controladores proprietários preferenciais. Normalmente, os drivers de multipath movem volumes de seus controladores proprietários preferenciais quando ocorre um problema no caminho de dados entre o host e o array de storage. 
+---
+= Redistribuir volumes no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você redistribui volumes para movê-los de volta aos seus controladores proprietários preferenciais. Normalmente, os drivers de multipath movem volumes de seus controladores proprietários preferenciais quando ocorre um problema no caminho de dados entre o host e o array de storage.
+
+.Antes de começar
+* Os volumes que você deseja redistribuir não estão em uso ou ocorrerão erros de E/S.
+* Um driver multipath deve estar instalado em todos os hosts que utilizam os volumes que você deseja redistribuir, ou ocorrerão erros de E/S.
++
+Se você deseja redistribuir volumes sem um driver multipath nos hosts, toda a atividade de E/S para os volumes _enquanto a operação de redistribuição estiver em andamento_ deve ser interrompida para evitar erros de aplicativo.
+
+
+
+.Sobre esta tarefa
+A maioria dos drivers de multipath do host tenta acessar cada volume em um caminho até o controlador proprietário preferencial. No entanto, se esse caminho preferencial ficar indisponível, o driver de multipath no host alterna para um caminho alternativo. Esse failover pode fazer com que a propriedade do volume mude para o controlador alternativo. Depois de resolver a condição que causou o failover, alguns hosts podem mover automaticamente a propriedade do volume de volta para o controlador proprietário preferencial, mas, em alguns casos, pode ser necessário redistribuir os volumes manualmente.
+
+.Passos
+. Selecione o menu: storage [Volumes].
+. Selecione o menu: mais [Redistribuir volumes].
++
+A caixa de diálogo Redistribuir Volumes é exibida. Todos os volumes no array de storage cujo controlador proprietário preferencial não corresponde ao proprietário atual aparecem nesta caixa de diálogo.
+
+. Selecione um ou mais volumes que você deseja redistribuir e confirme que deseja realizar a operação.
+
+
+.Resultados
+System Manager move os volumes selecionados para seus controladores proprietários preferenciais ou você pode ver uma caixa de diálogo Redistribuir Volumes Desnecessários.

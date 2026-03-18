@@ -1,0 +1,42 @@
+---
+permalink: sm-storage/delete-pool-or-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, pool, volume, group 
+summary: Você pode excluir um pool ou grupo de volume para criar mais capacidade não atribuída, que você pode reconfigurar para atender às necessidades de armazenamento do seu aplicativo. 
+---
+= Excluir um pool ou grupo de volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um pool ou grupo de volume para criar mais capacidade não atribuída, que você pode reconfigurar para atender às necessidades de armazenamento do seu aplicativo.
+
+.Antes de começar
+* Você deve ter feito backup dos dados em todos os volumes no pool ou grupo de volume.
+* Você deve ter interrompido todas as operações de entrada/saída (I/O).
+* Você deve desmontar quaisquer sistemas de arquivos nos volumes.
+* Você deve ter excluído quaisquer relacionamentos de espelhamento no pool ou grupo de volume.
+* Você deve ter interrompido qualquer operação de cópia de volume em andamento para o pool ou grupo de volume.
+* O pool ou grupo de volume não deve estar participando de uma operação de espelhamento assíncrono.
+* As unidades no grupo de volume não devem ter uma reserva persistente.
+
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione um pool ou grupo de volume da lista.
++
+Você pode selecionar apenas um pool ou grupo de volume por vez. Role a lista para baixo para ver outros pools ou grupos de volume.
+
+. Selecione o menu: tarefas incomuns [Excluir] e confirme.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Exclui todos os dados no pool ou grupo de volume.
+* Exclui todas as unidades associadas ao pool ou grupo de volume.
+* Remove a atribuição das unidades associadas, o que permite reutilizá-las em pools ou grupos de volume novos ou existentes.
+

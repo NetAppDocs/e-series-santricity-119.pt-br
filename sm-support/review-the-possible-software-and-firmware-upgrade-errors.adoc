@@ -1,0 +1,195 @@
+---
+permalink: sm-support/review-the-possible-software-and-firmware-upgrade-errors.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, software, firmware, upgrade, errors 
+summary: Podem ocorrer erros durante a atualização do software do controlador ou durante o upgrade do firmware da unidade. 
+---
+= Saiba mais sobre erros de upgrade de software e firmware do SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Podem ocorrer erros durante a atualização do software do controlador ou durante o upgrade do firmware da unidade.
+
+[cols="25h,~,~"]
+|===
+| Erro de download do firmware | Descrição | Ação recomendada 
+
+
+ a| 
+Unidades atribuídas com falha
+ a| 
+Falha ao fazer upgrade de uma unidade atribuída no array de storage.
+ a| 
+Uma possível causa da falha é que a unidade não possui a assinatura apropriada. Certifique-se de que a unidade afetada seja uma unidade autorizada. Entre em contato com o suporte técnico para mais informações.
+
+Ao substituir uma unidade, certifique-se de que a unidade de substituição tenha uma capacidade igual ou superior à da unidade com falha que está sendo substituída.
+
+Você pode substituir a unidade com falha enquanto o array de storage está recebendo E/S.
+
+
+
+ a| 
+Unidades hot spare integradas
+ a| 
+Se a unidade estiver marcada como hot spare e estiver em uso em um grupo de volume, o processo de upgrade do firmware falhará.
+ a| 
+Essa condição de erro precisa ser corrigida antes que você possa atualizar o firmware. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Grupos de volume incompletos
+ a| 
+Se alguma unidade que faz parte de um grupo de volume for ignorada, removida ou não responder, ela será considerada um grupo de volume incompleto. Um grupo de volume incompleto impede upgrades de firmware.
+ a| 
+Se um ou mais grupos de volumes ou pools de discos estiverem incompletos, você deve corrigir essa condição de erro antes de atualizar o firmware. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Operações exclusivas (exceto verificação de mídia/paridade em segundo plano) atualmente em execução em quaisquer grupos de volume
+ a| 
+Não é possível atualizar o firmware se houver alguma operação exclusiva em andamento em um volume.
+ a| 
+Se uma ou mais operações exclusivas estiverem em andamento, as operações deverão ser concluídas antes que o firmware possa ser atualizado. Use System Manager para monitorar o progresso das operações.
+
+
+
+ a| 
+Volumes ausentes
+ a| 
+Não é possível atualizar o firmware se algum volume estiver faltando.
+ a| 
+Você deve corrigir a condição de volume ausente antes que o firmware possa ser atualizado. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+Qualquer controlador em um estado diferente do ideal
+ a| 
+Não é possível atualizar o firmware se qualquer um dos controladores estiver em um estado diferente do ótimo.
+ a| 
+Um dos controladores do array de storage precisa de atenção. Essa condição deve ser corrigida antes que o firmware possa ser atualizado. Inicie o System Manager e use o Recovery Guru para resolver o problema.
+
+
+
+ a| 
+A verificação do controlador de banco de dados SPM falha
+ a| 
+Não é possível atualizar o firmware porque o banco de dados de mapeamento das partições de storage está corrompido.
+ a| 
+Ocorreu um erro no banco de dados de mapeamento de partições de armazenamento em um controlador. Entre em contato com o suporte técnico para resolver esse problema.
+
+
+
+ a| 
+Validação do banco de dados de configuração (se compatível com a versão do controlador do array de storage)
+ a| 
+Não é possível atualizar o firmware porque o banco de dados de configuração está corrompido.
+ a| 
+Ocorreu um erro no banco de dados de configuração de um controlador. Entre em contato com o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Verificações relacionadas ao MEL
+ a| 
+Não é possível atualizar o firmware porque o registro de eventos contém erros.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 10 eventos MEL informativos ou críticos de DDE foram relatados nos últimos 7 dias
+ a| 
+Não é possível atualizar o firmware porque há mais de 10 eventos MEL informativos ou críticos do DDE relatados nos últimos sete dias.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 2 eventos críticos MEL da página 2C foram relatados nos últimos 7 dias
+ a| 
+Não é possível atualizar o firmware porque há mais de dois eventos críticos MEL de página 2C relatados nos últimos sete dias.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 2 eventos MEL críticos de canal de unidade degradado foram relatados nos últimos 7 dias
+ a| 
+Não é possível atualizar o firmware porque foram relatados mais de dois eventos MEL críticos de canal de unidade degradada nos últimos sete dias.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Mais de 4 registros críticos de MEL nos últimos 7 dias
+ a| 
+Não é possível atualizar o firmware porque há mais de quatro entradas críticas no log de eventos registradas nos últimos sete dias.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+É necessário um endereço IP de gerenciamento válido.
+ a| 
+É necessário um endereço IP de controlador válido para realizar esta operação.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+O comando exige que seja fornecido um endereço IP de gerenciamento ativo para cada controlador.
+ a| 
+É necessário um endereço IP de controlador para cada controlador associado ao array de storage para esta operação.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Tipo de arquivo de download não processado retornado.
+ a| 
+O arquivo de download especificado não é compatível.
+ a| 
+Contate o suporte técnico para resolver este problema.
+
+
+
+ a| 
+Ocorreu um erro durante o procedimento de upload de download do firmware.
+ a| 
+O download do firmware falhou porque o controlador não consegue processar a solicitação. Verifique se o array de storage está ideal e tente a operação novamente.
+ a| 
+Se esse erro ocorrer novamente após verificar se o array de storage está otimizado, entre em contato com o suporte técnico para resolver esse problema.
+
+
+
+ a| 
+Ocorreu um erro durante o procedimento de ativação do firmware.
+ a| 
+A ativação do firmware falhou porque o controlador não consegue processar a solicitação. Verifique se o array de storage está ideal e tente novamente a operação.
+ a| 
+Se esse erro ocorrer novamente após verificar se o array de storage está otimizado, entre em contato com o suporte técnico para resolver esse problema.
+
+
+
+ a| 
+O tempo limite foi atingido enquanto se aguardava o controlador {0} reinicializar.
+ a| 
+O software de gerenciamento não consegue se reconectar ao controlador {0} após uma reinicialização. Verifique se existe um caminho de conexão operacional com o array de storage e tente novamente a operação caso ela não tenha sido concluída com sucesso.
+ a| 
+Se esse erro ocorrer novamente após verificar se o array de storage está otimizado, entre em contato com o suporte técnico para resolver esse problema.
+
+|===
+Você pode corrigir algumas dessas condições usando o Recovery Guru no System Manager. No entanto, para algumas dessas condições, talvez seja necessário entrar em contato com o suporte técnico. As informações sobre o download do firmware mais recente do controlador estão disponíveis no array de storage. Essas informações ajudam o suporte técnico a entender as condições de erro que impediram o upgrade e o download do firmware.

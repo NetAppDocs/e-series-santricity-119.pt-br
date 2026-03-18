@@ -1,0 +1,114 @@
+---
+permalink: sm-storage/change-the-reserved-capacity-settings-for-a-snapshot-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reserved capacity, settings, snapshot, group 
+summary: Você pode alterar as configurações de um grupo de Snapshot para alterar seu nome, as configurações de exclusão automática, o número máximo de imagens de Snapshot permitidas, a porcentagem em que System Manager envia uma notificação de alerta de capacidade reservada ou a política a ser usada quando a capacidade reservada atingir a porcentagem máxima definida. 
+---
+= Altere as configurações de capacidade reservada para um grupo de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar as configurações de um grupo de Snapshot para alterar seu nome, as configurações de exclusão automática, o número máximo de imagens de Snapshot permitidas, o ponto percentual em que o SANtricity System Manager envia uma notificação de alerta de capacidade reservada ou a política a ser usada quando a capacidade reservada atingir sua porcentagem máxima definida.
+
+Durante a criação de um grupo de Snapshot, é criada uma capacidade reservada para armazenar os dados de todas as imagens de Snapshot contidas no grupo.
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Clique na guia *Capacidade Reservada*.
+. Selecione o grupo de Snapshot que deseja editar e clique em *Exibir/Editar configurações*.
++
+A caixa de diálogo Snapshot Group Settings é exibida.
+
+. Altere as configurações do grupo de Snapshot conforme necessário.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações do grupo de Snapshot*
+
+
+
+ a| 
+Nome
+ a| 
+O nome do grupo de Snapshot. É obrigatório especificar um nome para o grupo de Snapshot.
+
+
+
+ a| 
+Exclusão automática
+ a| 
+Uma configuração que mantém o número total de imagens de Snapshot no grupo igual ou inferior a um máximo definido pelo usuário. Quando esta opção está ativada, System Manager exclui automaticamente a imagem de Snapshot mais antiga do grupo sempre que um novo Snapshot é criado, para respeitar o número máximo de imagens de Snapshot permitidas para o grupo.
+
+
+
+ a| 
+Limite de imagens do Snapshot
+ a| 
+Um valor configurável que especifica o número máximo de imagens de Snapshot permitidas para um grupo de Snapshot.
+
+
+
+ a| 
+Agendamento do Snapshot
+ a| 
+Em caso afirmativo, um agendamento é definido para criar Snapshots automaticamente.
+
+
+
+ a| 
+*Configurações de capacidade reservada*
+
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use o controle de rotação para ajustar o ponto percentual em que System Manager envia uma notificação de alerta quando a capacidade reservada para um grupo de Snapshot estiver quase cheia.
+
+Quando a capacidade reservada para o grupo de Snapshot excede o limite especificado, System Manager envia um alerta, permitindo que você aumente a capacidade reservada ou exclua objetos desnecessários.
+
+
+
+ a| 
+Política para capacidade totalmente reservada
+ a| 
+Você pode escolher uma das seguintes políticas:
+
+** *Excluir imagem de snapshot mais antiga* -- System Manager exclui automaticamente a imagem de snapshot mais antiga no grupo de snapshots, o que libera a capacidade reservada da imagem de snapshot para reutilização dentro do grupo.
+** *Rejeitar gravações no volume base* -- Quando a capacidade reservada atinge a porcentagem máxima definida, System Manager rejeita qualquer solicitação de gravação de E/S para o volume base que acionou o acesso à capacidade reservada.
+
+
+
+
+ a| 
+*Objetos associados*
+
+
+
+ a| 
+Volume base
+ a| 
+O nome do volume base usado para o grupo. Um volume base é a origem a partir da qual uma imagem de Snapshot é criada. Pode ser um volume espesso ou fino e normalmente é atribuído a um host. O volume base pode residir em um grupo de volume ou em um pool de discos.
+
+
+
+ a| 
+Imagens de Snapshot
+ a| 
+O número de imagens criadas a partir deste grupo. Uma imagem de Snapshot é uma cópia lógica dos dados do volume, capturada em um determinado ponto no tempo. Assim como um ponto de restauração, as imagens de Snapshot permitem reverter para um conjunto de dados conhecido e válido. Embora o host possa acessar a imagem de Snapshot, ele não pode lê-la ou gravá-la diretamente.
+
+|===
+====
+. Clique em *Salvar* para aplicar as alterações às configurações do grupo de Snapshot.
+

@@ -1,0 +1,33 @@
+---
+permalink: sm-support/view-nvme-over-fabrics-statistics-support.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, nvme, over, fabrics, statistics 
+summary: Você pode visualizar dados sobre as conexões NVMe over Fabrics com seu array de storage. 
+---
+= Visualize estatísticas NVMe over Fabrics no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar dados sobre as conexões NVMe over Fabrics com seu array de storage.
+
+.Sobre esta tarefa
+System Manager exibe esses tipos de estatísticas NVMe over Fabrics. Todas as estatísticas são somente leitura e não podem ser definidas.
+
+* *Estatísticas do subsistema NVMe* -- Exibe estatísticas do controlador NVMe e sua fila. O controlador NVMe fornece um caminho de acesso entre um host e os namespaces no array de storage. Você pode revisar as estatísticas do subsistema NVMe para itens como falhas de conexão, reinicializações e desligamentos.
+* *Estatísticas da interface RDMA* -- Fornece estatísticas para todas as portas NVMe over Fabrics na interface RDMA, incluindo estatísticas de desempenho e informações sobre erros de link associadas a cada porta do switch. Esta guia só aparece quando as portas NVMe over Fabrics estão disponíveis.
+
+
+Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de linha de base. Estatísticas brutas são todas as estatísticas que foram coletadas desde que os controladores foram iniciados. Estatísticas de linha de base são estatísticas de ponto no tempo que foram coletadas desde que você definiu o tempo de linha de base.
+
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Exibir estatísticas de NVMe over Fabrics*.
+. Para definir a linha de base, clique em *Set new baseline*.
++
+A definição da linha de base estabelece um novo ponto de partida para a coleta das estatísticas. A mesma linha de base é usada para todas as estatísticas NVMe.
+
+

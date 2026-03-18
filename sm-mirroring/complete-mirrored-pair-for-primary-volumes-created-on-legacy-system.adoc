@@ -1,0 +1,75 @@
+---
+permalink: sm-mirroring/complete-mirrored-pair-for-primary-volumes-created-on-legacy-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, complete, mirrored, pair, volumes, created, legacy, 
+summary: Se você criou um volume primário em um array de storage antigo que não pode ser gerenciado pelo SANtricity System Manager, você pode criar o volume secundário nesse array com System Manager. 
+---
+= Conclua um par espelhado para volumes primários criados em um sistema legado no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você criou um volume primário em um array de storage legado que não pode ser gerenciado pelo SANtricity System Manager, você pode criar o volume secundário nesse array com SANtricity System Manager.
+
+.Sobre esta tarefa
+É possível realizar espelhamento assíncrono entre arrays legados que usam uma interface diferente e arrays mais recentes que podem ser gerenciados pelo System Manager.
+
+* Se você estiver espelhando entre dois arrays de storage que usam System Manager, poderá ignorar esta tarefa, pois já concluiu o par espelhado na sequência de criação de par espelhado.
+* Execute esta tarefa no array de storage remoto.
+
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Par Espelhado*.
++
+A tabela de pares espelhados é exibida e mostra todos os pares espelhados associados ao array de storage.
+
+. Localize o volume do par espelhado com o status de Incompleto e clique no link *Concluir par espelhado* exibido na coluna do par espelhado.
+. Escolha se deseja concluir a sequência de criação do par espelhado automaticamente ou manualmente selecionando um dos seguintes botões de opção:
++
+** *Automático* -- Criar novo volume secundário.
++
+Aceite as configurações padrão para o lado remoto do par espelhado selecionando um pool existente ou grupo de volume onde deseja criar o volume secundário. Use esta opção recomendada para alocar a capacidade reservada para o volume secundário com as configurações padrão.
+
+** *Manual* -- Selecione um volume existente.
++
+Defina seus próprios parâmetros para o volume secundário.
+
++
+... Clique em *Avançar* para selecionar o volume secundário.
+... Selecione um volume existente que você deseja usar como volume secundário e clique em *Next* para alocar a capacidade reservada.
+... Alocar a capacidade reservada. Faça uma das seguintes opções:
++
+**** Aceite as configurações padrão.
++
+A configuração padrão para capacidade reservada é 20% da capacidade do volume base, e geralmente essa capacidade é suficiente.
+
+**** Defina suas próprias configurações de capacidade reservada para atender às suas necessidades de storage relacionadas ao espelhamento assíncrono.
++
+A capacidade necessária varia dependendo da frequência e do tamanho das gravações de E/S no volume primário e de quanto tempo você precisa manter essa capacidade. Em geral, escolha uma capacidade maior para capacidade reservada se uma ou ambas estas condições existirem:
+
++
+***** Você pretende manter o par espelhado por um longo período de tempo.
+***** Uma grande porcentagem dos blocos de dados será alterada no volume primário devido à intensa atividade de E/S. Utilize dados históricos de desempenho ou outros utilitários do sistema operacional para ajudar a determinar a atividade típica de E/S no volume primário.
+
+
+
+
+
+
+
+
+. Selecione *Complete*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Cria o volume secundário no array de storage remoto e aloca capacidade reservada para o lado remoto do par espelhado.
+* Inicia a sincronização inicial entre o array de storage local e o array de storage remoto.
+* Se o volume que está sendo espelhado for um volume fino, somente os blocos alocados serão transferidos para o volume secundário durante a sincronização inicial. Essa transferência reduz a quantidade de dados que deve ser transferida para concluir a sincronização inicial.
+* Cria a capacidade reservada para o par espelhado no array de storage local e no array de storage remoto.
+

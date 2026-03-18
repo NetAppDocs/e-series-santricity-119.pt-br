@@ -1,0 +1,130 @@
+---
+permalink: sm-storage/performance-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, performance, terms 
+summary: Saiba como os termos de desempenho se aplicam ao seu array de storage. 
+---
+= Aprenda sobre a terminologia de desempenho no SANtricity software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de desempenho se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Aplicativo
+ a| 
+Um aplicativo é um programa de software, como SQL ou Exchange.
+
+
+
+ a| 
+CPU
+ a| 
+CPU é a abreviação de "unidade central de processamento". CPU indica a porcentagem da capacidade de processamento do array de storage que está sendo utilizada.
+
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+IOPS
+ a| 
+IOPS significa operações de entrada/saída por segundo.
+
+
+
+ a| 
+Latência
+ a| 
+Latência é o intervalo de tempo entre uma solicitação, como um comando de leitura ou gravação, e a resposta do host ou do array de storage.
+
+
+
+ a| 
+LUN
+ a| 
+Um número de unidade lógica (LUN, na sigla em inglês) é o número atribuído ao espaço de endereçamento que um host usa para acessar um volume. O volume é apresentado ao host como capacidade na forma de um LUN.
+
+Cada host possui seu próprio espaço de endereçamento LUN. Portanto, o mesmo LUN pode ser usado por diferentes hosts para acessar volumes diferentes.
+
+
+
+ a| 
+MiB
+ a| 
+MiB é a abreviação de mebibyte (mega binary byte). Um MiB equivale a 2²⁰, ou 1.048.576 bytes. Compare com MB, que representa um valor na base 10. Um MB equivale a 1.024 bytes.
+
+
+
+ a| 
+Objeto
+ a| 
+Um objeto é qualquer componente de armazenamento lógico ou storage físico.
+
+Os objetos lógicos incluem grupos de volumes, pools e volumes. Os objetos físicos incluem o array de storage, os controladores de array, os hosts e as unidades.
+
+
+
+ a| 
+Pool
+ a| 
+Um pool é um conjunto de unidades agrupadas logicamente. Você pode usar um pool para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um pool ou de um grupo de volume.)
+
+
+
+ a| 
+Ler
+ a| 
+Read é a abreviação de "operação de leitura", que ocorre quando o host solicita dados do array de storage.
+
+
+
+ a| 
+Volume
+ a| 
+Um volume é um contêiner no qual aplicativos, bancos de dados e sistemas de arquivos armazenam dados. É o componente lógico criado para que o host acesse o storage no array de storage.
+
+Um volume é criado a partir da capacidade disponível em um pool ou um grupo de volume. Um volume tem uma capacidade definida. Embora um volume possa consistir em mais de uma unidade, um volume aparece como um componente lógico para o host.
+
+
+
+ a| 
+Nome do volume
+ a| 
+O nome de um volume é uma sequência de caracteres atribuída ao volume no momento de sua criação. Você pode aceitar o nome padrão ou fornecer um nome mais descritivo que indique o tipo de dados armazenados no volume.
+
+
+
+ a| 
+Grupo de volume
+ a| 
+Um grupo de volume é um contêiner para volumes com características compartilhadas. Um grupo de volume tem uma capacidade definida e nível RAID. Você pode usar um grupo de volume para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um grupo de volume ou de um pool.)
+
+
+
+ a| 
+Carga de trabalho
+ a| 
+Uma carga de trabalho é um objeto de storage que suporta uma aplicação. Você pode definir uma ou mais cargas de trabalho, ou instâncias, por aplicação. Para algumas aplicações, o sistema configura a carga de trabalho para conter volumes com características subjacentes semelhantes. Essas características de volume são otimizadas com base no tipo de aplicação que a carga de trabalho suporta. Por exemplo, se você criar uma carga de trabalho que suporte uma aplicação Microsoft SQL Server e, posteriormente, criar volumes para essa carga de trabalho, as características subjacentes do volume serão otimizadas para suportar Microsoft SQL Server.
+
+
+
+ a| 
+Escrever
+ a| 
+Write é a abreviação de "operação de gravação", quando os dados são enviados do host para o array para armazenamento.
+
+|===

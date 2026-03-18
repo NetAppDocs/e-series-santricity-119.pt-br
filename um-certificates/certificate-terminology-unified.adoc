@@ -1,0 +1,96 @@
+---
+permalink: um-certificates/certificate-terminology-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, certificate, terminology 
+summary: Os seguintes termos aplicam-se ao gerenciamento de certificados. 
+---
+= Saiba mais sobre a terminologia de certificados no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os seguintes termos aplicam-se ao gerenciamento de certificados.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+CA
+ a| 
+Uma autoridade certificadora (CA) é uma entidade confiável que emite documentos eletrônicos, chamados certificados digitais, para segurança na Internet. Esses certificados identificam os proprietários de sites, permitindo conexões seguras entre clientes e servidores.
+
+
+
+ a| 
+CSR
+ a| 
+Uma solicitação de assinatura de certificado (CSR, na sigla em inglês) é uma mensagem enviada por um solicitante a uma autoridade certificadora (CA, na sigla em inglês). A CSR valida as informações que a CA exige para emitir um certificado.
+
+
+
+ a| 
+Certificado
+ a| 
+Um certificado identifica o proprietário de um site para fins de segurança, o que impede que invasores se façam passar pelo site. O certificado contém informações sobre o proprietário do site e a identidade da entidade confiável que certifica (assina) essas informações.
+
+
+
+ a| 
+Cadeia de certificados
+ a| 
+Uma hierarquia de arquivos que adiciona uma camada de segurança aos certificados. Normalmente, a cadeia inclui um certificado raiz no topo da hierarquia, um ou mais certificados intermediários e os certificados de servidor que identificam as entidades.
+
+
+
+ a| 
+Certificado intermediário
+ a| 
+Um ou mais certificados intermediários ramificam-se a partir da raiz na cadeia de certificados. A CA emite um ou mais certificados intermediários para atuarem como intermediários entre uma raiz protegida e os certificados do servidor.
+
+
+
+ a| 
+Keystore
+ a| 
+Um keystore é um repositório no seu sistema de gerenciamento de hosts que contém chaves privadas, juntamente com suas respectivas chaves públicas e certificados. Essas chaves e certificados identificam suas próprias entidades, como os controladores.
+
+
+
+ a| 
+Certificado raiz
+ a| 
+O certificado raiz está no topo da hierarquia na cadeia de certificados e contém uma chave privada usada para assinar outros certificados. A raiz identifica uma organização CA específica. Se você usar a mesma CA para todos os seus dispositivos de rede, precisará de apenas um certificado raiz.
+
+
+
+ a| 
+Certificado assinado
+ a| 
+Um certificado validado por uma autoridade certificadora (CA). Este arquivo de dados contém uma chave privada e garante que os dados sejam enviados de forma criptografada entre um servidor e um cliente por meio de uma conexão HTTPS. Além disso, um certificado assinado inclui detalhes sobre o proprietário da entidade (normalmente, um servidor ou website) e uma assinatura digital composta por letras e números. Um certificado assinado utiliza uma cadeia de confiança e, portanto, é mais frequentemente usado em ambientes de produção. Também conhecido como "certificado assinado por CA" ou "certificado de gerenciamento".
+
+
+
+ a| 
+Certificado autoassinado
+ a| 
+Um certificado autoassinado é validado pelo proprietário da entidade. Este arquivo de dados contém uma chave privada e garante que os dados sejam enviados de forma criptografada entre um servidor e um cliente por meio de uma conexão HTTPS. Ele também inclui uma assinatura digital composta por letras e números. Um certificado autoassinado não utiliza a mesma cadeia de confiança que um certificado assinado por uma CA e, portanto, é mais frequentemente usado em ambientes de teste. Também é conhecido como um certificado "pré-instalado".
+
+
+
+ a| 
+Certificado do servidor
+ a| 
+O certificado do servidor está na base da cadeia de certificados. Ele identifica sua entidade específica, como um site ou outro dispositivo. Cada controlador em um sistema de storage requer um certificado de servidor separado.
+
+
+
+ a| 
+Truststore
+ a| 
+Um truststore é um repositório que contém certificados de terceiros confiáveis, como CAs.
+
+|===

@@ -1,0 +1,27 @@
+---
+permalink: sm-settings/turn-on-storage-array-locator-lights.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, locator, lights, 
+summary: 'Para localizar fisicamente um array de storage em um gabinete, você pode acender suas luzes localizadoras (LED).' 
+---
+= Ative as luzes localizadoras do array de storage no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para localizar fisicamente um array de storage em um gabinete, você pode acender suas luzes localizadoras (LED).
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Geral*, clique em *Ativar luzes indicadoras do array de storage*.
++
+A caixa de diálogo Ativar luzes indicadoras do array de storage é aberta e as luzes indicadoras do array de storage correspondente são acesas.
+
+. Após localizar fisicamente o array de storage, retorne à caixa de diálogo e selecione *Desligar*.
+
+
+.Resultados
+As luzes indicadoras se apagam e a caixa de diálogo se fecha.

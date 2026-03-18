@@ -1,0 +1,53 @@
+---
+permalink: sm-settings/view-imported-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, imported, certificate, information, 
+summary: Na página Certificados, você pode visualizar o tipo de certificado, a autoridade emissora e o intervalo de datas de validade dos certificados para o array de storage. 
+---
+= Visualizar informações do certificado importado no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Na página Certificados, você pode visualizar o tipo de certificado, a autoridade emissora e o intervalo de datas de validade dos certificados para o array de storage.
+
+.Antes de começar
+Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de certificado não aparecem.
+
+.Passos
+. Selecione menu:Configurações[Certificados].
+. Selecione uma das abas para visualizar informações sobre os certificados.
++
+[cols="25h,~"]
+|===
+| Aba | Descrição 
+
+
+ a| 
+Gerenciamento de array
+ a| 
+Visualize informações sobre os certificados assinados pela CA importados para cada controlador, incluindo o arquivo root, o(s) arquivo(s) intermediate e o(s) arquivo(s) server.
+
+
+
+ a| 
+Confiável
+ a| 
+Visualize informações sobre todos os outros tipos de certificados importados para os controladores. Use o campo de filtro em *Mostrar certificados que são...* para visualizar certificados instalados pelo usuário ou pré-instalados.
+
+** *Instalados pelo usuário* -- Certificados que um usuário carregou para o array de storage, que podem incluir certificados confiáveis quando o controlador atua como cliente (em vez de servidor), certificados LDAPS e certificados de Federação de Identidade.
+** *Pré-instalado* -- Certificados autoassinados incluídos com o array de storage.
+
+
+
+
+ a| 
+Gerenciamento de chaves
+ a| 
+Veja informações sobre os certificados assinados pela CA importados para um servidor de gerenciamento de chaves externo.
+
+|===
+

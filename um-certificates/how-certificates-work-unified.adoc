@@ -1,0 +1,58 @@
+---
+permalink: um-certificates/how-certificates-work-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, ca certificates, csr file, 
+summary: Certificados são arquivos digitais que identificam entidades online, como sites e servidores, para comunicações seguras na internet. 
+---
+= Como funcionam os certificados no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certificados são arquivos digitais que identificam entidades online, como sites e servidores, para comunicações seguras na internet.
+
+
+
+== Certificados assinados
+
+Os certificados garantem que as comunicações web sejam transmitidas de forma criptografada, privada e inalterada, somente entre o servidor e o cliente. Usando Unified Manager, você pode gerenciar certificados para o navegador em um sistema de gerenciamento de hosts e para os controladores nos arrays de storage descobertos.
+
+Um certificado pode ser assinado por uma autoridade confiável ou pode ser autoassinado. "Assinar" significa simplesmente que alguém validou a identidade do proprietário e determinou que seus dispositivos podem ser confiáveis. Os arrays de storage são fornecidos com um certificado autoassinado gerado automaticamente em cada controlador. Você pode continuar a usar os certificados autoassinados ou pode obter certificados assinados por CA para uma conexão mais segura entre os controladores e os sistemas host.
+
+[NOTE]
+====
+Embora os certificados assinados por uma Autoridade Certificadora (CA) ofereçam melhor proteção de segurança (por exemplo, prevenindo ataques do tipo "man-in-the-middle"), eles também exigem taxas que podem ser caras se você tiver uma rede grande. Em contraste, os certificados autoassinados são menos seguros, mas são gratuitos. Portanto, os certificados autoassinados são mais frequentemente usados em ambientes de teste internos, não em ambientes de produção.
+
+====
+Um certificado assinado é validado por uma autoridade certificadora (CA), que é uma organização de terceiro confiável. Os certificados assinados incluem detalhes sobre o proprietário da entidade (normalmente, um servidor ou site), data de emissão e expiração do certificado, domínios válidos para a entidade e uma assinatura digital composta por letras e números.
+
+Ao abrir um navegador e digitar um endereço da web, seu sistema realiza um processo de verificação de certificado em segundo plano para determinar se você está se conectando a um site que inclui um certificado válido, assinado por uma CA. Geralmente, um site protegido com um certificado assinado inclui um ícone de cadeado e uma designação https no endereço. Se você tentar se conectar a um site que não contenha um certificado assinado por uma CA, seu navegador exibirá um aviso de que o site não é seguro.
+
+A Autoridade Certificadora (CA) toma medidas para verificar sua identidade durante o processo de solicitação. Ela pode enviar um e-mail para o endereço comercial registrado da sua empresa, verificar o endereço comercial e realizar uma verificação HTTP ou DNS. Quando o processo de solicitação estiver concluído, a CA envia arquivos digitais para você carregar em um sistema de gerenciamento de host. Normalmente, esses arquivos incluem uma cadeia de confiança, conforme a seguir:
+
+* *Raiz* -- No topo da hierarquia está o certificado raiz, que contém uma chave privada usada para assinar outros certificados. A raiz identifica uma organização CA específica. Se você usar a mesma CA para todos os seus dispositivos de rede, precisará apenas de um certificado raiz.
+* *Intermediário* -- Ramificando-se a partir da raiz estão os certificados intermediários. A CA emite um ou mais certificados intermediários para atuarem como intermediários entre uma raiz protegida e os certificados do servidor.
+* *Servidor* -- Na base da cadeia está o certificado do servidor, que identifica sua entidade específica, como um site ou outro dispositivo. Cada controlador em um array de storage requer um certificado de servidor separado.
+
+
+
+
+== Certificados autoassinados
+
+Cada controlador no array de storage inclui um certificado autoassinado pré-instalado. Um certificado autoassinado é semelhante a um certificado assinado por uma CA, exceto que é validado pelo proprietário da entidade em vez de uma terceira parte. Assim como um certificado assinado por uma CA, um certificado autoassinado contém sua própria chave privada e também garante que os dados sejam criptografados e enviados por uma conexão HTTPS entre um servidor e cliente.
+
+Os certificados autoassinados não são "trusted" pelos navegadores. Cada vez que você tenta se conectar a um site que contém apenas um certificado autoassinado, o navegador exibe uma mensagem de aviso. Você deve clicar em um link na mensagem de aviso que permite prosseguir para o site; ao fazer isso, você está essencialmente aceitando o certificado autoassinado.
+
+
+
+== Certificados para Unified Manager
+
+A interface do Unified Manager é instalada com o Web Services Proxy em um sistema host. Quando você abre um navegador e tenta se conectar ao Unified Manager, o navegador tenta verificar se o host é uma fonte confiável ao verificar a presença de um certificado digital. Se o navegador não localizar um certificado assinado por uma CA para o servidor, ele abre uma mensagem de aviso. A partir daí, você pode continuar para o site para aceitar o certificado autoassinado para essa sessão. Ou, você pode obter certificados digitais assinados por uma CA para não ver mais a mensagem de aviso.
+
+
+
+== Certificados para controladores
+
+Durante uma sessão do Unified Manager, você poderá ver mensagens de segurança adicionais ao tentar acessar um controlador que não possui um certificado assinado por uma CA. Nesse caso, você pode confiar permanentemente no certificado autoassinado ou importar os certificados assinados pela CA para os controladores, para que o servidor Web Services Proxy possa autenticar as solicitações de clientes recebidas desses controladores.

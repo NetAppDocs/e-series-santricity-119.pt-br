@@ -1,0 +1,41 @@
+---
+permalink: um-manage/overview-import-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, settings 
+summary: Você pode importar configurações de um array de storage para outro, incluindo alertas, AutoSupport e serviços de diretório. 
+---
+= Saiba mais sobre como importar configurações de array de storage no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso Importar Configurações permite realizar uma operação em lote para importar as configurações de um array para vários arrays. Esse recurso economiza tempo quando você precisa configurar vários arrays na rede.
+
+
+
+== Que configurações podem ser importadas?
+
+Você pode importar métodos de alerta, AutoSupport configurações, configurações de Serviços de Diretório, configurações de storage (como grupos de volumes e pools) e configurações do sistema (como balanceamento de carga automático).
+
+Saiba mais:
+
+* link:how-import-settings-works.html["Como funciona a importação de configurações"]
+* link:requirements-for-replicating-storage-configurations.html["Requisitos para replicar configurações de storage"]
+
+
+
+
+== Como faço para realizar uma importação em lote?
+
+Em um array de storage que será usado como fonte, abra System Manager e configure as definições desejadas. Em seguida, no Unified Manager, acesse a página Manage e importe as definições para um ou mais arrays.
+
+Saiba mais:
+
+* link:import-alert-settings.html["Importar configurações de alerta"]
+* link:import-autosupport-settings.html["Importar configurações do AutoSupport"]
+* link:import-directory-services-settings.html["Importar configurações de serviços de diretório"]
+* link:import-storage-configuration-settings.html["Importar configurações de storage"]
+* link:import-system-settings.html["Importar configurações do sistema"]
+

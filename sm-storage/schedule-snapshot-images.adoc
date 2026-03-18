@@ -1,0 +1,223 @@
+---
+permalink: sm-storage/schedule-snapshot-images.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, schedule, snapshot, images 
+summary: Você cria um agendamento do Snapshot para permitir a recuperação em caso de problema com o volume base e para realizar backups agendados. Snapshots de volumes base ou grupos de consistência de Snapshot podem ser criados em um agendamento diário, semanal ou mensal, a qualquer hora do dia. 
+---
+= Agendar imagens de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você cria um agendamento do Snapshot para permitir a recuperação em caso de problema com o volume base e para realizar backups agendados. Snapshots de volumes base ou grupos de consistência de Snapshot podem ser criados em um agendamento diário, semanal ou mensal, a qualquer hora do dia.
+
+.Antes de começar
+O volume base deve ser Optimal.
+
+.Sobre esta tarefa
+Esta tarefa descreve como criar um agendamento do Snapshot para um grupo de consistência de Snapshot ou volume base existente.
+
+[NOTE]
+====
+Você também pode criar um agendamento do Snapshot ao mesmo tempo em que cria uma imagem de Snapshot de um volume base ou grupo de consistência.
+
+====
+.Passos
+. Execute uma das seguintes ações para criar um agendamento do Snapshot:
++
+** Selecione o menu: storage [Volumes].
++
+Selecione o objeto (volume ou grupo de consistência de snapshot) para este agendamento do Snapshot e, em seguida, selecione menu:Copy Services[Criar agendamento do Snapshot].
+
+** Selecione o menu: storage[Snapshots].
++
+Selecione a guia *Agendamentos* e clique em *Criar*.
+
+
+
+. Selecione o objeto (volume ou grupo de consistência de Snapshot) para este agendamento do Snapshot e clique em *Next*.
++
+A caixa de diálogo Criar agendamento do Snapshot é exibida.
+
+. Execute uma das seguintes ações:
++
+** *Use um agendamento previamente definido de outro objeto de Snapshot*.
++
+Certifique-se de que as opções avançadas estejam exibidas. Clique em *Mostrar mais opções*. Clique em *Importar agendamento*, selecione o objeto com o agendamento que deseja importar e clique em *Importar*.
+
+** *Modifique as opções básicas ou avançadas*.
++
+No canto superior direito da caixa de diálogo, clique em *Mostrar mais opções* para exibir todas as opções e então consulte a tabela a seguir.
+
+
+
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Campo | Descrição 
+
+
+ a| 
+*Configurações básicas*
+
+
+
+ a| 
+Selecione dias
+ a| 
+Selecione dias específicos da semana para imagens de Snapshot.
+
+
+
+ a| 
+Hora de início
+ a| 
+Na lista suspensa, selecione um novo horário de início para os Snapshots diários (as opções são fornecidas em incrementos de meia hora). O horário de início padrão é meia hora à frente do horário atual.
+
+
+
+ a| 
+Fuso horário
+ a| 
+Na lista suspensa, selecione o fuso horário do seu array.
+
+
+
+ a| 
+*Configurações avançadas*
+
+
+
+ a| 
+Dia / mês
+ a| 
+Escolha uma das seguintes opções:
+
+** *Diário / Semanal* -- Selecione dias individuais para sincronização de Snapshots. Você também pode selecionar a caixa de seleção *Selecionar todos os dias* no canto superior direito se desejar um agendamento diário.
+** *Mensal / Anual* -- Selecione meses individuais para snapshots de sincronização. No campo *Em dia(s)*, insira os dias do mês para as sincronizações ocorrerem. As entradas válidas são *1* até *31* e *Last*. Você pode separar vários dias com uma vírgula ou ponto e vírgula. Use um hífen para datas inclusivas. Por exemplo: 1,3,4,10-15,Last. Você também pode selecionar a caixa de seleção *Select all months* no canto superior direito se quiser um agendamento mensal.
+
+
+
+
+ a| 
+Hora de início
+ a| 
+Na lista suspensa, selecione um novo horário de início para os Snapshots diários (as opções são fornecidas em incrementos de meia hora). O horário de início padrão é meia hora à frente do horário atual.
+
+
+
+ a| 
+Fuso horário
+ a| 
+Na lista suspensa, selecione o fuso horário do seu array.
+
+
+
+ a| 
+Snapshots por dia / Intervalo entre snapshots
+ a| 
+Selecione o número de imagens de Snapshot a serem criadas por dia. Se selecionar mais de uma, selecione também o intervalo de tempo entre as imagens de Snapshot. Para várias imagens de Snapshot, certifique-se de ter capacidade reservada suficiente.
+
+
+
+ a| 
+Criar imagem de Snapshot agora?
+ a| 
+Selecione esta caixa de seleção para criar uma imagem instantânea além das imagens automáticas que você está agendando.
+
+
+
+ a| 
+Data de início/término ou sem data de término
+ a| 
+Insira a data de início para que as sincronizações comecem. Insira também uma data de término ou selecione *Sem data de término*.
+
+|===
+====
+. Execute uma das seguintes ações:
++
+** Se o objeto for um grupo de consistência do Snapshot, clique em *Criar* para aceitar as configurações e criar o agendamento.
+** Se o objeto for um volume, clique em *Avançar* para alocar capacidade reservada para as imagens de Snapshot.
++
+A tabela de volumes candidatos exibe apenas os candidatos que suportam a capacidade reservada especificada. A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e objeto de storage. Não é diretamente legível pelo host.
+
+
+
+. Use a caixa spinner para alocar a capacidade reservada para as imagens de Snapshot. Execute uma das seguintes ações:
++
+** *Aceite as configurações padrão.*
++
+Utilize esta opção recomendada para alocar a capacidade reservada para as imagens de Snapshot com as configurações padrão.
+
+** *Aloque suas próprias configurações de capacidade reservada para atender às suas necessidades de storage de dados.*
++
+Se você alterar a configuração padrão de capacidade reservada, clique em *Atualizar candidatos* para atualizar a lista de candidatos para a capacidade reservada que você especificou.
+
++
+Aloque a capacidade reservada usando as seguintes diretrizes:
+
++
+*** A configuração padrão para capacidade reservada é de 40% da capacidade do volume base. Normalmente, essa capacidade é suficiente.
+*** A capacidade necessária varia dependendo da frequência e do tamanho das gravações de E/S nos volumes e da quantidade e duração da coleta de imagens de Snapshot.
+
+
+
+
+. Clique em *Next*.
++
+A caixa de diálogo Edit Settings é exibida.
+
+. Edite as configurações do agendamento do Snapshot conforme necessário e, em seguida, clique em *Concluir*.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Limite de imagens Snapshot*
+
+
+
+ a| 
+Ative a exclusão automática de snapshot images quando...
+ a| 
+Mantenha a caixa de seleção marcada se desejar que as imagens de Snapshot sejam excluídas automaticamente após o limite especificado; use a caixa de rotação para alterar o limite. Se você desmarcar esta caixa de seleção, a criação de imagens de Snapshot será interrompida após 32 imagens.
+
+
+
+ a| 
+*Configurações de capacidade reservada*
+
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use o seletor giratório para ajustar o ponto percentual em que o sistema envia uma notificação de alerta quando a capacidade reservada para um agendamento estiver quase cheia.
+
+Quando a capacidade reservada para o agendamento exceder o limite especificado, use o aviso prévio para aumentar a capacidade reservada ou para excluir objetos desnecessários antes que o espaço restante se esgote.
+
+
+
+ a| 
+Política para capacidade totalmente reservada
+ a| 
+Escolha uma das seguintes políticas:
+
+** *Excluir imagem de Snapshot mais antiga* -- O sistema exclui automaticamente a imagem de Snapshot mais antiga, o que libera a capacidade reservada da imagem de Snapshot para reutilização dentro do grupo de Snapshot.
+** *Rejeitar gravações no volume base* -- Quando a capacidade reservada atinge a porcentagem máxima definida, o sistema rejeita qualquer solicitação de gravação de E/S para o volume base que acionou o acesso à capacidade reservada.
+
+
+|===
+====
+

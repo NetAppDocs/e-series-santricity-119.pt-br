@@ -1,0 +1,115 @@
+---
+permalink: sm-settings/clear-storage-array-configuration.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, clear, storage, array, configuration, 
+summary: Use a operação Clear Configuration quando desejar excluir todos os pools, grupos de volumes, volumes, definições de host e atribuições de host do array de storage. 
+---
+= Limpar configuração do array de storage no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Use a operação Clear Configuration quando desejar excluir todos os pools, grupos de volumes, volumes, definições de host e atribuições de host do array de storage.
+
+.Antes de começar
+Antes de limpar a configuração do array de storage, faça backup dos dados.
+
+.Sobre esta tarefa
+Existem duas opções de Clear Storage Array Configuration:
+
+* *Volume* -- Normalmente, você pode usar a opção Volume para reconfigurar um array de storage de teste como um array de storage de produção. Por exemplo, você pode configurar um array de storage para testes e, ao concluir os testes, remover a configuração de teste e configurar o array de storage para um ambiente de produção.
+* *Storage Array* -- Normalmente, você usaria a opção Storage Array para mover um array de storage para outro departamento ou grupo. Por exemplo, você pode estar usando um array de storage na Engineering, e agora Engineering está recebendo um novo array de storage, então você deseja mover o array de storage para Administration, onde ele será reconfigurado.
++
+A opção Storage Array exclui algumas configurações adicionais.
+
+
+
+[cols="1a,1a,1a"]
+|===
+|  | Volume | Array de storage 
+
+
+ a| 
+Desativa ARVM
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Exclui pools e grupos de volumes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Exclui volumes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Exclui hosts e clusters de hosts
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Exclui atribuições de host
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Exclui nome do array de storage
+ a| 
+ a| 
+X
+
+
+
+ a| 
+Redefine as configurações de cache do array de storage para o padrão
+ a| 
+ a| 
+X
+
+|===
+[CAUTION]
+====
+*Risco de perda de dados* -- Esta operação apaga todos os dados do seu array de storage. (Não realiza uma exclusão segura.) Você não poderá cancelar esta operação após o início. Execute esta operação somente quando instruído a fazê-lo pelo suporte técnico.
+
+====
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Selecione *Clear Storage Array Configuration*.
+. Na lista suspensa, selecione *Volume* ou *Storage Array*.
+. *Opcional:* Se desejar salvar a configuração (não os dados), utilize os links na caixa de diálogo.
+. Confirme que você deseja realizar a operação.
+
+
+.Resultados
+* A configuração atual é excluída, destruindo todos os dados existentes no array de storage.
+* Todas as unidades estão não atribuídas.
++
+
+NOTE: O array de storage será iniciado no modo de recuperação. Você deve limpar o modo de recuperação antes de usar o array de storage. Consulte  https://docs.netapp.com/us-en/e-series-santricity/sm-support/clear-recovery-mode.html["Limpar modo de recuperação"^] para mais informações.
+
+

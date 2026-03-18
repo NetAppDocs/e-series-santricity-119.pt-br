@@ -1,0 +1,53 @@
+---
+permalink: um-certificates/resolve-untrusted-certificates-certificate-page.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, resolve, untrusted, certificates 
+summary: Certificados não confiáveis ocorrem quando um array de storage tenta estabelecer uma conexão segura com SANtricity Unified Manager, mas a conexão falha ao ser confirmada como segura. 
+---
+= Resolver certificados não confiáveis
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certificados não confiáveis ocorrem quando um array de storage tenta estabelecer uma conexão segura com SANtricity Unified Manager, mas a conexão falha ao ser confirmada como segura.
+
+Na página de Certificado, você pode resolver certificados não confiáveis importando um certificado autoassinado do array de storage ou importando um certificado de autoridade certificadora (CA) emitido por uma terceira parte confiável.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security Admin.
+* Se você planeja importar um certificado assinado por uma autoridade certificadora (CA):
++
+** Você gerou uma solicitação de assinatura de certificado (arquivo .CSR) para cada controlador no array de storage e a enviou para a CA.
+** A CA retornou arquivos de certificado confiáveis.
+** Os arquivos de certificado estão disponíveis no seu sistema local.
+
+
+
+
+.Sobre esta tarefa
+Você pode precisar instalar certificados de CA confiáveis adicionais se alguma das seguintes condições for verdadeira:
+
+* Você adicionou recentemente um array de storage.
+* Um ou ambos os certificados expiraram.
+* Um ou ambos os certificados estão revogados.
+* Um ou ambos os certificados estão sem um certificado raiz ou intermediário.
+
+
+.Passos
+. Selecione *Certificate Management*.
+. Selecione a guia *Trusted*.
++
+Esta página exibe todos os certificados relatados para os arrays de storage.
+
+. Selecione menu:Import[Certificados] para importar um certificado de CA ou menu:Import[Self-Signed storage array certificates] para importar um certificado autoassinado.
++
+Para limitar a visualização, você pode usar o campo de filtro *Mostrar certificados que são...* ou pode classificar as linhas de certificados clicando em um dos cabeçalhos de coluna.
+
+. Na caixa de diálogo, selecione o certificado e clique em *Import*.
++
+O certificado é carregado e validado.
+
+

@@ -1,0 +1,22 @@
+---
+permalink: sm-storage/snapshot-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, volumes 
+summary: 'Você pode criar um volume de Snapshot e atribuí-lo a um host se desejar ler ou gravar dados de Snapshot. O volume de Snapshot compartilha as mesmas características do volume base (nível RAID, características de E/S e assim por diante).' 
+---
+= Saiba mais sobre volumes de Snapshot no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar um volume de Snapshot e atribuí-lo a um host se desejar ler ou gravar dados de Snapshot. O volume de Snapshot compartilha as mesmas características do volume base (nível RAID, características de E/S e assim por diante).
+
+Ao criar um volume de Snapshot, você pode designá-lo como __somente leitura__ ou _acessível para leitura e gravação_.
+
+Ao criar volumes de Snapshot somente leitura, não é necessário adicionar capacidade reservada. Ao criar volumes de Snapshot de leitura e gravação, é preciso adicionar capacidade reservada para fornecer acesso de gravação.
+
+image::../media/sam1130-dwg-snapshots-volumes-overview.gif[Visão geral dos volumes de Snapshot]
+
+^1^ Volume base; ^2^ Host; ^3^ Volume de Snapshot somente leitura; ^4^ Volume de Snapshot leitura e gravação; ^5^ Capacidade reservada

@@ -1,0 +1,80 @@
+---
+permalink: sm-settings/how-access-management-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, authentication, users, roles, access, Management, 
+summary: O Access Management é um método para estabelecer autenticação de usuário no SANtricity System Manager. 
+---
+= Como o controle de acesso funciona no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O Access Management é um método para estabelecer autenticação de usuário no SANtricity System Manager.
+
+A configuração e autenticação do usuário funcionam da seguinte maneira:
+
+. Um administrador faz login no System Manager com um perfil de usuário que inclui permissões de Security Admin.
++
+[NOTE]
+====
+No primeiro acesso, o nome de usuário `admin` é exibido automaticamente e não pode ser alterado. O `admin` usuário tem acesso total a todas as funções do sistema.
+
+====
+. O administrador navega até Gerenciamento de Acesso na interface de usuário. O array de storage está pré-configurado para usar funções de usuário locais, que são uma implementação das capacidades de controle de acesso baseado em funções (RBAC).
+. O administrador configura um ou mais dos seguintes métodos de autenticação:
++
+** *Funções de usuário locais* -- A autenticação é gerenciada por meio de recursos RBAC implementados no array de storage. As funções de usuário locais incluem perfis de usuário predefinidos e funções com permissões de acesso específicas. Os administradores podem usar essas funções de usuário locais como o único método de autenticação ou usá-las em combinação com um serviço de diretório. Nenhuma configuração é necessária, além da definição de senhas para os usuários.
+** *Serviços de diretório* -- A autenticação é gerenciada por meio de um servidor LDAP (Lightweight Directory Access Protocol) e um serviço de diretório, como o Active Directory da Microsoft. Um administrador se conecta ao servidor LDAP e, em seguida, mapeia os usuários LDAP para as funções de usuário locais incorporadas no array de storage.
+** *SAML* -- A autenticação é gerenciada por meio de um Provedor de Identidade (IdP) usando a Security Assertion Markup Language (SAML) 2.0. Um administrador estabelece comunicação entre o sistema IdP e o array de storage e, em seguida, mapeia os usuários do IdP para as funções de usuário locais incorporadas no array de storage.
+
+
+. O administrador fornece aos usuários as credenciais de login para System Manager.
+. Os usuários fazem login no sistema inserindo suas credenciais.
++
+[NOTE]
+====
+Se a autenticação for gerenciada com SAML e um SSO (single sign-on), o sistema poderá ignorar a caixa de diálogo de login do System Manager.
+
+====
++
+Durante o login, o sistema executa as seguintes tarefas em segundo plano:
+
++
+** Autentica o nome de usuário e a senha na conta do usuário.
+** Determina as permissões do usuário com base nas funções atribuídas.
+** Fornece ao usuário acesso a tarefas na interface de usuário.
+** Exibe o nome de usuário no canto superior direito da interface.
+
+
+
+
+
+
+== Tarefas disponíveis no System Manager
+
+O acesso às tarefas depende das funções atribuídas ao usuário, que incluem o seguinte:
+
+* *Administrador de armazenamento* -- acesso completo de leitura/gravação aos objetos de armazenamento (por exemplo, volumes e conjuntos de discos), mas sem acesso à configuração de segurança.
+* *Administrador de segurança* -- Acesso à configuração de segurança no Gerenciamento de Acesso, gerenciamento de certificados, gerenciamento do log de auditoria e a capacidade de ativar ou desativar a interface de gerenciamento legada (SYMbol).
+* *Administrador de suporte* -- Acesso a todos os recursos de hardware no array de storage, dados de falhas, eventos MEL e atualizações de firmware do controlador. Sem acesso a objetos de armazenamento ou à configuração de segurança.
+* *Monitor* -- Acesso somente leitura a todos os objetos de storage, mas sem acesso à configuração de segurança.
+
+
+Uma tarefa indisponível aparece acinzentada ou não é exibida na interface de usuário. Por exemplo, um usuário com a função Monitor pode visualizar todas as informações sobre volumes, mas não pode acessar funções para modificar esse volume. As guias para recursos como *Copy Services* e *Add to Workload* ficarão acinzentadas; somente *View/Edit Settings* estará disponível.
+
+
+
+== Limitações no Unified Manager e Storage Manager
+
+Se o SAML estiver configurado para um array de storage, os usuários não poderão descobrir ou gerenciar storage desse array a partir do Unified Manager ou das interfaces legadas do Storage Manager.
+
+Quando as funções de usuário local e os serviços de diretório estão configurados, os usuários devem inserir credenciais antes de executar qualquer uma das seguintes funções:
+
+* Renomeando o array de storage
+* Atualizando firmware do controlador
+* Carregando uma configuração de array de storage
+* Executando um script
+* Tentativa de executar uma operação ativa quando uma sessão não utilizada expirou
+

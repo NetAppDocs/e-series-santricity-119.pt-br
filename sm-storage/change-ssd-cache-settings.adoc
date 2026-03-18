@@ -1,0 +1,89 @@
+---
+permalink: sm-storage/change-ssd-cache-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd, cache, settings 
+summary: Você pode editar o nome do SSD Cache e visualizar seu status, capacidade máxima e atual, status de Drive Security e Data Assurance, além de seus volumes e unidades associados. 
+---
+= Alterar as configurações de cache SSD no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode editar o nome do SSD Cache e visualizar seu status, capacidade máxima e atual, status de Drive Security e Data Assurance, além de seus volumes e unidades associados.
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o SSD Cache que deseja editar e clique em *Exibir/Editar configurações*.
++
+A caixa de diálogo Configurações de cache do SSD é exibida.
+
+. Revise ou edite as configurações de armazenamento em cache do SSD conforme necessário.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Nome
+ a| 
+Exibe o nome do cache SSD, que você pode alterar. Um nome para o cache SSD é necessário.
+
+
+
+ a| 
+Características
+ a| 
+Exibe o status do cache SSD. Status possíveis incluem:
+
+** Ideal
+** Desconhecido
+** Degradado
+** Falha (um estado de falha resulta em um evento MEL crítico.)
+** Suspenso
+
+
+
+
+ a| 
+Capacidades
+ a| 
+Mostra a capacidade atual e a capacidade máxima permitida para o SSD Cache.
+
+A capacidade máxima permitida para o cache SSD depende do tamanho do cache primário do controlador:
+
+** Até 1 GiB
+** 1 GiB a 2 GiB
+** 2 GiB a 4 GiB
+** Mais de 4 GiB
+
+
+
+
+ a| 
+Segurança e DA
+ a| 
+Exibe o status de segurança da unidade e garantia de dados para o SSD Cache.
+
+** *Compatível com segurança* -- Indica se o cache SSD é composto inteiramente por unidades compatíveis com segurança. Uma unidade compatível com segurança é uma unidade com criptografia automática que pode proteger seus dados contra acesso não autorizado.
+** *Secure-enabled* -- Indica se a segurança está ativada no cache SSD.
+** *Compatível com DA* -- Indica se o cache SSD é composto inteiramente por unidades compatíveis com DA. Uma unidade compatível com DA pode verificar e corrigir erros que possam ocorrer durante a comunicação de dados entre o host e o array de storage.
+
+
+
+
+ a| 
+Objetos associados
+ a| 
+Exibe os volumes e drives associados ao cache SSD.
+
+|===
+====
+. Clique em *Salvar*.
+

@@ -1,0 +1,74 @@
+---
+permalink: sm-hardware/limit-the-drive-view.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, limit, drive, view, 
+summary: Se o array de storage incluir unidades com diferentes tipos de atributos físicos e lógicos, a página Hardware fornece campos de filtro que ajudam a limitar a visualização das unidades e localizar unidades específicas. 
+---
+= Filtrar a visualização de unidades no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o array de storage incluir unidades com diferentes tipos de atributos físicos e lógicos, a página Hardware fornece campos de filtro que ajudam a limitar a visualização das unidades e localizar unidades específicas.
+
+.Sobre esta tarefa
+Os filtros de unidade podem limitar a visualização apenas a determinados tipos de unidades físicas (por exemplo, todas as SAS), com determinados atributos de segurança (por exemplo, secure-capable), em determinados locais lógicos (por exemplo, Volume Group 1). Você pode usar esses filtros em conjunto ou separadamente.
+
+[NOTE]
+====
+Se todas as unidades compartilharem os mesmos atributos físicos, o campo de filtro *Mostrar unidades que são...* não será exibido. Se todas as unidades compartilharem os mesmos atributos lógicos, o campo de filtro *Em qualquer lugar no array de storage* não será exibido.
+
+====
+.Passos
+. Selecione *Hardware*.
+. No primeiro campo de filtro (em *Mostrar unidades que são...*), clique na seta suspensa para exibir os tipos de unidade e recursos de segurança disponíveis.
++
+Os tipos de unidade podem incluir:
+
++
+** Tipo de mídia de unidade (SSD, HDD)
+** Tipo de interface da unidade
+** Capacidade da unidade (da maior para a menor)
+** Velocidade da unidade (da mais alta para a mais baixa) Os atributos de segurança podem incluir:
+** Compatível com segurança
+** Habilitado para segurança
+** Compatível com DA (Data Assurance)
+** Compatível com FIPS
+** Compatível com FIPS (FIPS 140-2)
+** Compatível com FIPS (FIPS 140-3)
++
+Se algum desses atributos for igual para todas as unidades, ele não será exibido na lista suspensa. Por exemplo, se o array de storage incluir todas as unidades SSD com interfaces SAS e velocidades de 15000 RPM, mas algumas SSDs tiverem capacidades diferentes, a lista suspensa exibirá apenas as capacidades como opção de filtro.
+
++
+Ao selecionar uma opção no campo, as unidades que não correspondem aos seus critérios de filtro ficam acinzentadas na visualização gráfica.
+
+
+
+. Na segunda caixa de filtro, clique na seta suspensa para exibir os locais lógicos disponíveis para as unidades.
++
+[NOTE]
+====
+Se precisar limpar os critérios de filtro, selecione *Limpar* no canto direito das caixas de filtro.
+
+====
++
+Locais lógicos podem incluir:
+
++
+** Pools
+** Grupos de volume
+** Hot spare
+** Cache SSD
+** Não atribuído
++
+Ao selecionar uma opção no campo, as unidades que não correspondem aos seus critérios de filtro ficam acinzentadas na visualização gráfica.
+
+
+
+. Opcionalmente, você pode selecionar *Ligar luzes de localização* no canto direito dos campos de filtro para ligar as luzes de localização das unidades exibidas.
++
+Esta ação ajuda você a localizar fisicamente as unidades no array de storage.
+
+

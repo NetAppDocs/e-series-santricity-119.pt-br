@@ -1,0 +1,50 @@
+---
+permalink: sm-hardware/controller-states.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, controller, states, 
+summary: 'Você pode colocar um controlador em três estados diferentes: online, offline e modo de serviço.' 
+---
+= Saiba mais sobre os estados do controlador no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode colocar um controlador em três estados diferentes: online, offline e modo de serviço.
+
+
+
+== Estado online
+
+O estado online é o estado normal de funcionamento do controlador. Significa que o controlador está operando normalmente e está disponível para operações de I/O.
+
+Ao colocar um controlador online, seu status é definido como ótimo.
+
+
+
+== Estado offline
+
+O estado offline é normalmente usado para preparar um controlador para substituição quando existem dois controladores no array de storage. Um controlador pode entrar no estado offline de duas maneiras: você pode emitir um comando explícito ou o controlador pode falhar. Um controlador pode sair do estado offline somente emitindo outro comando explícito ou substituindo o controlador com falha. Você só pode colocar um controlador offline se houver dois controladores no array de storage.
+
+Quando um controlador está no estado offline, as seguintes condições são verdadeiras:
+
+* O controlador não está disponível para I/O.
+* Você não pode gerenciar o array de storage por meio desse controlador.
+* Quaisquer volumes atualmente pertencentes a esse controlador são movidos para o outro controlador.
+* O espelhamento de cache está desativado e todos os volumes são alterados para o modo de cache de gravação direta.
+
+
+
+
+== Modo de serviço
+
+O Service Mode é normalmente usado apenas pelo suporte técnico para mover todos os volumes do array de storage para um controlador, permitindo que o outro controlador seja diagnosticado. Um controlador deve ser colocado manualmente em Service Mode e deve ser colocado manualmente online novamente após a conclusão da operação de serviço.
+
+Quando um controlador está em modo de serviço, as seguintes condições são verdadeiras:
+
+* O controlador não está disponível para I/O.
+* O suporte técnico pode acessar o controlador através da porta serial ou da conexão de rede para analisar possíveis problemas.
+* Quaisquer volumes atualmente pertencentes a esse controlador são movidos para o outro controlador.
+* O espelhamento de cache está desativado e todos os volumes são alterados para o modo de cache de gravação direta.
+

@@ -1,0 +1,62 @@
+---
+permalink: sm-settings/change-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, security, key, 
+summary: A qualquer momento, você pode substituir uma chave de segurança por uma nova. Você pode precisar alterar uma chave de segurança em casos em que há uma possível violação de segurança na sua empresa e deseja garantir que pessoas não autorizadas não possam acessar os dados das unidades. 
+---
+= Alterar uma chave de segurança no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A qualquer momento, você pode substituir uma chave de segurança por uma nova. Você pode precisar trocar uma chave de segurança em casos de potencial violação de segurança na sua empresa e deseja garantir que pessoas não autorizadas não possam acessar os dados das unidades.
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Gerenciamento de chaves de segurança*, selecione *Alterar chave*.
++
+A caixa de diálogo Alterar chave de segurança é aberta.
+
+. Insira informações nos campos a seguir.
++
+** *Defina um identificador de chave de segurança* -- (Apenas para chaves de segurança internas.) Aceite o valor padrão (nome do array de storage e carimbo de data/hora, que é gerado pelo firmware do controlador) ou insira seu próprio valor. Você pode inserir até 189 caracteres alfanuméricos, sem espaços, pontuação ou símbolos.
++
+[NOTE]
+====
+Caracteres adicionais são gerados automaticamente e anexados às duas extremidades da sequência de caracteres que você inserir. Os caracteres gerados ajudam a garantir que o identificador seja único.
+
+====
+** *Definir uma frase secreta/Inserir frase secreta novamente* -- Em cada um destes campos, insira sua frase secreta. O valor pode ter entre 8 e 32 caracteres e deve incluir cada um dos seguintes:
++
+*** Uma letra maiúscula (ou mais). Lembre-se de que a senha diferencia maiúsculas de minúsculas.
+*** Um número (um ou mais).
+*** Um caractere não alfanumérico, como !, *, @ (um ou mais).
+
+
+
+
+. Para chaves de segurança externas, se você quiser excluir a chave de segurança antiga quando a nova for criada, selecione a caixa de seleção "Excluir chave de segurança atual..." na parte inferior da caixa de diálogo.
++
+[CAUTION]
+====
+*Certifique-se de registrar suas entradas para uso posterior* -- Se você precisar mover uma unidade com segurança habilitada do array de storage, você deve saber o identificador e a frase secreta para desbloquear os dados da unidade.
+
+====
+. Clique em *Change*.
++
+A nova chave de segurança sobrescreve a chave anterior, que não é mais válida.
+
++
+[NOTE]
+====
+O caminho para o arquivo baixado pode depender do local de download padrão do seu navegador.
+
+====
+. Anote o identificador da chave, a frase secreta e o local do arquivo de chave baixado e, em seguida, clique em *Fechar*.
+
+
+.Depois que você terminar
+Você deve validar a chave de segurança para garantir que o arquivo de chave não esteja corrompido.

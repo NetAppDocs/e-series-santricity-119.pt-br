@@ -1,0 +1,89 @@
+---
+permalink: um-admin/overview-interface-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, interface, GUI 
+summary: Unified Manager é uma interface Web que permite gerenciar vários arrays de storage em uma única visualização. 
+---
+= Saiba mais sobre SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity Unified Manager é uma interface Web que permite gerenciar vários arrays de storage em uma única visualização.
+
+
+
+== Página principal
+
+Ao iniciar sessão no Unified Manager, a página principal abre em *Manage - All*. Nessa página, você pode percorrer uma lista de arrays de storage detectados em sua rede, visualizar o status de cada um e realizar operações em um único array ou em um grupo de arrays.
+
+
+
+== Barra lateral de navegação
+
+Você pode acessar os recursos e funções do Unified Manager na barra lateral de navegação.
+
+[cols="25h,~"]
+|===
+| Área | Descrição 
+
+
+ a| 
+Gerenciar
+ a| 
+Descubra arrays de storage em sua rede, inicie SANtricity System Manager para um array, importe configurações de um array para vários arrays e gerencie grupos de arrays. Selecione as caixas de seleção ao lado dos nomes dos arrays para realizar operações neles, como importar configurações e criar grupos de arrays. As reticências no final de cada linha fornecem um menu in-line para operações em um único array, como renomeá-lo.
+
+
+
+ a| 
+Operações
+ a| 
+Visualize o progresso das operações em lote, como importar configurações de um array para outro.
+
+[NOTE]
+====
+Algumas operações não estão disponíveis quando um array de storage está com status não ideal.
+
+====
+
+
+ a| 
+Gerenciamento de certificados
+ a| 
+Gerencie certificados para autenticar entre navegadores e clientes.
+
+
+
+ a| 
+Gerenciamento de acesso
+ a| 
+Estabeleça autenticação de usuário para a interface Unified Manager.
+
+
+
+ a| 
+Suporte
+ a| 
+Veja as opções de suporte técnico, recursos e contatos.
+
+|===
+
+
+== Configurações da interface e ajuda
+
+No canto superior direito da interface, você pode acessar Ajuda e outra documentação. Você também pode acessar opções de administração, que estão disponíveis no menu suspenso ao lado do seu nome de login.
+
+
+
+== Logins e senhas de usuário
+
+O usuário atualmente conectado ao sistema é exibido no canto superior direito da interface.
+
+Para obter mais informações sobre usuários e senhas, consulte:
+
+* link:administrator-password-protection-unified.html["Defina a proteção por senha de administrador"]
+* link:change-admin-password-unified.html["Alterar a senha do admin"]
+* link:../um-certificates/change-passwords-unified.html["Alterar senhas para perfis de usuário locais"]
+

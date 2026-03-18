@@ -1,0 +1,86 @@
+---
+permalink: sm-mirroring/asynchronous-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, asynchronous, mirroring, terms, 
+summary: Aprenda como os termos de espelhamento assíncrono se aplicam ao seu array de storage. 
+---
+= Saiba mais sobre a terminologia de espelhamento assíncrono no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Aprenda como os termos de espelhamento assíncrono se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Array de storage local
+ a| 
+O array de storage local é o array de storage sobre o qual você está agindo.
+
+Quando você vê *Primário* na coluna Função Local, isso indica que o array de storage contém o volume que detém a função primária na relação de espelhamento. Quando você vê *Secundário* na coluna Função Local, isso indica que o array de storage contém o volume que detém a função secundária na relação de espelhamento.
+
+
+
+ a| 
+Grupo de consistência
+ a| 
+Um grupo de consistência de espelhamento é um contêiner para um ou mais pares espelhados. Para operações de espelhamento assíncrono, você deve criar um grupo de consistência de espelhamento.
+
+
+
+ a| 
+Par espelhado
+ a| 
+Um par espelhado é composto por dois volumes, um volume primário e um volume secundário.
+
+No espelhamento assíncrono, um par espelhado sempre pertence a um grupo de consistência de espelhamento. As operações de gravação são realizadas primeiro no volume primário e depois replicadas para o volume secundário. Cada par espelhado em um grupo de consistência de espelhamento compartilha as mesmas configurações de sincronização.
+
+
+
+ a| 
+Volume primário
+ a| 
+O volume primário de um par espelhado é o volume de origem a ser espelhado.
+
+
+
+ a| 
+Array de storage remoto
+ a| 
+O array de storage remoto é geralmente designado como o site secundário, que normalmente contém uma réplica dos dados em uma configuração de espelhamento.
+
+
+
+ a| 
+Capacidade reservada
+ a| 
+A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e objeto de armazenamento. Ela não é diretamente legível pelo host.
+
+
+
+ a| 
+Mudança de função
+ a| 
+A mudança de função consiste em atribuir a função principal ao volume secundário e vice-versa.
+
+
+
+ a| 
+Volume secundário
+ a| 
+O volume secundário de um par espelhado geralmente está localizado em um site secundário e contém uma réplica dos dados.
+
+
+
+ a| 
+Sincronização
+ a| 
+A sincronização ocorre na sincronização inicial entre o array de storage local e o array de storage remoto. A sincronização também ocorre quando os volumes primário e secundário ficam dessincronizados após uma interrupção na comunicação. Quando o link de comunicação volta a funcionar, quaisquer dados não replicados são sincronizados com o array de storage do volume secundário.
+
+|===

@@ -1,0 +1,64 @@
+---
+permalink: sm-storage/change-media-scan-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, media scan settings, volume 
+summary: Uma verificação de mídia é uma operação em segundo plano que examina todos os dados e informações de redundância no volume. Use esta opção para ativar ou desativar as configurações de verificação de mídia para um ou mais volumes ou para alterar a duração da verificação. 
+---
+= Altere as configurações de verificação de mídia para um volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Uma verificação de mídia é uma operação em segundo plano que examina todos os dados e informações de redundância no volume. Use esta opção para ativar ou desativar as configurações de verificação de mídia para um ou mais volumes ou para alterar a duração da verificação.
+
+.Antes de começar
+Entenda o seguinte:
+
+* As varreduras de mídia são executadas continuamente a uma taxa constante com base na capacidade a ser varrida e na duração da varredura. As varreduras em segundo plano podem ser temporariamente suspensas por uma tarefa em segundo plano de prioridade mais alta (por exemplo, reconstrução), mas serão retomadas na mesma taxa constante.
+* Um volume é verificado somente quando a opção de verificação de mídia está habilitada para o array de storage e para esse volume. Se a verificação de redundância também estiver habilitada para esse volume, as informações de redundância no volume serão verificadas quanto à consistência com os dados, desde que o volume possua redundância. A verificação de mídia com verificação de redundância é habilitada por padrão para cada volume quando ele é criado.
+* Caso seja encontrado um erro irrecuperável na mídia durante a verificação, os dados serão reparados utilizando informações de redundância, se disponíveis.
++
+Por exemplo, informações de redundância estão disponíveis em volumes RAID 5 otimizados ou em volumes RAID 6 que estão otimizados ou têm apenas uma unidade com falha. Se o erro irrecuperável não puder ser reparado usando informações de redundância, o bloco de dados será adicionado ao log de setores ilegíveis. Tanto erros de mídia corrigíveis quanto incorrigíveis são registrados no log de eventos.
+
++
+Se a verificação de redundância encontrar uma inconsistência entre os dados e as informações de redundância, isso será relatado no registro de eventos.
+
+
+
+
+NOTE: O período padrão de verificação de mídia é definido em 120 dias.
+
+.Sobre esta tarefa
+A verificação de mídia detecta e corrige erros em blocos de disco que são lidos com pouca frequência pelos aplicativos. Isso pode evitar perda de dados em caso de falha de uma unidade, pois os dados das unidades com falha são reconstruídos usando informações de redundância e dados de outras unidades no grupo de volume ou pool.
+
+Você pode realizar as seguintes ações:
+
+* Ative ou desative as verificações de mídia em segundo plano para todo o array de storage
+* Altere a duração da varredura para todo o array de storage
+* Ativar ou desativar a verificação de mídia para um ou mais volumes
+* Ative ou desative a verificação de redundância para um ou mais volumes
+
+
+.Passos
+. Selecione o menu: storage [Volumes].
+. Selecione qualquer volume e, em seguida, selecione menu:More[Change media scan settings].
++
+A caixa de diálogo Alterar configurações de verificação de mídia da unidade é exibida. Todos os volumes no array de storage aparecem nesta caixa de diálogo.
+
+. Para ativar a verificação de mídia, selecione a caixa de seleção *Verificar mídia ao longo de...*.
++
+Desativar a caixa de seleção de verificação de mídia suspende todas as configurações de verificação de mídia.
+
+. Especifique o número de dias durante os quais você deseja que a verificação de mídia seja executada.
+. Selecione a caixa de seleção *Verificação de mídia* para cada volume no qual deseja realizar uma verificação de mídia.
++
+System Manager habilita a opção Verificação de Redundância para cada volume no qual você optar por executar uma verificação de mídia. Se houver volumes individuais para os quais você não deseja executar uma verificação de redundância, desmarque a caixa de seleção *Verificação de Redundância*.
+
+. Clique em *Salvar*.
++
+System Manager aplica alterações às verificações de mídia em segundo plano com base na sua seleção.
+
+

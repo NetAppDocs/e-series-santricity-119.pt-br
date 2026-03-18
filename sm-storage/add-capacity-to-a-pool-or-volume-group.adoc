@@ -1,0 +1,148 @@
+---
+permalink: sm-storage/add-capacity-to-a-pool-or-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, capacity, pool, volume, group 
+summary: Você pode adicionar unidades para expandir a capacidade livre em um pool ou grupo de volume. 
+---
+= Adicione capacidade a um pool ou grupo de volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar unidades para expandir a capacidade livre em um pool ou grupo de volume.
+
+A expansão faz com que capacidade livre adicional seja incluída no pool ou grupo de volume. Você pode usar essa capacidade livre para criar volumes adicionais. Os dados nos volumes permanecem acessíveis durante essa operação.
+
+.Antes de começar
+* As unidades devem estar em status Ótimo.
+* As unidades devem ter o mesmo tipo de unidade (HDD ou SSD).
+* O pool ou grupo de volume deve estar em status Ótimo.
+* O número máximo de volumes permitidos em um volume group é 256.
+* O número máximo de volumes permitidos em um pool depende do modelo do sistema de storage:
++
+** 2.048 volumes (EF600 e E5700 series)
+** 1.024 volumes (EF300)
+** 512 volumes (E4000 e E2800 series)
+
+
+* Se o pool ou grupo de volume contiver apenas unidades com capacidade de segurança, adicione somente unidades com capacidade de segurança para continuar usando os recursos de criptografia das unidades com capacidade de segurança.
++
+Unidades com capacidade de segurança podem ser unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS).
+
+
+
+.Sobre esta tarefa
+Para pools, você pode adicionar no máximo 60 drives por vez. Para volume groups, você pode adicionar no máximo dois drives por vez. Se precisar adicionar mais do que o número máximo de drives, repita o procedimento. (Um pool não pode conter mais drives do que o limite máximo para um sistema de storage.)
+
+[NOTE]
+====
+Com a adição de unidades de armazenamento, sua capacidade de preservação pode precisar ser aumentada. Você deve considerar aumentar sua capacidade reservada após uma operação de expansão.
+
+====
+[NOTE]
+====
+Evite usar unidades com suporte a Data Assurance (DA) para adicionar capacidade a um pool ou grupo de volume que não seja DA capaz. O pool ou grupo de volume não pode aproveitar as capacidades da unidade DA capaz. Considere usar unidades que não sejam DA capazes nessa situação.
+
+====
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o pool ou grupo de volume ao qual deseja adicionar unidades e clique em *Add Capacity*.
++
+A caixa de diálogo Adicionar Capacidade é exibida. Somente as unidades não atribuídas que são compatíveis com o pool ou grupo de volume são exibidas.
+
+. Em *Selecionar unidades para adicionar capacidade...*, selecione uma ou mais unidades que você deseja adicionar ao pool ou grupo de volume.
++
+O firmware do controlador organiza as unidades não atribuídas, exibindo as melhores opções no topo. A capacidade livre total que é adicionada ao pool ou grupo de volume aparece abaixo da lista em *Capacidade total selecionada*.
+
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Campo | Descrição 
+
+
+ a| 
+Compartimento
+ a| 
+Indica a localização da unidade na prateleira.
+
+
+
+ a| 
+Baía
+ a| 
+Indica a localização da baia da unidade.
+
+
+
+ a| 
+Capacidade (GiB)
+ a| 
+Indica a capacidade da unidade.
+
+** Sempre que possível, selecione unidades que tenham uma capacidade igual às capacidades das unidades atuais no pool ou grupo de volume.
+** Se precisar adicionar unidades não atribuídas com capacidade menor, esteja ciente de que a capacidade utilizável de cada unidade atualmente no pool ou grupo de volume é reduzida. Portanto, a capacidade da unidade é a mesma em todo o pool ou grupo de volume.
+** Caso precise adicionar unidades não atribuídas com maior capacidade, esteja ciente de que a capacidade utilizável das unidades não atribuídas que você adicionar será reduzida para corresponder às capacidades atuais das unidades no pool ou grupo de volume.
+
+
+
+
+ a| 
+Compatível com segurança
+ a| 
+Indica se a unidade é compatível com segurança.
+
+** Para proteger seu pool ou grupo de volume com o recurso Drive Security, todas as unidades devem ser compatíveis com segurança.
+** É possível criar um pool ou grupo de volume com uma combinação de unidades com e sem capacidade de segurança, mas o recurso Drive Security não pode ser ativado.
+** Um pool ou grupo de volume com todas as unidades compatíveis com segurança não pode aceitar uma unidade não compatível com segurança para uso como reserva ou expansão, mesmo que a criptografia não esteja em uso.
+** Unidades de disco que são relatadas como compatíveis com segurança podem ser unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS).
+** Uma unidade FIPS pode ser de nível 140-2 ou 140-3, com o nível 140-3 sendo o nível mais alto de segurança. Se você selecionar uma combinação de unidades de nível 140-2 e 140-3, o pool ou grupo de volume operará no nível mais baixo de segurança (140-2).
+
+
+
+
+ a| 
+Compatível com DA
+ a| 
+Indica se a unidade é compatível com Data Assurance (DA).
+
+** Não é recomendável usar unidades que não sejam compatíveis com Data Assurance (DA) para adicionar capacidade a um pool ou grupo de volume compatível com DA. O pool ou grupo de volume deixa de ter recursos de DA e você não tem mais a opção de habilitar DA em volumes recém-criados dentro do pool ou grupo de volume.
+** Não é recomendável usar unidades com capacidade Data Assurance (DA) para adicionar capacidade a um pool ou grupo de volume que não seja compatível com DA, pois esse pool ou grupo de volume não poderá aproveitar os recursos da unidade com DA (os atributos da unidade não correspondem). Considere usar unidades que não sejam compatíveis com DA nessa situação.
+
+
+
+
+ a| 
+DULBE capaz
+ a| 
+Indica se a unidade possui a opção de erro de bloco lógico desalocado ou não gravado (DULBE). DULBE é uma opção em unidades NVMe que permite que o array de storage EF300 ou EF600 suporte volumes com recursos provisionados.
+
+|===
+====
+. Clique em *Add*.
++
+Se você estiver adicionando unidades a um pool ou grupo de volume, uma caixa de diálogo de confirmação aparecerá se você selecionar uma unidade que faça com que o pool ou grupo de volume deixe de ter um ou mais dos seguintes atributos:
+
++
+** Proteção contra perda de shelf ^*^
+** Proteção contra perda de gaveta ^*^
+** Capacidade de criptografia de disco completo
+** Capacidade de Data Assurance
+** Capacidade DULBE
+
+
+
+
+
+NOTE: ^*^ Atualmente, a caixa de diálogo de confirmação não é exibida ao adicionar unidades a um pool com shelf loss protection ou drawer loss protection.
+
+. Para continuar, clique em *Yes*; caso contrário, clique em *Cancel*.
+
+
+.Resultados
+Depois de adicionar as unidades não atribuídas a um pool ou grupo de volume, os dados em cada volume do pool ou grupo de volume são redistribuídos para incluir as unidades adicionais.

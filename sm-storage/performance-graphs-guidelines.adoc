@@ -1,0 +1,103 @@
+---
+permalink: sm-storage/performance-graphs-guidelines.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, performance, 
+summary: A página de Desempenho fornece gráficos e tabelas de dados que permitem avaliar o desempenho do array de storage em várias áreas-chave. 
+---
+= Saiba mais sobre gráficos de desempenho e diretrizes no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página de Desempenho fornece gráficos e tabelas de dados que permitem avaliar o desempenho do array de storage em diversas áreas importantes.
+
+As funções de desempenho permitem que você realize estas tarefas:
+
+* Visualize dados de desempenho em tempo quase real para ajudá-lo a determinar se um array de storage está apresentando problemas.
+* Exporte dados de desempenho para construir uma visão histórica de um array de storage e identificar quando um problema começou ou o que causou um problema.
+* Selecione os objetos, métricas de desempenho e o período que deseja visualizar.
+* Compare métricas.
+
+
+Você pode visualizar os dados de desempenho em três formatos:
+
+* *Gráfico em tempo real* -- Exibe dados de desempenho em um gráfico quase em tempo real.
+* *Tabela quase em tempo real* -- Lista dados de desempenho em uma tabela em tempo quase real.
+* *Arquivo CSV exportado* -- Permite salvar dados tabulares de desempenho em um arquivo de valores separados por vírgula para visualização e análise posteriores.
+
+
+
+
+== Características dos formatos de dados de desempenho
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| *Tipo de monitoramento de desempenho* | *Intervalo de amostragem* | *Duração do tempo exibido* | *Número máximo de objetos exibidos* | *Capacidade de salvar dados* 
+
+
+ a| 
+Gráficos em tempo real, ao vivo
+
+Gráfico em tempo real, histórico
+ a| 
+10 seg (ao vivo)
+
+5 min (histórico)
+
+Os pontos de dados exibidos dependem do período de tempo selecionado
+ a| 
+O período de tempo padrão é de 1 hora.
+
+Opções:
+
+* 5 minutos
+* 1 hora
+* 8 horas
+* 1 dia
+* 7 dias
+* 30 dias
+
+ a| 
+5
+ a| 
+Não
+
+
+
+ a| 
+Visualização tabular (tabela) em tempo quase real
+ a| 
+10 segundos - 1 hora
+ a| 
+Valor mais atual
+ a| 
+Ilimitado
+ a| 
+Sim
+
+
+
+ a| 
+Arquivo de valores separados por vírgula (CSV)
+ a| 
+Depende do período de tempo selecionado
+ a| 
+Depende do período de tempo selecionado
+ a| 
+Ilimitado
+ a| 
+Sim
+
+|===
+
+
+== Diretrizes para visualização de dados de desempenho
+
+* A coleta de dados de desempenho está sempre ativa. Não há opção para desativá-la.
+* Cada vez que o intervalo de amostragem se encerra, o array de storage é consultado e os dados são atualizados.
+* Para dados gráficos, o intervalo de tempo de 5 minutos suporta atualização a cada 10 segundos, com média calculada ao longo de 5 minutos. Todos os outros intervalos de tempo são atualizados a cada 5 minutos, com média calculada ao longo do intervalo de tempo selecionado.
+* Os dados de desempenho nas visualizações gráficas são atualizados em tempo real. Os dados de desempenho na visualização em tabela são atualizados em tempo quase real.
+* Se um objeto monitorado sofrer alterações durante o período de coleta de dados, ele poderá não ter um conjunto completo de pontos de dados abrangendo o intervalo de tempo selecionado. Por exemplo, conjuntos de volumes podem mudar à medida que volumes são criados, excluídos, atribuídos ou desatribuídos; ou unidades podem ser adicionadas, removidas ou apresentar falhas.
+

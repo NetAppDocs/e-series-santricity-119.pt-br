@@ -1,0 +1,202 @@
+---
+permalink: sm-settings/faq-user-access-mgmt-sm.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre gerenciamento de acesso de usuário para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== Por que não consigo fazer login?
+
+Se você receber um erro ao tentar fazer login no SANtricity System Manager, verifique estas possíveis causas.
+
+Erros de login no System Manager podem ocorrer por um destes motivos:
+
+* Você digitou um nome de usuário ou senha incorretos.
+* Você não possui privilégios suficientes.
+* O servidor de diretório (se configurado) pode estar indisponível. Se for esse o caso, tente fazer login com uma função de usuário local.
+* Você tentou fazer login várias vezes sem sucesso, o que ativou o modo de bloqueio. Aguarde 10 minutos para fazer login novamente.
+* Uma condição de bloqueio foi acionada e seu log de auditoria pode estar cheio. Vá para Gerenciamento de Acesso e exclua eventos antigos do log de auditoria.
+* A autenticação SAML está ativada. Atualize seu navegador para fazer login.
+
+
+Os erros de login em um array de storage remoto para tarefas de espelhamento podem ocorrer por um dos seguintes motivos:
+
+* Você inseriu uma senha incorreta.
+* Você tentou fazer login várias vezes sem sucesso, o que ativou o modo de bloqueio. Aguarde 10 minutos para fazer login novamente.
+* O número máximo de conexões de clientes utilizadas no controlador foi atingido. Verifique se há vários usuários ou clientes.
+
+
+
+
+== O que preciso saber antes de adicionar um servidor de diretório?
+
+Antes de adicionar um servidor de diretório em Access Management, certifique-se de atender aos seguintes requisitos.
+
+* Os grupos de usuários devem ser definidos no seu serviço de diretório.
+* As credenciais do servidor LDAP devem estar disponíveis, incluindo o nome de domínio, o URL do servidor e, opcionalmente, o nome de usuário e a senha da conta de vinculação.
+* Para servidores LDAPS que utilizam um protocolo seguro, a cadeia de certificados do servidor LDAP deve estar instalada em sua máquina local.
+
+
+
+
+== O que preciso saber sobre o mapeamento para funções de array de storage?
+
+Antes de associar grupos a funções, revise as seguintes diretrizes.
+
+Os recursos RBAC (controle de acesso baseado em funções) integrados ao array de storage incluem as seguintes funções:
+
+* *Administrador de armazenamento* -- acesso completo de leitura/gravação aos objetos de armazenamento (por exemplo, volumes e conjuntos de discos), mas sem acesso à configuração de segurança.
+* *Administrador de segurança* -- Acesso à configuração de segurança no Gerenciamento de Acesso, gerenciamento de certificados, gerenciamento do log de auditoria e a capacidade de ativar ou desativar a interface de gerenciamento legada (SYMbol).
+* *Administrador de suporte* -- Acesso a todos os recursos de hardware no array de storage, dados de falhas, eventos MEL e atualizações de firmware do controlador. Sem acesso a objetos de armazenamento ou à configuração de segurança.
+* *Monitor* -- Acesso somente leitura a todos os objetos de storage, mas sem acesso à configuração de segurança.
+
+
+
+
+=== Serviços de diretório
+
+Se você estiver usando um servidor LDAP (Lightweight Directory Access Protocol) e Directory Services, certifique-se de que:
+
+* Um administrador definiu grupos de usuários no serviço de diretório.
+* Você conhece os nomes de domínio dos grupos de usuários LDAP. Expressões regulares são suportadas. Esses caracteres especiais de expressão regular devem ser escapados com uma barra invertida (`\`) se não fizerem parte de um padrão de expressão regular:
++
+[listing]
+----
+\.[]{}()<>*+-=!?^$|
+----
+* A função de Monitor é obrigatória para todos os usuários, incluindo o administrador. System Manager não funcionará corretamente para nenhum usuário sem a função de Monitor presente.
+
+
+
+
+=== SAML
+
+Se você estiver usando os recursos de Security Assertion Markup Language (SAML) incorporados no array de storage, certifique-se de que:
+
+* Um administrador do Identity Provider (IdP) configurou os atributos do usuário e a associação a grupos no sistema IdP.
+* Você conhece os nomes de associação do grupo.
+* Você conhece o valor do atributo para o grupo a ser mapeado. Expressões regulares são suportadas. Esses caracteres especiais de expressão regular devem ser escapados com uma barra invertida (`\` se não fizerem parte de um padrão de expressão regular:
++
+[listing]
+----
+\.[]{}()<>*+-=!?^$|
+----
+* A função de Monitor é obrigatória para todos os usuários, incluindo o administrador. System Manager não funcionará corretamente para nenhum usuário sem a função de Monitor presente.
+
+
+
+
+== Quais ferramentas de gerenciamento externo podem ser afetadas por essa mudança?
+
+Ao fazer determinadas alterações no SANtricity System Manager, como trocar a interface de gerenciamento ou usar SAML como método de autenticação, algumas ferramentas e recursos externos podem ser restringidos de uso.
+
+
+
+=== Interface de gerenciamento
+
+Ferramentas que se comunicam diretamente com a interface de gerenciamento legada (SYMbol), como o SANtricity SMI-S Provider ou OnCommand Insight (OCI), não funcionam a menos que a configuração da Interface de Gerenciamento Legada esteja habilitada. Além disso, você não pode usar comandos CLI legados nem realizar operações de espelhamento se essa configuração estiver desabilitada.
+
+Contate o suporte técnico para obter mais informações.
+
+
+
+=== Autenticação SAML
+
+Quando o SAML está ativado, os seguintes clientes não podem acessar os serviços e recursos do array de storage:
+
+* Janela de gerenciamento empresarial (EMW)
+* Interface de linha de comando (CLI)
+* Clientes de Software Developer Kits (SDK)
+* Clientes in-band
+* Clientes de API REST com autenticação básica HTTP
+* Faça login usando o endpoint padrão da API REST
+
+
+Contate o suporte técnico para obter mais informações.
+
+
+
+== O que preciso saber antes de configurar e habilitar o SAML?
+
+Antes de configurar e ativar os recursos do Security Assertion Markup Language (SAML) para autenticação, certifique-se de atender aos seguintes requisitos e compreender as restrições do SAML.
+
+
+
+=== Requisitos
+
+Antes de começar, certifique-se de que:
+
+* Um Provedor de Identidade (IdP) está configurado em sua rede. Um IdP é um sistema externo usado para solicitar credenciais de um usuário e determinar se o usuário foi autenticado com sucesso. Sua equipe de segurança é responsável por manter o IdP.
+* Um administrador do IdP configurou atributos de usuário e grupos no sistema IdP.
+* Um administrador do IdP garantiu que o IdP suporta a capacidade de retornar um Name ID na autenticação.
+* Um administrador assegurou que os relógios do servidor IdP e do controlador estão sincronizados (seja por meio de um servidor NTP ou ajustando as configurações do relógio do controlador).
+* Um arquivo de metadados do IdP é baixado do sistema IdP e fica disponível no sistema local usado para acessar System Manager.
+* Você conhece o endereço IP ou nome de domínio de cada controlador no array de storage.
+
+
+
+
+=== Restrições
+
+Além dos requisitos acima, certifique-se de entender as seguintes restrições:
+
+* Uma vez que o SAML esteja habilitado, você _não_ pode desabilitá-lo através da interface de usuário, nem editar as configurações do IdP. Se você precisar desabilitar ou editar a configuração do SAML, entre em contato com o suporte técnico para obter assistência. Recomendamos que você teste os logins SSO antes de habilitar o SAML na etapa final de configuração. (O sistema também realiza um teste de login SSO antes de habilitar o SAML.)
+* Se você desativar o SAML no futuro, o sistema restaurará automaticamente a configuração anterior (Local User Roles e/ou Directory Services).
+* Se os Serviços de Diretório estiverem configurados atualmente para autenticação de usuário, o SAML substituirá essa configuração.
+* Quando o SAML está configurado, os seguintes clientes não podem acessar os recursos do array de storage:
++
+** Janela de gerenciamento empresarial (EMW)
+** Interface de linha de comando (CLI)
+** Clientes de Software Developer Kits (SDK)
+** Clientes in-band
+** Clientes de API REST com autenticação básica HTTP
+** Faça login usando o endpoint padrão da API REST
+
+
+
+
+
+
+== Que tipos de eventos são registrados no log de auditoria?
+
+O log de auditoria pode registrar eventos de modificação ou eventos de modificação e somente leitura.
+
+Dependendo das configurações da política, os seguintes tipos de eventos são exibidos:
+
+* *Eventos de modificação* -- Ações do usuário no System Manager que envolvem alterações no sistema, como provisionamento de storage.
+* *Eventos de modificação e somente leitura* -- Ações do usuário que envolvem alterações no sistema, bem como eventos que envolvem visualizar ou baixar informações, como visualizar atribuições de volume.
+
+
+
+
+== O que preciso saber antes de configurar um servidor syslog?
+
+Você pode arquivar os logs de auditoria em um servidor syslog externo.
+
+Antes de configurar um servidor syslog, tenha em mente as seguintes diretrizes.
+
+* Certifique-se de saber o endereço do servidor, o protocolo e o número da porta. O endereço do servidor pode ser um nome de domínio totalmente qualificado, um endereço IPv4 ou um endereço IPv6.
+* Se o seu servidor utiliza um protocolo seguro (por exemplo, TLS), um certificado de Autoridade Certificadora (CA) deve estar disponível no seu sistema local. Os certificados de CA identificam os proprietários de websites para conexões seguras entre servidores e clientes.
+* Após a configuração, todos os novos logs de auditoria são enviados para o servidor syslog. Os logs anteriores não são transferidos.
+* As configurações da Overwrite Policy (disponíveis em *Exibir/Editar Configurações*) não afetam a forma como os logs são gerenciados com uma configuração de servidor syslog.
+* Os logs de auditoria seguem o formato de mensagens RFC 5424.
+
+
+
+
+== O servidor syslog não está mais recebendo logs de auditoria. O que devo fazer?
+
+Se você configurou um servidor syslog com o protocolo TLS, o servidor não poderá receber mensagens se o certificado se tornar inválido por qualquer motivo. Uma mensagem de erro sobre o certificado inválido é registrada no log de auditoria.
+
+Para resolver esse problema, primeiro você precisa corrigir o certificado do servidor syslog. Depois que uma cadeia de certificados válida estiver em vigor, acesse o menu:Configurações [Log de auditoria > Configurar servidores syslog > Testar todos].

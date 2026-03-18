@@ -1,0 +1,14 @@
+---
+permalink: um-manage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= SANtricity Unified Manager 7
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar as configurações utilizadas através do SANtricity Unified Manager.

@@ -1,0 +1,35 @@
+---
+permalink: sm-support/collect-i-o-path-statistics.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, collect, i/o path, statistics 
+summary: Você pode salvar o arquivo de estatísticas do caminho de E/S e enviá-lo para suporte técnico para análise. 
+---
+= Coletar estatísticas do caminho de E/S no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode salvar o arquivo de estatísticas do caminho de E/S e enviá-lo para suporte técnico para análise.
+
+.Sobre esta tarefa
+O suporte técnico utiliza as estatísticas do caminho de I/O para ajudar a diagnosticar problemas de desempenho. Problemas de desempenho de aplicativos podem ser causados por utilização de memória, utilização de CPU, latência de rede, latência de I/O ou outros problemas. As estatísticas do caminho de I/O são coletadas automaticamente durante a coleta de dados de suporte ou você pode coletá-las manualmente. Além disso, se você tiver AutoSupport ativado, as estatísticas do caminho de I/O são coletadas e enviadas automaticamente para o suporte técnico.
+
+Os contadores das estatísticas do caminho de I/O são reinicializados após você confirmar que deseja coletar as estatísticas do caminho de I/O. Os contadores são reinicializados mesmo se você cancelar a operação posteriormente. Os contadores também são reinicializados quando o controlador é reinicializado (reiniciado).
+
+[NOTE]
+====
+Execute esta operação somente quando instruído a fazê-lo pelo suporte técnico.
+
+====
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Collect I/O Path Statistics*.
+. Confirme que deseja realizar a operação digitando `collect`, e em seguida clique em *Coletar*.
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome de arquivo `io-path-statistics.7z`.
+
+. Siga as instruções fornecidas pelo suporte técnico para enviar o arquivo para eles.
+

@@ -1,0 +1,33 @@
+---
+permalink: sm-support/schedule-autosupport-dispatches.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, schedule, autosupport, dispatches 
+summary: System Manager cria automaticamente uma programação padrão para os despachos do AutoSupport. Se preferir, você pode especificar sua própria programação. 
+---
+= Agende despachos do AutoSupport no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager cria automaticamente uma programação padrão para os despachos do AutoSupport. Se preferir, você pode especificar sua própria programação.
+
+.Antes de começar
+O recurso AutoSupport deve estar ativado. Você pode verificar se ele está ativado na página AutoSupport.
+
+.Sobre esta tarefa
+* *Horário diário* -- Os despachos diários são coletados e enviados todos os dias durante o intervalo de tempo que você especificar. System Manager seleciona um horário aleatório dentro desse intervalo. Todos os horários estão em Tempo Universal Coordenado (UTC), que pode ser diferente do horário local do array de storage. Você deve converter o horário local do seu array de storage para UTC.
+* *Dia da semana* -- Os despachos semanais são coletados e enviados uma vez por semana. System Manager seleciona um dia aleatório dentre os dias que você especificar. Desmarque os dias nos quais você não deseja permitir que ocorra um despacho semanal. System Manager seleciona um dia aleatório dentre os dias que você permitir.
+* *Horário semanal* -- Os despachos semanais são coletados e enviados uma vez por semana durante o intervalo de tempo que você especificar. System Manager seleciona um horário aleatório dentro desse intervalo. Todos os horários estão em Tempo Universal Coordenado (UTC), que pode ser diferente do horário local do array de storage. Você deve converter o horário local do array de storage para UTC.
+
+
+.Passos
+. Selecione o menu:Suporte [Support Center > AutoSupport] tab.
+. Selecione *Agendar AutoSupport Dispatches*.
++
+O assistente de agendamento de despachos do AutoSupport é exibido.
+
+. Siga as etapas no assistente.
+

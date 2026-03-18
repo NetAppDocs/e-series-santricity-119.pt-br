@@ -1,0 +1,55 @@
+---
+permalink: sm-mirroring/overview-mirroring-async.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ARVM, asynchronous, mirroring, firmware, 
+summary: O recurso de espelhamento assíncrono fornece um mecanismo em nível de controlador, baseado em firmware, para replicação de dados entre um array de storage local e um array de storage remoto. 
+---
+= Saiba mais sobre espelhamento assíncrono no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso de espelhamento assíncrono fornece um mecanismo em nível de controlador, baseado em firmware, para replicação de dados entre um array de storage local e um array de storage remoto.
+
+
+
+== O que é espelhamento assíncrono?
+
+O espelhamento assíncrono captura o estado do volume primário em um determinado momento e copia apenas os dados que foram alterados desde a última captura de imagem. O site primário pode ser atualizado imediatamente e o site secundário pode ser atualizado conforme a largura de banda permitir. As informações são armazenadas em cache e enviadas posteriormente, à medida que os recursos de rede se tornam disponíveis.
+
+O espelhamento assíncrono é criado por volume, mas gerenciado em nível de grupo, permitindo associar um volume espelhado remoto distinto a qualquer volume primário em um determinado array de storage. Esse tipo de espelhamento é ideal para atender à demanda por operações ininterruptas e, em geral, é muito mais eficiente em termos de rede para processos periódicos.
+
+Saiba mais:
+
+* link:how-asynchronous-mirroring-works.html["Como funciona o espelhamento assíncrono"]
+* link:asynchronous-terminology.html["Terminologia de espelhamento assíncrono"]
+* link:asynchronous-mirror-status.html["Status do espelho assíncrono"]
+* link:volume-ownership-sync.html["Propriedade do volume"]
+* link:role-change-of-a-mirror-consistency-group.html["Mudança de função de um grupo de consistência de espelhamento"]
+
+
+
+
+== Como faço para configurar espelhamento assíncrono?
+
+Você deve usar a interface do Unified Manager para realizar a configuração inicial de espelhamento entre os arrays. Depois de configurado, você pode gerenciar pares espelhados e grupos de consistência no System Manager.
+
+Saiba mais:
+
+* link:requirements-for-using-asynchronous-mirroring.html["Requisitos para usar espelhamento assíncrono"]
+* link:workflow-for-mirroring-a-volume-asynchronously.html["Fluxo de trabalho para espelhar um volume de forma assíncrona"]
+* link:../um-manage/create-asynchronous-mirrored-pair-um.html["Criar par espelhado assíncrono (no Unified Manager)"]
+
+
+
+
+== Informações relacionadas
+
+Saiba mais sobre conceitos relacionados ao espelhamento assíncrono:
+
+* link:what-do-i-need-to-know-before-creating-a-mirror-consistency-group.html["O que você precisa saber antes de criar um grupo de consistência de espelhamento"]
+* link:asynchronous-mirroring-what-do-i-need-to-know-before-creating-a-mirrored-pair.html["O que você precisa saber antes de criar um par espelhado"]
+* link:how-does-asynchronous-mirroring-differ-from-synchronous-mirroring-async.html["Como o espelhamento assíncrono difere do espelhamento síncrono"]
+

@@ -1,0 +1,41 @@
+---
+permalink: sm-settings/enable-premium-feature.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, premium, feature, 
+summary: Um recurso premium é uma opção extra que requer uma chave para habilitar. 
+---
+= Habilite um recurso premium no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um recurso premium é uma opção extra que requer uma chave para habilitar.
+
+.Antes de começar
+* Você obteve uma chave de recurso. Se necessário, entre em contato com o suporte técnico para uma chave.
+* Você carregou o arquivo de chave no cliente de gerenciamento (o sistema com um navegador para acessar System Manager).
+
+
+.Sobre esta tarefa
+Esta tarefa descreve como usar System Manager para habilitar um recurso premium.
+
+[NOTE]
+====
+Se você deseja desativar um recurso premium, deve usar o comando Disable Storage Array Feature (`disable storageArray) (featurePack | feature=featureAttributeList`) na interface de linha de comando (CLI).
+
+====
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Complementos*, selecione *Enable Premium Feature*.
++
+A caixa de diálogo Ativar um recurso premium é aberta.
+
+. Clique em *Procurar* e, em seguida, selecione o arquivo de chave.
++
+O nome do arquivo é exibido na caixa de diálogo.
+
+. Clique em *Enable*.
+

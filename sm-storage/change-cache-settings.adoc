@@ -1,0 +1,101 @@
+---
+permalink: sm-storage/change-cache-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, cache settings 
+summary: Você pode alterar as configurações de armazenamento em cache de leitura e armazenamento em cache de gravação para impactar o desempenho geral de E/S de um volume. 
+---
+= Altere as configurações de armazenamento em cache de um volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar as configurações de armazenamento em cache de leitura e armazenamento em cache de gravação para impactar o desempenho geral de E/S de um volume.
+
+.Sobre esta tarefa
+Tenha em mente estas diretrizes ao alterar as configurações de armazenamento em cache de um volume:
+
+* Após abrir a caixa de diálogo Alterar configurações de cache, você poderá ver um ícone ao lado das propriedades de cache selecionadas. Esse ícone indica que o controlador suspendeu temporariamente as operações de armazenamento em cache.
++
+Essa ação pode ocorrer quando uma bateria nova está carregando, quando um controlador foi removido ou se o controlador detectou uma incompatibilidade nos tamanhos de cache. Após a resolução da condição, as propriedades de armazenamento em cache selecionadas na caixa de diálogo se tornam ativas. Se as propriedades de armazenamento em cache selecionadas não se tornarem ativas, entre em contato com o suporte técnico.
+
+* Você pode alterar as configurações de armazenamento em cache para um único volume ou para vários volumes em um array de storage. Você pode alterar as configurações de armazenamento em cache para todos os volumes padrão ou para todos os volumes thin ao mesmo tempo.
+
+
+.Passos
+. Selecione o menu: storage [Volumes].
+. Selecione qualquer volume e, em seguida, selecione menu:More[Change cache settings].
++
+A caixa de diálogo Alterar configurações de cache é exibida. Todos os volumes no array de storage aparecem nesta caixa de diálogo.
+
+. Selecione a guia *Básico* para alterar as configurações de armazenamento em cache de leitura e armazenamento em cache de gravação.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração de armazenamento em cache | Descrição 
+
+
+ a| 
+Armazenamento em cache de leitura
+ a| 
+O cache de leitura é um buffer que armazena dados lidos das unidades. Os dados para uma operação de leitura podem já estar no cache de uma operação anterior, o que elimina a necessidade de acessar as unidades. Os dados permanecem no cache de leitura até serem liberados.
+
+
+
+ a| 
+Armazenamento em cache de gravação
+ a| 
+O cache de gravação é um buffer que armazena dados do host que ainda não foram gravados nos discos. Os dados permanecem no cache de gravação até serem gravados nos discos. O armazenamento em cache pode aumentar o desempenho de E/S.
+
+
+NOTE: O cache é limpo automaticamente após o *armazenamento em cache* ser desativado para um volume.
+
+|===
+====
+. Selecione a guia *Advanced* para alterar as configurações avançadas de volumes thick. As configurações avançadas de cache estão disponíveis apenas para volumes thick.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração de armazenamento em cache | Descrição 
+
+
+ a| 
+Pré-busca dinâmica de cache de leitura
+ a| 
+O pré-carregamento dinâmico de leitura em cache permite que o controlador copie blocos de dados sequenciais adicionais para o cache enquanto lê blocos de dados de uma unidade para o cache. Esse armazenamento em cache aumenta a chance de que solicitações futuras de dados possam ser atendidas pelo cache. O pré-carregamento dinâmico de leitura em cache é importante para aplicativos multimídia que usam E/S sequencial. A taxa e a quantidade de dados pré-carregados no cache se ajustam automaticamente com base na taxa e no tamanho das solicitações de leitura do host. O acesso aleatório não faz com que dados sejam pré-carregados no cache. Esse recurso não se aplica quando o armazenamento em cache está desativado.
+
+Para um volume fino, a pré-busca de leitura em cache dinâmica está sempre desativada e não pode ser alterada.
+
+
+
+ a| 
+Armazenamento em cache de gravação sem baterias
+ a| 
+A configuração de armazenamento em cache de gravação sem baterias permite que o armazenamento em cache continue mesmo quando as baterias estão ausentes, com defeito, completamente descarregadas ou não totalmente carregadas. Escolher armazenamento em cache de gravação sem baterias geralmente não é recomendado, pois os dados podem ser perdidos se houver uma queda de energia. Normalmente, o armazenamento em cache é desativado temporariamente pelo controlador até que as baterias sejam carregadas ou uma bateria com defeito seja substituída.
+
+
+CAUTION: *Possível perda de dados* -- Se você selecionar esta opção e não tiver uma fonte de alimentação universal para proteção, poderá perder dados. Além disso, você poderá perder dados se não tiver baterias para o controlador e ativar a opção *Gravar em cache sem baterias*.
+
+Essa configuração só está disponível se você tiver habilitado o armazenamento em cache de gravação. Essa configuração não está disponível para volumes finos.
+
+
+
+ a| 
+Armazenamento em cache de gravação com espelhamento
+ a| 
+O armazenamento em cache com espelhamento ocorre quando os dados gravados na memória cache de um controlador também são gravados na memória cache do outro controlador. Portanto, se um controlador falhar, o outro pode concluir todas as operações de gravação pendentes. O espelhamento do cache de gravação está disponível somente se o armazenamento em cache de gravação estiver habilitado e houver dois controladores. O armazenamento em cache com espelhamento é a configuração padrão na criação do volume.
+
+Essa configuração só está disponível se você tiver habilitado o armazenamento em cache de gravação. Essa configuração não está disponível para volumes finos.
+
+|===
+====
+. Clique em *Salvar* para alterar as configurações de armazenamento em cache.
+

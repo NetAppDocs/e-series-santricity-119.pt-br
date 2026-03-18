@@ -1,0 +1,71 @@
+---
+permalink: sm-storage/create-host-cluster.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, host, cluster 
+summary: Você cria um cluster de hosts quando dois ou mais hosts requerem acesso de E/S aos mesmos volumes. 
+---
+= Crie um cluster de hosts no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você cria um cluster de hosts quando dois ou mais hosts requerem acesso de E/S aos mesmos volumes.
+
+.Sobre esta tarefa
+Tenha em mente estas diretrizes ao criar um cluster de hosts:
+
+* Esta operação não é iniciada a menos que haja dois ou mais hosts disponíveis para criar o cluster.
+* Hosts em clusters de hosts podem ter sistemas operacionais diferentes (heterogêneos).
+* Hosts NVMe em clusters de hosts não podem ser misturados com hosts não NVMe.
+* Para criar um volume com Data Assurance (DA) ativado, a conexão de host que você pretende usar deve ser compatível com DA.
++
+Se alguma das conexões de host nos controladores em seu array de storage não suportar DA, os hosts associados não poderão acessar dados em volumes com DA habilitado.
+
+* Esta operação não terá sucesso se o nome que você escolher já estiver em uso.
+* O comprimento do nome não pode exceder 30 caracteres.
+
+
+.Passos
+. Selecione o menu: storage [Hosts].
+. Selecione o menu: criar [Cluster de Hosts].
++
+A caixa de diálogo Criar Cluster de Hosts é exibida.
+
+. Selecione as configurações para o cluster de hosts conforme apropriado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Nome
+ a| 
+Digite o nome para o novo cluster de hosts.
+
+
+
+ a| 
+Selecione os hosts para compartilhar o acesso ao volume
+ a| 
+Selecione dois ou mais hosts na lista suspensa. Somente os hosts que ainda não fazem parte de um cluster de hosts aparecem na lista.
+
+|===
+====
+. Clique em *Create*.
++
+Se os hosts selecionados estiverem conectados a tipos de interface que possuem diferentes capacidades de Data Assurance (DA), uma caixa de diálogo será exibida com a mensagem de que DA estará indisponível no cluster de hosts. Essa indisponibilidade impede que volumes com DA habilitado sejam adicionados ao cluster de hosts. Selecione *Sim* para continuar ou *Não* para cancelar.
+
++
+O DA aumenta a integridade de dados em todo o sistema de storage. O DA permite que o array de storage verifique erros que possam ocorrer quando os dados são movidos entre os hosts e as unidades. Usar o DA para o novo volume garante que quaisquer erros sejam detectados.
+
+
+
+.Resultados
+O novo cluster de hosts aparece na tabela com os hosts atribuídos nas linhas abaixo.

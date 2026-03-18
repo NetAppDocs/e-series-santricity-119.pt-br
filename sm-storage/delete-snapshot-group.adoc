@@ -1,0 +1,36 @@
+---
+permalink: sm-storage/delete-snapshot-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, group 
+summary: Você exclui um grupo de snapshot quando deseja excluir permanentemente seus dados e removê-lo do sistema. Excluir um grupo de snapshot libera a capacidade reservada para reutilização no pool ou grupo de volume. 
+---
+= Excluir um grupo de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você exclui um grupo de snapshot quando deseja excluir permanentemente seus dados e removê-lo do sistema. Excluir um grupo de snapshot libera a capacidade reservada para reutilização no pool ou grupo de volume.
+
+.Sobre esta tarefa
+Quando um grupo de Snapshot é excluído, todas as imagens de Snapshot do grupo também são excluídas.
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Clique na guia *Capacidade Reservada*.
+. Selecione o grupo de snapshot que você deseja excluir e clique em menu:Uncommon Tasks[Delete snapshot group].
++
+A caixa de diálogo Confirmar Exclusão do Snapshot Group é exibida.
+
+. Digite  `delete` para confirmar.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Exclui todas as imagens de Snapshot associadas ao grupo de Snapshot.
+* Desativa quaisquer volumes de snapshot associados às imagens do grupo de snapshot.
+* Exclui a capacidade reservada que existe para o grupo de snapshot.
+

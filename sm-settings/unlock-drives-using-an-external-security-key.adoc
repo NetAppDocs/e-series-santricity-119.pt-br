@@ -1,0 +1,82 @@
+---
+permalink: sm-settings/unlock-drives-using-an-external-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unlock, drives, external, key, management, 
+summary: Se você configurou o gerenciamento de chaves externas e, posteriormente, moveu unidades com segurança habilitada de um array de storage para outro, você deve reatribuir a chave de segurança ao novo array de storage para obter acesso aos dados criptografados nas unidades. 
+---
+= Desbloquear unidades ao usar o gerenciamento de chaves externas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você configurou o gerenciamento de chaves externas e, posteriormente, moveu unidades com segurança habilitada de um array de storage para outro, você deve reatribuir a chave de segurança ao novo array de storage para obter acesso aos dados criptografados nas unidades.
+
+.Antes de começar
+* No array de origem (o array onde você está removendo as unidades), você exportou os grupos de volumes e removeu as unidades. No array de destino, você reinstalou as unidades.
++
+
+NOTE: A função Exportar/Importar não é suportada na interface de usuário do System Manager; você deve usar a interface de linha de comando (CLI) para exportar/importar um grupo de volume para um array de storage diferente.
+
++
+Instruções detalhadas para migrar um grupo de volume são fornecidas no https://kb.netapp.com/["Base de Conhecimento da NetApp"^]. Certifique-se de seguir as instruções apropriadas para arrays mais recentes gerenciados pelo System Manager ou para sistemas legados.
+
+* O recurso Drive Security deve estar ativado. Caso contrário, uma caixa de diálogo Cannot Create Security Key será exibida durante esta tarefa. Se necessário, entre em contato com o fornecedor do seu array de storage para obter instruções sobre como ativar o recurso Drive Security.
+* Você deve saber o endereço IP e o número da porta do servidor de gerenciamento de chaves.
+* Você possui um arquivo de certificado de cliente assinado para os controladores do array de storage e copiou esse arquivo para o host onde está acessando System Manager. Um certificado de cliente valida os controladores do array de storage, para que o servidor de gerenciamento de chaves possa confiar em suas solicitações do Key Management Interoperability Protocol (KMIP).
+* Você deve obter um arquivo de certificado do servidor de gerenciamento de chaves e, em seguida, copiar esse arquivo para o host onde você está acessando System Manager. Um certificado de servidor de gerenciamento de chaves valida o servidor de gerenciamento de chaves, então o array de storage pode confiar em seu endereço IP. Você pode usar um certificado raiz, intermediário ou de servidor para o servidor de gerenciamento de chaves.
+
+
+[NOTE]
+====
+Para obter mais informações sobre o certificado do servidor, consulte a documentação do seu key management server.
+
+====
+.Sobre esta tarefa
+Ao usar o gerenciamento de chaves externas, a chave de segurança é armazenada externamente em um servidor projetado para proteger chaves de segurança. Uma chave de segurança é uma sequência de caracteres compartilhada pelo controlador e pelas unidades para acesso de leitura/gravação. Quando as unidades são fisicamente removidas do array e instaladas em outro, elas não podem operar até que você forneça a chave de segurança correta.
+
+[NOTE]
+====
+Você pode criar uma chave interna a partir da memória persistente do controlador ou uma chave externa a partir de um servidor de gerenciamento de chaves. Este tópico descreve o desbloqueio de dados quando o gerenciamento de chaves _externo_ é utilizado. Se você utilizou o gerenciamento de chaves _interno_, consulte link:unlock-drives-using-an-internal-security-key.html["Desbloqueie unidades ao usar o gerenciamento interno de chaves"]. Se você estiver realizando uma atualização do controlador e substituindo todos os controladores pelo hardware mais recente, deve seguir etapas diferentes, conforme descrito na E-Series e na Central de Documentação do SANtricity, em link:https://docs.netapp.com/us-en/e-series/upgrade-controllers/upgrade-unlock-drives-task.html["Desbloquear unidades"].
+
+====
+Após reinstalar unidades com segurança habilitada em outro array, esse array detecta as unidades e exibe uma condição "Requer Atenção" juntamente com um status de "Chave de Segurança Necessária". Para desbloquear os dados da unidade, você importa o arquivo da chave de segurança e insere a frase secreta da chave. (Essa frase secreta não é a mesma que a senha de administrador do array de storage.) Durante esse processo, você configura o array de storage para usar um servidor externo de gerenciamento de chaves e então a chave de segurança ficará acessível. Você é obrigado a fornecer as informações de contato do servidor para que o array de storage possa se conectar e recuperar a chave de segurança.
+
+Se outras unidades com recursos de segurança habilitados estiverem instaladas no novo array de storage, elas poderão usar uma chave de segurança diferente daquela que você está importando. Durante o processo de importação, a chave de segurança antiga é usada apenas para desbloquear os dados das unidades que você está instalando. Quando o processo de desbloqueio for concluído com sucesso, as unidades recém-instaladas serão reassociadas à chave de segurança do array de storage de destino.
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Gerenciamento de chaves de segurança*, selecione *Criar chave externa*.
+. Conclua o assistente com as informações de conexão pré-requisito e certificados.
+. Clique em *Test Communication* para garantir o acesso ao servidor externo de gerenciamento de chaves.
+. Selecione *Unlock Secure Drives*.
++
+A caixa de diálogo Desbloquear unidades seguras é aberta. Todas as unidades que exigem uma chave de segurança são exibidas na tabela.
+
+. *Opcional:* passe o cursor do mouse sobre o número da unidade para ver a localização da unidade (número da prateleira e número da baia).
+. Clique em *Procurar* e, em seguida, selecione o arquivo de chave de segurança que corresponde à unidade que você deseja desbloquear.
++
+O arquivo de chave que você selecionou aparece na caixa de diálogo.
+
+. Digite a frase secreta associada a este arquivo de chave.
++
+Os caracteres que você inserir são mascarados.
+
+. Clique em *Unlock*.
++
+Se a operação de desbloqueio for bem-sucedida, a caixa de diálogo exibirá: "As unidades seguras associadas foram desbloqueadas."
+
+
+
+.Resultados
+Quando todas as unidades são bloqueadas e depois desbloqueadas, cada controlador no array de storage será reinicializado. No entanto, se já houver algumas unidades desbloqueadas no array de storage de destino, os controladores não serão reinicializados.
+
+.Depois que você terminar
+No array de destino (o array com as unidades recém-instaladas), agora você pode importar grupos de volume.
+
+
+NOTE: A função Exportar/Importar não é suportada na interface de usuário do System Manager; você deve usar a interface de linha de comando (CLI) para exportar/importar um grupo de volume para um array de storage diferente.
+
+Instruções detalhadas para migrar um grupo de volume são fornecidas em  https://kb.netapp.com/["Base de Conhecimento da NetApp"^].

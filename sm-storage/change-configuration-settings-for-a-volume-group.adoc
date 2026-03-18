@@ -1,0 +1,81 @@
+---
+permalink: sm-storage/change-configuration-settings-for-a-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configuration settings, volume group 
+summary: Você pode editar as configurações de um grupo de volume, incluindo seu nome e nível RAID. 
+---
+= Altere as configurações de um grupo de volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode editar as configurações de um grupo de volume, incluindo seu nome e nível RAID.
+
+.Antes de começar
+Se você estiver alterando o nível RAID para atender às necessidades de desempenho dos aplicativos que acessam o grupo de volume, certifique-se de atender aos seguintes pré-requisitos:
+
+* O grupo de volume deve estar em estado Ótimo.
+* Você deve ter capacidade suficiente no grupo de volume para converter para o novo nível RAID.
+
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione o grupo de volume que você deseja editar e clique em *Exibir/Editar configurações*.
++
+A caixa de diálogo Configurações do grupo de volume é exibida.
+
+. Selecione a guia *Configurações* e, em seguida, edite as configurações do grupo de volume conforme apropriado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Nome
+ a| 
+Você pode alterar o nome fornecido pelo usuário do grupo de volume. É obrigatório especificar um nome para um grupo de volume.
+
+
+
+ a| 
+Nível RAID
+ a| 
+Selecione o novo nível RAID no menu suspenso.
+
+** *RAID 0 striping* -- Oferece alto desempenho, mas não fornece nenhuma redundância de dados. Se uma unidade única falhar no grupo de volume, todos os volumes associados falham e todos os dados são perdidos. Um grupo RAID de striping combina duas ou mais unidades em uma única unidade lógica grande.
+** *RAID 1 espelhamento* -- Oferece alto desempenho e a melhor disponibilidade de dados, sendo ideal para armazenar dados confidenciais em nível corporativo ou pessoal. Protege seus dados espelhando automaticamente o conteúdo de uma unidade para a segunda unidade no par espelhado. Isso proporciona proteção em caso de falha de uma unidade única.
+** *RAID 10 striping/espelhamento* -- Oferece uma combinação de RAID 0 (striping) e RAID 1 (espelhamento), e é obtido quando quatro ou mais drives são selecionados. RAID 10 é adequado para aplicações de alto volume de transações, como um banco de dados, que exigem alto desempenho e tolerância de falhas.
+** *RAID 5* -- Ideal para ambientes multiusuário (como armazenamento de banco de dados ou sistema de arquivos) onde o tamanho típico de E/S é pequeno e há uma alta proporção de atividade de leitura.
+** *RAID 6* -- Ideal para ambientes que exigem proteção de redundância além do RAID 5, mas que não necessitam de alto desempenho de gravação.
+
+
+RAID 3 só pode ser atribuído a grupos de volume usando a interface de linha de comando (CLI).
+
+Ao alterar o nível RAID, você não pode cancelar essa operação depois que ela começa. Durante a alteração, seus dados permanecem disponíveis.
+
+
+
+ a| 
+Capacidade de otimização (apenas arrays EF600)
+ a| 
+Quando um grupo de volume é criado, uma capacidade de otimização recomendada é gerada que proporciona um equilíbrio entre a capacidade disponível, o desempenho e a vida útil da unidade. Você pode ajustar esse equilíbrio movendo o controle deslizante para a direita para obter melhor desempenho e maior vida útil da unidade, em detrimento de maior capacidade disponível, ou movendo-o para a esquerda para obter maior capacidade disponível, em detrimento de melhor desempenho e vida útil da unidade.
+
+Unidades SSD terão uma vida útil mais longa e melhor desempenho máximo de gravação quando uma parte de sua capacidade estiver não alocada. Para unidades associadas a um grupo de volume, a capacidade não alocada é composta pela capacidade livre do grupo (capacidade não usada pelos volumes) e uma parte da capacidade utilizável reservada como capacidade de otimização adicional. A capacidade de otimização adicional garante um nível mínimo de capacidade de otimização ao reduzir a capacidade utilizável e, assim, não está disponível para criação de volumes.
+
+|===
+====
+. Clique em *Salvar*.
++
+Uma caixa de diálogo de confirmação será exibida se a capacidade for reduzida, a redundância do volume for perdida ou a proteção contra perda de prateleira/gaveta for perdida como resultado da alteração do nível RAID. Selecione *Sim* para continuar; caso contrário, clique em *Não*.
+
+
+
+.Resultados
+Se você alterar o nível RAID de um grupo de volume, System Manager altera os níveis RAID de todos os volumes que compõem o grupo de volume. O desempenho pode ser ligeiramente afetado durante a operação.

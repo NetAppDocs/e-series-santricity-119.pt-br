@@ -1,0 +1,49 @@
+---
+permalink: sm-storage/delete-host-or-host-cluster.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, host, host cluster 
+summary: Você pode excluir um host ou host cluster. 
+---
+= Excluir um host ou cluster de hosts no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um host ou host cluster.
+
+.Sobre esta tarefa
+Mantenha estas diretrizes em mente ao excluir um host ou um cluster de hosts:
+
+* Quaisquer atribuições de volume específicas são excluídas e os volumes associados estão disponíveis para uma nova atribuição.
+* Se o host fizer parte de um cluster de hosts com suas próprias atribuições específicas, o cluster de hosts não será afetado. No entanto, se o host fizer parte de um cluster de hosts que não possui outras atribuições, o cluster de hosts e quaisquer outros hosts ou identificadores de porta de host associados herdam quaisquer atribuições padrão.
+* Quaisquer identificadores de porta de host que estavam associados ao host tornam-se indefinidos.
+
+
+.Passos
+. Selecione o menu: storage [Hosts].
+. Selecione o host ou cluster de hosts que você deseja excluir e clique em *Excluir*.
++
+A caixa de diálogo de confirmação é exibida.
+
+. Confirme que deseja realizar a operação e clique em *Delete*.
+
+
+.Resultados
+Se você excluiu um host, o sistema executa as seguintes ações:
+
+* Exclui o host e, se aplicável, remove-o do cluster de hosts.
+* Remove o acesso a quaisquer volumes atribuídos.
+* Retorna os volumes associados para um estado não atribuído.
+* Retorna quaisquer identificadores de porta do host associados ao host para um estado não associado.
+
+
+Se você excluiu um cluster de hosts, o sistema executa as seguintes ações:
+
+* Exclui o cluster de hosts e seus hosts associados (se houver).
+* Remove o acesso a quaisquer volumes atribuídos.
+* Retorna os volumes associados para um estado não atribuído.
+* Retorna quaisquer identificadores de porta de host associados aos hosts para um estado não associado.
+

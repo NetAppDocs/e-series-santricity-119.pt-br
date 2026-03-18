@@ -1,0 +1,56 @@
+---
+permalink: sm-settings/back-up-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, backup, security, key, 
+summary: Após criar ou alterar uma chave de segurança, você pode criar uma cópia de backup do arquivo de chave caso o original seja corrompido. 
+---
+= Faça backup das chaves de segurança no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após criar ou alterar uma chave de segurança, você pode criar uma cópia de backup do arquivo de chave caso o original seja corrompido.
+
+.Sobre esta tarefa
+Esta tarefa descreve como fazer backup de uma chave de segurança que você criou anteriormente. Durante este procedimento, você cria uma nova frase secreta para o backup. Essa frase secreta não precisa ser igual à frase secreta usada quando a chave original foi criada ou alterada pela última vez. A frase secreta se aplica somente ao backup que você está criando.
+
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Gerenciamento de chaves de segurança*, selecione *Back Up Key*.
++
+A caixa de diálogo Back Up Security Key é aberta.
+
+. Nos campos *Definir uma frase secreta/Redigitar frase secreta*, insira e confirme uma frase secreta para este backup.
++
+O valor pode ter entre 8 e 32 caracteres e deve incluir cada um dos seguintes:
+
++
+** Uma letra maiúscula (uma ou mais)
+** Um número (um ou mais)
+** Um caractere não alfanumérico, como !, *, @ (um ou mais)
+
+
++
+[CAUTION]
+====
+*Anote sua entrada para uso posterior*. Você precisa da senha para acessar o backup desta chave de segurança.
+
+====
+. Clique em *Back Up*.
++
+Um backup da chave de segurança é baixado para o seu host local e, em seguida, a caixa de diálogo *Confirmar/Registrar Backup da Chave de Segurança* é aberta.
+
++
+[NOTE]
+====
+O caminho para o arquivo de chave de segurança baixado pode depender do local de download padrão do seu navegador.
+
+====
+. Anote sua frase secreta em um local seguro e clique em *Fechar*.
+
+
+.Depois que você terminar
+Você deve validar a chave de segurança de backup.

@@ -1,0 +1,68 @@
+---
+permalink: sm-storage/take-action-on-a-copy-volume-operation.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: Você pode visualizar uma operação de Copy Volume em andamento e interromper, alterar a prioridade, recopiar ou limpar uma operação de Copy Volume. 
+---
+= Execute uma operação Copy Volume no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar uma operação de Copy Volume em andamento e interromper, alterar a prioridade, recopiar ou limpar uma operação de Copy Volume.
+
+.Passos
+. Selecione o menu: Início [Visualizar operações em andamento].
++
+A caixa de diálogo Operações em andamento é exibida.
+
+. Localize a operação Copy Volume na qual deseja realizar uma ação e clique no link na coluna *Actions* para executar uma das seguintes ações.
++
+Leia todo o texto de advertência fornecido nas caixas de diálogo, especialmente ao interromper uma operação.
+
++
+[cols="25h,~"]
+|===
+| Ação | Descrição 
+
+
+ a| 
+Parar
+ a| 
+Você pode interromper uma operação de Copy Volume enquanto a operação estiver com o status Em andamento, Pendente ou Falha.
+
+Quando a Copy Volume é interrompida, todos os hosts mapeados têm acesso de gravação ao volume de origem. Se dados forem gravados no volume de origem, os dados no volume de destino não corresponderão mais aos dados no volume de origem.
+
+
+
+ a| 
+Alterar prioridade
+ a| 
+Você pode alterar a prioridade de uma operação de Cópia de Volume enquanto a operação estiver com o status de Em Andamento para selecionar a taxa com que uma operação de Cópia de Volume é concluída.
+
+
+
+ a| 
+Recopiar
+ a| 
+Você pode copiar um volume novamente quando tiver interrompido uma operação de Copy Volume e quiser iniciá-la novamente ou quando uma operação de Copy Volume falhar ou for interrompida. A operação de Copy Volume recomeça do início.
+
+A ação de recópia sobrescreve os dados existentes no volume de destino e falha todos os volumes de Snapshot associados ao volume de destino, caso existam.
+
+
+
+ a| 
+Limpar
+ a| 
+Você pode remover a operação Copiar Volume enquanto a operação estiver com o status Em andamento, Pendente ou Falha.
+
+[NOTE]
+====
+Certifique-se de que deseja realizar esta operação antes de selecionar *Limpar*. Não há caixa de diálogo de confirmação.
+
+====
+|===
+

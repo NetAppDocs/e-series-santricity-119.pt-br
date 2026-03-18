@@ -1,0 +1,39 @@
+---
+permalink: sm-settings/faq-storage-system-alerts.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre alertas do storage system para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== E se os alertas estiverem desativados?
+
+Se você deseja que os administradores recebam notificações sobre eventos importantes que ocorrem no array de storage, é necessário configurar um método de alerta.
+
+Para arrays de storage gerenciados com SANtricity System Manager, você configura alertas na página de Alertas. As notificações de alerta podem ser enviadas por e-mail, traps SNMP ou mensagens syslog. Além disso, alertas por e-mail podem ser configurados no Assistente de Configuração Inicial.
+
+
+
+== Como configuro alertas SNMP ou syslog?
+
+Além dos alertas por e-mail, você pode configurar alertas para serem enviados por traps do Simple Network Management Protocol (SNMP) ou por mensagens de syslog.
+
+Para configurar alertas SNMP ou syslog, acesse menu:Configurações[Alertas].
+
+
+
+== Por que os registros de data e hora são inconsistentes entre o array de storage e os alertas?
+
+Quando o array de storage envia alertas, ele não corrige o fuso horário do servidor ou host de destino que recebe os alertas. Em vez disso, o array de storage usa a hora local (GMT) para criar o registro de data e hora usado para o registro do alerta. Como resultado, você pode observar inconsistências entre os registros de data e hora do array de storage e do servidor ou host que recebe um alerta.
+
+Como o array de storage não corrige o fuso horário ao enviar alertas, o registro de data e hora nos alertas é relativo ao GMT, que tem um deslocamento de fuso horário zero. Para calcular um registro de data e hora apropriado para o seu fuso horário local, você deve determinar o seu deslocamento de hora em relação ao GMT e então adicionar ou subtrair esse valor dos registros de data e hora.

@@ -1,0 +1,51 @@
+---
+permalink: sm-storage/how-snapshot-storage-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, storage 
+summary: O recurso Snapshot utiliza a tecnologia copy-on-write para armazenar imagens de Snapshot e usar a capacidade reservada alocada. 
+---
+= Como funciona o armazenamento de Snapshot no SANtricity software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso Snapshot utiliza a tecnologia copy-on-write para armazenar imagens de Snapshot e usar a capacidade reservada alocada.
+
+
+
+== Como as imagens Snapshot são usadas
+
+Uma imagem Snapshot é uma cópia lógica, somente leitura do conteúdo do volume, capturada em um ponto no tempo. Você pode usar Snapshots para proteger contra perda de dados.
+
+As imagens de Snapshot também são úteis para ambientes de teste. Ao criar uma cópia virtual dos dados, você pode testar os dados usando o Snapshot sem alterar o volume real. Além disso, os hosts não têm permissão de gravação nas imagens de Snapshot, portanto, seus Snapshots são sempre um recurso de backup seguro.
+
+
+
+== Criação de Snapshot
+
+À medida que os Snapshots são criados, o recurso Snapshots armazena os dados da imagem da seguinte forma:
+
+* Quando uma imagem de snapshot é criada, ela corresponde exatamente ao volume base. O recurso de Snapshots utiliza tecnologia copy-on-write. Após a criação do snapshot, a primeira gravação em qualquer bloco ou conjunto de blocos no volume base faz com que os dados originais sejam copiados para a capacidade reservada antes da gravação dos novos dados no volume base.
+* Os snapshots subsequentes incluem apenas os blocos de dados alterados. Antes que os dados sejam sobrescritos no volume base, o recurso Snapshots utiliza sua tecnologia copy-on-write para salvar as imagens necessárias dos setores afetados na capacidade reservada para snapshots.
++
+image::../media/sam1130-dwg-snapshots-cow-overview.gif[Visão geral do Snapshot]
+
+
+
+^1^ Volume base (capacidade física do disco); ^2^ Snapshots (capacidade lógica do disco); ^3^ Capacidade reservada (capacidade física do disco)
+
+* A capacidade reservada armazena os blocos de dados originais de partes do volume base que foram alteradas após o snapshot ser feito e inclui um índice para rastrear as alterações. Geralmente, o tamanho da capacidade reservada é definido como 40 por cento do volume base. (Se precisar de mais capacidade reservada, você pode aumentar a capacidade reservada.)
+* As imagens de Snapshot são armazenadas em uma ordem específica, com base em seu carimbo de data/hora. Somente a imagem de Snapshot mais antiga de um volume base está disponível para exclusão manual.
+
+
+
+
+== Restauração de Snapshot
+
+Para restaurar dados para um volume base, você pode usar um volume Snapshot ou uma imagem Snapshot:
+
+* *Snapshot volume* -- Se precisar recuperar arquivos excluídos, crie um snapshot volume a partir de uma imagem de snapshot válida e, em seguida, atribua-o ao host.
+* *Snapshot image* -- Se você precisar restaurar um volume base para um ponto no tempo, use uma imagem de Snapshot anterior para reverter os dados para o volume base.
+

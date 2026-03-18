@@ -1,0 +1,44 @@
+---
+permalink: sm-storage/overview-remote-storage.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage 
+summary: Se você tiver o recurso de Remote Storage, poderá importar dados de um sistema de storage remoto. 
+---
+= Saiba mais sobre o recurso Remote Storage no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você tiver o recurso de Remote Storage, poderá importar dados de um sistema de storage remoto para seu array de storage.
+
+
+
+== O que é o recurso de storage remoto?
+
+O recurso _Remote Storage_ permite importar dados de um sistema de storage remoto para um sistema de storage E-Series local. O sistema remoto pode ser outro sistema E-Series ou um sistema de outro fornecedor. Esse recurso é útil quando você deseja agilizar a migração de dados com o mínimo de tempo de inatividade, como durante atualizações de equipamentos.
+
+
+NOTE: Para usar o storage remoto, esse recurso deve ser ativado no Submodel ID (SMID).
+
+Saiba mais:
+
+* link:rtv-how-remote-storage-works.html["Como funciona o storage remoto"]
+* link:rtv-terminology.html["Terminologia de storage remoto"]
+* link:rtv-remote-storage-requirements.html["Requisitos de storage remoto"]
+* link:rtv-remote-storage-volume-requirements.html["Requisitos de volume de storage remoto"]
+
+
+
+
+== Como faço para importar dados com esse recurso?
+
+Usando o assistente de Remote Storage, você mapeia um dispositivo de storage (a origem da importação de dados) para um volume de destino no sistema E-Series. Este assistente está disponível no menu:Storage[Remote storage].
+
+Saiba mais:
+
+* link:rtv-import-remote-storage.html["Importar storage remoto"]
+* link:rtv-manage-progress-of-remote-volume-import.html["Gerenciar o progresso da importação de dados"]
+

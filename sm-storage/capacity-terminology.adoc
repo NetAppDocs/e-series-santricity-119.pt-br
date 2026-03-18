@@ -1,0 +1,179 @@
+---
+permalink: sm-storage/capacity-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, capacity terms 
+summary: Saiba como os termos de capacidade se aplicam ao seu array de storage. 
+---
+= Aprenda sobre a terminologia de capacidade no SANtricity software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba como os termos de capacidade se aplicam ao seu array de storage.
+
+
+
+== Objetos de armazenamento
+
+A terminologia a seguir descreve os diferentes tipos de objetos de storage que podem interagir com seu array de storage.
+
+[cols="25h,~"]
+|===
+| Objeto de armazenamento | Descrição 
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+LUN
+ a| 
+Um número de unidade lógica (LUN, na sigla em inglês) é o número atribuído ao espaço de endereçamento que um host usa para acessar um volume. O volume é apresentado ao host como capacidade na forma de um LUN.
+
+Cada host possui seu próprio espaço de endereçamento LUN. Portanto, o mesmo LUN pode ser usado por diferentes hosts para acessar volumes diferentes.
+
+
+
+ a| 
+Grupo de consistência
+ a| 
+Um grupo de consistência de espelhamento é um contêiner para um ou mais pares espelhados. Para operações de espelhamento assíncrono, você deve criar um grupo de consistência de espelhamento.
+
+
+
+ a| 
+Par de volume espelhado
+ a| 
+Um par espelhado é composto por dois volumes, um volume primário e um volume secundário.
+
+
+
+ a| 
+Pool
+ a| 
+Um pool é um conjunto de unidades agrupadas logicamente. Você pode usar um pool para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um pool ou de um grupo de volume.)
+
+
+
+ a| 
+Grupo de consistência Snapshot
+ a| 
+Um grupo de consistência de snapshot é uma coleção de volumes que são tratados como uma única entidade quando uma imagem de snapshot é criada. Cada um desses volumes possui sua própria imagem de snapshot, mas todas as imagens são criadas no mesmo ponto no tempo.
+
+
+
+ a| 
+Grupo de Snapshot
+ a| 
+Um grupo de Snapshot é uma coleção de imagens de Snapshot de um único volume base.
+
+
+
+ a| 
+Volume de Snapshot
+ a| 
+Um volume de snapshot permite que o host acesse dados na imagem do snapshot. O volume de snapshot contém sua própria capacidade reservada, que salva quaisquer modificações no volume base sem afetar a imagem original do snapshot.
+
+
+
+ a| 
+Volume
+ a| 
+Um volume é um contêiner no qual aplicativos, bancos de dados e sistemas de arquivos armazenam dados. É o componente lógico criado para que o host acesse o storage no array de storage.
+
+
+
+ a| 
+Grupo de volume
+ a| 
+Um grupo de volume é um contêiner para volumes com características compartilhadas. Um grupo de volume tem uma capacidade definida e nível RAID. Você pode usar um grupo de volume para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um grupo de volume ou de um pool.)
+
+|===
+
+
+== Capacidade de armazenamento
+
+A terminologia a seguir descreve os diferentes tipos de capacidade usados em seu array de storage.
+
+[cols="25h,~"]
+|===
+| Tipo de capacidade | Descrição 
+
+
+ a| 
+Capacidade alocada
+ a| 
+A capacidade alocada é a capacidade física alocada das unidades em um pool ou grupo de volume.
+
+Você utiliza a capacidade alocada para criar volumes e para operações de copy services.
+
+
+
+ a| 
+Capacidade livre
+ a| 
+A capacidade livre é a capacidade disponível em um pool ou grupo de volume que ainda não foi alocada para criação de volumes, operações de serviços de cópia e objetos de storage.
+
+
+
+ a| 
+Capacidade do pool ou grupo de volume
+ a| 
+A capacidade de um pool, volume ou grupo de volume é a capacidade em um array de storage que foi atribuída a um pool ou grupo de volume. Essa capacidade é usada para criar volumes e atender às diversas necessidades de capacidade das operações de serviços de cópia e objetos de armazenamento.
+
+
+
+ a| 
+Capacidade inutilizável do pool
+ a| 
+A capacidade inutilizável do pool é o espaço em um pool que não pode ser usado devido a tamanhos incompatíveis de drives.
+
+
+
+ a| 
+Capacidade de preservação
+ a| 
+A capacidade de preservação é a quantidade de capacidade (número de drives) reservada em um pool para suportar possíveis falhas de drives.
+
+
+
+ a| 
+Capacidade relatada
+ a| 
+A capacidade reportada é a capacidade que é informada ao host e pode ser acessada pelo host.
+
+
+
+ a| 
+Capacidade reservada
+ a| 
+A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e objeto de armazenamento. Ela não é diretamente legível pelo host.
+
+
+
+ a| 
+Cache SSD
+ a| 
+O cache SSD é um conjunto de unidades de estado sólido (SSD) que você agrupa logicamente em seu array de storage. O recurso de cache SSD armazena em cache os dados acessados com mais frequência ("dados quentes") em unidades SSD de menor latência para acelerar dinamicamente as cargas de trabalho dos aplicativos.
+
+
+
+ a| 
+Capacidade não atribuída
+ a| 
+A capacidade não atribuída é o espaço em um array de storage que *não* foi atribuído a um pool ou volume group.
+
+
+
+ a| 
+Capacidade escrita
+ a| 
+A capacidade de escrita é a quantidade de capacidade que foi escrita da capacidade reservada alocada para volumes finos.
+
+|===

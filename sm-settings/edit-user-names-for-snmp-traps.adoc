@@ -1,0 +1,39 @@
+---
+permalink: sm-settings/edit-user-names-for-snmp-traps.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, edit, user, settings, snmpv3, traps, 
+summary: ${post_edited_translations.segment} 
+---
+= ${post_edited_translations.segment}
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+${post_edited_translations.segment}
+
+.Antes de começar
+${post_edited_translations.segment}
+
+.Passos
+. Selecione o menu: configurações [Alertas].
+. Selecione a guia *SNMP*.
++
+Os destinos das armadilhas e os nomes de usuário aparecem na tabela.
+
+. ${post_edited_translations.segment}
+. ${post_edited_translations.segment}
+. ${post_edited_translations.segment}
++
+** ${post_edited_translations.segment}
+** *ID do mecanismo* -- Selecione o ID do mecanismo, que é usado para gerar chaves de autenticação e criptografia para mensagens e deve ser exclusivo no domínio administrativo. Na maioria dos casos, você deve selecionar *Local*. Se você tiver uma configuração não padrão, selecione *Personalizado*; outro campo aparecerá onde você deverá inserir o ID do mecanismo autorizado como uma string hexadecimal, com um número par de caracteres entre 10 e 32 caracteres.
+** *Credenciais de autenticação* -- Selecione um protocolo de autenticação, que garante a identidade dos usuários. Em seguida, insira uma senha de autenticação, que é necessária quando o protocolo de autenticação é definido ou alterado. A senha deve ter entre 8 e 128 caracteres.
+** *Credenciais de privacidade* -- Selecione um protocolo de privacidade, que é usado para criptografar o conteúdo das mensagens. Em seguida, insira uma senha de privacidade, que é necessária quando o protocolo de privacidade é definido ou alterado. A senha deve ter entre 8 e 128 caracteres.
+
+
+
+
+.Resultados
+${post_edited_translations.segment}

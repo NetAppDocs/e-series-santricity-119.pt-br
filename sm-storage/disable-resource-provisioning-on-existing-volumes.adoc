@@ -1,0 +1,49 @@
+---
+permalink: sm-storage/disable-resource-provisioning-on-existing-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, disable, resource provisioning, 
+summary: Você pode habilitar ou desabilitar o provisionamento de recursos em um pool ou volume group existente. 
+---
+= Ative ou desative o provisionamento de recursos em grupos de volume e pools existentes no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para qualquer unidade compatível com DULBE, você pode ativar ou desativar o provisionamento de recursos em um volume existente em um pool ou grupo de volume.
+
+O provisionamento de recursos é um recurso disponível nos arrays de storage EF300 e EF600, que permite que os volumes sejam colocados em uso imediatamente, sem processo de inicialização em segundo plano. Todos os blocos de disco atribuídos ao volume são desalocados (desmapeados), o que pode melhorar a vida útil do SSD e aumentar o desempenho máximo de gravação.
+
+Por padrão, o provisionamento de recursos está habilitado em sistemas onde as unidades suportam DULBE. Não é necessário habilitar o provisionamento de recursos, a menos que você o tenha desabilitado anteriormente.
+
+.Antes de começar
+* Você precisa ter um array de storage EF300 ou EF600.
++
+
+NOTE: DULBE não é suportado nos arrays de storage EF300C ou EF600C neste momento.
+
+* Você deve ter grupos ou pools de volumes SSD, onde todas as unidades suportem a capacidade de recuperação de erros NVMe Deallocated or Unwritten Logical Block Error Enable (DULBE). Caso contrário, a opção de provisionamento de recursos não estará disponível.
+
+
+.Sobre esta tarefa
+Ao habilitar o provisionamento de recursos para grupos de volumes e pools existentes, todos os volumes no grupo de volume ou pool selecionado são alterados para permitir que os blocos sejam desalocados. Esse processo pode envolver uma operação em segundo plano para garantir alocação consistente na granularidade de unmap. Essa operação não desmapeia nenhum espaço. Após a conclusão da operação em segundo plano, o sistema operacional precisa desmapear quaisquer blocos não utilizados para criar espaço livre.
+
+Ao desativar o provisionamento de recursos para grupos de volume ou pools existentes, uma operação em segundo plano reescreve todos os blocos lógicos em cada volume. Os dados existentes permanecem intactos. As gravações mapearão ou provisionarão os blocos nas unidades associadas ao grupo de volume ou pool.
+
+
+NOTE: Para novos grupos de volumes e pools, você pode ativar ou desativar o provisionamento de recursos no menu:Settings[Sistema > Configurações adicionais > Ativar/Desativar volumes com recursos provisionados].
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Selecione um pool ou grupo de volume da lista.
++
+Você pode selecionar apenas um pool ou grupo de volume por vez. Role a lista para baixo para ver outros pools ou grupos de volume.
+
+. Selecione *Tarefas incomuns* e, em seguida, *Ativar provisionamento de recurso* ou *Desativar provisionamento de recurso*.
+. Na caixa de diálogo, confirme a operação.
+
+
+
+NOTE: *Se você reativou o DULBE* -- Após a conclusão da operação em segundo plano, talvez seja necessário reinicializar o host para que ele detecte as alterações de configuração do DULBE e, em seguida, remontar todos os filesystems.

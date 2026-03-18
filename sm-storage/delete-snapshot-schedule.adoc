@@ -1,0 +1,27 @@
+---
+permalink: sm-storage/delete-snapshot-schedule.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, schedule 
+summary: Se você não quiser mais coletar imagens de Snapshot, poderá excluir um agendamento de Snapshot existente. 
+---
+= Excluir um agendamento de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você não quiser mais coletar imagens de Snapshot, poderá excluir um agendamento de Snapshot existente.
+
+.Sobre esta tarefa
+Ao excluir um agendamento de snapshot, as imagens de snapshot associadas não são excluídas juntamente com ele. Se você acha que a coleta de imagens de snapshot poderá ser retomada em algum momento, você deve suspender o agendamento de snapshot em vez de excluí-lo.
+
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Clique na aba *Schedules*.
+. Selecione a programação de Snapshot que deseja excluir e confirme a operação.
+
+
+.Resultados
+O sistema remove todos os atributos de agendamento do volume base ou do grupo de consistência de Snapshot.

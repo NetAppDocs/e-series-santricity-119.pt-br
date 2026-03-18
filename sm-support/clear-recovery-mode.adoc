@@ -1,0 +1,43 @@
+---
+permalink: sm-support/clear-recovery-mode.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, clear, recovery, mode 
+summary: Após restaurar a configuração do array de storage, use a operação Limpar Modo de Recuperação para retomar a E/S no array de storage e retornar ao funcionamento normal. 
+---
+= Limpar o modo de recuperação no software SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após restaurar a configuração do array de storage, use a operação Limpar Modo de Recuperação para retomar a E/S no array de storage e retornar ao funcionamento normal.
+
+.Antes de começar
+* Se você deseja retornar o array de storage a uma configuração anterior, é necessário restaurar a configuração a partir do backup antes de limpar o modo de recuperação.
+* Você deve realizar verificações de validação ou consultar o suporte técnico para garantir que a restauração foi bem-sucedida. Após determinar que a restauração foi bem-sucedida, o modo de recuperação pode ser desativado.
+
+
+.Sobre esta tarefa
+O array de storage contém um banco de dados de configuração que inclui um registro de sua configuração lógica (pools, grupos de volumes, volumes e assim por diante). Se você limpar intencionalmente a configuração do array de storage ou se o banco de dados de configuração for corrompido, o array de storage entra no modo de recuperação. O modo de recuperação interrompe a E/S e congela o banco de dados de configuração, o que lhe dá tempo para fazer uma das seguintes opções:
+
+* Restaure a configuração a partir do backup automático que está armazenado nos dispositivos de memória flash do controlador. Você deve entrar em contato com o suporte técnico para fazer isso.
+* Restaure a configuração de uma operação anterior de Save Configuration Database. As operações de Save Configuration Database são realizadas por meio da interface de linha de comando (CLI).
+* Reconfigure o array de storage do zero.
+
+
+Após a configuração do array de storage ter sido restaurada ou redefinida e você ter verificado que tudo está funcionando corretamente, você deve limpar manualmente o modo de recuperação.
+
+[NOTE]
+====
+Não é possível cancelar a operação Clear Recovery Mode depois de iniciada. Limpar o recovery mode pode levar muito tempo. Execute esta operação somente quando for instruído a fazê-lo pelo suporte técnico.
+
+====
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Limpar Modo de Recuperação* e confirme que deseja realizar esta operação.
++
+Essa opção aparece somente se o array de storage estiver em modo de recuperação.
+
+

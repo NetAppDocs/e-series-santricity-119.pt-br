@@ -1,0 +1,92 @@
+---
+permalink: sm-storage/interpret-performance-data.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, interpret, performance data 
+summary: Os dados de desempenho podem orientá-lo no ajuste do desempenho do seu array de storage. 
+---
+= Interpretar dados de desempenho no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os dados de desempenho podem orientá-lo no ajuste do desempenho do seu array de storage.
+
+Ao interpretar os dados de desempenho, lembre-se de que diversos fatores afetam o desempenho do seu array de storage. A tabela a seguir descreve as principais áreas a considerar.
+
+[cols="25h,~"]
+|===
+| Dados de desempenho | Implicações para ajuste de desempenho 
+
+
+ a| 
+Latência (milissegundos ou ms)
+ a| 
+Monitore a atividade de I/O de um objeto específico.
+
+Identifique objetos que são potencialmente gargalos:
+
+* Se um grupo de volume for compartilhado entre vários volumes, os volumes individuais podem precisar de seus próprios grupos de volume para melhorar o desempenho sequencial das unidades e diminuir a latência.
+* Com pools, são introduzidas latências maiores e podem existir cargas de trabalho desiguais entre as unidades, tornando os valores de latência menos significativos e, em geral, mais altos.
+* O tipo e a velocidade da unidade influenciam a latência. Com E/S aleatória, unidades com rotação mais rápida passam menos tempo se movendo entre diferentes locais do disco.
+* Poucas unidades resultam em mais comandos enfileirados e um período de tempo maior para a unidade processar o comando, aumentando a latência geral do sistema.
+* Entradas/saídas maiores apresentam maior latência devido ao tempo adicional envolvido com a transferência de dados.
+* Latência mais alta pode indicar que o padrão de E/S é aleatório. Unidades com E/S aleatória terão maior latência do que aquelas com fluxos sequenciais.
+* Uma disparidade na latência entre unidades ou volumes de um grupo de volume comum pode indicar uma unidade lenta.
+
+
+
+
+ a| 
+IOPS
+ a| 
+Fatores que afetam as operações de entrada/saída por segundo (IOPS ou IOs/sec) incluem estes itens:
+
+* Padrão de acesso (aleatório ou sequencial)
+* Tamanho de E/S
+* Nível RAID
+* Tamanho do bloco de cache
+* Se o armazenamento em cache está ativado
+* Se o armazenamento em cache está ativado
+* Pré-busca de leitura de cache dinâmico
+* Tamanho do segmento
+* O número de unidades nos grupos de volumes ou array de storage
+
+
+Quanto maior a taxa de acerto do cache, maiores serão as taxas de E/S. Taxas de E/S de gravação mais altas são observadas com armazenamento em cache ativado em comparação com desativado. Ao decidir se deve ativar o armazenamento em cache de gravação para um volume individual, observe o IOPS atual e o IOPS máximo. Você deve observar taxas mais altas para padrões de E/S sequenciais do que para padrões de E/S aleatórios. Independentemente do seu padrão de E/S, ative o armazenamento em cache de gravação para maximizar a taxa de E/S e reduzir o tempo de resposta do aplicativo.
+
+É possível observar melhorias de desempenho causadas pela alteração do tamanho do segmento nas estatísticas de IOPS de um volume. Faça testes para determinar o tamanho ideal do segmento ou utilize o tamanho do sistema de arquivos ou o tamanho do bloco do banco de dados.
+
+
+
+ a| 
+MiB/s
+ a| 
+As taxas de transferência ou throughput são determinadas pelo tamanho da E/S da aplicação e pela taxa de E/S. Geralmente, solicitações de E/S pequenas resultam em uma taxa de transferência mais baixa, mas proporcionam uma taxa de E/S mais rápida e um tempo de resposta mais curto. Com solicitações de E/S maiores, taxas de throughput mais altas são possíveis.
+
+Compreender os padrões típicos de E/S da sua aplicação pode ajudá-lo a determinar as taxas máximas de transferência de E/S para um array de storage específico.
+
+
+
+ a| 
+CPU
+ a| 
+Esse valor é uma porcentagem da capacidade de processamento que está sendo utilizada.
+
+Você pode notar uma disparidade no uso da CPU de objetos do mesmo tipo. Por exemplo, o uso da CPU de um controlador é alto ou está aumentando com o tempo, enquanto o de outro controlador é mais baixo ou mais estável. Nesse caso, você pode querer alterar a propriedade do controlador de um ou mais volumes para o controlador com a menor porcentagem de CPU.
+
+Você pode querer monitorar a CPU em todo o array de storage. Se a CPU continuar aumentando ao longo do tempo enquanto o desempenho do aplicativo diminui, talvez seja necessário adicionar arrays de storage. Ao adicionar arrays de storage à sua empresa, você pode continuar atendendo às necessidades do aplicativo com um nível de desempenho aceitável.
+
+
+
+ a| 
+Margem
+ a| 
+A margem de segurança refere-se à capacidade de desempenho restante dos controladores, dos canais de host do controlador e dos canais de acionamento do controlador. Esse valor é expresso em porcentagem e representa a diferença entre o desempenho máximo possível que esses objetos são capazes de fornecer e os níveis de desempenho atuais.
+
+* Para os controladores, a margem de segurança é uma porcentagem do máximo possível de IOPS.
+* Para os canais, a margem de segurança é uma porcentagem da taxa de transferência máxima, ou MiB/s. A taxa de transferência de leitura, a taxa de transferência de gravação e a taxa de transferência bidirecional estão incluídas no cálculo.
+
+
+|===

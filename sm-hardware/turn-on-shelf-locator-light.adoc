@@ -1,0 +1,23 @@
+---
+permalink: sm-hardware/turn-on-shelf-locator-light.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, shelf, locator, light, LED 
+summary: Para localizar fisicamente uma prateleira exibida na página de Hardware, você pode acender a luz indicadora da prateleira. 
+---
+= Ative a luz localizadora de prateleira no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para localizar fisicamente uma prateleira exibida na página de Hardware, você pode acender a luz localizadora da prateleira.
+
+.Passos
+. Selecione *Hardware*.
+. Selecione a lista suspensa para a Prateleira do Controlador ou Prateleira da Unidade e, em seguida, selecione *Ligar luz indicadora*.
++
+A luz indicadora da prateleira acende.
+
+. Quando você localizar fisicamente a prateleira, retorne à caixa de diálogo e selecione *Desligar*.
+

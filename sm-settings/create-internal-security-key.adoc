@@ -1,0 +1,87 @@
+---
+permalink: sm-settings/create-internal-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, internal, security, key, 
+summary: Para usar o recurso de Segurança de Unidade, você pode criar uma chave de segurança interna que é compartilhada pelos controladores e unidades com capacidade de segurança no array de storage. As chaves internas são mantidas na memória persistente do controlador. 
+---
+= Crie uma chave de segurança interna no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para usar o recurso de Segurança de Unidade, você pode criar uma chave de segurança interna que é compartilhada pelos controladores e unidades com capacidade de segurança no array de storage. As chaves internas são mantidas na memória persistente do controlador.
+
+.Antes de começar
+* Unidades com capacidade de segurança devem ser instaladas no array de storage. Essas unidades podem ser unidades com criptografia de disco completa (FDE) ou unidades com o padrão Federal Information Processing Standard (FIPS).
+* O recurso Drive Security deve estar ativado. Caso contrário, uma caixa de diálogo Cannot Create Security Key será exibida durante esta tarefa. Se necessário, entre em contato com o fornecedor do seu array de storage para obter instruções sobre como ativar o recurso Drive Security.
+
+
+[NOTE]
+====
+Se ambas as unidades FDE e FIPS estiverem instaladas no array de storage, todas compartilharão a mesma chave de segurança.
+
+====
+.Sobre esta tarefa
+Nesta tarefa, você define um identificador e uma frase secreta para associar à chave de segurança interna.
+
+[NOTE]
+====
+A senha para Segurança da Unidade é independente da senha de Administrador do array de storage.
+
+====
+.Passos
+. Selecione o menu: configurações [Sistema].
+. Em *Gerenciamento de chaves de segurança*, selecione *Criar chave interna*.
++
+Se você ainda não gerou uma chave de segurança, a caixa de diálogo Criar chave de segurança é aberta.
+
+. Insira informações nos seguintes campos:
++
+** *Defina um identificador de chave de segurança* -- Você pode aceitar o valor padrão (nome do array de storage e carimbo de data/hora, que é gerado pelo firmware do controlador) ou inserir seu próprio valor. Você pode inserir até 189 caracteres alfanuméricos, sem espaços, pontuação ou símbolos.
++
+[NOTE]
+====
+Caracteres adicionais são gerados automaticamente, anexados às duas extremidades da sequência que você inserir. Os caracteres gerados garantem que o identificador seja único.
+
+====
+** *Definir uma frase secreta/Digitar novamente a frase secreta* -- Digite e confirme uma frase secreta. O valor pode ter entre 8 e 32 caracteres e deve incluir cada um dos seguintes:
++
+*** Uma letra maiúscula (ou mais). Lembre-se de que a senha diferencia maiúsculas de minúsculas.
+*** Um número (um ou mais).
+*** Um caractere não alfanumérico, como !, *, @ (um ou mais).
+
+
+
+
++
+[CAUTION]
+====
+*Certifique-se de registrar suas anotações para uso posterior*. Se precisar mover uma unidade com segurança habilitada do array de storage, você deve saber o identificador e a pass phrase para desbloquear os dados da unidade.
+
+====
+. Clique em *Create*.
++
+A chave de segurança é armazenada no controlador em um local inacessível. Junto com a chave real, há um arquivo de chave criptografado que é baixado do seu navegador.
+
++
+[NOTE]
+====
+O caminho para o arquivo baixado pode depender do local de download padrão do seu navegador.
+
+====
+. Anote o identificador da chave, a frase secreta e o local do arquivo de chave baixado e, em seguida, clique em *Fechar*.
+
+
+.Resultados
+Agora você pode criar grupos ou pools de volumes com segurança habilitada, ou pode habilitar a segurança em grupos de volumes e pools de volumes existentes.
+
+[NOTE]
+====
+Sempre que a alimentação das unidades é desligada e ligada novamente, todas as unidades com segurança habilitada passam para o estado Security Locked. Nesse estado, os dados ficam inacessíveis até que o controlador aplique a chave de segurança correta durante a inicialização da unidade. Se alguém remover fisicamente uma unidade bloqueada e instalá-la em outro sistema, o estado Security Locked impede o acesso não autorizado aos seus dados.
+
+====
+.Depois que você terminar
+Você deve validar a chave de segurança para garantir que o arquivo de chave não esteja corrompido.

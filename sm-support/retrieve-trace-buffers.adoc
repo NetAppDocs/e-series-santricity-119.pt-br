@@ -1,0 +1,37 @@
+---
+permalink: sm-support/retrieve-trace-buffers.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, retrieve, trace, buffers 
+summary: Você pode recuperar os buffers de rastreamento dos controladores e enviar o arquivo para suporte técnico para análise. 
+---
+= Recuperar buffers de rastreamento no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode recuperar os buffers de rastreamento dos controladores e enviar o arquivo para suporte técnico para análise.
+
+.Sobre esta tarefa
+O firmware utiliza os buffers de rastreamento para registrar o processamento, especialmente condições de exceção, que podem ser úteis para depuração. Você pode recuperar os buffers de rastreamento sem interromper a operação do array de storage e com impacto mínimo no desempenho.
+
+[NOTE]
+====
+Execute esta operação somente quando instruído a fazê-lo pelo suporte técnico.
+
+====
+.Passos
+. Selecione menu: guia Suporte [Support Center > Diagnostics].
+. Selecione *Retrieve Trace Buffers*.
+. Selecione a caixa de seleção ao lado de cada controlador para o qual deseja recuperar buffers de rastreamento.
++
+Você pode selecionar um ou ambos os controladores. Se a mensagem de status do controlador à direita de uma caixa de seleção for Failed ou Disabled, a caixa de seleção estará desativada.
+
+. Clique em *Yes*.
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome de arquivo `trace-buffers.7z`.
+
+. Siga as instruções fornecidas pelo suporte técnico para enviar o arquivo para eles.
+

@@ -1,0 +1,114 @@
+---
+permalink: sm-interface/setup-wizard-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, setup wizard 
+summary: Use o assistente de configuração para configurar seu array de storage, incluindo hardware, hosts, aplicativos, cargas de trabalho, pools, alertas e AutoSupport. 
+---
+= Saiba mais sobre o assistente de configuração do SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Use o assistente de configuração para configurar seu array de storage, incluindo hardware, hosts, aplicativos, cargas de trabalho, pools, alertas e AutoSupport.
+
+
+
+== Configuração inicial
+
+Ao abrir System Manager pela primeira vez, o assistente de configuração é iniciado. O assistente de configuração solicita que você execute tarefas básicas de configuração, como nomear seu array de storage, configurar seus hosts, selecionar aplicações e criar pools de storage.
+
+
+NOTE: Antes de prosseguir com a configuração inicial, acesse o Upgrade Center (menu:Support[Upgrade Center]) e verifique se o software SANtricity OS está atualizado. Se necessário, faça upgrade para a versão mais recente e atualize o navegador para continuar a configuração. Para mais informações, consulte link:../sm-support/overview-upgrade-center.html["Visão geral do Upgrade Center"].
+
+Se você cancelar o assistente, não poderá reiniciá-lo manualmente. O assistente é reiniciado automaticamente quando você abre System Manager ou atualiza o navegador e _pelo menos uma_ das seguintes condições for atendida:
+
+* Não foram detectados pools e grupos de volume.
+* Nenhuma carga de trabalho detectada.
+* Nenhuma notificação está configurada.
+
+
+
+
+== Terminologia
+
+O assistente de configuração usa os seguintes termos.
+
+[cols="25h,~"]
+|===
+| Termo | Descrição 
+
+
+ a| 
+Aplicativo
+ a| 
+Um aplicativo é um programa de software, como Microsoft SQL Server ou Microsoft Exchange.
+
+
+
+ a| 
+Alerta
+ a| 
+Os alertas notificam os administradores sobre eventos importantes que ocorrem nos arrays de storage. Os alertas podem ser enviados por e-mail, traps SNMP ou syslog.
+
+
+
+ a| 
+AutoSupport
+ a| 
+O recurso AutoSupport monitora a integridade de um array de storage e envia despachos automáticos para suporte técnico.
+
+
+
+ a| 
+Hardware
+ a| 
+O hardware do sistema de storage inclui arrays de storage, controladoras e unidades.
+
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+Objeto
+ a| 
+Um objeto é qualquer componente de storage lógico ou físico. Objetos lógicos incluem grupos de volumes, pools e volumes. Objetos físicos incluem o array de storage, controladores de array, hosts e unidades.
+
+
+
+ a| 
+Pool
+ a| 
+Um pool é um conjunto de unidades agrupadas logicamente. Você pode usar um pool para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um pool ou de um grupo de volume.)
+
+
+
+ a| 
+Volume
+ a| 
+Um volume é um contêiner no qual aplicativos, bancos de dados e sistemas de arquivos armazenam dados. É o componente lógico criado para que o host acesse o storage no array de storage.
+
+Um volume é criado a partir da capacidade disponível em um pool ou um grupo de volume. Um volume tem uma capacidade definida. Embora um volume possa consistir em mais de uma unidade, um volume aparece como um componente lógico para o host.
+
+
+
+ a| 
+Grupo de volume
+ a| 
+Um grupo de volume é um contêiner para volumes com características compartilhadas. Um grupo de volume tem uma capacidade definida e nível RAID. Você pode usar um grupo de volume para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um grupo de volume ou de um pool.)
+
+
+
+ a| 
+Carga de trabalho
+ a| 
+Uma carga de trabalho é um objeto de storage que suporta uma aplicação. Você pode definir uma ou mais cargas de trabalho, ou instâncias, por aplicação. Para algumas aplicações, o sistema configura a carga de trabalho para conter volumes com características subjacentes semelhantes. Essas características de volume são otimizadas com base no tipo de aplicação que a carga de trabalho suporta. Por exemplo, se você criar uma carga de trabalho que suporte uma aplicação Microsoft SQL Server e, posteriormente, criar volumes para essa carga de trabalho, as características subjacentes do volume serão otimizadas para suportar Microsoft SQL Server.
+
+|===

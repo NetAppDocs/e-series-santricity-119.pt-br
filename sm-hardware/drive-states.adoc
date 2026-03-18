@@ -1,0 +1,135 @@
+---
+permalink: sm-hardware/drive-states.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, drive, states, 
+summary: System Manager reporta vários estados para as unidades. 
+---
+= Saiba mais sobre os estados de drive no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager reporta vários estados para as unidades.
+
+
+
+== Estados de acessibilidade
+
+[cols="25h,~"]
+|===
+| Estado | Definição 
+
+
+ a| 
+Ignorado
+ a| 
+${post_edited_translations.segment}
+
+
+
+ a| 
+Incompatível
+ a| 
+${post_edited_translations.segment}
+
+* ${post_edited_translations.segment}
+* ${post_edited_translations.segment}
+* ${post_edited_translations.segment}
+
+
+
+
+ a| 
+Removido
+ a| 
+A unidade foi removida incorretamente do array de storage.
+
+
+
+ a| 
+${post_edited_translations.segment}
+ a| 
+${post_edited_translations.segment}
+
+
+
+ a| 
+Sem resposta
+ a| 
+A unidade não está respondendo a comandos.
+
+|===
+
+
+== Estados de função
+
+[cols="25h,~"]
+|===
+| Estado | Definição 
+
+
+ a| 
+Atribuído
+ a| 
+A unidade é um membro de um pool ou grupo de volume.
+
+
+
+ a| 
+Hot spare em uso
+ a| 
+A unidade está sendo usada atualmente como substituta de uma unidade que apresentou falha. Hot spares são usadas apenas em grupos de volume, não em pools.
+
+
+
+ a| 
+Hot spare em espera
+ a| 
+A unidade está pronta para ser usada como substituta de uma unidade que apresentou falha. Hot spares são usadas apenas em grupos de volume, não em pools.
+
+
+
+ a| 
+Não atribuído
+ a| 
+A unidade não faz parte de um pool ou grupo de volume.
+
+|===
+
+
+== Estados de disponibilidade
+
+[cols="25h,~"]
+|===
+| Estado | Definição 
+
+
+ a| 
+Falha
+ a| 
+A unidade não está funcionando. Os dados na unidade não estão disponíveis.
+
+
+
+ a| 
+Falha iminente
+ a| 
+Foi detectado que o disco rígido pode falhar em breve. Os dados no disco rígido ainda estão disponíveis.
+
+
+
+ a| 
+Offline
+ a| 
+A unidade geralmente não está disponível para armazenamento de dados porque faz parte de um grupo de volume que está sendo exportado ou está passando por uma atualização de firmware.
+
+
+
+ a| 
+Ideal
+ a| 
+A unidade está funcionando normalmente.
+
+|===

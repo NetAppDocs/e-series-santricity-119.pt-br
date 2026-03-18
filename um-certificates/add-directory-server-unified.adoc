@@ -1,0 +1,168 @@
+---
+permalink: um-certificates/add-directory-server-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, add, directory, server 
+summary: Para configurar autenticação para o Access Management, você estabelece a comunicação entre um servidor LDAP e o host que executa o Web Services Proxy para SANtricity Unified Manager. Em seguida, você mapeia os grupos de usuários LDAP para as funções de usuário locais. 
+---
+= Adicionar servidor de diretório em SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurar autenticação para o Access Management, você estabelece a comunicação entre um servidor LDAP e o host que executa o Web Services Proxy para SANtricity Unified Manager. Em seguida, você mapeia os grupos de usuários LDAP para as funções de usuário locais.
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de Access Management não serão exibidas.
+* Os grupos de usuários devem ser definidos no seu serviço de diretório.
+* As credenciais do servidor LDAP devem estar disponíveis, incluindo o nome de domínio, o URL do servidor e, opcionalmente, o nome de usuário e a senha da conta de vinculação.
+* Para servidores LDAPS que utilizam um protocolo seguro, a cadeia de certificados do servidor LDAP deve estar instalada em sua máquina local.
+
+
+.Sobre esta tarefa
+Adicionar um servidor de diretório é um processo de duas etapas. Primeiro você insere o nome de domínio e o URL. Se o seu servidor usa um protocolo seguro, você também deve carregar um certificado de CA para autenticação se ele for assinado por uma autoridade de assinatura não padrão. Se você tiver credenciais para uma conta de bind, também pode inserir o nome de usuário e a senha da sua conta. Em seguida, você mapeia os grupos de usuários do servidor LDAP para as funções de usuário locais.
+
+.Passos
+. Selecione *Access Management*.
+. Na guia *Directory Services*, selecione *Add Directory Server*.
++
+A caixa de diálogo Adicionar Servidor de Diretório é aberta.
+
+. Na guia *Configurações do Servidor*, insira as credenciais do servidor LDAP.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações de configuração*
+
+
+
+ a| 
+Domínio(s)
+ a| 
+Insira o nome de domínio do servidor LDAP. Para vários domínios, insira os nomes de domínio em uma lista separada por vírgulas. O nome de domínio é usado no login (_username_@_domain_) para especificar em qual servidor de diretório autenticar.
+
+
+
+ a| 
+URL do servidor
+ a| 
+Insira a URL para acessar o servidor LDAP no formato  `ldap[s]://*host*:*port*`.
+
+
+
+ a| 
+Fazer upload do certificado (opcional)
+ a| 
+
+NOTE: Este campo aparece somente se um protocolo LDAPS for especificado no campo Server URL acima.
+
+Clique em *Procurar* e selecione um certificado de CA para carregar. Este é o certificado confiável ou cadeia de certificados usado para autenticação do servidor LDAP.
+
+
+
+ a| 
+Vincular conta (opcional)
+ a| 
+Insira uma conta de usuário somente leitura para consultas de pesquisa no servidor LDAP e para pesquisas dentro dos grupos. Insira o nome da conta em um formato do tipo LDAP. Por exemplo, se o usuário de vinculação for chamado "bindacct", então você pode inserir um valor como  `CN=bindacct,CN=Users,DC=cpoc,DC=local`.
+
+
+
+ a| 
+Senha de bind (opcional)
+ a| 
+
+NOTE: Este campo aparece quando você insere uma conta de associação.
+
+Digite a senha para a conta de bind.
+
+
+
+ a| 
+Testar a conexão do servidor antes de adicionar
+ a| 
+Selecione esta caixa de seleção se quiser garantir que o sistema possa se comunicar com a configuração do servidor LDAP que você inseriu. O teste ocorre depois que você clica em *Adicionar* na parte inferior da caixa de diálogo.
+
+Se esta caixa de seleção estiver marcada e o teste falhar, a configuração não será adicionada. Você deve resolver o erro ou desmarcar a caixa de seleção para ignorar o teste e adicionar a configuração.
+
+
+
+ a| 
+*Configurações de privilégios*
+
+
+
+ a| 
+DN base de pesquisa
+ a| 
+Insira o contexto LDAP para pesquisar usuários, normalmente no formato de `CN=Users, DC=cpoc, DC=local`.
+
+
+
+ a| 
+Atributo de nome de usuário
+ a| 
+Insira o atributo que está vinculado ao ID do usuário para autenticação. Por exemplo:  `sAMAccountName`.
+
+
+
+ a| 
+Atributo(s) do grupo
+ a| 
+Insira uma lista de atributos de grupo do usuário, que é usada para o mapeamento de grupo para função. Por exemplo:  `memberOf, managedObjects`.
+
+|===
+====
+. Clique na guia *Mapeamento de funções*.
+. Atribua grupos LDAP às funções predefinidas. Um grupo pode ter várias funções atribuídas.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Mapeamentos*
+
+
+
+ a| 
+Nome diferenciado do grupo
+ a| 
+Especifique o nome diferenciado (DN) do grupo para o grupo de usuários LDAP a ser mapeado. Expressões regulares são suportadas. Esses caracteres especiais de expressão regular devem ser escapados com uma barra invertida (\) se não fizerem parte de um padrão de expressão regular: \.[]{}()<>*+-=!?^$|
+
+
+
+ a| 
+Funções
+ a| 
+Clique no campo e selecione uma das funções de usuário local a serem mapeadas para o DN do grupo. Você deve selecionar individualmente cada função que deseja incluir para este grupo. A função Monitor é necessária em combinação com as outras funções para fazer login no SANtricity Unified Manager. As funções mapeadas incluem as seguintes permissões:
+
+** *Administrador de armazenamento* -- acesso completo de leitura/gravação aos objetos de armazenamento nos arrays, mas sem acesso à configuração de segurança.
+** *Administrador de segurança* -- Acesso à configuração de segurança em Access Management e Certificate Management.
+** *Administrador de suporte* -- Acesso a todos os recursos de hardware em arrays de storage, dados de falhas e eventos MEL. Sem acesso a objetos de storage ou à configuração de segurança.
+** *Monitor* -- Acesso somente leitura a todos os objetos de storage, mas sem acesso à configuração de segurança.
+
+
+|===
+====
++
+
+NOTE: A função Monitor é obrigatória para todos os usuários, incluindo o administrador.
+
+. Se desejar, clique em *Adicionar outro mapeamento* para inserir mais mapeamentos de grupo para função.
+. Quando terminar com os mapeamentos, clique em *Adicionar*.
++
+O sistema realiza uma validação, garantindo que o array de storage e o servidor LDAP possam se comunicar. Se uma mensagem de erro aparecer, verifique as credenciais inseridas na caixa de diálogo e insira as informações novamente, se necessário.
+
+

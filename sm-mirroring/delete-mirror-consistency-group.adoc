@@ -1,0 +1,41 @@
+---
+permalink: sm-mirroring/delete-mirror-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, mirror, consistency, group, 
+summary: Você pode excluir grupos de consistência de espelhamento que não são mais necessários no array de storage local e no array de storage remoto. 
+---
+= Exclua um grupo de consistência de espelhamento no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir grupos de consistência de espelhamento que não são mais necessários no array de storage local e no array de storage remoto.
+
+.Antes de começar
+Todos os pares espelhados devem ser removidos do grupo de consistência de espelhamento.
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Mirror Consistency Groups*.
++
+A tabela de Mirror Consistency Group é exibida e mostra todos os mirror consistency groups associados ao array de storage.
+
+. Selecione o grupo de consistência de espelhamento que deseja excluir e, em seguida, selecione menu:Tarefas incomuns[Excluir].
++
+O sistema exibe uma confirmação.
+
+. Selecione *Sim* para excluir o grupo de consistência de espelhamento.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Exclui o grupo de consistência de espelhamento no array de storage local primeiro e, em seguida, exclui o grupo de consistência de espelhamento no array de storage remoto.
+* Remove o grupo de consistência de espelhamento da tabela de Mirror Consistency Group.
+
+
+.Depois que você terminar
+Ocasionalmente, pode haver casos em que o grupo de consistência de espelhamento seja excluído com sucesso do array de storage local, mas um erro de comunicação impeça que o grupo de consistência de espelhamento seja excluído do array de storage remoto. Nesse caso, você deve acessar o array de storage remoto para excluir o grupo de consistência de espelhamento correspondente.

@@ -1,0 +1,95 @@
+---
+permalink: sm-storage/host-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, host, terms 
+summary: Aprenda como os termos do host se aplicam ao seu array de storage. 
+---
+= Aprenda sobre a terminologia de hosts no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Aprenda como os termos do host se aplicam ao seu array de storage.
+
+[cols="25h,~"]
+|===
+| Componente | Definição 
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+Nome do host
+ a| 
+O nome do host deve ser igual ao nome do sistema do host.
+
+
+
+ a| 
+Cluster de hosts
+ a| 
+Um cluster de hosts é um grupo de hosts. Você cria um cluster de hosts para facilitar a atribuição dos mesmos volumes a vários hosts.
+
+
+
+ a| 
+Protocolo de interface do host
+ a| 
+Um protocolo de interface de host é a conexão (como Fibre Channel, iSCSI, etc.) entre os controladores e os hosts.
+
+
+
+ a| 
+HBA ou Network Interface Card (NIC)
+ a| 
+Um adaptador de barramento de host (HBA, na sigla em inglês) é uma placa que reside em um host e contém uma ou mais portas de host.
+
+
+
+ a| 
+Porta do host
+ a| 
+Uma porta de host é uma porta em um adaptador de barramento de host (HBA) que fornece a conexão física a um controlador e é usada para operações de I/O.
+
+
+
+ a| 
+Identificador da porta do host
+ a| 
+Um identificador de porta de host é um nome exclusivo mundial associado a cada porta de host em um adaptador de barramento de host (HBA).
+
+* Os identificadores de porta de host Internet Small Computer System Interface (iSCSI) devem ter entre 1 e 233 caracteres. Os identificadores de porta de host iSCSI são exibidos no formato IQN padrão (por exemplo,  `iqn.xxx.com.xxx:8b3ad`).
+* Identificadores de porta de host não iSCSI, como Fibre Channel e Serial Attached SCSI (SAS), são exibidos separados por dois pontos a cada dois caracteres (por exemplo, `xx:yy:zz`). Identificadores de porta de host Fibre Channel devem ter 16 caracteres.
+
+
+
+
+ a| 
+Tipo de sistema operacional do host
+ a| 
+O tipo de sistema operacional do host é uma configuração que define como os controladores no array de storage reagem às operações de E/S, dependendo do sistema operacional (ou variante) do host. Isso também é chamado às vezes de _tipo de host_.
+
+
+
+ a| 
+Porta do host do controlador
+ a| 
+Uma porta de host do controlador é uma porta no controlador que fornece a conexão física com um host e é usada para operações de I/O.
+
+
+
+ a| 
+LUN
+ a| 
+Um número de unidade lógica (LUN, na sigla em inglês) é o número atribuído ao espaço de endereçamento que um host usa para acessar um volume. O volume é apresentado ao host como capacidade na forma de um LUN.
+
+Cada host possui seu próprio espaço de endereçamento LUN. Portanto, o mesmo LUN pode ser usado por diferentes hosts para acessar volumes diferentes.
+
+|===

@@ -1,0 +1,44 @@
+---
+permalink: sm-mirroring/change-mirror-consistency-group-role-to-primary-or-secondary.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, mirror, consistency group, primary, secondary 
+summary: Você pode alterar a função entre grupos de consistência de espelhamento para fins administrativos ou em caso de desastre no array de storage. 
+---
+= Altere a função do grupo de consistência de espelhamento para primário ou secundário no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar a função entre grupos de consistência de espelhamento para fins administrativos ou em caso de desastre no array de storage.
+
+.Sobre esta tarefa
+Os grupos de consistência de espelhamento criados no array de storage local detêm a função primária. Os grupos de consistência de espelhamento criados no array de storage remoto detêm a função secundária. Você pode rebaixar o grupo de consistência de espelhamento local para a função secundária ou promover o grupo de consistência de espelhamento remoto para a função primária.
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Mirror Consistency Groups*.
++
+A tabela de Mirror Consistency Group é exibida e mostra todos os mirror consistency groups associados ao array de storage.
+
+. Selecione o grupo de consistência de espelhamento para o qual você deseja alterar a função e, em seguida, selecione menu:Mais[Alterar função para <Primary | Secondary>]*>*.
++
+O sistema exibe uma confirmação.
+
+. Confirme que deseja alterar a função do grupo de consistência de espelhamento e clique em *Alterar função*.
++
+[NOTE]
+====
+O sistema exibe a caixa de diálogo "Não é possível contatar o array de storage" quando uma alteração de função é solicitada, mas o array de storage remoto não pode ser contatado. Clique em *Sim* para forçar a alteração de função.
+
+====
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* A tabela Grupo de Consistência de Espelhamento exibe o status "pendente" ou "em andamento" ao lado do grupo de consistência de espelhamento que está passando pela alteração de função. Você pode cancelar uma operação de Alteração de Função pendente clicando no link *Cancelar* encontrado na célula da tabela.
+* Se for possível contatar o grupo de consistência de espelhamento associado, as funções entre os grupos de consistência de espelhamento são alteradas. System Manager promove o grupo de consistência de espelhamento secundário para a função primária ou rebaixa o grupo de consistência de espelhamento primário para a função secundária (dependendo da sua seleção). A alteração de função afeta todos os pares espelhados dentro do grupo de consistência de espelhamento selecionado.
+

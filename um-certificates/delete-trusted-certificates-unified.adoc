@@ -1,0 +1,41 @@
+---
+permalink: um-certificates/delete-trusted-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, delete, trusted, certificates 
+summary: Você pode excluir um ou mais certificados que não são mais necessários, como um certificado expirado. 
+---
+= Excluir certificados confiáveis no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um ou mais certificados que não são mais necessários, como um certificado expirado.
+
+.Antes de começar
+Importe o novo certificado antes de excluir o antigo.
+
+[CAUTION]
+====
+Tenha em mente que a exclusão de um certificado raiz ou intermediário pode afetar vários arrays de storage, já que esses arrays podem compartilhar os mesmos arquivos de certificado.
+
+====
+.Passos
+. Selecione *Certificate Management*.
+. Selecione a guia *Trusted*.
+. Selecione um ou mais certificados na tabela e clique em *Delete*.
++
+[NOTE]
+====
+A função *Excluir* não está disponível para certificados pré-instalados.
+
+====
++
+A caixa de diálogo Confirmar Exclusão de Certificado Confiável é aberta.
+
+. Confirme a exclusão e, em seguida, clique em *Excluir*.
++
+O certificado é removido da tabela.
+
+

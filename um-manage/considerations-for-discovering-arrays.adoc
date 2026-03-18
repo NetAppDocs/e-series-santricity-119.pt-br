@@ -1,0 +1,59 @@
+---
+permalink: um-manage/considerations-for-discovering-arrays.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, considerations, discovering, arrays 
+summary: Antes que Unified Manager possa exibir e gerenciar recursos de storage, ele precisa descobrir os storage arrays que você deseja gerenciar na rede da sua organização. Você pode descobrir vários arrays ou pode descobrir apenas um array. 
+---
+= Saiba mais sobre como descobrir arrays de storage no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes que SANtricity Unified Manager possa exibir e gerenciar recursos de storage, ele precisa descobrir os storage arrays que você deseja gerenciar na rede da sua organização. Você pode descobrir vários storage arrays ou pode descobrir apenas um.
+
+
+
+== Descobrindo múltiplos arrays de storage
+
+Se optar por descobrir vários arrays, insira um intervalo de endereços IP de rede e o Unified Manager tentará conexões individuais com cada endereço IP nesse intervalo. Qualquer array de storage alcançado com sucesso aparecerá na página Discover e poderá ser adicionado ao seu domínio de gerenciamento.
+
+
+
+== Descobrindo um único array de storage
+
+Se optar por descobrir um único array, insira o endereço IP de um dos controladores no array de storage e, em seguida, o array de storage individual será adicionado.
+
+[NOTE]
+====
+Unified Manager descobre e exibe apenas o endereço IP único ou o endereço IP dentro de um intervalo atribuído a um controlador. Se houver controladores alternativos ou endereços IP atribuídos a esses controladores que estejam fora desse endereço IP único ou intervalo de endereços IP, então o Unified Manager não os descobrirá nem os exibirá. No entanto, depois de adicionar o array de storage, todos os endereços IP associados serão descobertos e exibidos na visualização Gerenciar.
+
+====
+
+
+== Credenciais do usuário
+
+Como parte do processo de descoberta, você deve fornecer a senha de administrador para cada array de storage que deseja adicionar.
+
+
+
+== Certificados de serviços web
+
+Como parte do processo de descoberta, Unified Manager verifica se os arrays de storage descobertos estão usando certificados de uma fonte confiável. Unified Manager usa dois tipos de autenticação baseada em certificado para todas as conexões que estabelece com o navegador:
+
+* *Certificados confiáveis*
++
+Para arrays descobertos pelo Unified Manager, pode ser necessário instalar certificados confiáveis adicionais fornecidos pela Certificate Authority.
+
++
+Use o botão *Importar* para importar esses certificados. Se você já se conectou a este array antes, um ou ambos os certificados do controlador estão expirados, revogados ou faltando um certificado raiz ou intermediário em sua cadeia de certificados. Você deve substituir o certificado expirado ou revogado ou adicionar o certificado raiz ou intermediário ausente antes de gerenciar o array de storage.
+
+* *Certificados autoassinados*
++
+Certificados autoassinados também podem ser usados. Se o administrador tentar descobrir arrays sem importar certificados assinados, Unified Manager exibirá uma caixa de diálogo de erro que permite ao administrador aceitar o certificado autoassinado. O certificado autoassinado do array de storage será marcado como confiável e o array de storage será adicionado ao Unified Manager.
+
++
+Se você não confiar nas conexões com o array de storage, selecione *Cancelar* e valide a estratégia de certificado de segurança do array de storage antes de adicionar o array de storage ao Unified Manager.
+
+

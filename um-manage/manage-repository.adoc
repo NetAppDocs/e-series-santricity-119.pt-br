@@ -1,0 +1,58 @@
+---
+permalink: um-manage/manage-repository.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, manage, software, repository 
+summary: O repositório de software lista todos os arquivos de software associados ao Web Services Proxy. 
+---
+= Gerencie o repositório de software SANtricity no Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O repositório de software lista todos os arquivos de software associados ao Web Services Proxy.
+
+Se você não encontrar o arquivo que deseja usar, poderá utilizar a opção Gerenciar Repositório de Software para importar um ou mais arquivos do SANtricity OS para o sistema host onde o Web Services Proxy e Unified Manager estão em execução. Você também pode optar por excluir um ou mais arquivos do SANtricity OS disponíveis no repositório de software.
+
+.Antes de começar
+Se você estiver adicionando arquivos do SANtricity OS, certifique-se de que os arquivos do OS estejam disponíveis no seu sistema local.
+
+.Passos
+. Na tela principal, selecione *Gerenciar* e, em seguida, selecione menu:Upgrade Center[Manage Software Repository].
++
+A caixa de diálogo Gerenciar repositório de software é exibida.
+
+. Execute uma das seguintes ações:
++
+[cols="25h,~"]
+|===
+| Opção | Faça isso.... 
+
+
+ a| 
+Importar
+ a| 
+.. Clique em *Import.*
+.. Clique em *Procurar* e, em seguida, navegue até o local onde os arquivos do sistema operacional que você deseja adicionar residem.
++
+Os arquivos do sistema operacional têm um nome de arquivo semelhante a `N2800-830000-000.dlp`.
+
+.. Selecione um ou mais arquivos do sistema operacional que você deseja adicionar e clique em *Importar*.
+
+
+
+
+ a| 
+Excluir
+ a| 
+.. Selecione um ou mais arquivos do sistema operacional que você deseja remover do repositório de software.
+.. Clique em *Delete*.
+
+
+|===
+
+
+.Resultados
+Se você selecionou importar, os arquivos são carregados e validados. Se você selecionou excluir, os arquivos são removidos do repositório de software.

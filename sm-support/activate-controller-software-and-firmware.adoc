@@ -1,0 +1,53 @@
+---
+permalink: sm-support/activate-controller-software-and-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, activate, controller, software, firmware 
+summary: Você pode optar por ativar os arquivos de upgrade imediatamente ou aguardar um momento mais conveniente. 
+---
+= Ative o software e o firmware no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode optar por ativar os arquivos de upgrade imediatamente ou aguardar um momento mais conveniente.
+
+.Sobre esta tarefa
+Você pode baixar e transferir os arquivos sem ativá-los. Você pode optar por ativar depois pelos seguintes motivos:
+
+* *Horário do dia* -- A ativação do software e firmware pode demorar bastante, então talvez seja melhor esperar até que as cargas de E/S estejam mais leves. Os controladores fazem failover durante a ativação, portanto o desempenho pode ser inferior ao normal até que a atualização seja concluída.
+* *Tipo de pacote* -- Você pode querer testar o novo software e firmware em um array de storage antes de atualizar os arquivos em outros arrays de storage.
+
+
+Quando você tiver um software ou firmware que foi transferido, mas ainda não ativado, verá uma notificação na área de Notificações da página inicial do System Manager e também na página do Upgrade Center.
+
+[CAUTION]
+====
+Não é possível interromper o processo de ativação depois que ele começa.
+
+====
+.Passos
+. Selecione o menu: suporte [Upgrade Center].
+. Na área rotulada SANtricity OS Controller Software upgrade, clique em *Ativar* e confirme que deseja realizar a operação.
++
+Você pode cancelar a operação durante a verificação de integridade pré-atualização, mas não durante a ativação.
+
++
+A verificação de integridade pré-atualização começa. Se a verificação de integridade pré-atualização for bem-sucedida, o processo de atualização prossegue para a ativação dos arquivos. Se a verificação de integridade pré-atualização falhar, use o Recovery Guru ou entre em contato com o suporte técnico para resolver o problema. Para alguns tipos de condições, o suporte técnico pode aconselhar você a continuar com a atualização apesar dos erros, selecionando a caixa de seleção *Allow Upgrade*.
+
++
+Após a conclusão bem-sucedida da verificação de integridade pré-atualização, a ativação ocorre. O tempo necessário para a ativação depende da configuração do seu array de storage e dos componentes que você está ativando.
+
+. *Opcional:* Para ver uma lista do que foi atualizado, clique em *Salvar registro*.
++
+O arquivo é salvo na pasta Downloads do seu navegador com o nome  `drive_upgrade_log-timestamp.txt`.
+
+
+
+.Depois que você terminar
+* Verifique se todos os componentes aparecem na página de Hardware.
+* Verifique as novas versões de software e firmware consultando a caixa de diálogo Inventário de Software e Firmware (acesse o menu:Support[Upgrade Center] e clique no link para *Software and Firmware Inventory*).
+* Se você atualizou a NVSRAM do controlador, todas as configurações personalizadas que você aplicou à NVSRAM existente serão perdidas durante o processo de ativação. Você precisa aplicar as configurações personalizadas à NVSRAM novamente após a conclusão do processo de ativação.
+

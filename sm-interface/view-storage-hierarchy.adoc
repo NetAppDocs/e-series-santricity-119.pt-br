@@ -1,0 +1,121 @@
+---
+permalink: sm-interface/view-storage-hierarchy.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, storage hierarchy 
+summary: A Hierarquia de Armazenamento na interface principal fornece uma visão organizada dos vários componentes de hardware e objetos de armazenamento gerenciados pelo seu array de storage. 
+---
+= Visualizar a hierarquia de armazenamento no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A Hierarquia de Armazenamento na interface principal fornece uma visão organizada dos vários componentes de hardware e objetos de armazenamento gerenciados pelo seu array de storage.
+
+Para visualizar a hierarquia de armazenamento, acesse a página inicial e clique na seta suspensa em um componente de array de storage ou objeto de armazenamento. Um array de storage consiste em uma coleção de componentes físicos e componentes lógicos.
+
+
+
+== Componentes físicos
+
+Os componentes físicos de um array de storage são descritos nesta tabela.
+
+[cols="25h,~"]
+|===
+| Componente | Descrição 
+
+
+ a| 
+Controlador
+ a| 
+Um controlador consiste em uma placa, firmware e software. Ele controla as unidades e implementa as funções do System Manager.
+
+
+
+ a| 
+Compartimento
+ a| 
+Um shelf é um compartimento instalado em um gabinete ou rack. Ele contém os componentes de hardware para o array de storage. Existem dois tipos de shelf: um controller shelf e um drive shelf. Um controller shelf inclui controladores e unidades. Um drive shelf inclui módulos de entrada/saída (IOMs) e unidades.
+
+[NOTE]
+====
+Se o seu array de storage contiver diferentes tipos de mídia ou diferentes tipos de interface, uma gaveta de unidades para cada tipo de unidade será exibida.
+
+====
+
+
+ a| 
+Drive
+ a| 
+Um drive é um dispositivo mecânico eletromagnético ou um dispositivo de memória de estado sólido que fornece o storage físico para os dados.
+
+
+
+ a| 
+Host
+ a| 
+Um host é um servidor que envia I/O para um volume em um array de storage.
+
+
+
+ a| 
+Adaptador de barramento de host (HBA)
+ a| 
+Um adaptador de barramento de host (HBA, na sigla em inglês) é uma placa que reside em um host e contém uma ou mais portas de host.
+
+
+
+ a| 
+Porta do host
+ a| 
+Uma porta de host é uma porta em um adaptador de barramento de host (HBA) que fornece a conexão física a um controlador e é usada para operações de I/O.
+
+
+
+ a| 
+Cliente de gerenciamento
+ a| 
+Um cliente de gerenciamento é o computador onde um navegador está instalado para acessar System Manager.
+
+|===
+
+
+== Componentes lógicos
+
+As unidades no array de storage fornecem a capacidade de storage físico para os dados. Use System Manager para configurar a capacidade física em componentes lógicos, como pools, grupos de volume e volumes. Esses componentes são as ferramentas que você usa para configurar, armazenar, manter e preservar dados no array de storage. Os componentes lógicos de um array de storage são descritos nesta tabela.
+
+[cols="25h,~"]
+|===
+| Componente | Descrição 
+
+
+ a| 
+Pool
+ a| 
+Um pool é um conjunto de unidades agrupadas logicamente. Você pode usar um pool para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um pool ou de um grupo de volume.)
+
+
+
+ a| 
+Grupo de volume
+ a| 
+Um grupo de volume é um contêiner para volumes com características compartilhadas. Um grupo de volume tem uma capacidade definida e nível RAID. Você pode usar um grupo de volume para criar um ou mais volumes acessíveis a um host. (Você cria volumes a partir de um grupo de volume ou de um pool.)
+
+
+
+ a| 
+Volume
+ a| 
+Um volume é um contêiner no qual aplicativos, bancos de dados e sistemas de arquivos armazenam dados. É o componente lógico criado para que o host acesse o storage no array de storage.
+
+
+
+ a| 
+Unidade lógica (LUN)
+ a| 
+Um número de unidade lógica (LUN, na sigla em inglês) é o número atribuído ao espaço de endereçamento que um host usa para acessar um volume. O volume é apresentado ao host como capacidade na forma de um LUN.
+
+Cada host possui seu próprio espaço de endereçamento LUN. Portanto, o mesmo LUN pode ser usado por diferentes hosts para acessar volumes diferentes.
+
+|===

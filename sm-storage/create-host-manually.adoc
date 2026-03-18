@@ -1,0 +1,105 @@
+---
+permalink: sm-storage/create-host-manually.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, host, manually 
+summary: Para hosts que não podem ser descobertos automaticamente, você pode criar um host manualmente. Criar um host é uma das etapas necessárias para que o array de storage saiba quais hosts estão conectados a ele e para permitir o acesso de E/S aos volumes. 
+---
+= Crie um host manualmente no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para hosts que não podem ser descobertos automaticamente, você pode criar um host manualmente. Criar um host é uma das etapas necessárias para que o array de storage saiba quais hosts estão conectados a ele e para permitir o acesso de E/S aos volumes.
+
+.Sobre esta tarefa
+Tenha estas diretrizes em mente ao criar um host:
+
+* Você deve definir as portas de identificador do host que estão associadas ao host.
+* Certifique-se de fornecer o mesmo nome que o nome de sistema atribuído ao host.
+* Esta operação não terá sucesso se o nome que você escolher já estiver em uso.
+* O comprimento do nome não pode exceder 30 caracteres.
+
+
+.Passos
+. Selecione o menu: storage [Hosts].
+. Clique no menu: criar [Host].
++
+A caixa de diálogo Create Host é exibida.
+
+. Selecione as configurações para o host conforme apropriado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Nome
+ a| 
+Digite um nome para o novo host.
+
+
+
+ a| 
+Tipo de sistema operacional do host
+ a| 
+Selecione o sistema operacional que está sendo executado no novo host na lista suspensa.
+
+
+
+ a| 
+Tipo de interface do host
+ a| 
+(Opcional) Se você tiver mais de um tipo de interface de host suportada no seu array de storage, selecione o tipo de interface de host que deseja usar.
+
+
+
+ a| 
+Portas do host
+ a| 
+Faça uma das seguintes ações:
+
+** *Selecione a interface de I/O*
++
+Geralmente, as portas do host devem estar logadas e disponíveis na lista suspensa. Você pode selecionar os identificadores de porta do host na lista.
+
+** *Adição manual*
++
+Se o identificador de porta de um host não for exibido na lista, isso significa que a porta do host não fez login. Um utilitário HBA ou o utilitário iniciador iSCSI pode ser usado para encontrar os identificadores de porta do host e associá-los ao host.
+
++
+Você pode inserir manualmente os identificadores de porta do host ou copiá-los/colá-los do utilitário (um de cada vez) no campo *Portas do host*.
+
++
+Você deve selecionar um identificador de porta de host por vez para associá-lo ao host, mas pode continuar selecionando quantos identificadores estão associados ao host. Cada identificador é exibido no campo *Portas do host*. Se necessário, você também pode remover um identificador selecionando o *X* ao lado dele.
+
+
+
+
+
+ a| 
+Iniciador CHAP
+ a| 
+(Opcional) Se você selecionou ou inseriu manualmente uma porta de host com um iSCSI IQN e deseja exigir que um host que tente acessar o array de storage se autentique usando Challenge Handshake Authentication Protocol (CHAP), selecione a caixa de seleção *CHAP initiator*. Para cada porta de host iSCSI que você selecionou ou inseriu manualmente, faça o seguinte:
+
+** Insira o mesmo segredo CHAP que foi definido em cada iniciador iSCSI de host para autenticação CHAP. Se você estiver usando autenticação CHAP mútua (autenticação bidirecional que permite que um host se valide para o array de storage e que um array de storage se valide para o host), você também deve definir o segredo CHAP para o array de storage na configuração inicial ou alterando as configurações.
+** Deixe o campo em branco se você não precisar de autenticação do host.
+
+
+Atualmente, o único método de autenticação iSCSI usado pelo System Manager é CHAP.
+
+|===
+====
+. Clique em *Create*.
+
+
+.Resultados
+Após a criação bem-sucedida do host, o sistema cria um nome padrão para cada porta do host configurada para o host (rótulo do usuário).
+
+O alias padrão é <``Hostname_Port Number``>. Por exemplo, o alias padrão para a primeira porta criada para `host IPT is IPT_1`.

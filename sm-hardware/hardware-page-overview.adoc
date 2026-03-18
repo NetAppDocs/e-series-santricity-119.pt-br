@@ -1,0 +1,72 @@
+---
+permalink: sm-hardware/hardware-page-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hardware, page, components, 
+summary: A página Hardware fornece uma representação gráfica dos componentes físicos do array de storage. A partir daqui, você pode verificar o status dos componentes e executar algumas funções relacionadas a esses componentes. 
+---
+= Página de hardware e componentes do SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página Hardware fornece uma representação gráfica dos componentes físicos do array de storage. A partir daqui, você pode verificar o status dos componentes e executar algumas funções relacionadas a esses componentes.
+
+
+
+== Prateleiras
+
+Um shelf é um componente que contém o hardware do array de storage (controladores, fontes de alimentação/ventoinhas e unidades de disco). Existem dois tipos de shelf:
+
+* *Compartimento do controlador* -- Contém as unidades, as fontes de alimentação/ventoinhas e os controladores.
+* *Compartimento de unidades* (ou *compartimento de expansão*) -- Contém unidades, fontes de alimentação/ventoinhas e dois módulos de entrada/saída (IOMs). Os IOMs, também conhecidos como módulos de serviço ambiental (ESMs), incluem portas SAS que conectam o compartimento de unidades ao compartimento do controlador.
+
+
+As prateleiras estão disponíveis em três tamanhos para acomodar até 12, 24 ou 60 unidades. Cada prateleira inclui um número de identificação, que é atribuído pelo firmware do controlador. O número de identificação aparece no canto superior esquerdo da visualização da prateleira.
+
+A visualização da prateleira na página Hardware mostra os componentes da parte frontal ou traseira. Você pode alternar entre as duas visualizações selecionando as abas *Unidades* ou *Controladores* no canto superior direito da visualização da prateleira. Você também pode selecionar *Mostrar todos os frontais* ou *Mostrar todos os traseiros* na parte inferior da página. As visualizações frontal e traseira mostram o seguinte:
+
+* *Componentes frontais* -- Unidades e baias de unidade vazias.
+* *Componentes traseiros* -- Controladores e compartimentos de alimentação/ventoinhas (para compartimentos de controladores) ou os IOMs e compartimentos de alimentação/ventoinhas (para compartimentos de unidades).
+
+
+Você pode executar as seguintes funções relacionadas aos compartimentos de expansão:
+
+* Acenda a luz localizadora da prateleira, para que você possa encontrar a localização física da prateleira no armário ou rack.
+* Altere o número de ID exibido no canto superior esquerdo da visualização da shelf.
+* Veja as configurações do compartimento, como os tipos de unidades instaladas e o número de série.
+* Mova as visualizações das prateleiras para cima ou para baixo para corresponder ao layout físico no array de storage.
+
+
+
+
+== Controladores
+
+Um controlador é o conjunto de hardware e firmware que implementa as funções do array de storage e de gerenciamento. Ele inclui a memória cache, o suporte a unidades e o suporte à interface com o host.
+
+Você pode executar as seguintes funções relacionadas aos controladores:
+
+* Configure as portas de gerenciamento para endereços IP e velocidade.
+* Configure as conexões de host iSCSI (se você tiver hosts iSCSI).
+* Configure um servidor de Protocolo de Tempo de Rede (NTP) e um servidor de Sistema de Nomes de Domínio (DNS).
+* Visualizar o status e as configurações do controlador.
+* Permita que usuários de fora da rede local iniciem uma sessão SSH e alterem as configurações do controlador.
+* Coloque o controlador offline, online ou em modo de serviço.
+
+
+
+
+== Unidades
+
+O array de storage pode incluir discos rígidos (HDDs) ou unidades de estado sólido (SSDs). Dependendo do tamanho do compartimento, até 12, 24 ou 60 unidades podem ser instaladas no compartimento.
+
+Você pode executar as seguintes funções relacionadas a unidades:
+
+* Acenda a luz localizadora da unidade, para que você possa encontrar a localização física da unidade no compartimento.
+* Visualizar o status e as configurações da unidade.
+* Reatribua uma unidade (substitua logicamente uma unidade com falha por uma unidade não atribuída) e reconstrua manualmente a unidade, se necessário.
+* Faça uma unidade falhar manualmente para que você possa substituí-la. (Fazer uma unidade falhar permite que você copie o conteúdo da unidade antes de substituí-la.)
+* Atribuir ou remover a atribuição de hot spares.
+* Apagar unidades.
+

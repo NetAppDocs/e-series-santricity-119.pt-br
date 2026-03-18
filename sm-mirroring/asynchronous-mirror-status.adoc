@@ -1,0 +1,159 @@
+---
+permalink: sm-mirroring/asynchronous-mirror-status.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, asynchronous, mirror, status, consistency, group, 
+summary: O status do espelho define o estado dos grupos de consistência do espelho e dos pares de volumes espelhados. 
+---
+= Visualizar o status do espelhamento assíncrono no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O status do espelho define o estado dos grupos de consistência do espelho e dos pares de volumes espelhados.
+
+
+
+== Status para grupos de consistência de mirror
+
+[cols="25h,~"]
+|===
+| Status | Descrição 
+
+
+ a| 
+Sincronizando (sincronização inicial)
+ a| 
+O progresso da sincronização inicial de dados que foi concluída entre os pares de volumes espelhados.
+
+Durante uma sincronização inicial, os volumes podem transitar para os seguintes estados: Degraded/Failed/Optimal/Unknown.
+
+
+
+ a| 
+Sincronizando (sincronização por intervalo)
+ a| 
+O progresso da sincronização periódica de dados que foi concluída entre os pares de volumes espelhados.
+
+
+
+ a| 
+Sistema suspenso
+ a| 
+Sincronização de dados suspensa pelo sistema de storage em todos os pares espelhados no nível do grupo de consistência de espelhamento.
+
+Pelo menos um par espelhado no grupo de consistência de espelhamento está em estado Parado ou Falha.
+
+
+
+ a| 
+Usuário suspenso
+ a| 
+Sincronização de dados suspensa pelo usuário em todos os pares espelhados no nível do grupo de consistência de espelhamento.
+
+Esse estado ajuda a reduzir qualquer impacto no desempenho do aplicativo host que possa ocorrer enquanto quaisquer dados alterados no array de storage local são copiados para o array de storage remoto.
+
+
+
+ a| 
+Pausado
+ a| 
+O processo de sincronização de dados foi temporariamente interrompido devido a um erro ao acessar o array de storage remoto.
+
+
+
+ a| 
+Órfão
+ a| 
+Um volume de par espelhado órfão existe quando um volume membro em um grupo de espelhamento de consistência foi removido em um lado do grupo de espelhamento de consistência (seja o lado primário ou o lado secundário), mas não no outro lado.
+
+Volumes de pares espelhados órfãos são detectados quando a comunicação entre arrays é restaurada e os dois lados da configuração de espelhamento reconciliam os parâmetros de espelhamento.
+
+Você pode remover um par espelhado para corrigir um estado de par espelhado órfão.
+
+
+
+ a| 
+Alteração de função pendente/em andamento
+ a| 
+Uma mudança de função entre os grupos de consistência de espelhamento está pendente ou em andamento.
+
+A inversão de papéis (para um papel primário ou secundário) afeta todos os pares espelhados assíncronos dentro do grupo de consistência de espelhamento selecionado.
+
+Você pode cancelar uma alteração de função pendente, mas não uma alteração de função em andamento.
+
+
+
+ a| 
+Conflito de função
+ a| 
+Ocorreu um conflito de funções entre grupos de consistência de espelhamento devido a um problema de comunicação entre o array de storage local e o array de storage remoto durante uma operação de mudança de função.
+
+Quando o problema de comunicação for resolvido, ocorrerá um Role Conflict. Use o Recovery Guru para recuperar desse erro.
+
+Uma promoção forçada não é permitida ao resolver um conflito de funções.
+
+|===
+
+
+== Status dos pares espelhados
+
+O status de um par espelhado indica se os dados no volume primário e no volume secundário estão sincronizados.
+
+[cols="25h,~"]
+|===
+| Status | Descrição 
+
+
+ a| 
+Sincronizando
+ a| 
+O progresso da sincronização inicial ou periódica de dados que foi concluída entre os pares espelhados.
+
+Existem dois tipos de sincronização: sincronização inicial e sincronização periódica. O progresso da sincronização inicial também é exibido na caixa de diálogo Long Running Operations.
+
+
+
+ a| 
+Ideal
+ a| 
+Os volumes no par espelhado estão sincronizados, o que indica que a conexão entre os arrays de storage está operacional e que cada volume está na condição de funcionamento desejada.
+
+
+
+ a| 
+Incompleto
+ a| 
+O par espelhado assíncrono está incompleto no array de storage remoto porque a sequência de criação do par espelhado foi iniciada em um array de storage que não é compatível com System Manager e o par espelhado não foi concluído no volume secundário.
+
+O processo de criação de um par espelhado é concluído quando um volume é adicionado ao grupo de consistência de espelhamento no array de storage remoto. Esse volume se torna o volume secundário no par espelhado assíncrono.
+
+O par espelhado é concluído automaticamente se o array de storage remoto for gerenciado pelo System Manager.
+
+
+
+ a| 
+Falha
+ a| 
+A operação de espelhamento assíncrono não pode funcionar normalmente devido a uma falha nos volumes primários, volumes secundários ou na capacidade reservada do espelho.
+
+
+
+ a| 
+Órfão
+ a| 
+Um volume de par espelhado órfão existe quando um volume membro em um grupo de espelhamento de consistência foi removido em um lado do grupo de espelhamento de consistência (seja o lado primário ou o lado secundário), mas não no outro lado.
+
+Volumes de pares espelhados órfãos são detectados quando a comunicação é restaurada entre os dois arrays de storage e os dois lados da configuração de espelhamento reconciliam os parâmetros de espelhamento.
+
+Você pode remover um par espelhado para corrigir um estado de par espelhado órfão.
+
+
+
+ a| 
+Parado
+ a| 
+O par espelhado está em estado Parado porque o grupo de consistência de espelhamento está em estado de suspensão do sistema.
+
+|===

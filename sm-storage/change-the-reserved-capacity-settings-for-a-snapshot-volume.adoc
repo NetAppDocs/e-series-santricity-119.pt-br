@@ -1,0 +1,44 @@
+---
+permalink: sm-storage/change-the-reserved-capacity-settings-for-a-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reserved capacity, settings, snapshot, volume 
+summary: Você pode alterar as configurações de um volume de snapshot para ajustar a porcentagem em que o sistema envia uma notificação de alerta quando a capacidade reservada para um volume de snapshot estiver quase cheia. 
+---
+= Altere as configurações de capacidade reservada para um volume de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar as configurações de um volume de snapshot para ajustar a porcentagem em que o sistema envia uma notificação de alerta quando a capacidade reservada para um volume de snapshot estiver quase cheia.
+
+.Passos
+. Selecione o menu: Storage [Pools & Volume Groups].
+. Clique na guia *Capacidade Reservada*.
+. Selecione o volume de Snapshot que você deseja editar e clique em *View/Edit Settings*.
++
+A caixa de diálogo Snapshot Volume Reserved Capacity Settings é exibida.
+
+. Altere as configurações de capacidade reservada para o volume de Snapshot conforme necessário.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use o seletor para ajustar o ponto percentual em que o sistema envia uma notificação de alerta quando a capacidade reservada para um volume de membro estiver quase cheia.
+
+Quando a capacidade reservada para o volume de Snapshot excede o limite especificado, o sistema envia um alerta, permitindo que você aumente a capacidade reservada ou exclua objetos desnecessários.
+
+|===
+====
+. Clique em *Salvar* para aplicar suas alterações às configurações de capacidade reservada do volume de Snapshot.
+

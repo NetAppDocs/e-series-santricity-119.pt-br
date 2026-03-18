@@ -1,0 +1,356 @@
+---
+permalink: sm-interface/view-and-act-on-operations-in-progress.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, act, operations, progress, 
+summary: Para visualizar e tomar medidas em operações de longa duração, utilize a página Operações em progresso. 
+---
+= Visualize e tome medidas em operações em andamento no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para visualizar e tomar medidas em operações de longa duração, utilize a página Operações em progresso.
+
+.Sobre esta tarefa
+Para cada operação listada na página Operações em Andamento, são exibidos a porcentagem de conclusão e o tempo estimado restante para concluir a operação. Em alguns casos, você pode interromper uma operação ou atribuir a ela uma prioridade maior ou menor. Você também pode remover uma operação de cópia de volume concluída da lista.
+
+.Passos
+. Na página inicial, selecione *Mostrar operações em andamento*.
++
+A página Operações em andamento é exibida.
+
+. Se desejar, use os links na coluna Actions para interromper ou alterar a prioridade de uma operação.
++
+[CAUTION]
+====
+Leia todo o texto de advertência fornecido nas caixas de diálogo, particularmente ao interromper uma operação.
+
+====
++
+Você pode interromper uma operação de cópia de volume ou alterar sua prioridade.
+
+. Após a conclusão de uma operação de cópia de volume, você pode selecionar *Limpar* para removê-la da lista.
++
+Na parte superior da página inicial, uma mensagem informativa e um ícone de chave inglesa amarela aparecem quando uma operação é concluída. Essa mensagem inclui um link que permite limpar a operação da página Operações em Andamento.
+
+
+
+As operações que aparecem na página Operações em Andamento incluem as seguintes:
+
+[cols="1a,1a,1a"]
+|===
+| Operação | Possível status da operação | Ações que você pode tomar 
+
+
+ a| 
+Cópia de volume
+ a| 
+Concluído
+ a| 
+Limpar
+
+
+
+ a| 
+Cópia de volume
+ a| 
+Em andamento
+ a| 
+* Alterar prioridade
+* Parar
+
+
+
+
+ a| 
+Cópia de volume
+ a| 
+Pendente
+ a| 
+Limpar
+
+
+
+ a| 
+Cópia de volume
+ a| 
+Falha
+ a| 
+* Limpar
+* Recopiar
+
+
+
+
+ a| 
+Cópia de volume
+ a| 
+Parado
+ a| 
+* Limpar
+* Recopiar
+
+
+
+
+ a| 
+Criar volume (somente volumes de pool espesso maiores que 64TiB)
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Exclusão de volume (somente volumes de pool espesso maiores que 64TiB)
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Sincronização inicial do grupo de espelhamento assíncrono
+ a| 
+Em andamento
+ a| 
+Suspender
+
+
+
+ a| 
+Sincronização inicial do grupo de espelhamento assíncrono
+ a| 
+Suspenso
+ a| 
+Retomar
+
+
+
+ a| 
+Espelhamento síncrono
+ a| 
+Em andamento
+ a| 
+Suspender
+
+
+
+ a| 
+Espelhamento síncrono
+ a| 
+Suspenso
+ a| 
+Retomar
+
+
+
+ a| 
+Reverter imagem de Snapshot
+ a| 
+Em andamento
+ a| 
+Cancelar
+
+
+
+ a| 
+Reverter imagem de Snapshot
+ a| 
+Pendente
+ a| 
+Cancelar
+
+
+
+ a| 
+Reverter imagem de Snapshot
+ a| 
+Pausado
+ a| 
+* Cancelar
+* Retomar
+
+
+
+
+ a| 
+Evacuação de unidade
+ a| 
+Em andamento
+ a| 
+Cancelar (depende do tipo de evacuação da unidade)
+
+
+
+ a| 
+Adicionar capacidade ao pool ou volume group
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Alterar um nível RAID de um volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Reduzir a capacidade de um pool
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Reclamação de volume thin
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Verifique o tempo restante em uma operação de formato de disponibilidade instantânea (IAF) para volumes de pool
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Verifique a redundância de dados de um grupo de volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Desfragmentar um grupo de volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Inicializar um volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Aumentar a capacidade de um volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Alterar o tamanho do segmento de um volume
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Cópia de drive
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Reconstrução de dados
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Copyback
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Apagar unidade
+ a| 
+Em andamento
+ a| 
+_none_
+
+
+
+ a| 
+Importação de storage remoto
+ a| 
+Em andamento
+ a| 
+* Alterar prioridade
+* Parar
+
+
+
+
+ a| 
+Importação de storage remoto
+ a| 
+Parado
+ a| 
+* Retomar
+* Desconectar
+
+
+
+
+ a| 
+Importação de storage remoto
+ a| 
+Falha
+ a| 
+* Retomar
+* Desconectar
+
+
+
+
+ a| 
+Importação de storage remoto
+ a| 
+Concluído
+ a| 
+Desconectar
+
+|===

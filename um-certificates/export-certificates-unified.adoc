@@ -1,0 +1,30 @@
+---
+permalink: um-certificates/export-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, export, certificates 
+summary: Você pode exportar um certificado para visualizar seus detalhes completos. 
+---
+= Exportar certificados no SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode exportar um certificado para visualizar seus detalhes completos.
+
+.Antes de começar
+Para abrir o arquivo exportado, você deve ter um aplicativo visualizador de certificados.
+
+.Passos
+. Selecione *Certificate Management*.
+. Selecione uma das seguintes abas:
++
+** *Gerenciamento* -- Exibe o certificado do sistema que hospeda o Web Services Proxy. Um certificado de gerenciamento pode ser autoassinado ou aprovado por uma autoridade certificadora (CA). Ele permite acesso seguro ao Unified Manager.
+** *Confiável* -- Mostra os certificados que Unified Manager pode acessar para arrays de storage e outros servidores remotos, como um servidor LDAP. Os certificados podem ser emitidos por uma autoridade certificadora (CA) ou podem ser autoassinados.
+
+
+. Selecione um certificado na página e, em seguida, clique nas reticências no final da linha.
+. Clique em *Exportar* e, em seguida, salve o arquivo de certificado.
+. Abra o arquivo no seu aplicativo visualizador de certificados.
+

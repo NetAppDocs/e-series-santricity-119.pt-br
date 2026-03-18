@@ -1,0 +1,99 @@
+---
+permalink: sm-storage/create-snapshot-image.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, snapshot, image 
+summary: Você pode criar manualmente uma imagem de Snapshot a partir de um volume base ou grupo de consistência de Snapshot. Isso também é chamado de instantâneo instantâneo ou imagem instantânea. 
+---
+= Crie uma imagem de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar manualmente uma imagem de Snapshot a partir de um volume base ou grupo de consistência de Snapshot. Isso também é chamado de _instant snapshot_ ou _instant image_.
+
+.Antes de começar
+* O volume base deve ser ideal.
+* A unidade deve estar otimizada.
+* O grupo de Snapshot não pode ser designado como "`reserved.`"
+* O volume de capacidade reservada deve ter as mesmas configurações de Data Assurance (DA) que o volume base associado ao grupo de snapshot.
+
+
+.Passos
+. Execute uma das seguintes ações para criar uma imagem de Snapshot:
++
+** Selecione menu:Storage[Volumes]. Selecione o objeto (base volume ou snapshot consistency group) e, em seguida, selecione menu:Copy Services[Create instant snapshot].
+** Selecione menu:Storage[Snapshots]. Selecione a guia *Snapshot Images* e, em seguida, selecione menu:Create[Instant snapshot].
++
+A caixa de diálogo Create Snapshot Image é exibida. Selecione o objeto (volume base ou grupo de consistência de snapshot) e clique em *Next*. Se uma imagem de snapshot anterior já tiver sido criada para o volume ou grupo de consistência de snapshot, o sistema cria o snapshot instantaneamente. Caso contrário, se esta for a primeira vez que uma imagem de snapshot é criada para o volume ou grupo de consistência de snapshot, a caixa de diálogo Confirm Create Snapshot Image é exibida.
+
+
+
+. Clique em *Criar* para aceitar a notificação de que é necessária capacidade reservada e para prosseguir para a etapa Reserve Capacity.
++
+A caixa de diálogo Reserve Capacity é exibida.
+
+. Use o seletor para ajustar a porcentagem de capacidade e, em seguida, clique em *Avançar* para aceitar o volume destacado na tabela.
++
+A caixa de diálogo Edit Settings é exibida.
+
+. Selecione as configurações para a imagem de Snapshot conforme apropriado e confirme que deseja realizar a operação.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações de imagem Snapshot*
+
+
+
+ a| 
+Limite de imagens do Snapshot
+ a| 
+Mantenha a caixa de seleção marcada se desejar que as imagens de Snapshot sejam excluídas automaticamente após o limite especificado; use a caixa de rotação para alterar o limite. Se você desmarcar esta caixa de seleção, a criação de imagens de Snapshot será interrompida após 32 imagens.
+
+
+
+ a| 
+*Configurações de capacidade reservada*
+
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use a caixa de seleção para ajustar o ponto percentual em que o sistema envia uma notificação de alerta quando a capacidade reservada para um grupo de Snapshot estiver quase cheia.
+
+Quando a capacidade reservada para o grupo de snapshot exceder o limite especificado, use o aviso prévio para aumentar a capacidade reservada ou excluir objetos desnecessários antes que o espaço restante se esgote.
+
+
+
+ a| 
+Política para capacidade totalmente reservada
+ a| 
+Escolha uma das seguintes políticas:
+
+** *Excluir imagem de snapshot mais antiga* -- O sistema exclui automaticamente a imagem de snapshot mais antiga no grupo de snapshots, o que libera a capacidade reservada da imagem de snapshot para reutilização dentro do grupo.
+** *Rejeitar gravações no volume base* -- Quando a capacidade reservada atinge a porcentagem máxima definida, o sistema rejeita qualquer solicitação de gravação de E/S para o volume base que acionou o acesso à capacidade reservada.
+
+
+|===
+====
+
+
+.Resultados
+* System Manager exibe a nova imagem de Snapshot na tabela Snapshot Images. A tabela lista a nova imagem por carimbo de data/hora e volume base associado ou grupo de consistência de Snapshot.
+* A criação de Snapshot pode permanecer no estado Pendente devido às seguintes condições:
++
+** O volume base que contém esta imagem de Snapshot é membro de um grupo de espelhamento assíncrono.
+** O volume base está atualmente em uma operação de sincronização. A criação da imagem Snapshot é concluída assim que a operação de sincronização é concluída.
+
+
+

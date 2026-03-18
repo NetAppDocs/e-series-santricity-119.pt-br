@@ -1,0 +1,64 @@
+---
+permalink: sm-hardware/erase-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, erase, drives, removal, 
+summary: Você pode usar a opção Apagar para preparar uma unidade não atribuída para remoção do sistema. Esse procedimento remove os dados permanentemente, garantindo que os dados não possam ser lidos novamente. 
+---
+= ${post_edited_translations.segment}
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a opção Apagar para preparar uma unidade não atribuída para remoção do sistema. Esse procedimento remove os dados permanentemente, garantindo que os dados não possam ser lidos novamente.
+
+.Antes de começar
+A unidade deve estar em estado Unassigned.
+
+.Sobre esta tarefa
+Use a opção Erase apenas se você quiser remover permanentemente todos os dados em uma unidade. Se a unidade estiver habilitada para segurança, a opção Erase executa um apagamento criptográfico e redefine os atributos de segurança da unidade de volta para compatível com segurança.
+
+[NOTE]
+====
+O recurso Erase não oferece suporte a alguns modelos de drive mais antigos. Se você tentar apagar um desses modelos mais antigos, uma mensagem de erro será exibida.
+
+====
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar os controladores, clique na guia *Drives*.
++
+O gráfico muda para mostrar as unidades em vez dos controladores.
+
+. Opcionalmente, você pode usar os campos de filtro para visualizar todas as unidades não atribuídas na prateleira. Na lista suspensa *Mostrar unidades que são...*, selecione *Não atribuídas*.
++
+${post_edited_translations.segment}
+
+. Para abrir o menu de contexto da unidade, clique em uma unidade que você deseja apagar. (Se você quiser selecionar várias unidades, pode fazer isso na caixa de diálogo Apagar Unidades.)
++
+[CAUTION]
+====
+*Possível perda de dados* -- A operação de apagar não pode ser desfeita. Certifique-se de selecionar as unidades corretas durante o procedimento.
+
+====
+. No menu de contexto, selecione *Erase*.
++
+${post_edited_translations.segment}
+
+. Se desejar, selecione unidades adicionais na tabela. Não é possível selecionar _todas_ as unidades; certifique-se de que uma unidade permaneça desmarcada.
+. Confirme a operação digitando  `erase` e depois clique em *Apagar*.
++
+[CAUTION]
+====
+Certifique-se de que deseja prosseguir com esta operação. Depois de clicar em Sim na próxima caixa de diálogo, a operação não poderá ser interrompida.
+
+====
+. Na caixa de diálogo Tempo Estimado de Conclusão, clique em *Yes* para continuar com a operação de apagamento.
+
+
+.Resultados
+A operação de apagamento pode levar vários minutos ou várias horas. Você pode visualizar o status em menu:Home[View Operations in Progress]. Quando a operação de apagamento for concluída, as unidades estarão disponíveis para uso em outro grupo de volume ou pool de discos, ou em outro array de storage.
+
+.Depois que você terminar
+Se você quiser usar a unidade novamente, primeiro precisa inicializá-la. Para isso, selecione *Inicializar* no menu de contexto da unidade.

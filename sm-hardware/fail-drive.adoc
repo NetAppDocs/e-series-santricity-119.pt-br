@@ -1,0 +1,49 @@
+---
+permalink: sm-hardware/fail-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, fail, drive, 
+summary: Se instruído a fazê-lo, você pode falhar manualmente uma unidade. 
+---
+= Falhar manualmente uma unidade no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se instruído a fazê-lo, você pode falhar manualmente uma unidade.
+
+.Sobre esta tarefa
+System Manager monitora as unidades no array de storage. Quando detecta que uma unidade está gerando muitos erros, o Recovery Guru notifica você de uma falha iminente da unidade. Se isso acontecer e você tiver uma unidade de substituição disponível, talvez queira forçar a falha da unidade para tomar uma ação preventiva. Se você não tiver uma unidade de substituição disponível, pode esperar que a unidade falhe por conta própria.
+
+[CAUTION]
+====
+*Possível perda de acesso aos dados* -- Esta operação pode resultar em perda de dados ou perda de redundância. Execute esta operação somente quando instruído a fazê-lo pelo suporte técnico ou pelo Recovery Guru.
+
+====
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar os controladores, clique na guia *Drives*.
++
+O gráfico muda para mostrar as unidades em vez dos controladores.
+
+. Clique na unidade que você deseja que falhe.
++
+O menu de contexto da unidade é exibido.
+
+. Selecione *Fail*.
+. Mantenha a caixa de seleção *Copiar conteúdo da unidade antes de falhar* selecionada.
++
+A opção de cópia aparece apenas para unidades atribuídas e para grupos de volume que não sejam RAID 0.
+
++
+Antes de falhar a unidade, certifique-se de copiar o conteúdo da unidade. Dependendo da sua configuração, você pode perder todos os dados ou a redundância de dados no pool ou grupo de volume associado se não copiar o conteúdo da unidade primeiro.
+
++
+A opção de cópia permite uma recuperação de drive mais rápida do que a reconstrução e reduz a possibilidade de falha de volume caso outro drive falhe durante a operação de cópia.
+
+. Confirme que deseja falhar a unidade.
++
+Após a falha do drive, aguarde pelo menos 60 segundos antes de removê-lo.
+
+

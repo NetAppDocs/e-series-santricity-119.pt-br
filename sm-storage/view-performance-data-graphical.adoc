@@ -1,0 +1,177 @@
+---
+permalink: sm-storage/view-performance-data-graphical.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, graphical, performance, 
+summary: Você pode visualizar dados gráficos de desempenho para objetos lógicos, objetos físicos, aplicações e cargas de trabalho. 
+---
+= Visualize dados gráficos de desempenho no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar dados gráficos de desempenho para objetos lógicos, objetos físicos, aplicações e cargas de trabalho.
+
+.Sobre esta tarefa
+Os gráficos de desempenho mostram dados históricos, bem como dados em tempo real que estão sendo capturados. Uma linha vertical no gráfico, rotulada como Live updating, distingue dados históricos de dados em tempo real.
+
+*Visualização da home page*
+
+A página inicial contém um gráfico que mostra o desempenho do array de storage. Você pode selecionar métricas limitadas nessa visualização ou clicar em *Exibir detalhes de desempenho* para selecionar todas as métricas disponíveis.
+
+*Visão detalhada*
+
+Os gráficos disponíveis na visualização detalhada de desempenho estão organizados em três abas:
+
+* *Visão Lógica* -- Exibe dados de desempenho para objetos lógicos agrupados por grupos de volumes e pools. Objetos lógicos incluem grupos de volumes, pools e volumes.
+* *Visão Física* -- Exibe dados de desempenho para o controlador, canais do host, canais de drive e drives.
+* *Visualização de Applications & Workloads* -- Exibe uma lista de objetos lógicos (volumes) agrupados pelos tipos de aplicação e cargas de trabalho que você definiu.
+
+
+.Passos
+. Selecione *Home*.
+. Para selecionar uma visualização em nível de array, clique no botão IOPS, MiB/s ou CPU.
+. Para ver mais detalhes, clique em *View Performance Details*.
+. Selecione a guia *Logical View*, a guia *Physical View* ou a guia *Applications & Workloads View*.
++
+Dependendo do tipo de objeto, diferentes gráficos aparecem em cada guia.
+
++
+[cols="25h,~"]
+|===
+| Exibir abas | Dados de desempenho exibidos para cada tipo de objeto 
+
+
+ a| 
+Visão lógica
+ a| 
+** *array de storage*: IOPS, MiB/s
+** *Pools*: Latência, IOPS, MiB/s
+** *Grupos de volume*: Latência, IOPS, MiB/s
+** *Volumes*: latência, IOPS, MiB/s
+
+
+
+
+ a| 
+Vista física
+ a| 
+** *Controladores*: IOPS, MiB/s, CPU, Headroom
+** *Canais do host*: Latência, IOPS, MiB/s, Headroom
+** *Drive channels*: Latência, IOPS, MiB/s
+** *Drives*: Latência, IOPS, MiB/s
+
+
+
+
+ a| 
+Visualização de Applications & Workloads
+ a| 
+** *array de storage*: IOPS, MiB/s
+** *Aplicações*: latência, IOPS, MiB/s
+** *Cargas de trabalho*: latência, IOPS, MiB/s
+** *Volumes*: latência, IOPS, MiB/s
+
+
+|===
+. Utilize as opções para visualizar os objetos e informações de que precisa.
++
+.Opções
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Opções para visualizar objetos | Descrição 
+
+
+ a| 
+Expanda uma gaveta para ver a lista de objetos.
+ a| 
+As gavetas de navegação contêm objetos de armazenamento, como pools, grupos de volume e unidades.
+
+Clique na gaveta para visualizar a lista de objetos na gaveta.
+
+
+
+ a| 
+Selecione objetos para visualizar.
+ a| 
+Selecione a caixa de seleção à esquerda de cada objeto para escolher os dados de desempenho que você deseja visualizar.
+
+
+
+ a| 
+Use Filter para encontrar nomes de objetos ou nomes parciais.
+ a| 
+Na caixa Filter, insira o nome ou parte do nome de objetos para listar apenas esses objetos na gaveta.
+
+
+
+ a| 
+Clique em *Atualizar gráficos* após selecionar objetos.
+ a| 
+Após selecionar objetos nas gavetas, selecione *Atualizar Gráficos* para visualizar dados gráficos dos itens que você selecionou.
+
+
+
+ a| 
+Ocultar ou mostrar gráfico
+ a| 
+Selecione o título do gráfico para ocultar ou mostrar o gráfico.
+
+|===
+====
+. Se necessário, utilize as opções adicionais para visualizar os dados de desempenho.
++
+.Opções adicionais
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Opção | Descrição 
+
+
+ a| 
+Período de tempo
+ a| 
+Selecione o período de tempo que deseja visualizar (5 minutos, 1 hora, 8 horas, 1 dia, 7 dias ou 30 dias). O padrão é 1 hora.
+
+
+NOTE: O carregamento de dados de desempenho para um período de 30 dias pode levar vários minutos. Não saia da página da web, não atualize a página da web nem feche o navegador enquanto os dados estiverem sendo carregados.
+
+
+
+ a| 
+Detalhes do ponto de dados
+ a| 
+Passe o cursor sobre o gráfico para ver as métricas de um determinado ponto de dados.
+
+
+
+ a| 
+Barra de rolagem
+ a| 
+Use a barra de rolagem abaixo do gráfico para visualizar um período anterior ou posterior.
+
+
+
+ a| 
+Barra de zoom
+ a| 
+Abaixo do gráfico, arraste as alças da barra de zoom para diminuir o zoom em um intervalo de tempo. Quanto mais larga a barra de zoom, menos granulares serão os detalhes do gráfico.
+
+Para redefinir o gráfico, selecione uma das opções de período de tempo.
+
+
+
+ a| 
+Arraste e solte
+ a| 
+No gráfico, arraste o cursor de um ponto no tempo para outro para ampliar um intervalo de tempo.
+
+Para redefinir o gráfico, selecione uma das opções de período de tempo.
+
+|===
+====
+

@@ -1,0 +1,48 @@
+---
+permalink: sm-storage/how-workloads-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, application, workloads, volume, 
+summary: Ao criar um volume, você seleciona uma carga de trabalho para personalizar a configuração do array de storage para uma aplicação específica. 
+---
+= Como funcionam as cargas de trabalho no SANtricity software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao criar um volume, você seleciona uma carga de trabalho para personalizar a configuração do array de storage para uma aplicação específica.
+
+Uma carga de trabalho é um objeto de storage que suporta uma aplicação. Você pode definir uma ou mais cargas de trabalho, ou instâncias, por aplicação. Para algumas aplicações, o sistema configura a carga de trabalho para conter volumes com características subjacentes semelhantes. Essas características de volume são otimizadas com base no tipo de aplicação que a carga de trabalho suporta. Por exemplo, se você criar uma carga de trabalho que suporte uma aplicação Microsoft SQL Server e, posteriormente, criar volumes para essa carga de trabalho, as características subjacentes do volume serão otimizadas para suportar Microsoft SQL Server.
+
+Durante a criação de volumes, o sistema solicita que você responda a perguntas sobre o uso da carga de trabalho. Por exemplo, se você estiver criando volumes para Microsoft Exchange, você será perguntado quantas caixas de correio precisa, quais são os requisitos médios de capacidade de cada caixa de correio e quantas cópias do banco de dados deseja. O sistema usa essas informações para criar uma configuração de volume ideal para você, que pode ser editada conforme necessário. Opcionalmente, você pode ignorar esta etapa na sequência de criação de volumes.
+
+
+
+== Tipos de cargas de trabalho
+
+Você pode criar dois tipos de cargas de trabalho: application-specific e outras.
+
+* *Específico da aplicação*. Ao criar volumes usando uma carga de trabalho específica da aplicação, o sistema pode recomendar uma configuração de volume otimizada para minimizar a disputa entre a E/S da carga de trabalho da aplicação e outros tráfegos da sua instância da aplicação. Características do volume, como tipo de E/S, tamanho do segmento, propriedade do controlador e cache de leitura e gravação, são automaticamente recomendadas e otimizadas para cargas de trabalho criadas para os seguintes tipos de aplicação.
++
+** Microsoft® SQL Server™
+** Microsoft® Exchange Server™
+** Aplicações de video surveillance
+** VMware ESXi™ (para volumes a serem usados com Virtual Machine File System)
++
+Você pode revisar a configuração de volume recomendada e editar, adicionar ou excluir os volumes e características recomendados pelo sistema usando a caixa de diálogo Add/Edit Volumes.
+
+
+
+* *Outros* (ou aplicações sem suporte específico para criação de volumes). Outras cargas de trabalho utilizam uma configuração de volume que você deve especificar manualmente quando quiser criar uma carga de trabalho que não está associada a uma aplicação específica ou se o sistema não tiver otimização incorporada para a aplicação que você pretende usar no array de storage. Você deve especificar manualmente a configuração de volume usando a caixa de diálogo Adicionar/Editar Volumes.
+
+
+
+
+== Visualizações de aplicativos e cargas de trabalho
+
+Para visualizar aplicativos e cargas de trabalho, inicie SANtricity System Manager. Nessa interface, você pode visualizar informações associadas a uma carga de trabalho específica de um aplicativo de algumas maneiras diferentes:
+
+* Você pode selecionar a guia *Aplicações e Cargas de Trabalho* no bloco Volumes para visualizar os volumes do array de storage agrupados por carga de trabalho e pelo tipo de aplicação ao qual a carga de trabalho está associada.
+* Você pode selecionar a guia *Applications & Workloads* no bloco Desempenho para visualizar métricas de desempenho (latência, IOPS e MBs) para objetos lógicos. Os objetos são agrupados por aplicação e carga de trabalho associada. Ao coletar esses dados de desempenho em intervalos regulares, você pode estabelecer medições de referência e analisar tendências, o que pode ajudar enquanto você investiga problemas relacionados ao desempenho de I/O.
+

@@ -1,0 +1,32 @@
+---
+permalink: sm-hardware/place-controller-online.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, place, controller, online 
+summary: Se um controlador estiver no estado offline ou em modo de serviço, você pode colocá-lo online novamente. 
+---
+= Coloque um controlador online no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se um controlador estiver no estado offline ou em modo de serviço, você pode colocá-lo online novamente.
+
+.Passos
+. Selecione *Hardware*.
+. Se a imagem mostrar as unidades, clique na guia *Controllers & Components*.
++
+O gráfico muda para mostrar os controladores em vez das unidades de disco.
+
+. Clique em um controlador que esteja no estado offline ou em modo de serviço.
++
+O menu de contexto do controlador é exibido.
+
+. Selecione *Place online* e confirme que deseja realizar a operação.
+
+
+.Resultados
+A detecção de um caminho preferencial restaurado pelo driver multipath pode levar até 10 minutos.
+
+Quaisquer volumes originalmente pertencentes a este controlador são automaticamente movidos de volta para o controlador à medida que solicitações de E/S são recebidas para cada volume. Em alguns casos, pode ser necessário redistribuir os volumes manualmente com o comando *Redistribuir volumes*.

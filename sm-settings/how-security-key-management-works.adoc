@@ -1,0 +1,58 @@
+---
+permalink: sm-settings/how-security-key-management-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, security, key, management, 
+summary: 'Ao implementar o recurso de Drive Security, as unidades com segurança habilitada (FIPS ou FDE) exigem uma chave de segurança para acesso aos dados. Uma chave de segurança é uma sequência de caracteres compartilhada entre esses tipos de unidades e os controladores em um array de storage.' 
+---
+= Como funciona o gerenciamento de chaves de segurança no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao implementar o recurso de Drive Security, as unidades com segurança habilitada (FIPS ou FDE) exigem uma chave de segurança para acesso aos dados. Uma chave de segurança é uma sequência de caracteres compartilhada entre esses tipos de unidades e os controladores em um array de storage.
+
+Sempre que a alimentação das unidades é desligada e ligada, as unidades com segurança habilitada entram no estado Bloqueado por Segurança até que o controlador aplique a chave de segurança. Se uma unidade com segurança habilitada for removida do array de storage, os dados da unidade são bloqueados. Quando a unidade é reinstalada em um array de storage diferente, ela procura a chave de segurança antes de tornar os dados acessíveis novamente. Para desbloquear os dados, você deve aplicar a chave de segurança original.
+
+Você pode criar e gerenciar chaves de segurança usando um dos seguintes métodos:
+
+* Gerenciamento interno de chaves na memória persistente do controlador.
+* Gerenciamento de chaves externas em um servidor de gerenciamento de chaves externo.
+
+
+
+
+== Gerenciamento interno de chaves
+
+As chaves internas são mantidas e "ocultas" em um local inacessível na memória persistente do controlador. Para implementar o gerenciamento de chaves internas, execute as seguintes etapas:
+
+. Instale unidades com recursos de segurança no array de storage. Essas unidades podem ser unidades com criptografia de disco completa (FDE) ou unidades Federal Information Processing Standard (FIPS).
+. Certifique-se de que o recurso de Drive Security esteja ativado. Se necessário, entre em contato com seu fornecedor de storage para obter instruções sobre como ativar o recurso de Drive Security.
+. Crie uma chave de segurança interna, o que envolve definir um identificador e uma frase secreta. O identificador é uma sequência de caracteres associada à chave de segurança e é armazenado no controlador e em todas as unidades associadas à chave. A frase secreta é usada para criptografar a chave de segurança para fins de backup. Para criar uma chave interna, vá para menu:Settings[Sistema > Security key management > Create Internal Key].
+
+
+A chave de segurança é armazenada no controlador em um local oculto e inacessível. Você pode então criar grupos de volume ou pools com segurança habilitada, ou pode habilitar a segurança em grupos de volume existentes e pools existentes.
+
+
+
+== Gerenciamento de chaves externas
+
+As chaves externas são mantidas em um servidor de gerenciamento de chaves separado, usando um Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP). Para implementar o gerenciamento de chaves externas, execute as seguintes etapas:
+
+. Instale unidades com recursos de segurança no array de storage. Essas unidades podem ser unidades com criptografia de disco completa (FDE) ou unidades Federal Information Processing Standard (FIPS).
+. Certifique-se de que o recurso de Drive Security esteja ativado. Se necessário, entre em contato com seu fornecedor de storage para obter instruções sobre como ativar o recurso de Drive Security.
+. Obtenha um arquivo de certificado de cliente assinado. Um certificado de cliente valida os controladores do array de storage, para que o servidor de gerenciamento de chaves possa confiar em suas solicitações KMIP.
++
+.. Primeiro, você preenche e faz o download de uma Solicitação de Assinatura de Certificado (CSR) do cliente. Vá para menu:Settings[Certificates > Key Management > Complete CSR].
+.. Em seguida, você solicita um certificado de cliente assinado de uma CA confiável pelo servidor de gerenciamento de chaves. (Você também pode criar e baixar um certificado de cliente do servidor de gerenciamento de chaves usando o arquivo CSR.)
+.. Depois de obter um arquivo de certificado de cliente, copie esse arquivo para o host onde você está acessando System Manager.
+.. Alternativamente, você pode gerar uma solicitação de assinatura de certificado externamente usando um par de chaves privada e pública.
+
+
+. Recupere um arquivo de certificado do servidor de gerenciamento de chaves e copie esse arquivo para o host onde você está acessando System Manager. Um certificado de servidor de gerenciamento de chaves valida o servidor de gerenciamento de chaves, para que o array de storage possa confiar em seu endereço IP. Você pode usar um certificado raiz, intermediário ou de servidor para o servidor de gerenciamento de chaves.
+. Crie uma chave externa, o que envolve definir o endereço IP do servidor de gerenciamento de chaves e o número da porta usado para comunicações KMIP. Durante esse processo, você também carrega arquivos de certificado. Para criar uma chave externa, acesse menu:Settings[Sistema > Security key management > Create External Key].
+
+
+O sistema se conecta ao servidor de gerenciamento de chaves com as credenciais que você inseriu. Você pode então criar grupos de volume ou pools com segurança habilitada, ou pode habilitar a segurança em grupos de volume e pools existentes.

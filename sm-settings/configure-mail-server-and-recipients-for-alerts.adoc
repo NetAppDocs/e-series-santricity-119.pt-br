@@ -1,0 +1,77 @@
+---
+permalink: sm-settings/configure-mail-server-and-recipients-for-alerts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, mail, server, recipients, alerts, 
+summary: Para configurar alertas por e-mail, você deve especificar o endereço do servidor de e-mail e os endereços de e-mail dos destinatários dos alertas. Até 20 endereços de e-mail são permitidos. 
+---
+= Configurar o servidor de e-mail e os destinatários de alertas no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para configurar alertas por e-mail, você deve especificar o endereço do servidor de e-mail e os endereços de e-mail dos destinatários dos alertas. Até 20 endereços de e-mail são permitidos.
+
+.Antes de começar
+* O endereço do servidor de e-mail deve estar disponível. O endereço pode ser um endereço IPv4 ou IPv6, ou um nome de domínio totalmente qualificado.
++
+[NOTE]
+====
+Para usar um nome de domínio totalmente qualificado, você precisa configurar um servidor DNS em ambos os controladores. Você pode configurar um servidor DNS na página Hardware.
+
+====
+* O endereço de e-mail a ser usado como remetente do alerta deve estar disponível. Este é o endereço que aparece no campo "De" da mensagem de alerta. Um endereço de remetente é obrigatório no protocolo SMTP; sem ele, ocorre um erro.
+* Os endereços de e-mail dos destinatários do alerta devem estar disponíveis. O destinatário normalmente é um endereço para um administrador de rede ou administrador de storage. Você pode inserir até 20 endereços de e-mail.
+
+
+.Sobre esta tarefa
+Esta tarefa descreve como configurar o servidor de e-mail, inserir endereços de e-mail para o remetente e os destinatários e testar todos os endereços de e-mail inseridos na página de Alerts.
+
+[NOTE]
+====
+Os alertas por e-mail também podem ser configurados no assistente de configuração inicial.
+
+====
+.Passos
+. Selecione o menu: configurações [Alertas].
+. Selecione a guia *Email*.
++
+Se um servidor de e-mail ainda não estiver configurado, a guia E-mail exibirá "Configurar Mail Server."
+
+. Selecione *Configurar Mail Server*.
++
+A caixa de diálogo Configurar Servidor de Correio é aberta.
+
+. Insira as informações do servidor de e-mail e, em seguida, clique em *Salvar*.
++
+** *Endereço do servidor de e-mail* -- Insira um domínio totalmente qualificado, um endereço IPv4 ou um endereço IPv6 do servidor de e-mail.
++
+[NOTE]
+====
+Para usar um nome de domínio totalmente qualificado, você precisa configurar um servidor DNS em ambos os controladores. Você pode configurar um servidor DNS na página Hardware.
+
+====
+** *Endereço do remetente do e-mail* -- insira um endereço de e-mail válido para ser usado como remetente do e-mail. Este endereço aparece no campo "De" da mensagem de e-mail.
+** *Criptografia* -- Se desejar criptografar as mensagens, selecione *SMTPS* ou *STARTTLS* para o tipo de criptografia e, em seguida, selecione o número da porta para as mensagens criptografadas. Caso contrário, selecione *None*.
+** *Nome de usuário e senha* -- Se necessário, insira um nome de usuário e uma senha para autenticação com o remetente de saída e o servidor de e-mail.
+** *Incluir informações de contato no email* -- Para incluir as informações de contato do remetente na mensagem de alerta, selecione esta opção e insira um nome e um número de telefone.
++
+Após clicar em *Salvar*, os endereços de e-mail aparecem na guia E-mail da página de Alertas.
+
+
+
+. Selecione *Add Emails*.
++
+A caixa de diálogo Adicionar Emails é aberta.
+
+. Insira um ou mais endereços de e-mail para os destinatários do alerta e clique em *Add*.
++
+Os endereços de e-mail aparecem na página Alerts.
+
+. Se quiser garantir que os endereços de e-mail são válidos, clique em *Test All Emails* para enviar mensagens de teste aos destinatários.
+
+
+.Resultados
+Após configurar os alertas por e-mail, o monitor de eventos envia mensagens de e-mail aos destinatários especificados sempre que ocorre um evento passível de alerta.

@@ -1,0 +1,140 @@
+---
+permalink: sm-storage/create-snapshot-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, snapshot, consistency group 
+summary: Para garantir que você tenha cópias consistentes, você pode criar um conjunto de vários volumes chamado snapshot consistency group. 
+---
+= Crie um grupo de consistência de snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para garantir que você tenha cópias consistentes, você pode criar um conjunto de vários volumes chamado _grupo de consistência de snapshot_.
+
+Este grupo permite criar imagens instantâneas de todos os volumes ao mesmo tempo para consistência. Cada volume que pertence a um grupo de consistência de snapshot é denominado _volume membro_. Quando você adiciona um volume a um grupo de consistência de snapshot, o sistema cria automaticamente um novo grupo de snapshot que corresponde a esse volume membro.
+
+.Sobre esta tarefa
+A sequência de criação do grupo de consistência de Snapshot permite selecionar volumes membros para o grupo e alocar capacidade aos volumes membros.
+
+O processo para criar um grupo de consistência de snapshot é um procedimento de várias etapas.
+
+
+
+== Etapa 1: adicione membros ao grupo de consistência de Snapshot
+
+Selecione os membros para especificar uma coleção de volumes que compõem o grupo de consistência de Snapshot. Quaisquer ações que você executar no grupo de consistência de Snapshot serão aplicadas uniformemente aos volumes membros selecionados.
+
+.Antes de começar
+Os volumes dos membros devem estar Otimizados.
+
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Clique na guia *Snapshot Consistency Groups*.
+. Selecione o menu: criar [Snapshot grupo de consistência].
++
+A caixa de diálogo Criar Grupo de Consistência de Snapshot é exibida.
+
+. Selecione os volumes a serem adicionados como volumes membros ao grupo de consistência de snapshot.
+. Clique em *Next* e vá para <<Etapa 2: reserve capacidade para grupo de consistência de Snapshot>>.
+
+
+
+
+== Etapa 2: reserve capacidade para grupo de consistência de Snapshot
+
+Associe a capacidade reservada ao grupo de consistência de snapshot. System Manager sugere os volumes e a capacidade com base nas propriedades do grupo de consistência de snapshot. Você pode aceitar a configuração de capacidade reservada recomendada ou personalizar o storage alocado.
+
+.Sobre esta tarefa
+Na caixa de diálogo Capacidade Reservada, a tabela de volumes candidatos exibe apenas os candidatos que suportam a capacidade reservada especificada. A capacidade reservada é a capacidade física alocada que é usada para qualquer operação de serviço de cópia e storage. Não é diretamente legível pelo host.
+
+.Passos
+. Use a caixa de rotação para alocar a capacidade reservada para o grupo de consistência de Snapshot. Execute uma das seguintes ações:
++
+** *Aceite as configurações padrão*.
++
+Utilize esta opção recomendada para alocar a capacidade reservada para cada volume membro com as configurações padrão.
+
+** *Aloque suas próprias configurações de capacidade reservada para atender às suas necessidades de storage de dados.*
++
+Aloque a capacidade reservada usando as seguintes diretrizes.
+
++
+*** A configuração padrão para capacidade reservada é de 40% da capacidade do volume base. Normalmente, essa capacidade é suficiente.
+*** A capacidade necessária varia dependendo da frequência e do tamanho das gravações de E/S nos volumes e da quantidade e duração da coleta de imagens de Snapshot.
+
+
+
+
+. *Opcional:* Se você alterar a configuração padrão de capacidade reservada, clique em *Atualizar candidatos* para atualizar a lista de candidatos para a capacidade reservada que você especificou.
+. Clique em *Próximo* e vá para <<Etapa 3: editar as configurações do grupo de consistência de Snapshot>>.
+
+
+
+
+== Etapa 3: editar as configurações do grupo de consistência de Snapshot
+
+Aceite ou selecione as configurações de exclusão automática e os limites de alerta de capacidade reservada para o grupo de consistência de Snapshot.
+
+.Sobre esta tarefa
+A sequência de criação do grupo de consistência de Snapshot permite selecionar volumes membros para o grupo e alocar capacidade aos volumes membros.
+
+.Passos
+. Aceite ou altere as configurações padrão para o grupo de consistência do snapshot conforme apropriado.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+*Configurações do grupo de consistência do Snapshot*
+
+
+
+ a| 
+Nome
+ a| 
+Especifique o nome para o grupo de consistência de Snapshot.
+
+
+
+ a| 
+Ative a exclusão automática de snapshot images quando...
+ a| 
+Mantenha a caixa de seleção marcada se desejar que as imagens de Snapshot sejam excluídas automaticamente após o limite especificado; use a caixa de rotação para alterar o limite. Se você desmarcar esta caixa de seleção, a criação de imagens de Snapshot será interrompida após 32 imagens.
+
+
+
+ a| 
+*Configurações de capacidade reservada*
+
+
+
+ a| 
+Avise-me quando...
+ a| 
+Use a caixa de seleção para ajustar o ponto percentual em que o sistema envia uma notificação de alerta quando a capacidade reservada para um grupo de consistência de snapshot estiver quase cheia.
+
+Quando a capacidade reservada para o grupo de consistência de snapshot exceder o limite especificado, use o aviso prévio para aumentar a capacidade reservada ou excluir objetos desnecessários antes que o espaço restante se esgote.
+
+
+
+ a| 
+Política para capacidade totalmente reservada
+ a| 
+Escolha uma das seguintes políticas:
+
+** *Excluir imagem de snapshot mais antiga* -- O sistema exclui automaticamente a imagem de snapshot mais antiga no grupo de consistência de snapshot, o que libera a capacidade reservada da imagem de snapshot para reutilização dentro do grupo.
+** *Rejeitar gravações no volume base* -- Quando a capacidade reservada atinge a porcentagem máxima definida, o sistema rejeita qualquer solicitação de gravação de E/S para o volume base que acionou o acesso à capacidade reservada.
+
+
+|===
+====
+. Depois de se certificar de que a configuração do seu grupo de consistência de Snapshot está correta, clique em *Concluir*.
+

@@ -1,0 +1,141 @@
+---
+permalink: sm-settings/faq-storage-drive-security.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre segurança de storage drive para SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== O que preciso saber antes de criar uma chave de segurança?
+
+Uma chave de segurança é compartilhada entre controladores e unidades com segurança habilitada dentro de um array de storage. Se uma unidade com segurança habilitada for removida do array de storage, a chave de segurança protege os dados contra acesso não autorizado.
+
+Você pode criar e gerenciar chaves de segurança usando um dos seguintes métodos:
+
+* Gerenciamento interno de chaves na memória persistente do controlador.
+* Gerenciamento de chaves externas em um servidor de gerenciamento de chaves externo.
+
+
+
+
+=== Gerenciamento interno de chaves
+
+As chaves internas são mantidas e "`hidden`" em um local inacessível na memória persistente do controlador. Antes de criar uma chave de segurança interna, você deve fazer o seguinte:
+
+. Instale unidades com recursos de segurança no array de storage. Essas unidades podem ser unidades com criptografia de disco completa (FDE) ou unidades Federal Information Processing Standard (FIPS).
+. Certifique-se de que o recurso de Drive Security esteja ativado. Se necessário, entre em contato com seu fornecedor de storage para obter instruções sobre como ativar o recurso de Drive Security.
+
+
+Em seguida, você pode criar uma chave de segurança interna, o que envolve definir um identificador e uma frase secreta. O identificador é uma string que está associada à chave de segurança e é armazenado no controlador e em todas as unidades associadas à chave. A frase secreta é usada para criptografar a chave de segurança para fins de backup. Quando você termina, a chave de segurança é armazenada no controlador em um local inacessível. Você pode então criar grupos de volumes ou pools com segurança habilitada, ou pode habilitar a segurança em grupos de volumes e pools existentes.
+
+
+
+=== Gerenciamento de chaves externas
+
+As chaves externas são mantidas em um servidor de gerenciamento de chaves separado, usando um Key Management Interoperability Protocol (KMIP). Antes de criar uma chave de segurança externa, você deve fazer o seguinte:
+
+. Instale unidades com recursos de segurança no array de storage. Essas unidades podem ser unidades com criptografia de disco completa (FDE) ou unidades Federal Information Processing Standard (FIPS).
+. Certifique-se de que o recurso de Drive Security esteja ativado. Se necessário, entre em contato com seu fornecedor de storage para obter instruções sobre como ativar o recurso de Drive Security.
+. Obtenha um arquivo de certificado de cliente assinado. Um certificado de cliente valida os controladores do array de storage, para que o servidor de gerenciamento de chaves possa confiar em suas solicitações KMIP.
++
+.. Primeiro, você preenche e faz o download de uma Solicitação de Assinatura de Certificado (CSR) do cliente. Vá para menu:Settings[Certificates > Key Management > Complete CSR].
+.. Em seguida, você solicita um certificado de cliente assinado de uma CA confiável pelo servidor de gerenciamento de chaves. (Você também pode criar e baixar um certificado de cliente do servidor de gerenciamento de chaves usando o arquivo CSR baixado.)
+.. Depois de obter um arquivo de certificado de cliente, copie esse arquivo para o host onde você está acessando System Manager.
+
+
+. Recupere um arquivo de certificado do servidor de gerenciamento de chaves e copie esse arquivo para o host onde você está acessando System Manager. Um certificado de servidor de gerenciamento de chaves valida o servidor de gerenciamento de chaves, para que o array de storage possa confiar em seu endereço IP. Você pode usar um certificado raiz, intermediário ou de servidor para o servidor de gerenciamento de chaves.
+
+
+Em seguida, você pode criar uma chave externa, o que envolve definir o endereço IP do servidor de gerenciamento de chaves e o número da porta usado para as comunicações KMIP. Durante esse processo, você também carrega os arquivos de certificado. Ao concluir, o sistema se conecta ao servidor de gerenciamento de chaves com as credenciais inseridas. Você pode então criar grupos de volumes ou pools com segurança habilitada, ou pode habilitar a segurança em grupos de volumes e pools existentes.
+
+
+
+== Por que preciso definir uma frase secreta?
+
+A senha é usada para criptografar e descriptografar o arquivo de chave de segurança armazenado no cliente de gerenciamento local. Sem a senha, a chave de segurança não pode ser descriptografada e usada para desbloquear dados de uma unidade com segurança habilitada, caso ela seja reinstalada em outro array de storage.
+
+
+
+== Por que é importante registrar as informações da chave de segurança?
+
+Se você perder as informações da chave de segurança e não tiver um backup, poderá perder dados ao realocar unidades com segurança habilitada ou ao atualizar um controlador. Você precisa da chave de segurança para desbloquear dados nas unidades.
+
+Certifique-se de registrar o identificador da chave de segurança, a frase secreta associada e o local no host local onde o arquivo da chave de segurança foi salvo.
+
+
+
+== O que preciso saber antes de fazer backup de uma chave de segurança?
+
+Se a sua chave de segurança original for corrompida e você não tiver um backup, você perderá o acesso aos dados nas unidades caso elas sejam migradas de um array de storage para outro.
+
+Antes de fazer backup de uma chave de segurança, tenha em mente estas diretrizes:
+
+* Certifique-se de conhecer o identificador da chave de segurança e a frase secreta do arquivo de chave original.
++
+[NOTE]
+====
+Somente as chaves internas usam identificadores. Ao criar o identificador, caracteres adicionais foram gerados automaticamente e anexados às duas extremidades da string do identificador. Os caracteres gerados garantem que o identificador seja único.
+
+====
+* Você cria uma nova frase secreta para o backup. Essa frase secreta não precisa ser igual à frase secreta usada quando a chave original foi criada ou alterada pela última vez. A frase secreta se aplica somente ao backup que você está criando.
++
+[NOTE]
+====
+A frase secreta para Drive Security não deve ser confundida com a senha de administrador do array de storage. A frase secreta para Drive Security protege os backups de uma chave de segurança. A senha de administrador protege todo o array de storage contra acesso não autorizado.
+
+====
+* O arquivo de chave de segurança de backup é baixado para o seu cliente de gerenciamento. O caminho para o arquivo baixado pode depender do local de download padrão do seu navegador. Certifique-se de registrar onde as informações da sua chave de segurança estão armazenadas.
+
+
+
+
+== O que preciso saber antes de desbloquear unidades seguras?
+
+Para desbloquear os dados de uma unidade com segurança ativada, você deve importar sua chave de segurança.
+
+Antes de desbloquear unidades com segurança ativada, tenha em mente as seguintes diretrizes:
+
+* O array de storage já deve possuir uma chave de segurança. As unidades migradas serão reconfiguradas com uma nova chave para o array de storage de destino.
+* Para as unidades que você está migrando, você deve saber o identificador da chave de segurança e a frase secreta que corresponde ao arquivo da chave de segurança.
+* O arquivo de chave de segurança deve estar disponível no cliente de gerenciamento (o sistema com navegador usado para acessar System Manager).
+* Se você estiver redefinindo uma unidade NVMe bloqueada, precisará inserir o ID de segurança da unidade. Para localizar o ID de segurança, você deve remover fisicamente a unidade e encontrar a sequência PSID (máximo de 32 caracteres) na etiqueta da unidade. Certifique-se de que a unidade esteja reinstalada antes de iniciar a operação.
+
+
+
+
+== O que é acessibilidade de leitura/gravação?
+
+A janela Configurações da unidade inclui informações sobre os atributos de segurança da unidade. "Leitura/gravação acessível" é um dos atributos que indica se os dados de uma unidade foram bloqueados.
+
+Para visualizar os atributos de segurança da unidade, acesse a página Hardware. Selecione uma unidade, clique em *Exibir configurações* e, em seguida, clique em *Mostrar mais configurações*. Na parte inferior da página, o valor do atributo Leitura/Gravação acessível é *Sim* quando a unidade está desbloqueada. O valor do atributo Leitura/Gravação acessível é *Não, chave de segurança inválida* quando a unidade está bloqueada. Você pode desbloquear uma unidade segura importando uma chave de segurança (vá para menu:Configurações[Sistema > Desbloquear unidades seguras]).
+
+
+
+== O que preciso saber sobre validar a chave de segurança?
+
+Após criar uma chave de segurança, você deve validar o arquivo da chave para garantir que não esteja corrompido.
+
+Se a validação falhar, faça o seguinte:
+
+* Se o identificador da chave de segurança não corresponder ao identificador no controlador, localize o arquivo de chave de segurança correto e tente a validação novamente.
+* Se o controlador não conseguir descriptografar a chave de segurança para validação, você pode ter digitado a frase secreta incorretamente. Verifique a frase secreta, digite-a novamente se necessário e tente a validação novamente. Se a mensagem de erro aparecer novamente, selecione um backup do arquivo de chave (se disponível) e tente a validação novamente.
+* Se você ainda não conseguir validar a chave de segurança, o arquivo original pode estar corrompido. Crie um novo backup da chave e valide essa cópia.
+
+
+
+
+== Qual é a diferença entre chave de segurança interna e gerenciamento externo de chave de segurança?
+
+Ao implementar o recurso de Segurança de Unidade, você pode usar uma chave de segurança interna ou externa para bloquear os dados quando uma unidade com segurança habilitada for removida do array de storage.
+
+Uma chave de segurança é uma sequência de caracteres, que é compartilhada entre as unidades com segurança habilitada e os controladores em um array de storage. As chaves internas são mantidas na memória persistente do controlador. As chaves externas são mantidas em um servidor de gerenciamento de chaves separado, usando um Key Management Interoperability Protocol (KMIP).

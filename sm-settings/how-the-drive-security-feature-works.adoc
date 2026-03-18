@@ -1,0 +1,65 @@
+---
+permalink: sm-settings/how-the-drive-security-feature-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, Drive Security, 
+summary: 'Drive Security é um recurso do array de storage que fornece uma camada extra de segurança com unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS).' 
+---
+= Como funciona o recurso Drive Security no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Drive Security é um recurso do array de storage que fornece uma camada extra de segurança com unidades Full Disk Encryption (FDE) ou unidades Federal Information Processing Standard (FIPS).
+
+Quando esses discos são usados com o recurso Drive Security, eles exigem uma chave de segurança para acesso aos seus dados. Quando os discos são fisicamente removidos do array, eles não podem operar até serem instalados em outro array, momento em que ficarão em estado de Security Locked até que a chave de segurança correta seja fornecida.
+
+
+
+== Como implementar Drive Security
+
+Para implementar a Segurança do Drive, execute as seguintes etapas.
+
+. Equipe seu array de storage com unidades compatíveis com segurança, sejam elas FDE drives ou FIPS drives. (Para volumes que exigem suporte a FIPS, use somente FIPS drives. Misturar FIPS drives e FDE drives em um grupo de volume ou pool fará com que todas as unidades sejam tratadas como FDE drives. Além disso, um FDE drive não pode ser adicionado ou usado como reserva em um grupo de volume ou pool composto apenas por FIPS drives.)
+. Crie uma chave de segurança, que é uma sequência de caracteres compartilhada pelo controlador e pelas unidades para acesso de leitura/gravação. Você pode criar uma chave interna a partir da memória persistente do controlador ou uma chave externa a partir de um servidor de gerenciamento de chaves. Para o gerenciamento de chaves externas, a autenticação deve ser estabelecida com o servidor de gerenciamento de chaves.
+. Ative a segurança de unidade para pools e grupos de volume:
++
+** Crie um pool ou grupo de volume (procure por *Sim* na coluna *Secure-capable* na tabela Candidates).
+** Selecione um pool ou grupo de volume ao criar um novo volume (procure por *Sim* ao lado de *Compatível com segurança* na tabela de candidatos a pool e grupo de volume).
+
+
+
+
+
+
+== Como o Drive Security funciona no nível da unidade
+
+Uma unidade com recursos de segurança, seja FDE ou FIPS, criptografa os dados durante as gravações e os descriptografa durante as leituras. Essa criptografia e descriptografia não afetam o desempenho nem o fluxo de trabalho do usuário. Cada unidade possui sua própria chave de criptografia exclusiva, que nunca pode ser transferida da unidade.
+
+O recurso Drive Security oferece uma camada extra de proteção para unidades com capacidade de segurança. Quando grupos de volumes ou pools nessas unidades são selecionados para Drive Security, as unidades procuram uma chave de segurança antes de permitir o acesso aos dados. Você pode ativar o Drive Security para pools e grupos de volumes a qualquer momento, sem afetar os dados existentes na unidade. No entanto, não é possível desativar o Drive Security sem apagar todos os dados da unidade.
+
+
+
+== Como o Drive Security funciona no nível do array de storage
+
+Com o recurso Drive Security, você cria uma chave de segurança que é compartilhada entre as unidades habilitadas para segurança e os controladores em um array de storage. Sempre que a energia das unidades for desligada e ligada, as unidades habilitadas para segurança mudam para o estado Security Locked até que o controlador aplique a chave de segurança.
+
+Se uma unidade com segurança habilitada for removida do array de storage e reinstalada em um array de storage diferente, ela ficará em estado de Segurança Bloqueada. A unidade realocada procura a chave de segurança antes de tornar os dados acessíveis novamente. Para desbloquear os dados, você aplica a chave de segurança do array de storage de origem. Após um processo de desbloqueio bem-sucedido, a unidade realocada passará a usar a chave de segurança já armazenada no array de storage de destino, e o arquivo de chave de segurança importado não será mais necessário.
+
+[NOTE]
+====
+Para gerenciamento interno de chaves, a chave de segurança propriamente dita é armazenada no controlador em um local inacessível. Ela não está em formato legível por humanos, nem é acessível ao usuário.
+
+====
+
+
+== Como o Drive Security funciona no nível de volume
+
+Ao criar um pool ou grupo de volume a partir de unidades com recursos de segurança, você também pode habilitar Drive Security para esses pools ou grupos de volume. A opção Drive Security torna as unidades e os grupos de volume e pools associados secure-_enabled_.
+
+Tenha em mente as seguintes diretrizes antes de criar grupos de volume e pools com segurança habilitada:
+
+* Os grupos de volumes e pools devem ser compostos inteiramente por drives com capacidade de segurança. (Para volumes que exigem suporte a FIPS, use apenas drives FIPS. Misturar drives FIPS e FDE em um grupo de volume ou pool fará com que todos os drives sejam tratados como drives FDE. Além disso, um drive FDE não pode ser adicionado ou usado como reserva em um grupo de volume ou pool totalmente FIPS.)
+* Os grupos de volume e os pools devem estar em um estado ideal.
+

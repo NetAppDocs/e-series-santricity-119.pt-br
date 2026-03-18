@@ -1,0 +1,29 @@
+---
+permalink: sm-settings/default-host-operating-system-type.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, default, host, operating, system, 
+summary: O tipo de host padrão é usado pelo array de storage quando os hosts são conectados inicialmente. Ele define como os controladores no array de storage trabalham com o sistema operacional do host quando os volumes são acessados. 
+---
+= Saiba mais sobre o tipo padrão de sistema operacional host no software SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O tipo de host padrão é usado pelo array de storage quando os hosts são conectados inicialmente. Ele define como os controladores no array de storage trabalham com o sistema operacional do host quando os volumes são acessados.
+
+Você pode alterar o tipo de host se houver necessidade de alterar como o array de storage opera em relação aos hosts que estão conectados a ele. Geralmente, você alterará o tipo de host padrão antes de conectar hosts ao array de storage ou quando conectar hosts adicionais.
+
+Tenha estas orientações em mente:
+
+* Se todos os hosts que você planeja conectar ao array de storage tiverem o mesmo sistema operacional (ambiente de host homogêneo), altere o tipo de host para corresponder ao sistema operacional.
+* Se houver hosts com sistemas operacionais diferentes que você planeja conectar ao array de storage (ambiente de host heterogêneo), altere o tipo de host para corresponder à maioria dos sistemas operacionais dos hosts.
++
+Por exemplo, se você estiver conectando oito hosts diferentes ao array de storage e seis desses hosts estiverem executando um sistema operacional Windows, você deve selecionar Windows como o tipo de sistema operacional padrão do host.
+
+* Se a maioria dos hosts conectados tiver uma combinação de sistemas operacionais diferentes, altere o tipo de host para Factory Default.
++
+Por exemplo, se você estiver conectando oito hosts diferentes ao array de storage, e dois desses hosts estiverem executando um sistema operacional Windows, três estiverem executando um sistema operacional VMware e outros três estiverem executando um sistema operacional Linux, você deve selecionar Factory Default como o tipo de sistema operacional padrão do host.
+
+

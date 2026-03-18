@@ -1,0 +1,48 @@
+---
+permalink: sm-settings/export-saml-service-provider-files.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, export, saml, Service Provider, files, 
+summary: 'Caso necessário, você pode exportar os metadados do Provedor de Serviço para o array de storage e reimportar o(s) arquivo(s) no sistema do Provedor de Identidade (IdP).' 
+---
+= Exportar arquivos do provedor de serviços SAML no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Caso necessário, você pode exportar os metadados do Provedor de Serviço para o array de storage e reimportar o(s) arquivo(s) no sistema do Provedor de Identidade (IdP).
+
+.Antes de começar
+* Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de Access Management não serão exibidas.
+* SAML está configurado e ativado.
+
+
+.Sobre esta tarefa
+Nesta tarefa, você exporta metadados dos controladores (um arquivo para cada controlador). O IdP precisa desses metadados para estabelecer uma relação de confiança com os controladores e para processar solicitações de autenticação. O arquivo inclui informações como o nome de domínio do controlador ou endereço IP que o IdP pode usar para enviar solicitações.
+
+.Passos
+. Selecione o menu: Configurações [Access Management].
+. Selecione a guia *SAML*.
+. Selecione *Export*.
++
+A caixa de diálogo Export Service Provider Files é aberta.
+
+. Para cada controlador, clique em *Exportar* para salvar o arquivo de metadados em seu sistema local.
++
+[NOTE]
+====
+Os campos de nome de domínio para cada controlador são somente leitura.
+
+====
++
+Anote onde o arquivo está armazenado.
+
+. No sistema local, localize o(s) arquivo(s) de metadados do provedor de serviços que você exportou.
++
+Existe um arquivo formatado em XML para cada controlador.
+
+. A partir do servidor IdP, importe o(s) arquivo(s) de metadados do Service Provider. Você pode importar os arquivos diretamente ou inserir manualmente as informações do controlador a partir deles.
+. Clique em *Close*.
+

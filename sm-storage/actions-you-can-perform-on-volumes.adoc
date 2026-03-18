@@ -1,0 +1,135 @@
+---
+permalink: sm-storage/actions-you-can-perform-on-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volumes 
+summary: 'Você pode executar diversas ações diferentes em um volume: aumentar a capacidade, excluir, copiar, inicializar, redistribuir, alterar a propriedade, alterar as configurações de armazenamento em cache e alterar as configurações de verificação de mídia.' 
+---
+= Ações que você pode executar em volumes no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode executar diversas ações diferentes em um volume: aumentar a capacidade, excluir, copiar, inicializar, redistribuir, alterar a propriedade, alterar as configurações de armazenamento em cache e alterar as configurações de verificação de mídia.
+
+
+
+== Aumentar capacidade
+
+Você pode expandir a capacidade de um volume de duas maneiras:
+
+* Utilize a capacidade livre que está disponível no pool ou grupo de volume.
++
+Você adiciona capacidade a um volume selecionando menu:Storage[Pools and Volume Groups > Add Capacity].
+
+* Adicione capacidade não atribuída (na forma de unidades não utilizadas) ao pool ou grupo de volume do volume. Use esta opção quando não houver capacidade livre no pool ou grupo de volume.
++
+Você adiciona capacidade não atribuída ao pool ou grupo de volume selecionando menu:Storage[Pools and Volume Groups > Add Capacity].
+
++
+Se não houver capacidade livre disponível no pool ou grupo de volume, você não poderá aumentar a capacidade do volume. Você deve primeiro aumentar o tamanho do pool ou grupo de volume ou excluir volumes não utilizados.
+
+
+
+Após expandir a capacidade do volume, você deve aumentar manualmente o tamanho do sistema de arquivos para que corresponda. Como fazer isso depende do sistema de arquivos que você está usando. Consulte a documentação do seu sistema operacional para obter detalhes.
+
+
+
+== Excluir
+
+Normalmente, você exclui volumes se eles foram criados com parâmetros ou capacidade incorretos, não atendem mais às necessidades de configuração de storage ou são imagens de snapshot que não são mais necessárias para backup ou teste de aplicativos. A exclusão de um volume aumenta a capacidade livre no pool ou grupo de volume.
+
+A exclusão de volumes causa a perda de todos os dados nesses volumes. A exclusão de um volume também excluirá quaisquer imagens de snapshot, agendamentos e volumes de snapshot associados e removerá quaisquer relações de espelhamento.
+
+
+
+== Copiar
+
+Ao copiar volumes, você cria uma cópia pontual de dois volumes separados, o volume de origem e o volume de destino, no mesmo array de storage. Você pode copiar volumes selecionando menu:Storage[Volumes > Copy Services > Copy volume].
+
+
+
+== Inicializar
+
+A inicialização de um volume apaga todos os dados do volume. Um volume é inicializado automaticamente quando é criado pela primeira vez. No entanto, o Recovery Guru pode aconselhar que você inicialize um volume manualmente para se recuperar de determinadas condições de falha. Ao inicializar um volume, o volume mantém seu WWN, atribuições de host, capacidade alocada e configurações de capacidade reservada. Ele também mantém as mesmas configurações de Data Assurance (DA) e configurações de segurança.
+
+Você pode inicializar volumes selecionando menu:Storage[Volumes > More > Initialize volumes].
+
+
+
+== Redistribuir
+
+Você redistribui volumes para movê-los de volta aos seus controladores proprietários preferenciais. Normalmente, os drivers de multipath movem volumes de seus controladores proprietários preferenciais quando ocorre um problema no caminho de dados entre o host e o array de storage.
+
+A maioria dos drivers de multipath do host tenta acessar cada volume em um caminho até o controlador proprietário preferencial. No entanto, se esse caminho preferencial ficar indisponível, o driver de multipath no host alterna para um caminho alternativo. Esse failover pode fazer com que a propriedade do volume mude para o controlador alternativo. Depois de resolver a condição que causou o failover, alguns hosts podem mover automaticamente a propriedade do volume de volta para o controlador proprietário preferencial, mas, em alguns casos, pode ser necessário redistribuir os volumes manualmente.
+
+Você pode redistribuir volumes selecionando menu:Storage[Volumes > More > Redistribute volumes].
+
+
+
+== Alterar propriedade do volume
+
+Alterar a propriedade de um volume altera a propriedade de controlador preferencial do volume. O proprietário de controlador preferencial de um volume é listado em menu:Storage[Volumes > View/Edit Settings > Advanced tab].
+
+Você pode alterar a propriedade de um volume selecionando menu:Storage[Volumes > More > Change ownership].
+
+
+
+=== Espelhamento e propriedade de volume
+
+Se o volume primário do par espelhado pertencer ao controlador A, então o volume secundário também será de propriedade do controlador A do array de storage remoto. Alterar o proprietário do volume primário alterará automaticamente o proprietário do volume secundário para garantir que ambos os volumes pertençam ao mesmo controlador. As alterações de propriedade atuais no lado primário se propagam automaticamente para as alterações de propriedade atuais correspondentes no lado secundário.
+
+Se um grupo de consistência de espelhamento contiver um volume secundário local e a propriedade do controlador for alterada, o volume secundário será automaticamente transferido de volta para o proprietário original do controlador na primeira operação de gravação. Você não pode alterar a propriedade do controlador de um volume secundário usando a opção *Change ownership*.
+
+
+
+=== Cópia de volume e propriedade do volume
+
+Durante uma operação de cópia de volume, o mesmo controlador deve ser o proprietário tanto do volume de origem quanto do volume de destino. Às vezes, ambos os volumes não possuem o mesmo controlador preferencial quando a operação de cópia de volume é iniciada. Portanto, a propriedade do volume de destino é automaticamente transferida para o controlador preferencial do volume de origem. Quando a cópia de volume é concluída ou interrompida, a propriedade do volume de destino é restaurada ao seu controlador preferencial.
+
+Se a propriedade do volume de origem for alterada durante a operação de cópia de volume, a propriedade do volume de destino também será alterada. Em determinados ambientes de sistema operacional, pode ser necessário reconfigurar o driver de host multipath antes que um caminho de E/S possa ser usado. (Alguns drivers multipath exigem uma edição para reconhecer o caminho de E/S. Consulte a documentação do driver para mais informações.)
+
+
+
+== Alterar configurações de cache
+
+A memória cache é uma área de armazenamento temporário volátil (RAM) no controlador que possui um tempo de acesso mais rápido do que a mídia da unidade. Se você usar memória cache, pode aumentar o desempenho geral de E/S por estes motivos:
+
+* Os dados solicitados ao host para leitura podem já estar no armazenamento em cache de uma operação anterior, eliminando assim a necessidade de acesso à unidade.
+* Os dados de gravação são inicialmente gravados no cache, o que libera o aplicativo para continuar em vez de esperar que os dados sejam gravados na unidade.
+
+
+Selecione o menu:Storage[Volumes > More > Change cache settings] para alterar as seguintes configurações de cache:
+
+* *Armazenamento em cache de leitura e gravação* -- O cache de leitura é um buffer que armazena dados lidos das unidades. Os dados para uma operação de leitura podem já estar no cache de uma operação anterior, o que elimina a necessidade de acessar as unidades. Os dados permanecem no cache de leitura até serem liberados.
++
+O cache de gravação é um buffer que armazena dados do host que ainda não foram gravados nos discos. Os dados permanecem no cache de gravação até serem gravados nos discos. O armazenamento em cache pode aumentar o desempenho de E/S.
+
+* *Armazenamento em cache com espelhamento* -- armazenamento em cache com espelhamento ocorre quando os dados gravados na memória cache de um controlador também são gravados na memória cache do outro controlador. Portanto, se um controlador falhar, o outro pode concluir todas as operações de gravação pendentes. O espelhamento do cache de gravação está disponível somente se o armazenamento em cache de gravação estiver habilitado e houver dois controladores. O armazenamento em cache com espelhamento é a configuração padrão na criação do volume.
+* *Armazenamento em cache de gravação sem baterias* -- A configuração de armazenamento em cache de gravação sem baterias permite que o armazenamento em cache continue mesmo quando as baterias estão ausentes, com defeito, completamente descarregadas ou não totalmente carregadas. Escolher armazenamento em cache de gravação sem baterias geralmente não é recomendado, pois os dados podem ser perdidos se houver uma queda de energia. Normalmente, o armazenamento em cache de gravação é desativado temporariamente pelo controlador até que as baterias sejam carregadas ou uma bateria com defeito seja substituída.
++
+Essa configuração só está disponível se você tiver habilitado o armazenamento em cache de gravação. Essa configuração não está disponível para volumes finos.
+
+* *Pré-busca dinâmica de leitura em cache* -- A pré-busca dinâmica de leitura em cache permite que o controlador copie blocos de dados sequenciais adicionais para o cache enquanto lê blocos de dados de uma unidade para o cache. Esse armazenamento em cache aumenta a chance de que solicitações futuras de dados possam ser atendidas pelo cache. A pré-busca dinâmica de leitura em cache é importante para aplicativos multimídia que usam E/S sequencial. A taxa e a quantidade de dados pré-buscados para o cache se ajustam automaticamente com base na taxa e no tamanho da solicitação de leitura do host. O acesso aleatório não faz com que dados sejam pré-buscados para o cache. Esse recurso não se aplica quando o armazenamento em cache está desativado.
++
+Para um volume fino, a pré-busca de leitura em cache dinâmica está sempre desativada e não pode ser alterada.
+
+
+
+
+
+== Alterar configurações de varredura de mídia
+
+A verificação de mídia detecta e corrige erros em blocos de disco que são lidos com pouca frequência pelos aplicativos. Essa verificação pode evitar perda de dados caso outras unidades no pool ou grupo de volume falhem, pois os dados das unidades com falha são reconstruídos usando informações de redundância e dados de outras unidades no pool ou grupo de volume.
+
+As varreduras de mídia são executadas continuamente a uma taxa constante com base na capacidade a ser verificada e na duração da varredura. As varreduras em segundo plano podem ser temporariamente suspensas por uma tarefa em segundo plano de prioridade mais alta (por exemplo, reconstrução), mas serão retomadas na mesma taxa constante.
+
+Você pode ativar e definir a duração da verificação de mídia selecionando menu:Storage[Volumes > More > Change media scan settings].
+
+Um volume é verificado somente quando a opção de verificação de mídia está habilitada para o array de storage e para esse volume. Se a verificação de redundância também estiver habilitada para esse volume, as informações de redundância no volume serão verificadas quanto à consistência com os dados, desde que o volume possua redundância. A verificação de mídia com verificação de redundância é habilitada por padrão para cada volume quando ele é criado.
+
+Se um erro de mídia irrecuperável for encontrado durante a verificação, os dados serão reparados usando informações de redundância, se disponíveis. Por exemplo, informações de redundância estão disponíveis em volumes RAID 5 otimizados ou em volumes RAID 6 que estão otimizados ou têm apenas uma unidade com falha. Se o erro irrecuperável não puder ser reparado usando informações de redundância, o bloco de dados será adicionado ao log de setores ilegíveis. Tanto erros de mídia corrigíveis quanto irrecuperáveis são relatados ao log de eventos.
+
+Se a verificação de redundância encontrar uma inconsistência entre os dados e as informações de redundância, isso será relatado no registro de eventos.

@@ -1,0 +1,55 @@
+---
+permalink: sm-hardware/overview-hardware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hardware, page, 
+summary: Você pode verificar o status do componente na página Hardware e executar algumas funções relacionadas a esses componentes. 
+---
+= Visualize e gerencie componentes de hardware no SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode verificar o status do componente na página Hardware e executar algumas funções relacionadas a esses componentes.
+
+
+
+== Quais componentes posso gerenciar?
+
+Você pode verificar o status dos componentes e executar algumas funções relacionadas a esses componentes:
+
+* **Prateleiras** -- Uma _prateleira_ é um componente que contém o hardware do array de storage (controladores, fontes de alimentação/ventoinhas e unidades). As prateleiras estão disponíveis em três tamanhos para acomodar até 12, 24 ou 60 unidades.
+* **Controladores** -- Um _controlador_ é o conjunto de hardware e firmware que implementa as funções do array de storage e de gerenciamento. Inclui a memória cache, o suporte a unidades e as portas para conexões com o host.
+* **Unidades** -- Uma unidade pode ser um disco rígido (HDD) ou uma unidade de estado sólido (SSD). Dependendo do tamanho do gabinete, é possível instalar até 12, 24 ou 60 unidades.
+
+
+Saiba mais:
+
+* link:hardware-page-overview.html["Página de hardware"]
+* link:hardware-terminology.html["Terminologia de hardware"]
+
+
+
+
+== Como faço para visualizar os componentes de hardware?
+
+Acesse a página Hardware, que fornece uma representação gráfica dos componentes físicos do array de storage. Você pode alternar entre as visualizações frontal e traseira dos gabinetes do array selecionando a guia *Unidades* ou *Controladores* no canto superior direito da visualização do gabinete.
+
+Saiba mais:
+
+* link:view-shelf-component-status-and-settings.html["Visualizar o status e as configurações dos componentes da prateleira"]
+* link:view-controller-settings.html["Exibir configurações do controlador"]
+* link:view-drive-status-and-settings.html["Visualizar o status e as configurações da unidade"]
+
+
+
+
+= Informações relacionadas
+
+Saiba mais sobre conceitos relacionados a hardware:
+
+* link:controller-states.html["Estados do controlador"]
+* link:drive-states.html["Estados da unidade"]
+* link:what-is-shelf-loss-protection-and-drawer-loss-protection.html["Proteção contra perda de prateleira e proteção contra perda de gaveta"]
+

@@ -1,0 +1,48 @@
+---
+permalink: sm-storage/disable-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, disable, snapshot, volume 
+summary: Você pode desativar um volume de Snapshot ou um volume de Snapshot em um grupo de consistência de Snapshot quando não precisar mais dele ou quiser interromper temporariamente o uso. 
+---
+= Desative um volume de Snapshot no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode desativar um volume de Snapshot ou um volume de Snapshot em um grupo de consistência de Snapshot quando não precisar mais dele ou quiser interromper temporariamente o uso.
+
+.Sobre esta tarefa
+Use a opção Disable se uma destas condições se aplicar:
+
+* Você concluiu o uso do volume de snapshot ou do volume de snapshot do grupo de consistência de snapshot por enquanto.
+* Você pretende recriar o volume de snapshot ou o volume de snapshot do grupo de consistência de snapshot (designado como leitura e gravação) posteriormente e deseja manter a capacidade reservada associada para não precisar criá-la novamente.
+* Você deseja aumentar o desempenho do array de storage interrompendo a atividade de gravação em um volume de Snapshot de leitura/gravação.
+
+
+Se o volume de snapshot ou o volume de snapshot do grupo de consistência de snapshots estiver designado como leitura/gravação, esta opção também permite interromper qualquer atividade de gravação adicional no volume de capacidade reservada associado. Se você decidir recriar o volume de snapshot ou o volume de snapshot do grupo de consistência de snapshots, deverá escolher uma imagem de snapshot do mesmo volume base.
+
+[NOTE]
+====
+Se o volume de Snapshot ou o volume de Snapshot do grupo de consistência de Snapshot fizer parte de uma relação de cópia online, você não poderá executar a opção Desabilitar no volume.
+
+====
+.Passos
+. Selecione o menu: storage[Snapshots].
+. Selecione a guia *Snapshot Volumes*.
++
+System Manager exibe todos os volumes de snapshot associados ao array de storage.
+
+. Selecione o volume de Snapshot que deseja desativar e, em seguida, selecione menu:Tarefas incomuns[Desativar].
+. Confirme que deseja realizar a operação e, em seguida, clique em *Desativar*.
+
+
+.Resultados
+* O volume de Snapshot permanece associado ao seu volume base.
+* O volume de Snapshot mantém seu World Wide Name (WWN).
+* Se for leitura e gravação, o volume de snapshot mantém sua capacidade reservada associada.
+* O volume de snapshot mantém todas as atribuições de host e acesso. No entanto, solicitações de leitura e gravação falham.
+* O volume de snapshot perde sua associação com sua imagem de snapshot.
+

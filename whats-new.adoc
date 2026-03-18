@@ -1,0 +1,114 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: whats new, new features, SANtricity 11.90 
+summary: Novos recursos no SANtricity OS. 
+---
+= Novidades no SANtricity OS 11.90
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+A tabela a seguir descreve os novos recursos no SANtricity System Manager 11.9.
+
+
+
+== Novos recursos na versão 11.90R5
+
+Esta versão contém apenas correções de defeitos e nenhum novo recurso. Para mais informações sobre as alterações nesta versão, consulte o E-Series SANtricity OS 11.90R5 README.
+
+
+
+== Novos recursos na versão 11.90R4
+
+Esta versão contém apenas pequenas alterações e nenhum novo recurso. Para mais informações sobre as alterações nesta versão, consulte o E-Series SANtricity OS 11.90R4 README.
+
+
+
+== Novos recursos na versão 11.90R3
+
+[cols="35h,~"]
+|===
+| Novo recurso | Descrição 
+
+
+ a| 
+Suporte do SANtricity OS para IOM12C e DCM3
+ a| 
+O suporte para os shelves SAS-3 IOM12C e DCM3 já está disponível para firmware de controladora 11.90R3 ou superior. Os shelves IOM12C e DCM3 são substitutos dos shelves IOM12B e DCM2.
+
+|===
+
+
+== Novos recursos na versão 11.90R2
+
+Esta versão contém apenas pequenas alterações e nenhum novo recurso. Para obter mais informações sobre as alterações nesta versão, consulte o  https://library.netapp.com/ecm/ecm_download_file/ECMLP3334464["Notas de lançamento do E-Series 11.90"^].
+
+
+
+== Novos recursos na versão 11.90R1
+
+[cols="35h,~"]
+|===
+| Novo recurso | Descrição 
+
+
+ a| 
+Novos modelos de sistema de storage – EF300C e EF600C
+ a| 
+Esta versão apresenta os sistemas de storage NVMe all flash EF300C e EF600C. Os modelos EF300C e EF600C são versões flash de alta capacidade dos sistemas de storage EF300 e EF600 já existentes. Drives SSD NVMe de alta capacidade de 30TB ou 60TB são suportados com o EF300C e EF600C. O EF300C/EF600C é compatível para uso de Dynamic Disk Pool apenas, sem suporte a RAID legado.
+
+
+
+ a| 
+Suporte para interfaces SAS de 12 Gb no EF4000
+ a| 
+O controlador E4000 agora suporta placas de interface de host SAS de 12 Gb.
+
+|===
+
+
+== Novidades na versão 11.90
+
+[cols="35h,~"]
+|===
+| Novo recurso | Descrição 
+
+
+ a| 
+Novo modelo de sistema de storage – E4000
+ a| 
+Esta versão apresenta o sistema de storage E4000 de baixo custo. O E4000 suporta 12 e 60 unidades e uma única placa de interface de host (HIC) por controlador. Para a versão inicial, as placas de interface de host suportadas incluem iSCSI e Fibre Channel. Os sistemas de storage E4000 e outros storage E-Series podem ser visualizados e gerenciados no Unified Manager.
+
+
+
+ a| 
+Aumento da capacidade para Dynamic Disk Pools
+ a| 
+A capacidade dos Dynamic Disk Pools (DDP) foi aumentada para 12 PB sempre que a capacidade de cada unidade individual dentro do pool for superior a 23 TB. Se a capacidade da unidade individual for inferior a 23 TB, a capacidade do DDP é de 6 PB.
+
+
+
+ a| 
+Configurações padrão de verificação de mídia aumentadas
+ a| 
+A taxa padrão de verificação de mídia foi aumentada para 120 dias.
+
+
+
+ a| 
+Chave privada agora aceita para gerenciamento externo de chaves
+ a| 
+Arquivos de solicitação de assinatura de certificado (CSR) gerados externamente por meio de pares de chaves privada e pública agora podem ser importados através do System Manager.
+
+
+
+ a| 
+O recurso de bloqueio de login agora está disponível para Web Services
+ a| 
+Configurável apenas através da API REST, uma nova configuração de bloqueio de login agora está disponível para Web Services incorporados e proxy.
+
+|===

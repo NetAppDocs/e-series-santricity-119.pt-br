@@ -1,0 +1,71 @@
+---
+permalink: sm-settings/define-log-policies.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, define, audit, log, policies, 
+summary: Você pode alterar a política de sobrescrita e os tipos de eventos registrados no log de auditoria. 
+---
+= Defina as políticas de log de auditoria no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar a política de sobrescrita e os tipos de eventos registrados no log de auditoria.
+
+.Antes de começar
+Você precisa estar conectado com um perfil de usuário que inclua permissões de Security admin. Caso contrário, as funções de Access Management não serão exibidas.
+
+.Sobre esta tarefa
+Esta tarefa descreve como alterar as configurações do log de auditoria, que incluem a política para sobrescrever eventos antigos e a política para registrar tipos de eventos.
+
+.Passos
+. Selecione o menu: Configurações [Access Management].
+. Selecione a guia *log de auditoria*.
+. Selecione *Visualizar/Editar Settings*.
++
+A caixa de diálogo Configurações do log de auditoria é aberta.
+
+. Altere a política de sobrescrita ou os tipos de eventos registrados.
++
+.Detalhes do campo
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Configuração | Descrição 
+
+
+ a| 
+Política de sobrescrita
+ a| 
+Determina a política para sobrescrever eventos antigos quando a capacidade máxima é atingida:
+
+** *Permitir que os eventos mais antigos no log de auditoria sejam sobrescritos quando o log de auditoria estiver cheio* -- Sobrescreve os eventos antigos quando o log de auditoria atinge 50,000 registros.
+** *Exigir que os eventos do log de auditoria sejam excluídos manualmente* -- Especifica que os eventos não serão excluídos automaticamente; em vez disso, um aviso de limite será exibido na porcentagem definida. Os eventos devem ser excluídos manualmente.
++
+
+NOTE: Se a política de sobrescrita estiver desativada e as entradas do log de auditoria atingirem o limite máximo, o acesso ao System Manager será negado aos usuários sem permissões de Security Admin. Para restaurar o acesso ao sistema para usuários sem permissões de Security Admin, um usuário atribuído à função de Security Admin deve excluir os registros de eventos antigos.
+
++
+
+NOTE: As políticas de sobrescrita não se aplicam se um servidor syslog estiver configurado para arquivamento de logs de auditoria.
+
+
+
+
+
+ a| 
+Nível de ações a serem registradas
+ a| 
+Determina os tipos de eventos a serem registrados:
+
+** *Somente eventos de modificação de registros* -- Mostra apenas os eventos em que uma ação do usuário envolve uma alteração no sistema.
+** *Registrar todos os eventos de modificação e somente leitura* -- Exibe todos os eventos, incluindo uma ação do usuário que envolva a leitura ou o download de informações.
+
+
+|===
+====
+. Clique em *Salvar*.
+

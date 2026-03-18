@@ -1,0 +1,39 @@
+---
+permalink: sm-mirroring/change-role-between-volumes-in-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, role, volumes, mirrored, pair, 
+summary: Você pode realizar uma reversão de função entre os dois volumes em um par espelhado que estão participando do espelhamento síncrono para fins administrativos ou em caso de desastre no array de storage. 
+---
+= Altere a função entre volumes em um par espelhado no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível realizar uma reversão de função entre os dois volumes em um par espelhado que participam do espelhamento síncrono. Essa tarefa pode ser necessária para fins administrativos ou em caso de desastre no array de storage.
+
+.Sobre esta tarefa
+Você pode rebaixar o volume primário para a função de secundário ou promover o volume secundário para a função de primário. Todos os hosts que acessam o volume primário têm permissão de leitura/gravação para o volume. Quando o volume primário se torna um volume secundário, somente as gravações remotas iniciadas pelo controlador primário são gravadas no volume.
+
+.Passos
+. Selecione o menu: Storage [Espelhamento Síncrono].
+. Selecione o par espelhado que contém os volumes para os quais deseja alterar a função e, em seguida, selecione menu:More[Change Role].
++
+O sistema exibe uma confirmação.
+
+. Confirme que deseja alterar a função dos volumes e, em seguida, selecione *Alterar função*.
++
+[NOTE]
+====
+Se o array de storage local não conseguir se comunicar com o array de storage remoto, o sistema exibirá a caixa de diálogo Cannot Contact Storage Array quando uma alteração de função for solicitada, mas o array de storage remoto não puder ser contatado. Clique em *Yes* para forçar a alteração de função.
+
+====
+
+
+.Resultados
+System Manager executa a seguinte ação:
+
+* Se o volume associado no par espelhado puder ser contatado, as funções entre os volumes se invertem. System Manager promove o volume secundário no par espelhado à função primária ou rebaixa o volume primário no par espelhado à função secundária (dependendo da sua seleção).
+

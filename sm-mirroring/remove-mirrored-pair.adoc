@@ -1,0 +1,41 @@
+---
+permalink: sm-mirroring/remove-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remove, asynchronous, mirror, relationship, 
+summary: Você remove um par espelhado para remover a relação de espelhamento do volume primário no array de storage local e do volume secundário no array de storage remoto. 
+---
+= Remover relacionamentos de espelhamento assíncrono no SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você remove um par espelhado para remover a relação de espelhamento do volume primário no array de storage local e do volume secundário no array de storage remoto.
+
+.Sobre esta tarefa
+Revise as seguintes informações sobre pares espelhados órfãos:
+
+* Um par espelhado órfão existe quando um volume membro em um grupo de espelhamento de consistência foi removido de um lado (seja do lado do array de storage local ou do lado do array de storage remoto), mas não do outro lado.
+* Pares espelhados órfãos são detectados quando a comunicação entre arrays é restaurada e os dois lados da configuração de espelhamento reconciliam os parâmetros do espelhamento.
+* Você pode remover um par espelhado para corrigir um estado de par espelhado órfão.
+
+
+.Passos
+. Selecione o menu: armazenamento [Espelhamento Assíncrono].
+. Selecione a guia *Par Espelhado*.
++
+A tabela de pares espelhados é exibida e mostra todos os pares espelhados associados ao array de storage.
+
+. Selecione o par espelhado que você deseja remover e, em seguida, clique em *Remover*.
+. Confirme que deseja remover o par espelhado e, em seguida, clique em *Remover*.
+
+
+.Resultados
+System Manager executa as seguintes ações:
+
+* Remove a relação de espelhamento do grupo de consistência de espelhamento no array de storage local e no array de storage remoto, e exclui a capacidade reservada.
+* Retorna o volume primário e o volume secundário para volumes acessíveis ao host e não espelhados.
+* Atualiza o bloco de Espelhamento Assíncrono com a remoção do par espelhado assíncrono.
+
