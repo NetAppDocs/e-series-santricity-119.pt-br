@@ -21,7 +21,7 @@ Você pode configurar SANtricity System Manager para algumas configurações ger
 As configurações do array incluem:
 
 * link:cache-settings-and-performance.html["Configurações de cache e desempenho"]
-* link:automatic-load-balancing-overview.html"["Balanceamento de carga automático"]
+* link:automatic-load-balancing-overview.html["Balanceamento de carga automático"]
 * link:how-add-on-features-work.html["Recursos adicionais"]
 * link:overview-drive-security.html["Segurança de unidade"]
 
