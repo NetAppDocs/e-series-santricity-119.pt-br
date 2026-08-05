@@ -15,6 +15,7 @@ O recurso de Snapshots utiliza volumes base, capacidade reservada e grupos de Sn
 
 
 
+[[base-volumes]]
 == Volumes de base
 
 Um _volume base_ é o volume usado como fonte para uma imagem de snapshot. Um volume base pode ser um volume espesso ou um volume fino e pode residir em um pool ou grupo de volume.
@@ -29,6 +30,7 @@ image::../media/sam1130-dwg-snapshots-images-overview.gif[Objetos Snapshot e vol
 
 
 
+[[reserved-capacity-and-snapshot-groups]]
 == Capacidade reservada e grupos de snapshot
 
 System Manager organiza as imagens de snapshot em _snapshot groups_. Quando System Manager estabelece o snapshot group, ele automaticamente cria a _reserved capacity_ associada para armazenar as imagens de snapshot do grupo e para acompanhar as alterações subsequentes em snapshots adicionais.
@@ -43,6 +45,7 @@ Snapshot groups não exigem nenhuma ação do usuário, mas você pode ajustar a
 
 
 
+[[auto-deletion]]
 == Exclusão automática
 
 Ao trabalhar com snapshots, utilize a opção padrão para que a exclusão automática esteja ativada. A exclusão automática remove automaticamente a imagem de snapshot mais antiga quando o grupo de snapshots atinge o limite do grupo de snapshots de 32 imagens. Se você desativar a exclusão automática, então os limites do grupo de snapshots serão eventualmente excedidos e você precisará realizar ações manuais para configurar as configurações do grupo de snapshots e gerenciar a capacidade reservada.

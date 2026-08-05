@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-settings-will-be-imported]]
 == Quais configurações serão importadas?
 
 O recurso Importar Configurações é uma operação em lote que carrega configurações de um array de storage para vários arrays de storage. As configurações importadas durante essa operação dependem de como o array de storage está configurado no SANtricity System Manager.
@@ -33,6 +34,7 @@ As seguintes configurações podem ser importadas para vários arrays de storage
 
 
 
+[[why-dont-i-see-all-of-my-storage-arrays]]
 == Por que não vejo todos os meus arrays de storage?
 
 Durante a operação de Import Settings, alguns dos seus arrays de storage podem não estar disponíveis na caixa de diálogo de seleção de destino.

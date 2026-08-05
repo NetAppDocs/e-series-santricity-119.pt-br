@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-happens-when-i-use-an-isns-server-for-registration]]
 == O que acontece quando uso um servidor iSNS para registro?
 
 Quando as informações do Internet Storage Name Service (iSNS) são utilizadas, os hosts (iniciadores) podem ser configurados para consultar o servidor iSNS para recuperar informações do alvo (controladores).
@@ -24,6 +25,7 @@ Este registro fornece ao servidor iSNS o Nome Qualificado iSCSI (IQN) e as infor
 
 
 
+[[which-registration-methods-are-automatically-supported-for-iscsi]]
 == Quais métodos de registro são suportados automaticamente para iSCSI?
 
 A implementação do iSCSI suporta o método de descoberta Internet Storage Name Service (iSNS) ou o uso do comando Send Targets.
@@ -34,6 +36,7 @@ Se você não configurar iSNS, o host iSCSI pode enviar o comando Send Targets d
 
 
 
+[[how-do-i-interpret-iser-over-infiniband-statistics]]
 == Como interpreto as estatísticas de iSER sobre InfiniBand?
 
 A caixa de diálogo Exibir estatísticas de iSER sobre InfiniBand exibe estatísticas do alvo local (protocolo) e estatísticas da interface iSER sobre InfiniBand (IB). Todas as estatísticas são somente leitura e não podem ser definidas.
@@ -46,6 +49,7 @@ Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou
 
 
 
+[[what-else-do-i-need-to-do-to-configure-or-diagnose-iser-over-infiniband]]
 == O que mais preciso fazer para configurar ou diagnosticar iSER sobre InfiniBand?
 
 A tabela a seguir lista as funções do SANtricity System Manager que você pode usar para configurar e gerenciar iSER sobre sessões InfiniBand.
@@ -87,6 +91,7 @@ Veja estatísticas de iSER sobre InfiniBand
 |===
 
 
+[[what-else-do-i-need-to-do-to-configure-or-diagnose-iscsi]]
 == O que mais preciso fazer para configurar ou diagnosticar iSCSI?
 
 As sessões iSCSI podem ocorrer com hosts ou arrays de storage remotos em uma relação de espelhamento assíncrono. As tabelas a seguir listam as funções do SANtricity System Manager que você pode usar para configurar e gerenciar essas sessões iSCSI.
@@ -98,6 +103,7 @@ As configurações de iSCSI só estão disponíveis se o seu array de storage fo
 ====
 
 
+[[configure-iscsi]]
 === Configurar iSCSI
 
 [cols="1a,1a"]
@@ -142,6 +148,7 @@ ou
 |===
 
 
+[[diagnose-iscsi]]
 === Diagnosticar iSCSI
 
 [cols="1a,1a"]

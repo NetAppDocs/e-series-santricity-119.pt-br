@@ -15,6 +15,7 @@ Saiba como os termos de volume se aplicam ao seu array de storage.
 
 
 
+[[all-volume-types]]
 == Todos os tipos de volume
 
 [cols="25h,~"]
@@ -215,6 +216,7 @@ A configuração de armazenamento em cache de gravação sem baterias permite qu
 |===
 
 
+[[specific-to-thin-volumes]]
 == Específico para volumes finos
 
 [NOTE]

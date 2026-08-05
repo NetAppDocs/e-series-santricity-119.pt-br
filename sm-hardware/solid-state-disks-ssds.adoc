@@ -15,6 +15,7 @@ Discos de estado sólido (SSDs) são dispositivos de storage que utilizam memór
 
 
 
+[[advantages-of-ssds]]
 == Vantagens dos SSDs
 
 As vantagens dos SSDs em relação aos discos rígidos incluem:
@@ -29,18 +30,21 @@ As vantagens dos SSDs em relação aos discos rígidos incluem:
 
 
 
+[[identifying-ssds]]
 == Identificando SSDs
 
 Na página de Hardware, você pode localizar os SSDs na visualização da prateleira frontal. Procure por baias de unidade que exibem um ícone de raio, o que indica que um SSD está instalado.
 
 
 
+[[volume-groups]]
 == Grupos de volume
 
 Todas as unidades em um grupo de volume devem ser do mesmo tipo de mídia (todas SSDs ou todas hard drives). Grupos de volume não podem conter uma mistura de tipos de mídia ou tipos de interface.
 
 
 
+[[caching]]
 == Armazenamento em cache
 
 O armazenamento em cache de gravação do controlador está sempre ativado para SSDs. O armazenamento em cache de gravação melhora o desempenho e prolonga a vida útil do SSD.

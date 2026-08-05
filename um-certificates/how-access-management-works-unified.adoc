@@ -15,6 +15,7 @@ Utilize o Access Management para estabelecer autenticação de usuário no SANtr
 
 
 
+[[configuration-workflow]]
 == Fluxo de trabalho de configuração
 
 A configuração do Access Management funciona da seguinte maneira:
@@ -47,6 +48,7 @@ No primeiro acesso, o nome de usuário `admin` é exibido automaticamente e não
 
 
 
+[[functions-available-in-unified-manager]]
 == Funções disponíveis no Unified Manager
 
 O acesso às funções depende das funções atribuídas ao usuário, que incluem o seguinte:

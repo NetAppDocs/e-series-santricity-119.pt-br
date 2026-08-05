@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[why-cant-i-log-in]]
 == Por que não consigo fazer login?
 
 Se você receber um erro ao tentar fazer login, revise estas possíveis causas.
@@ -30,6 +31,7 @@ Os erros de login podem ocorrer por um destes motivos:
 
 
 
+[[what-do-i-need-to-know-before-adding-a-directory-server]]
 == O que preciso saber antes de adicionar um servidor de diretório?
 
 Antes de adicionar um servidor de diretório em Access Management, você deve atender a certos requisitos.
@@ -41,6 +43,7 @@ Antes de adicionar um servidor de diretório em Access Management, você deve at
 
 
 
+[[what-do-i-need-to-know-about-mapping-to-storage-array-roles]]
 == O que preciso saber sobre o mapeamento para funções de array de storage?
 
 Antes de associar grupos a funções, revise as diretrizes.
@@ -66,6 +69,7 @@ Se você estiver usando um servidor LDAP (Lightweight Directory Access Protocol)
 
 
 
+[[saml]]
 === SAML
 
 Se você estiver usando os recursos de Security Assertion Markup Language (SAML) incorporados no array de storage, certifique-se de que:
@@ -83,12 +87,14 @@ Se você estiver usando os recursos de Security Assertion Markup Language (SAML)
 
 
 
+[[what-do-i-need-to-know-before-configuring-and-enabling-saml]]
 == O que preciso saber antes de configurar e habilitar o SAML?
 
 Antes de configurar e ativar os recursos do Security Assertion Markup Language (SAML) para autenticação, certifique-se de atender aos seguintes requisitos e compreender as restrições do SAML.
 
 
 
+[[requirements]]
 === Requisitos
 
 Antes de começar, certifique-se de que:
@@ -103,6 +109,7 @@ Antes de começar, certifique-se de que:
 
 
 
+[[restrictions]]
 === Restrições
 
 Além dos requisitos acima, certifique-se de entender as seguintes restrições:
@@ -124,6 +131,7 @@ Além dos requisitos acima, certifique-se de entender as seguintes restrições:
 
 
 
+[[what-are-the-local-users]]
 == Quais são os usuários locais?
 
 Os usuários locais são predefinidos no sistema e incluem permissões específicas.

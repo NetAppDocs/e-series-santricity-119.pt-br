@@ -15,6 +15,7 @@ Você configura espelhamento assíncrono ou síncrono no SANtricity Unified Mana
 
 
 
+[[asynchronous-mirroring-workflow]]
 == Fluxo de trabalho de espelhamento assíncrono
 
 O espelhamento assíncrono envolve o seguinte fluxo de trabalho:
@@ -45,6 +46,7 @@ Como a replicação assíncrona é periódica, o sistema pode consolidar os bloc
 
 
 
+[[synchronous-mirroring-workflow]]
 == Fluxo de trabalho de espelhamento síncrono
 
 Espelhamento síncrono envolve o seguinte fluxo de trabalho:

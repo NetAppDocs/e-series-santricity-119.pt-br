@@ -49,9 +49,9 @@ Para que o servidor DHCP forneça o endereço do servidor iSNS, você deve confi
 ** *Especificar configuração estática manualmente* -- Selecione esta opção se você quiser inserir um endereço IP estático para o servidor iSNS. (Se desejar, você pode cortar e colar endereços nos campos.) No campo, insira um endereço IPv4 ou um endereço IPv6. Se você configurou ambos, IPv4 é o padrão. Insira também uma porta TCP de escuta (use o padrão 3205 ou insira um valor entre 49152 e 65535).
 
 
-. ${post_edited_translations.segment}
+. Para permitir que o array de storage participe de sessões de descoberta sem nome, selecione *Ativar sessões de descoberta sem nome*.
 +
-** ${post_edited_translations.segment}
+** Quando ativada, os iniciadores iSCSI não precisam especificar o IQN de destino para recuperar as informações do controlador.
 ** Quando desabilitado, as sessões de descoberta são impedidas, a menos que o iniciador forneça o IQN de destino. Desabilitar sessões de descoberta sem nome fornece segurança adicional.
 
 

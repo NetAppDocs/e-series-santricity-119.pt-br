@@ -15,6 +15,7 @@ SANtricity System Manager reporta vários estados para as unidades.
 
 
 
+[[accessibility-states]]
 == Estados de acessibilidade
 
 [cols="25h,~"]
@@ -25,18 +26,18 @@ SANtricity System Manager reporta vários estados para as unidades.
  a| 
 Ignorado
  a| 
-${post_edited_translations.segment}
+A unidade está fisicamente presente, mas o controlador não consegue se comunicar com ela em nenhuma das portas.
 
 
 
  a| 
 Incompatível
  a| 
-${post_edited_translations.segment}
+Uma das seguintes condições existe:
 
-* ${post_edited_translations.segment}
-* ${post_edited_translations.segment}
-* ${post_edited_translations.segment}
+* A unidade não é certificada para uso no array de storage.
+* A unidade possui um tamanho de setor diferente.
+* A unidade contém dados de configuração inutilizáveis de uma versão de firmware mais antiga ou mais recente.
 
 
 
@@ -49,9 +50,9 @@ A unidade foi removida incorretamente do array de storage.
 
 
  a| 
-${post_edited_translations.segment}
+Presente
  a| 
-${post_edited_translations.segment}
+O controlador pode se comunicar com a unidade em ambas as portas.
 
 
 
@@ -63,6 +64,7 @@ A unidade não está respondendo a comandos.
 |===
 
 
+[[role-states]]
 == Estados de função
 
 [cols="25h,~"]
@@ -99,6 +101,7 @@ A unidade não faz parte de um pool ou grupo de volume.
 |===
 
 
+[[availability-states]]
 == Estados de disponibilidade
 
 [cols="25h,~"]

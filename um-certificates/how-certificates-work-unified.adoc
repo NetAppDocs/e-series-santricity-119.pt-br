@@ -15,6 +15,7 @@ Certificados são arquivos digitais que identificam entidades online, como sites
 
 
 
+[[signed-certificates]]
 == Certificados assinados
 
 Os certificados garantem que as comunicações web sejam transmitidas de forma criptografada, privada e inalterada, somente entre o servidor e o cliente. Usando Unified Manager, você pode gerenciar certificados para o navegador em um sistema de gerenciamento de hosts e para os controladores nos arrays de storage descobertos.
@@ -39,6 +40,7 @@ A Autoridade Certificadora (CA) toma medidas para verificar sua identidade duran
 
 
 
+[[self-signed-certificates]]
 == Certificados autoassinados
 
 Cada controlador no array de storage inclui um certificado autoassinado pré-instalado. Um certificado autoassinado é semelhante a um certificado assinado por uma CA, exceto que é validado pelo proprietário da entidade em vez de uma terceira parte. Assim como um certificado assinado por uma CA, um certificado autoassinado contém sua própria chave privada e também garante que os dados sejam criptografados e enviados por uma conexão HTTPS entre um servidor e cliente.
@@ -47,12 +49,14 @@ Os certificados autoassinados não são "trusted" pelos navegadores. Cada vez qu
 
 
 
+[[certificates-for-unified-manager]]
 == Certificados para Unified Manager
 
 A interface do Unified Manager é instalada com o Web Services Proxy em um sistema host. Quando você abre um navegador e tenta se conectar ao Unified Manager, o navegador tenta verificar se o host é uma fonte confiável ao verificar a presença de um certificado digital. Se o navegador não localizar um certificado assinado por uma CA para o servidor, ele abre uma mensagem de aviso. A partir daí, você pode continuar para o site para aceitar o certificado autoassinado para essa sessão. Ou, você pode obter certificados digitais assinados por uma CA para não ver mais a mensagem de aviso.
 
 
 
+[[certificates-for-controllers]]
 == Certificados para controladores
 
 Durante uma sessão do Unified Manager, você poderá ver mensagens de segurança adicionais ao tentar acessar um controlador que não possui um certificado assinado por uma CA. Nesse caso, você pode confiar permanentemente no certificado autoassinado ou importar os certificados assinados pela CA para os controladores, para que o servidor Web Services Proxy possa autenticar as solicitações de clientes recebidas desses controladores.

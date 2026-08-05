@@ -21,6 +21,7 @@ O processo para criar um volume é um procedimento de várias etapas.
 
 
 
+[[step-1-select-host-for-a-volume]]
 == Passo 1: selecione o host para um volume
 
 Você cria volumes para adicionar capacidade de storage a uma carga de trabalho específica de um aplicativo e para tornar os volumes criados visíveis para um host ou cluster de hosts específico. Além disso, a sequência de criação de volumes oferece opções para alocar quantidades específicas de capacidade a cada volume que você deseja criar.
@@ -61,6 +62,7 @@ A caixa de diálogo Select Workload é exibida.
 
 
 
+[[step-2-select-a-workload-for-a-volume]]
 == Etapa 2: selecione uma carga de trabalho para um volume
 
 Selecione uma carga de trabalho para personalizar a configuração do array de storage para um aplicativo específico, como Microsoft SQL Server, Microsoft Exchange, aplicativos de vigilância por vídeo ou VMware. Você pode selecionar "Outro aplicativo" se o aplicativo que pretende usar neste array de storage não estiver listado.
@@ -93,6 +95,7 @@ Selecione uma das opções "Other" se o aplicativo que você pretende usar neste
 
 
 
+[[step-3-add-or-edit-volumes]]
 == Etapa 3: adicionar ou editar volumes
 
 System Manager pode sugerir uma configuração de volume com base no aplicativo ou carga de trabalho que você selecionou. Essa configuração de volume é otimizada com base no tipo de aplicativo que a carga de trabalho suporta. Você pode aceitar a configuração de volume recomendada ou pode editá-la conforme necessário. Se você selecionou um dos aplicativos "Outros", deverá especificar manualmente os volumes e as características que deseja criar.
@@ -330,6 +333,7 @@ Recurso provisionado (EF300 e EF600 somente)
 
 
 
+[[step-4-review-volume-configuration]]
 == Etapa 4: revisar a configuração do volume
 
 Analise um resumo dos volumes que pretende criar e faça as alterações necessárias.

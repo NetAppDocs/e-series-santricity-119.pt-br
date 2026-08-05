@@ -16,6 +16,7 @@ Se você planeja usar espelhamento assíncrono, tenha em mente os seguintes requ
 
 
 
+[[unified-manager]]
 == Unified Manager
 
 Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a interface Unified Manager. Unified Manager é instalado em um sistema host juntamente com o Web Services Proxy.
@@ -27,6 +28,7 @@ Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a 
 
 
 
+[[storage-arrays]]
 == Array de storage
 
 * Você precisa ter dois arrays de storage.
@@ -41,6 +43,7 @@ Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a 
 
 
 
+[[supported-connections]]
 == Conexões suportadas
 
 O espelhamento assíncrono pode usar conexões FC ou iSCSI, ou ambas, para comunicação entre sistemas de storage locais e remotos. No momento da criação de um grupo de consistência de espelhamento, o administrador pode selecionar FC ou iSCSI para esse grupo se ambos estiverem conectados ao array de storage remoto. Não há failover de um tipo de canal para o outro.
@@ -92,6 +95,7 @@ O E4000 não suporta espelhamento assíncrono ao usar o protocolo iSCSI.
 ====
 
 
+[[mirrored-volume-candidates]]
 == Candidatos a volume espelhado
 
 * Nível RAID, parâmetros de armazenamento em cache e tamanho do segmento podem ser diferentes nos volumes primário e secundário de um par espelhado assíncrono.
@@ -114,6 +118,7 @@ NOTE: Para controladores EF600 e EF300, os volumes primário e secundário de um
 
 
 
+[[reserved-capacity]]
 == Capacidade reservada
 
 * É necessário um volume de capacidade reservada para um volume primário e para um volume secundário em um par espelhado para registrar informações de gravação para recuperação de reinicializações do controlador e outras interrupções temporárias.
@@ -128,6 +133,7 @@ NOTE: Para controladores EF600 e EF300, os volumes primário e secundário de um
 
 
 
+[[drive-security-feature]]
 == Recurso de segurança da unidade
 
 * Se você estiver usando unidades com recursos de segurança, o volume primário e o volume secundário devem ter configurações de segurança compatíveis. Essa restrição não é aplicada; portanto, você deve verificá-la por conta própria.

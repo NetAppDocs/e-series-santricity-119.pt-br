@@ -16,6 +16,7 @@ Você pode configurar SANtricity System Manager para enviar alertas do array de 
 
 
 
+[[what-are-alerts]]
 == O que são alertas?
 
 _Alerts_ notificam os administradores sobre eventos importantes que ocorrem no array de storage. Os eventos podem incluir problemas como falha de bateria, um componente passando de Optimal para Offline ou erros de redundância no controlador. Todos os eventos Critical são considerados "alertáveis", juntamente com alguns eventos Warning e Informational.
@@ -28,6 +29,7 @@ Saiba mais:
 
 
 
+[[how-do-i-configure-alerts]]
 == Como faço para configurar alertas?
 
 Você pode configurar alertas para serem enviados como uma mensagem para um ou mais endereços de e-mail, como um trap SNMP para um servidor SNMP ou como uma mensagem para um servidor syslog. A configuração de alertas está disponível em menu:Configurações[Alertas].
@@ -41,6 +43,7 @@ Saiba mais:
 
 
 
+[[related-information]]
 == Informações relacionadas
 
 Saiba mais sobre conceitos relacionados a alertas:

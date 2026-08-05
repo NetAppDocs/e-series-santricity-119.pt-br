@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-data-am-i-collecting]]
 == Que dados estou coletando?
 
 O recurso AutoSupport e a funcionalidade de Coleta Manual de Dados de Suporte oferecem maneiras de coletar dados em um pacote de suporte ao cliente para solução de problemas remota e análise de problemas pelo suporte técnico.
@@ -24,6 +25,7 @@ O pacote de suporte ao cliente reúne todos os tipos de informações sobre o ar
 
 
 
+[[what-does-unreadable-sectors-data-show-me]]
 == O que os dados de setores ilegíveis me mostram?
 
 Você pode exibir dados detalhados sobre setores ilegíveis detectados nas unidades do seu array de storage.
@@ -104,6 +106,7 @@ Exibe um dos seguintes tipos de falha:
 |===
 
 
+[[what-is-a-health-image]]
 == O que é uma health image?
 
 Uma imagem de integridade é um despejo de dados brutos da memória do processador do controlador que o suporte técnico pode usar para diagnosticar um problema com um controlador.
@@ -112,6 +115,7 @@ O firmware gera automaticamente uma imagem de integridade quando detecta determi
 
 
 
+[[what-do-the-autosupport-features-do]]
 == O que as funcionalidades do AutoSupport fazem?
 
 O recurso AutoSupport é composto por três funcionalidades individuais que você ativa separadamente.
@@ -123,6 +127,7 @@ O recurso AutoSupport é composto por três funcionalidades individuais que voc�
 
 
 
+[[what-type-of-data-is-collected-through-the-autosupport-feature]]
 == Que tipo de dados é coletado por meio do recurso AutoSupport?
 
 O recurso AutoSupport contém três tipos de despacho padrão: despachos de eventos, despachos agendados e despachos sob demanda e de diagnóstico remoto.
@@ -157,6 +162,7 @@ O recurso AutoSupport envia automaticamente vários despachos em uma programaç�
 
 
 
+[[how-do-i-configure-the-delivery-method-for-the-autosupport-feature]]
 == Como configuro o método de entrega para o recurso AutoSupport?
 
 O recurso AutoSupport suporta os protocolos HTTPS e SMTP para o envio de despachos AutoSupport ao suporte técnico.
@@ -213,6 +219,7 @@ Se o teste de configuração falhar, verifique suas configurações e execute o 
 
 
 
+[[what-is-configuration-data]]
 == O que são dados de configuração?
 
 Ao selecionar Coletar dados de configuração, o sistema salva o estado atual do banco de dados de configuração RAID.
@@ -221,6 +228,7 @@ O banco de dados de configuração RAID inclui todos os dados para grupos de vol
 
 
 
+[[what-do-i-need-to-know-before-upgrading-the-santricity-os-software]]
 == O que preciso saber antes de atualizar o software SANtricity OS?
 
 Antes de atualizar o software e firmware do seu controlador, esteja ciente destes itens.
@@ -268,6 +276,7 @@ CAUTION: Não faça alterações no array de storage enquanto o upgrade estiver 
 
 
 
+[[what-do-i-need-to-know-before-suspending-iom-auto-synchronization]]
 == O que preciso saber antes de suspender a sincronização automática do IOM?
 
 Suspender a sincronização automática do IOM impede que o firmware do IOM seja atualizado na próxima vez que ocorrer uma atualização do software do controlador SANtricity OS.
@@ -276,6 +285,7 @@ Normalmente, o software do controlador e o firmware do IOM são atualizados em c
 
 
 
+[[why-is-my-firmware-upgrade-progressing-so-slowly]]
 == Por que a atualização do meu firmware está progredindo tão lentamente?
 
 O progresso da atualização do firmware depende da carga geral do sistema.
@@ -284,6 +294,7 @@ Durante um upgrade online do firmware da unidade, se uma transferência de volum
 
 
 
+[[what-do-i-need-to-know-before-upgrading-drive-firmware]]
 == O que preciso saber antes de atualizar o firmware da unidade?
 
 Antes de atualizar o firmware da unidade, esteja ciente destes itens.
@@ -298,6 +309,7 @@ Antes de atualizar o firmware da unidade, esteja ciente destes itens.
 
 
 
+[[how-do-i-choose-which-type-of-upgrade-to-perform]]
 == Como escolho qual tipo de upgrade realizar?
 
 Você escolhe o tipo de upgrade a ser realizado na unidade, dependendo do estado do pool ou grupo de volume.

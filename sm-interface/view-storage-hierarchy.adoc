@@ -17,6 +17,7 @@ Para visualizar a hierarquia de armazenamento, acesse a página inicial e clique
 
 
 
+[[physical-components]]
 == Componentes físicos
 
 Os componentes físicos de um array de storage são descritos nesta tabela.
@@ -81,6 +82,7 @@ Um cliente de gerenciamento é o computador onde um navegador está instalado pa
 |===
 
 
+[[logical-components]]
 == Componentes lógicos
 
 As unidades no array de storage fornecem a capacidade de storage físico para os dados. Use System Manager para configurar a capacidade física em componentes lógicos, como pools, grupos de volume e volumes. Esses componentes são as ferramentas que você usa para configurar, armazenar, manter e preservar dados no array de storage. Os componentes lógicos de um array de storage são descritos nesta tabela.

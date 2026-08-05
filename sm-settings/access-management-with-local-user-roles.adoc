@@ -15,6 +15,7 @@ Para o gerenciamento de acesso, os administradores podem usar os recursos de RBA
 
 
 
+[[configuration-workflow]]
 == Fluxo de trabalho de configuração
 
 As funções de usuário locais são pré-configuradas para o array de storage. Para usar funções de usuário locais para autenticação, os administradores podem fazer o seguinte:
@@ -33,6 +34,7 @@ O `admin` usuário tem acesso total a todas as funções do sistema.
 
 
 
+[[management]]
 == Gerenciamento
 
 Ao usar apenas funções de usuário locais para autenticação, os administradores podem executar as seguintes tarefas de gerenciamento:

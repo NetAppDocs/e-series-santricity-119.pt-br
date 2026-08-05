@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[why-does-the-cannot-access-other-controller-dialog-box-appear]]
 == Por que a caixa de diálogo Não é possível acessar outro controlador aparece?
 
 Ao executar determinadas operações relacionadas a certificados de CA (por exemplo, importar um certificado), você pode ver uma caixa de diálogo solicitando que aceite um certificado autoassinado para o segundo controlador.
@@ -32,6 +33,7 @@ Se esta caixa de diálogo aparecer novamente e você não conseguir concluir uma
 
 
 
+[[how-do-i-know-what-certificates-need-to-be-uploaded-to-santricity-system-manager-for-external-key-management]]
 == Como posso saber quais certificados precisam ser carregados no SANtricity System Manager para gerenciamento de chaves externas?
 
 Para o gerenciamento de chaves externas, você importa dois tipos de certificados para autenticação entre o array de storage e o servidor de gerenciamento de chaves para que as duas entidades possam confiar uma na outra.
@@ -46,6 +48,7 @@ Um certificado de servidor de gerenciamento de chaves valida o servidor de geren
 
 
 
+[[what-do-i-need-to-know-about-certificate-revocation-checking]]
 == O que preciso saber sobre a verificação de revogação de certificados?
 
 SANtricity System Manager permite verificar certificados revogados usando um servidor Online Certificate Status Protocol (OCSP), em vez de enviar Certificate Revocation Lists (CRLs).
@@ -61,6 +64,7 @@ Especificar um endereço de resposta OCSP no System Manager ou na interface de l
 ====
 
 
+[[what-types-of-servers-will-revocation-checking-be-enabled-for]]
 == Para quais tipos de servidores a verificação de revogação será habilitada?
 
 O array de storage realiza a verificação de revogação sempre que se conecta a um AutoSupport server, External Key Management Server (EKMS), servidor Lightweight Directory Access Protocol over SSL (LDAPS) ou a um servidor Syslog.

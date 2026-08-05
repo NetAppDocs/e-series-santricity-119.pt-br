@@ -16,18 +16,44 @@ A tabela a seguir descreve os novos recursos no SANtricity System Manager 11.9.
 
 
 
+[[new-features-in-version-11-90r6]]
+== Novos recursos na versão 11.90R6
+
+[cols="35h,~"]
+|===
+| Novo recurso | Descrição 
+
+
+ a| 
+Suporte atualizado para versão de firmware IOM/DCM
+ a| 
+Novas versões de firmware IOM/DCM agora são compatíveis com os seguintes modelos IOM/DCM:
+
+* IOM12A - v0412
+* IOM12B - v0212
+* IOM12C - v0112
+* IOM12G - v0212
+* DCM3 - v01.12.09.02
+
+
+|===
+
+
+[[new-features-in-version-11-90r5]]
 == Novos recursos na versão 11.90R5
 
 Esta versão contém apenas correções de defeitos e nenhum novo recurso. Para mais informações sobre as alterações nesta versão, consulte o E-Series SANtricity OS 11.90R5 README.
 
 
 
+[[new-features-in-version-11-90r4]]
 == Novos recursos na versão 11.90R4
 
 Esta versão contém apenas pequenas alterações e nenhum novo recurso. Para mais informações sobre as alterações nesta versão, consulte o E-Series SANtricity OS 11.90R4 README.
 
 
 
+[[new-features-in-version-11-90r3]]
 == Novos recursos na versão 11.90R3
 
 [cols="35h,~"]
@@ -43,12 +69,14 @@ O suporte para os shelves SAS-3 IOM12C e DCM3 já está disponível para firmwar
 |===
 
 
+[[new-features-in-version-11-90r2]]
 == Novos recursos na versão 11.90R2
 
 Esta versão contém apenas pequenas alterações e nenhum novo recurso. Para obter mais informações sobre as alterações nesta versão, consulte o  https://library.netapp.com/ecm/ecm_download_file/ECMLP3334464["Notas de lançamento do E-Series 11.90"^].
 
 
 
+[[new-features-in-version-11-90r1]]
 == Novos recursos na versão 11.90R1
 
 [cols="35h,~"]
@@ -71,6 +99,7 @@ O controlador E4000 agora suporta placas de interface de host SAS de 12 Gb.
 |===
 
 
+[[new-features-in-version-11-90]]
 == Novidades na versão 11.90
 
 [cols="35h,~"]

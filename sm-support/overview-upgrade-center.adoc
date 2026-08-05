@@ -16,12 +16,14 @@ Utilize o Upgrade Center para baixar o software e firmware mais recentes e para 
 
 
 
+[[controller-upgrade-overview]]
 == Visão geral da upgrade do controlador
 
 Você pode atualizar o software e firmware do seu array de storage para obter todos os recursos mais recentes e correções de bugs.
 
 
 
+[[components-included-in-the-os-controller-upgrade]]
 === Componentes incluídos na atualização do controlador do OS
 
 Diversos componentes do array de storage contêm software ou hardware que você pode querer atualizar ocasionalmente.
@@ -43,12 +45,14 @@ Como parte do processo de upgrade, o driver multipath/failover e/ou o driver HBA
 
 
 
+[[when-to-stop-io]]
 === Quando interromper E/S
 
 Se o seu array de storage contiver dois controladores e você tiver um driver multipath instalado, o array de storage poderá continuar processando E/S enquanto a atualização ocorre. Durante a atualização, o controlador A transfere todos os seus volumes para o controlador B, atualiza, retoma seus volumes e todos os volumes do controlador B e, em seguida, atualiza o controlador B.
 
 
 
+[[pre-upgrade-health-check]]
 === Verificação de integridade pré-upgrade
 
 Uma verificação de integridade pré-atualização é executada como parte do processo de upgrade. A verificação de integridade pré-atualização avalia todos os componentes do array de storage para garantir que o upgrade possa prosseguir. As seguintes condições podem impedir o upgrade:
@@ -68,12 +72,14 @@ Você também pode executar a verificação de integridade separadamente, sem re
 
 
 
+[[drive-upgrade-overview]]
 == Visão geral do upgrade da unidade
 
 O firmware da unidade controla as características operacionais de baixo nível de uma unidade. Periodicamente, os fabricantes de unidades lançam atualizações de firmware para adicionar novos recursos, melhorar o desempenho e corrigir defeitos.
 
 
 
+[[online-and-offline-drive-firmware-upgrades]]
 === Upgrades de firmware da unidade online e offline
 
 Existem dois tipos de upgrade do formware da unidade: online e offline.
@@ -113,6 +119,7 @@ As seguintes unidades DEVEM usar o método offline:
 
 
 
+[[compatibility]]
 === Compatibilidade
 
 Cada arquivo de firmware da unidade contém informações sobre o tipo de unidade na qual o firmware é executado. Você pode baixar o arquivo de firmware especificado apenas para uma unidade compatível. System Manager verifica automaticamente a compatibilidade durante o processo de upgrade.

@@ -40,6 +40,7 @@ Configurar a autenticação SAML é um procedimento que envolve várias etapas.
 
 
 
+[[step-1-upload-the-idp-metadata-file]]
 == Etapa 1: Carregar o arquivo de metadados do IdP
 
 Para fornecer ao array de storage as informações de conexão do IdP, você importa os metadados do IdP no System Manager. O sistema IdP precisa desses metadados para redirecionar as solicitações de autenticação para a URL correta e para validar as respostas recebidas. Você só precisa carregar um arquivo de metadados para o array de storage, mesmo que haja dois controladores.
@@ -63,6 +64,7 @@ Após selecionar o arquivo, o IdP Entity ID é exibido.
 
 
 
+[[step-2-export-service-provider-files]]
 == Etapa 2: exportar arquivos do provedor de serviços
 
 Para estabelecer uma relação de confiança entre o IdP e o array de storage, você importa os metadados do Service Provider para o IdP. O IdP precisa desses metadados para estabelecer uma relação de confiança com os controladores e para processar solicitações de autorização. O arquivo inclui informações como o nome de domínio do controlador ou endereço IP, para que o IdP possa se comunicar com os Service Providers.
@@ -85,6 +87,7 @@ Existe um arquivo formatado em XML para cada controlador.
 
 
 
+[[step-3-map-roles]]
 == Etapa 3: mapear funções
 
 Para fornecer aos usuários autorização e acesso ao System Manager, você deve mapear os atributos de usuário e as associações de grupo do IdP para as funções predefinidas do array de storage.
@@ -162,6 +165,7 @@ Os mapeamentos de funções podem ser modificados após o SAML ser ativado.
 
 
 
+[[step-4-test-sso-login]]
 == Etapa 4: teste o login SSO
 
 Para garantir que o sistema IdP e o array de storage possam se comunicar, você pode, opcionalmente, testar um login SSO. Esse teste também é realizado durante a etapa final para habilitar o SAML.
@@ -194,6 +198,7 @@ Se o teste não for concluído com êxito, uma mensagem de erro será exibida co
 
 
 
+[[step-5-enable-saml]]
 == Etapa 5: habilitar SAML
 
 O último passo é concluir a configuração SAML para autenticação de usuário. Durante esse processo, o sistema também solicita que você teste um login SSO. O processo de teste de login SSO é descrito na etapa anterior.

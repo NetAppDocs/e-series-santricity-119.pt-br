@@ -46,6 +46,7 @@ O processo para criar pares de espelhamento síncrono é um procedimento de vár
 
 
 
+[[step-1-select-the-primary-volume]]
 == Etapa 1: selecione o volume primário
 
 Nesta etapa, você seleciona o volume primário a ser usado na relação de espelhamento síncrono. Ao selecionar um volume primário no array de storage local, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Volumes que não são elegíveis para uso não aparecem nessa lista. O volume que você selecionar desempenha a função primária na relação de espelhamento.
@@ -62,6 +63,7 @@ O assistente Criar Par Espelhado Síncrono é aberto.
 
 
 
+[[step-2-select-the-secondary-volume]]
 == Etapa 2: selecione o volume secundário
 
 Nesta etapa, você seleciona o volume secundário a ser usado na relação de espelhamento. Ao selecionar um volume secundário no array de storage remoto, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Quaisquer volumes que não sejam elegíveis para uso não são exibidos nessa lista. O volume que você selecionar desempenhará a função secundária na relação de espelhamento.
@@ -91,6 +93,7 @@ Se um volume secundário for escolhido com uma capacidade maior do que a do volu
 
 
 
+[[step-3-select-synchronization-settings]]
 == Etapa 3: selecione as configurações de sincronização
 
 Nesta etapa, você seleciona as configurações que determinam como os dados são sincronizados após uma interrupção de comunicação. Você pode definir a prioridade com que o controlador proprietário do volume primário resincroniza os dados com o volume secundário após uma interrupção de comunicação. Você também deve selecionar a política de resincronização, manual ou automática.

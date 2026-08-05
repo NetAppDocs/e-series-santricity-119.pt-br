@@ -15,6 +15,7 @@ Você pode criar volumes usando um pool ou um grupo de volume. A melhor escolha 
 
 
 
+[[reasons-to-choose-a-pool-or-volume-group]]
 == Razões para escolher um pool ou grupo de volume
 
 *Escolha um pool*
@@ -40,6 +41,7 @@ Como os pools podem coexistir com os grupos de volume, um array de storage pode 
 ====
 
 
+[[feature-differences-between-pools-and-volume-groups]]
 == Diferenças de recursos entre pools e grupos de volume
 
 A tabela a seguir apresenta uma comparação de recursos entre grupo de volume e pools.
@@ -149,6 +151,7 @@ Sim
 |===
 
 
+[[functional-comparison-of-pools-and-volume-groups]]
 == Comparação funcional de pools e grupos de volume
 
 A função e o propósito de um pool e de um grupo de volume são os mesmos. Ambos os objetos são um conjunto de unidades agrupadas logicamente em um array de storage e são usados para criar volumes que um host pode acessar.

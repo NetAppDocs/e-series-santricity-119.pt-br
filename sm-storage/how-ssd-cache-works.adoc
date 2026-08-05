@@ -15,6 +15,7 @@ O recurso SSD Cache é uma solução baseada no controlador que armazena em cach
 
 
 
+[[ssd-cache-versus-primary-cache]]
 == Cache SSD versus cache primário
 
 O cache SSD é um cache secundário usado em conjunto com o cache primário na memória dinâmica de acesso aleatório (DRAM) do controlador.
@@ -35,6 +36,7 @@ Os volumes RAID internos são usados para fins de processamento de cache interno
 
 
 
+[[how-ssd-cache-is-used]]
 == Como o SSD Cache é utilizado
 
 Armazenamento em cache coloca dados em uma unidade de menor latência, para que as respostas a solicitações futuras desses dados possam ocorrer muito mais rapidamente. Se um programa solicitar dados que estão no cache (chamado de "acerto do cache"), então a unidade de menor latência pode atender a essa transação. Caso contrário, ocorre um "erro de cache" e os dados precisam ser acessados da unidade original, mais lenta. À medida que mais acertos do cache ocorrem, o desempenho geral melhora.
@@ -52,6 +54,7 @@ Quando a CPU precisa processar dados de leitura, ela segue os passos abaixo:
 
 
 
+[[improved-performance]]
 == Desempenho aprimorado
 
 Copiar os dados mais acessados (hot spot) para o cache SSD permite uma operação mais eficiente do disco rígido, redução da latência e velocidades de leitura e gravação aceleradas. Usar SSDs de alto desempenho para armazenar em cache dados de volumes de HDD melhora o desempenho de E/S e os tempos de resposta.
@@ -60,12 +63,14 @@ Mecanismos simples de E/S de volume são usados para mover dados de e para o SSD
 
 
 
+[[ssd-cache-and-the-drive-security-feature]]
 == Cache SSD e o recurso Drive Security
 
 Para usar o Cache SSD em um volume que também utiliza Drive Security (está com a segurança ativada), os recursos de Drive Security do volume e do Cache SSD devem corresponder. Se eles não corresponderem, o volume não terá a segurança ativada.
 
 
 
+[[implement-ssd-cache]]
 == Implementar SSD Cache
 
 Para implementar o cache SSD, faça o seguinte:

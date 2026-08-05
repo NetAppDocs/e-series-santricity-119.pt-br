@@ -52,6 +52,7 @@ Durante o login, o sistema executa as seguintes tarefas em segundo plano:
 
 
 
+[[tasks-available-in-system-manager]]
 == Tarefas disponíveis no System Manager
 
 O acesso às tarefas depende das funções atribuídas ao usuário, que incluem o seguinte:
@@ -66,6 +67,7 @@ Uma tarefa indisponível aparece acinzentada ou não é exibida na interface de 
 
 
 
+[[limitations-in-unified-manager-and-storage-manager]]
 == Limitações no Unified Manager e Storage Manager
 
 Se o SAML estiver configurado para um array de storage, os usuários não poderão descobrir ou gerenciar storage desse array a partir do Unified Manager ou das interfaces legadas do Storage Manager.

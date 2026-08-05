@@ -16,6 +16,7 @@ Use o assistente de configuração para configurar seu array de storage, incluin
 
 
 
+[[first-time-setup]]
 == Configuração inicial
 
 Ao abrir System Manager pela primeira vez, o assistente de configuração é iniciado. O assistente de configuração solicita que você execute tarefas básicas de configuração, como nomear seu array de storage, configurar seus hosts, selecionar aplicações e criar pools de storage.
@@ -32,6 +33,7 @@ Se você cancelar o assistente, não poderá reiniciá-lo manualmente. O assiste
 
 
 
+[[terminology]]
 == Terminologia
 
 O assistente de configuração usa os seguintes termos.

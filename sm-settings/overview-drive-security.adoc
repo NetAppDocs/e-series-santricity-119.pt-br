@@ -16,6 +16,7 @@ Você pode configurar Drive Security e o gerenciamento de chaves na página Secu
 
 
 
+[[what-is-drive-security]]
 == O que é Drive Security?
 
 _Drive Security_ é um recurso que impede o acesso não autorizado a dados em drives com segurança habilitada quando removidos do array de storage. Esses drives podem ser Full Disk Encryption (FDE) drives ou Federal Information Processing Standard (FIPS) drives. Quando drives FDE ou FIPS são fisicamente removidos do array, eles não podem operar até serem instalados em outro array, momento em que os drives ficarão em um estado de Security Locked até que a security key correta seja fornecida. Uma _security key_ é uma sequência de caracteres compartilhada entre esses tipos de drives e os controladores em um array de storage.
@@ -29,6 +30,7 @@ Saiba mais:
 
 
 
+[[how-do-i-configure-key-management]]
 == Como faço para configurar o gerenciamento de chaves?
 
 Para implementar Drive Security, você deve ter unidades FDE ou FIPS instaladas no array. Para configurar o gerenciamento de chaves para essas unidades, acesse menu:Settings[Sistema > Security key management], onde você pode criar uma chave interna a partir da memória persistente do controlador ou uma chave externa a partir de um servidor de gerenciamento de chaves. Por fim, habilite Drive Security para pools e grupos de volumes selecionando "secure-capable" nas configurações do volume.
@@ -43,6 +45,7 @@ Saiba mais:
 
 
 
+[[how-do-i-unlock-drives]]
 == Como faço para desbloquear unidades?
 
 Se você configurou o gerenciamento de chaves e, posteriormente, move unidades com segurança habilitada de um array de storage para outro, você deve reatribuir a chave de segurança ao novo array de storage para obter acesso aos dados criptografados nas unidades.
@@ -55,6 +58,7 @@ Saiba mais:
 
 
 
+[[related-information]]
 == Informações relacionadas
 
 Saiba mais sobre tarefas relacionadas à gestão de chaves:

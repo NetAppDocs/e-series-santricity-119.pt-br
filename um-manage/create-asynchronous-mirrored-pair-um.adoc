@@ -40,6 +40,7 @@ O processo para criar um par espelhado assíncrono é um procedimento de várias
 
 
 
+[[step-1-create-or-select-a-mirror-consistency-group]]
 == Etapa 1: crie ou selecione um grupo de consistência de espelhamento
 
 Nesta etapa, você cria um novo grupo de consistência de espelhamento ou seleciona um existente. Um grupo de consistência de espelhamento é um contêiner para os volumes primário e secundário (o par espelhado) e especifica o método de ressincronização desejado (manual ou automático) para todos os pares no grupo.
@@ -95,6 +96,7 @@ Se Unified Manager criar com sucesso o grupo de consistência de espelhamento no
 
 
 
+[[step-2-select-the-primary-volume]]
 == Passo 2: selecione o volume primário
 
 Nesta etapa, você seleciona o volume primário a ser usado no relacionamento de espelhamento e aloca sua capacidade reservada. Ao selecionar um volume primário no array de storage local, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Quaisquer volumes que não sejam elegíveis para uso não são exibidos nessa lista.
@@ -123,6 +125,7 @@ Mantenha as seguintes diretrizes em mente:
 
 
 
+[[step-3-select-the-secondary-volume]]
 == Etapa 3: selecione o volume secundário
 
 Nesta etapa, você seleciona o volume secundário a ser usado na relação de espelhamento e aloca sua capacidade reservada. Ao selecionar um volume secundário no array de storage remoto, o sistema exibe uma lista de todos os volumes elegíveis para esse par espelhado. Quaisquer volumes que não sejam elegíveis para uso não são exibidos nessa lista.

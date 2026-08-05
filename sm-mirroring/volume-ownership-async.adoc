@@ -19,6 +19,7 @@ Por exemplo, um volume primário pertence ao controlador A, e então você alter
 
 
 
+[[controller-resets]]
 == Reinicializações do controlador
 
 Uma reinicialização do controlador causa uma alteração na propriedade do volume no lado primário do controlador proprietário preferencial para o controlador alternativo no array de storage.

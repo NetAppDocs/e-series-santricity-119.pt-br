@@ -276,16 +276,10 @@
   <block id="6f067491edf3a5eb1aa19e9c9212cf77" category="paragraph">Dependendo do número selecionado, a ordem das prateleiras pode ser reorganizada na página Hardware. Se desejar, você pode usar as setas para cima/para baixo no canto superior direito de cada prateleira para reajustar a ordem.</block>
   <block id="67f3537809c69b9de0936cb2060d07e9" category="summary">Você pode alterar a ordem das prateleiras exibidas na página Hardware para corresponder à ordem física das prateleiras em um armário.</block>
   <block id="3efe7542ac804d872e4cb32668bdcd0b" category="doc">Alterar a ordem de visualização das prateleiras no SANtricity System Manager</block>
-  <block id="3e0a047a372d3e4c1b1e089b64a5564a" category="list-text">${post_edited_translations.segment}</block>
   <block id="eed5de368f2da2dcaab1e362b56759df" category="summary">O Domain Name System (DNS) é usado para resolver nomes de domínio totalmente qualificados para os controladores e um servidor Network Time Protocol (NTP). As portas de gerenciamento no array de storage podem suportar protocolos IPv4 ou IPv6 simultaneamente.</block>
-  <block id="0f25f1493e996ca8c9fe406f75014e5b" category="doc">${post_edited_translations.segment}</block>
-  <block id="92ea56ff81b1a858124486f5e4e6d1b0" category="list-text">${post_edited_translations.segment}</block>
   <block id="8ed96cf31dfcf4754429a6e3bdffb6fb" category="list-text">Você conhece o endereço do servidor DNS primário e um servidor DNS de backup opcional. Esses endereços podem ser endereços IPv4 ou endereços IPv6.</block>
   <block id="91b40ab372396ea929b6f6fd6748dc01" category="paragraph">Este procedimento descreve como especificar um endereço de servidor DNS primário e de backup. O servidor DNS de backup pode ser opcionalmente configurado para usar se um servidor DNS primário falhar.</block>
   <block id="0b496442cab83ecc5673d7ae176c5752" category="paragraph">Se você já configurou as portas de gerenciamento do array de storage com Dynamic Host Configuration Protocol (DHCP), e você tem um ou mais servidores DNS ou NTP associados à configuração DHCP, então você não precisa configurar manualmente DNS ou NTP. Neste caso, o array de storage já deveria ter obtido os endereços do servidor DNS/NTP automaticamente. No entanto, você ainda deve seguir as instruções abaixo para abrir a caixa de diálogo e certificar-se de que os endereços corretos são detectados.</block>
-  <block id="5e69f17ca13496d87d807312b412ac2f" category="list-text">${post_edited_translations.segment}</block>
-  <block id="51103d092e8843fd1ac1104f7e462e7e" category="list-text">${post_edited_translations.segment}</block>
-  <block id="d45ac1581c063eab689c47c7592a185d" category="paragraph">${post_edited_translations.segment}</block>
   <block id="ed09bad7864ec765b3bccff9b87f25fb" category="list-text">Selecione uma das seguintes opções:</block>
   <block id="d07ed4b6e7791dc946c302f380c484cb" category="list-text">*Obter automaticamente endereços de servidor DNS do servidor DHCP* -- Os endereços de servidor DNS detectados são exibidos.</block>
   <block id="497c651100902baf395e35827b0a34c8" category="paragraph">Se o array de storage estiver configurado para usar um endereço DNS estático, nenhum servidor DNS será exibido.</block>
@@ -434,16 +428,9 @@
   <block id="46a2a41cc6e552044816a2d04634545d" category="cell">Estado</block>
   <block id="0b890b1926b90387673882e6ccae7fdc" category="cell">Definição</block>
   <block id="67a2eb873d4cf12820bd30e055e0eba0" category="paragraph">Ignorado</block>
-  <block id="1a569c764151cdf81ae3211d79145385" category="paragraph">${post_edited_translations.segment}</block>
   <block id="2a208768bc7995cc26b7f3797d24b0b1" category="paragraph">Incompatível</block>
-  <block id="7738efc148b804dda81850430d3f0ca5" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="7af232bb51c957a1af6f899e5eae5c8c" category="list-text">${post_edited_translations.segment}</block>
-  <block id="0c2356780cb4c9f795cd8aa3d382a432" category="list-text">${post_edited_translations.segment}</block>
-  <block id="50e9decce3259a329ce7dd4c6b648ddc" category="list-text">${post_edited_translations.segment}</block>
   <block id="93f07b720ebf7d1246512569761a5804" category="paragraph">Removido</block>
   <block id="6040e4231a5fe6309b8119a50cd87b93" category="paragraph">A unidade foi removida incorretamente do array de storage.</block>
-  <block id="dd058df87f5c88e3285a28ad7406a3c6" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="6ae96dc881f8abab61297975c89b8cc4" category="paragraph">${post_edited_translations.segment}</block>
   <block id="752300eb612452a182d741fa70ab86ef" category="paragraph">Sem resposta</block>
   <block id="ed65ac215d11913466e1a2185e10a25c" category="paragraph">A unidade não está respondendo a comandos.</block>
   <block id="4fbf5fd89542d092a599445b369026f2" category="section-title">Estados de função</block>
@@ -465,16 +452,13 @@
   <block id="cb61fef1e5e79e07a80421cb9a073a80" category="paragraph">Ideal</block>
   <block id="fffb2fe3525452181282c08445bd214a" category="paragraph">A unidade está funcionando normalmente.</block>
   <block id="792ded78d469f211955781b362cd4a6c" category="summary">Você pode usar a opção Apagar para preparar uma unidade não atribuída para remoção do sistema. Esse procedimento remove os dados permanentemente, garantindo que os dados não possam ser lidos novamente.</block>
-  <block id="0ff6204b4922a614f054cf74d19b5033" category="doc">${post_edited_translations.segment}</block>
   <block id="4f531986cd72cab114747e104b755e1e" category="paragraph">A unidade deve estar em estado Unassigned.</block>
   <block id="973c6a009184076d05aaa9287ab68aec" category="paragraph">Use a opção Erase apenas se você quiser remover permanentemente todos os dados em uma unidade. Se a unidade estiver habilitada para segurança, a opção Erase executa um apagamento criptográfico e redefine os atributos de segurança da unidade de volta para compatível com segurança.</block>
   <block id="0569d138f5923fe1786fac80a860bdb8" category="paragraph">O recurso Erase não oferece suporte a alguns modelos de drive mais antigos. Se você tentar apagar um desses modelos mais antigos, uma mensagem de erro será exibida.</block>
   <block id="2f8ef3e2c688f0fa1d650794ee2a8f24" category="list-text">Opcionalmente, você pode usar os campos de filtro para visualizar todas as unidades não atribuídas na prateleira. Na lista suspensa *Mostrar unidades que são...*, selecione *Não atribuídas*.</block>
-  <block id="61a482d244aceb646a9634a51eab4e96" category="paragraph">${post_edited_translations.segment}</block>
   <block id="858c50442cb48573bb9b790cfbdc74f9" category="list-text">Para abrir o menu de contexto da unidade, clique em uma unidade que você deseja apagar. (Se você quiser selecionar várias unidades, pode fazer isso na caixa de diálogo Apagar Unidades.)</block>
   <block id="d0857010b61f2e6654498c1d70bc2b04" category="paragraph">*Possível perda de dados* -- A operação de apagar não pode ser desfeita. Certifique-se de selecionar as unidades corretas durante o procedimento.</block>
   <block id="b3d3d439e3984daebf24379061fa282e" category="list-text">No menu de contexto, selecione *Erase*.</block>
-  <block id="66c6440e50a3a7190e88c5176fd292c2" category="paragraph">${post_edited_translations.segment}</block>
   <block id="1dbf4738562eff13f39bcaed82390432" category="list-text">Se desejar, selecione unidades adicionais na tabela. Não é possível selecionar _todas_ as unidades; certifique-se de que uma unidade permaneça desmarcada.</block>
   <block id="85feffe972801ce9009291da4dc16727" category="list-text">Confirme a operação digitando <block ref="26eb25b14d930f9d5f59b2c50798a9a4" prefix=" " category="inline-code"></block> e depois clique em *Apagar*.</block>
   <block id="66ef43440c7c742eea1b8b74faebcd59" category="paragraph">Certifique-se de que deseja prosseguir com esta operação. Depois de clicar em Sim na próxima caixa de diálogo, a operação não poderá ser interrompida.</block>
@@ -2995,16 +2979,6 @@
   <block id="2bca2faba0332e87a3a5db7e0da917a4" category="list-text">Na tabela, selecione um endereço de servidor syslog e clique no ícone *Editar* (lápis) no canto direito.</block>
   <block id="c0d48f16bbf961ebeb5a2ccf7771595c" category="list-text">Edite o endereço do servidor e o número da porta UDP e, em seguida, clique no ícone *Save* (marca de seleção).</block>
   <block id="1224cd55e66bf33c9c36c852dce9afca" category="paragraph">O endereço do servidor atualizado aparece na tabela.</block>
-  <block id="ddb5573c6f39b580321b3833c2d21c1a" category="summary">${post_edited_translations.segment}</block>
-  <block id="fd73f1b2be5817f542818738ca756ac3" category="doc">${post_edited_translations.segment}</block>
-  <block id="e6ae1cef6f540818bd9a9f5d26d5b552" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="c1e2aa534689c8a263f97b1b0a47f09a" category="list-text">${post_edited_translations.segment}</block>
-  <block id="0fab502296c45ec9191431fb67c2b0e2" category="list-text">${post_edited_translations.segment}</block>
-  <block id="07a62bfdfe253734ad0549474703a44e" category="list-text">${post_edited_translations.segment}</block>
-  <block id="0791d7ff4aa3a54266b5dfb0f961ac0a" category="list-text">${post_edited_translations.segment}</block>
-  <block id="a2eecd95a99d8053aa1d5498221ae3e3" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="bcd58fe597b664c8bf522d665a911e3e" category="summary">${post_edited_translations.segment}</block>
-  <block id="cd6772c520ae61b2688e50ac62b1a1d2" category="doc">${post_edited_translations.segment}</block>
   <block id="698ed3bef61712d684d96c334e215e50" category="list-text">Um servidor DNS está configurado em ambos os controladores, o que permite o uso de um domínio totalmente qualificado para o servidor OCSP. Esta tarefa está disponível na página Hardware.</block>
   <block id="ab62a1c8640662571ae2bae627603eac" category="list-text">Se você deseja especificar seu próprio servidor OCSP, você deve saber a URL desse servidor.</block>
   <block id="2d9f99de5fd979cb691cb298af39d76d" category="paragraph">A verificação automática de revogação é útil nos casos em que a CA emitiu um certificado indevidamente ou uma chave privada foi comprometida.</block>
@@ -3043,16 +3017,9 @@
   <block id="290455fd7e30b05b7ef0a6c5d96eb88b" category="list-text">*Obter configuração automaticamente do servidor DHCP* -- Selecione esta opção se você quiser configurar o servidor iSNS usando um servidor DHCP (Dynamic Host Configuration Protocol). Esteja ciente de que, se você usar esta opção, todas as portas iSCSI no controlador também devem ser configuradas para usar DHCP. Se necessário, atualize as configurações da porta iSCSI do controlador para habilitar esta opção.</block>
   <block id="217fa6c841bc5fee90b05c9a01f037c0" category="paragraph">Para que o servidor DHCP forneça o endereço do servidor iSNS, você deve configurar o servidor DHCP para usar a Opção 43 -- "`Vendor Specific Information.`" Esta opção precisa conter o endereço IPv4 do servidor iSNS nos bytes de dados 0xa-0xd (10-13).</block>
   <block id="3e73a46525c15f62cda5dc488afdb3d3" category="list-text">*Especificar configuração estática manualmente* -- Selecione esta opção se você quiser inserir um endereço IP estático para o servidor iSNS. (Se desejar, você pode cortar e colar endereços nos campos.) No campo, insira um endereço IPv4 ou um endereço IPv6. Se você configurou ambos, IPv4 é o padrão. Insira também uma porta TCP de escuta (use o padrão 3205 ou insira um valor entre 49152 e 65535).</block>
-  <block id="166e7160130cb8888ac6feb05bdfb3e4" category="list-text">${post_edited_translations.segment}</block>
-  <block id="d41d42c868441af509db53f0bf7f0de4" category="list-text">${post_edited_translations.segment}</block>
   <block id="077b0d6e3fa51a5e8f1cf3f1a320fbea" category="list-text">Quando desabilitado, as sessões de descoberta são impedidas, a menos que o iniciador forneça o IQN de destino. Desabilitar sessões de descoberta sem nome fornece segurança adicional.</block>
   <block id="43512d2d92a553a05db3b96c10f417cf" category="paragraph">Uma barra de progresso aparece enquanto o System Manager tenta registrar o controlador com o servidor iSNS. Este processo pode levar até cinco minutos.</block>
-  <block id="44593be4ae80d015facafd7cb9d8a787" category="summary">${post_edited_translations.segment}</block>
-  <block id="95d8541a159451a64c0bdb938e4bcf77" category="doc">${post_edited_translations.segment}</block>
   <block id="75a981a887d30887b8b11cddc636abf4" category="paragraph">Por padrão, a interface de gerenciamento legada está ativada. Se você desabilitá-la, o array de storage e o cliente de gerenciamento usarão um método de comunicação mais seguro (API REST sobre https); no entanto, certas ferramentas e tarefas podem ser afetadas se ela for desabilitada.</block>
-  <block id="fb54b5dd93b715176053cded7e068219" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="6795035dc021f214e108bba9375d2af0" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="0ae27aeec30b70c72e4f635caa13822c" category="list-text">${post_edited_translations.segment}</block>
   <block id="5fac989ff1caacc35939c34cbfda18ea" category="list-text">*Desativado* -- Configuração necessária para impor a confidencialidade nas comunicações entre o array de storage e o cliente de gerenciamento, e para acessar ferramentas externas. Configuração recomendada ao configurar um Directory Server (LDAP).</block>
   <block id="1ca78c8380b9e9f1261560599c386619" category="list-text">Desça até *Configurações adicionais* e clique em *Alterar interface de gerenciamento*.</block>
   <block id="aec62e973fb5362d3c566b3ad4c54349" category="list-text">Na caixa de diálogo, clique em *Yes* para continuar.</block>
@@ -6331,15 +6298,10 @@
   <block id="802721b77ba996f3a6816281b2a5307c" category="paragraph">Saiba mais sobre tarefas relacionadas a hosts:</block>
   <block id="581ba70f3c08d63bd9fee6e665ed508c" category="inline-link-macro">Defina o balanceamento de carga automático</block>
   <block id="50561c80a84caac50996c6df2bf8ec45" category="list-text"><block ref="50561c80a84caac50996c6df2bf8ec45" category="inline-link-macro-rx"></block></block>
-  <block id="f11801ecc85b781e82c7e137b510d3e6" category="inline-link-macro">${post_edited_translations.segment}</block>
   <block id="b679cea13493dd007a51bd286e18d034" category="list-text"><block ref="b679cea13493dd007a51bd286e18d034" category="inline-link-macro-rx"></block></block>
-  <block id="6278016853ffa167fd42b1ef4f444615" category="inline-link-macro">${post_edited_translations.segment}</block>
   <block id="0ab6a3f89aec2e3f51bd7aa6a8942049" category="list-text"><block ref="0ab6a3f89aec2e3f51bd7aa6a8942049" category="inline-link-macro-rx"></block></block>
   <block id="0835be6e2acd3996689e567944a98681" category="summary">A página de Performance oferece maneiras fáceis de monitorar o desempenho do seu array de storage.</block>
-  <block id="84606dd9cabb3b19867d6f645fd8c8a8" category="doc">${post_edited_translations.segment}</block>
-  <block id="64b261aec0cde83064ccb3ba601ea7f3" category="section-title">${post_edited_translations.segment}</block>
   <block id="ebe09fa67ff6dd58475ee86e46acd288" category="paragraph">Os gráficos e tabelas de Performance mostram dados de performance em tempo quase real, o que ajuda você a determinar se um array de storage está enfrentando problemas. Você também pode salvar dados de performance para construir uma visualização histórica de um array de storage e identificar quando um problema começou ou o que causou um problema.</block>
-  <block id="d21d53b8aa24ab7ba645bc9127a88d36" category="inline-link-macro">${post_edited_translations.segment}</block>
   <block id="60d242b031a277dbc7a99dee3aec0375" category="list-text"><block ref="60d242b031a277dbc7a99dee3aec0375" category="inline-link-macro-rx"></block></block>
   <block id="2111d8c197c3aac4c6e2396615ab0fec" category="inline-link-macro">Termos de desempenho</block>
   <block id="8ec2a32be78e291a0d353e9a969c9d89" category="list-text"><block ref="8ec2a32be78e291a0d353e9a969c9d89" category="inline-link-macro-rx"></block></block>
@@ -9041,4 +9003,50 @@
   <block id="951d3fc54a28f9f46798897467d96a5b" category="sidebar">Gerenciar certificados</block>
   <block id="9390da525ac985d85948002cf506c7cf" category="sidebar">Exportar certificados</block>
   <block id="bc7dec44af17b73eb800d426c3a75c9f" category="list-text"><block ref="bc7dec44af17b73eb800d426c3a75c9f" category="inline-link-macro-rx"></block></block>
+  <block id="3e0a047a372d3e4c1b1e089b64a5564a" category="list-text">Na parte superior direita da visualização da prateleira, selecione as setas para cima ou para baixo para reorganizar a ordem das prateleiras exibidas na página de hardware.</block>
+  <block id="0f25f1493e996ca8c9fe406f75014e5b" category="doc">Configurar os endereços do servidor DNS no SANtricity System Manager</block>
+  <block id="92ea56ff81b1a858124486f5e4e6d1b0" category="list-text">Um servidor DNS deve ser instalado e configurado na sua rede.</block>
+  <block id="5e69f17ca13496d87d807312b412ac2f" category="list-text">Selecione o controlador que deseja configurar.</block>
+  <block id="51103d092e8843fd1ac1104f7e462e7e" category="list-text">Selecione *Configurar servidor DNS*.</block>
+  <block id="d45ac1581c063eab689c47c7592a185d" category="paragraph">A caixa de diálogo Configurar Servidor do Sistema de Nomes de Domínio (DNS) é aberta.</block>
+  <block id="1a569c764151cdf81ae3211d79145385" category="paragraph">A unidade está fisicamente presente, mas o controlador não consegue se comunicar com ela em nenhuma das portas.</block>
+  <block id="7738efc148b804dda81850430d3f0ca5" category="paragraph">Uma das seguintes condições existe:</block>
+  <block id="7af232bb51c957a1af6f899e5eae5c8c" category="list-text">A unidade não é certificada para uso no array de storage.</block>
+  <block id="0c2356780cb4c9f795cd8aa3d382a432" category="list-text">A unidade possui um tamanho de setor diferente.</block>
+  <block id="50e9decce3259a329ce7dd4c6b648ddc" category="list-text">A unidade contém dados de configuração inutilizáveis de uma versão de firmware mais antiga ou mais recente.</block>
+  <block id="dd058df87f5c88e3285a28ad7406a3c6" category="paragraph">Presente</block>
+  <block id="6ae96dc881f8abab61297975c89b8cc4" category="paragraph">O controlador pode se comunicar com a unidade em ambas as portas.</block>
+  <block id="0ff6204b4922a614f054cf74d19b5033" category="doc">Apagar unidades no SANtricity System Manager</block>
+  <block id="61a482d244aceb646a9634a51eab4e96" category="paragraph">A visualização da prateleira mostra apenas as unidades não atribuídas; todas as outras aparecem em cinza.</block>
+  <block id="66c6440e50a3a7190e88c5176fd292c2" category="paragraph">A caixa de diálogo Apagar Unidades é aberta, mostrando todas as unidades elegíveis para uma operação de apagamento.</block>
+  <block id="ddb5573c6f39b580321b3833c2d21c1a" category="summary">Você pode editar as definições de usuário para traps SNMPv3.</block>
+  <block id="fd73f1b2be5817f542818738ca756ac3" category="doc">Editar configurações de usuário para traps SNMPv3 no SANtricity System Manager</block>
+  <block id="e6ae1cef6f540818bd9a9f5d26d5b552" category="paragraph">É necessário criar um usuário para o trap SNMPv3.</block>
+  <block id="c1e2aa534689c8a263f97b1b0a47f09a" category="list-text">Para editar a definição de um usuário, selecione o usuário na tabela e clique em *Configure Users*.</block>
+  <block id="0fab502296c45ec9191431fb67c2b0e2" category="list-text">Na caixa de diálogo, clique em *Exibir/Editar configurações*.</block>
+  <block id="07a62bfdfe253734ad0549474703a44e" category="list-text">Edite as seguintes informações:</block>
+  <block id="0791d7ff4aa3a54266b5dfb0f961ac0a" category="list-text">*Nome de usuário* — Altere o nome que identifica o usuário, que pode ter até 31 caracteres.</block>
+  <block id="a2eecd95a99d8053aa1d5498221ae3e3" category="paragraph">A aba SNMP da página de Alertas exibe as configurações atualizadas.</block>
+  <block id="bcd58fe597b664c8bf522d665a911e3e" category="summary">Você pode habilitar verificações automáticas de certificados revogados, para que um servidor OCSP (Online Certificate Status Protocol) impeça os usuários de fazer conexões não seguras.</block>
+  <block id="cd6772c520ae61b2688e50ac62b1a1d2" category="doc">Ative a verificação de revogação de certificados no SANtricity System Manager</block>
+  <block id="166e7160130cb8888ac6feb05bdfb3e4" category="list-text">Para permitir que o array de storage participe de sessões de descoberta sem nome, selecione *Ativar sessões de descoberta sem nome*.</block>
+  <block id="d41d42c868441af509db53f0bf7f0de4" category="list-text">Quando ativada, os iniciadores iSCSI não precisam especificar o IQN de destino para recuperar as informações do controlador.</block>
+  <block id="44593be4ae80d015facafd7cb9d8a787" category="summary">Você pode ativar ou desativar a interface de gerenciamento legada (SYMbol), que é um método de comunicação entre o array de storage e o cliente de gerenciamento.</block>
+  <block id="95d8541a159451a64c0bdb938e4bcf77" category="doc">Ativar ou desativar interface de gerenciamento legada no SANtricity System Manager</block>
+  <block id="fb54b5dd93b715176053cded7e068219" category="paragraph">Para o sistema de storage EF600, este recurso está desativado por padrão.</block>
+  <block id="6795035dc021f214e108bba9375d2af0" category="paragraph">A configuração afeta as operações da seguinte forma:</block>
+  <block id="0ae27aeec30b70c72e4f635caa13822c" category="list-text">*Ativado* (padrão) — Configuração necessária para configurar espelhamento com a CLI e algumas outras ferramentas, como o adaptador OCI.</block>
+  <block id="f11801ecc85b781e82c7e137b510d3e6" category="inline-link-macro">Configurar relatório de conectividade de host</block>
+  <block id="6278016853ffa167fd42b1ef4f444615" category="inline-link-macro">Alterar tipo de host padrão</block>
+  <block id="84606dd9cabb3b19867d6f645fd8c8a8" category="doc">Saiba mais sobre a visão geral de desempenho no SANtricity System Manager</block>
+  <block id="64b261aec0cde83064ccb3ba601ea7f3" category="section-title">O que posso aprender com os dados de desempenho?</block>
+  <block id="d21d53b8aa24ab7ba645bc9127a88d36" category="inline-link-macro">Gráficos e diretrizes de desempenho</block>
+  <block id="d45110f5b0683532651fabbc7f37abe3" category="section-title">Novos recursos na versão 11.90R6</block>
+  <block id="28761f84b87aaa50aba4cece137c1c2c" category="paragraph">Suporte atualizado para versão de firmware IOM/DCM</block>
+  <block id="5da5b5a1379f61e80772e7790856b429" category="paragraph">Novas versões de firmware IOM/DCM agora são compatíveis com os seguintes modelos IOM/DCM:</block>
+  <block id="774c79e8635ac51d58e93d2e518c432a" category="list-text">IOM12A - v0412</block>
+  <block id="fbc1cde87a87977e12caf006b59004e5" category="list-text">IOM12B - v0212</block>
+  <block id="24c9cd56861c16e2290412c4fe4d5a8f" category="list-text">IOM12C - v0112</block>
+  <block id="818d5ca9647738ea76069fc99cf59499" category="list-text">IOM12G - v0212</block>
+  <block id="9133a8b23ddd677242ee6747a18b0e24" category="list-text">DCM3 - v01.12.09.02</block>
 </blocks>

@@ -41,6 +41,7 @@ Consulte as seções a seguir para obter mais informações sobre os diferentes 
 
 
 
+[[mac-transmit-and-mac-receive-statistics]]
 == Estatísticas de transmissão MAC e de recepção MAC
 
 Quando você seleciona estatísticas Ethernet MAC, tanto as estatísticas de recebimento quanto as de transmissão aparecem. Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de referência.
@@ -273,6 +274,7 @@ Contagem de erros de detecção de portadora
 ====
 
 
+[[ethernet-tcpip-statistics]]
 == Estatísticas TCP/IP Ethernet
 
 Ao selecionar estatísticas Ethernet TCP/IP, tanto as estatísticas TCP quanto as estatísticas IP são exibidas. Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de referência.
@@ -463,6 +465,7 @@ Erro de remontagem do datagrama, contagem de time-out
 ====
 
 
+[[iscsi-target-statistics-and-local-initiator-statistics]]
 == estatísticas do destino iSCSI e estatísticas do iniciador local
 
 Ao selecionar estatísticas de destino (protocolo) ou estatísticas de iniciador local (protocolo), as estatísticas iSCSI são exibidas. Você pode visualizar cada uma dessas estatísticas como estatísticas brutas ou como estatísticas de referência.
@@ -547,6 +550,7 @@ Contagem inesperada de encerramento de conexão iSCSI
 ====
 
 
+[[dcbx-operational-state-statistics]]
 == Estatísticas do estado operacional DCBX
 
 Ao selecionar Estatísticas de Estado Operacional do Data Center Bridging Exchange (DCBX), as estatísticas DCBX são exibidas.
@@ -606,6 +610,7 @@ NOTE: Você pode encontrar estatísticas adicionais do estado operacional DCBX n
 
 
 
+[[lldp-tlv-statistics]]
 == Estatísticas TLV LLDP
 
 Ao selecionar Estatísticas de Tipo, Comprimento e Valor (TLV) do Link Layer Discovery Protocol (LLDP), dois conjuntos de estatísticas são exibidos: um para o dispositivo local e outro para o dispositivo remoto. O dispositivo local refere-se ao controlador. O dispositivo remoto refere-se ao dispositivo par ao qual o controlador está conectado, normalmente um switch.
@@ -665,6 +670,7 @@ NOTE: Você pode encontrar estatísticas TLV LLDP adicionais no arquivo de captu
 
 
 
+[[dcbx-tlv-statistics]]
 == Estatísticas DCBX TLV
 
 Quando você seleciona Estatísticas de Tipo, Comprimento e Valor (TLV) do Data Center Bridging Exchange (DCBX), estas estatísticas aparecem:

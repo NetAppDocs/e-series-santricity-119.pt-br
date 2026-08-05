@@ -24,6 +24,7 @@ Você pode criar e gerenciar chaves de segurança usando um dos seguintes métod
 
 
 
+[[internal-key-management]]
 == Gerenciamento interno de chaves
 
 As chaves internas são mantidas e "ocultas" em um local inacessível na memória persistente do controlador. Para implementar o gerenciamento de chaves internas, execute as seguintes etapas:
@@ -37,6 +38,7 @@ A chave de segurança é armazenada no controlador em um local oculto e inacess�
 
 
 
+[[external-key-management]]
 == Gerenciamento de chaves externas
 
 As chaves externas são mantidas em um servidor de gerenciamento de chaves separado, usando um Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP). Para implementar o gerenciamento de chaves externas, execute as seguintes etapas:

@@ -47,6 +47,7 @@ A página Operações exibe os resultados da operação de importação. Se a op
 
 
 
+[[results]]
 == Resultados
 
 Os arrays de storage de destino agora estão configurados com os mesmos serviços de diretório que o array de origem.

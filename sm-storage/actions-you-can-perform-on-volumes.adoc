@@ -16,6 +16,7 @@ Você pode executar diversas ações diferentes em um volume: aumentar a capacid
 
 
 
+[[increase-capacity]]
 == Aumentar capacidade
 
 Você pode expandir a capacidade de um volume de duas maneiras:
@@ -37,6 +38,7 @@ Após expandir a capacidade do volume, você deve aumentar manualmente o tamanho
 
 
 
+[[delete]]
 == Excluir
 
 Normalmente, você exclui volumes se eles foram criados com parâmetros ou capacidade incorretos, não atendem mais às necessidades de configuração de storage ou são imagens de snapshot que não são mais necessárias para backup ou teste de aplicativos. A exclusão de um volume aumenta a capacidade livre no pool ou grupo de volume.
@@ -45,12 +47,14 @@ A exclusão de volumes causa a perda de todos os dados nesses volumes. A exclus�
 
 
 
+[[copy]]
 == Copiar
 
 Ao copiar volumes, você cria uma cópia pontual de dois volumes separados, o volume de origem e o volume de destino, no mesmo array de storage. Você pode copiar volumes selecionando menu:Storage[Volumes > Copy Services > Copy volume].
 
 
 
+[[initialize]]
 == Inicializar
 
 A inicialização de um volume apaga todos os dados do volume. Um volume é inicializado automaticamente quando é criado pela primeira vez. No entanto, o Recovery Guru pode aconselhar que você inicialize um volume manualmente para se recuperar de determinadas condições de falha. Ao inicializar um volume, o volume mantém seu WWN, atribuições de host, capacidade alocada e configurações de capacidade reservada. Ele também mantém as mesmas configurações de Data Assurance (DA) e configurações de segurança.
@@ -59,6 +63,7 @@ Você pode inicializar volumes selecionando menu:Storage[Volumes > More > Initia
 
 
 
+[[redistribute]]
 == Redistribuir
 
 Você redistribui volumes para movê-los de volta aos seus controladores proprietários preferenciais. Normalmente, os drivers de multipath movem volumes de seus controladores proprietários preferenciais quando ocorre um problema no caminho de dados entre o host e o array de storage.
@@ -69,6 +74,7 @@ Você pode redistribuir volumes selecionando menu:Storage[Volumes > More > Redis
 
 
 
+[[change-volume-ownership]]
 == Alterar propriedade do volume
 
 Alterar a propriedade de um volume altera a propriedade de controlador preferencial do volume. O proprietário de controlador preferencial de um volume é listado em menu:Storage[Volumes > View/Edit Settings > Advanced tab].
@@ -77,6 +83,7 @@ Você pode alterar a propriedade de um volume selecionando menu:Storage[Volumes 
 
 
 
+[[mirroring-and-volume-ownership]]
 === Espelhamento e propriedade de volume
 
 Se o volume primário do par espelhado pertencer ao controlador A, então o volume secundário também será de propriedade do controlador A do array de storage remoto. Alterar o proprietário do volume primário alterará automaticamente o proprietário do volume secundário para garantir que ambos os volumes pertençam ao mesmo controlador. As alterações de propriedade atuais no lado primário se propagam automaticamente para as alterações de propriedade atuais correspondentes no lado secundário.
@@ -85,6 +92,7 @@ Se um grupo de consistência de espelhamento contiver um volume secundário loca
 
 
 
+[[copy-volume-and-volume-ownership]]
 === Cópia de volume e propriedade do volume
 
 Durante uma operação de cópia de volume, o mesmo controlador deve ser o proprietário tanto do volume de origem quanto do volume de destino. Às vezes, ambos os volumes não possuem o mesmo controlador preferencial quando a operação de cópia de volume é iniciada. Portanto, a propriedade do volume de destino é automaticamente transferida para o controlador preferencial do volume de origem. Quando a cópia de volume é concluída ou interrompida, a propriedade do volume de destino é restaurada ao seu controlador preferencial.
@@ -93,6 +101,7 @@ Se a propriedade do volume de origem for alterada durante a operação de cópia
 
 
 
+[[change-cache-settings]]
 == Alterar configurações de cache
 
 A memória cache é uma área de armazenamento temporário volátil (RAM) no controlador que possui um tempo de acesso mais rápido do que a mídia da unidade. Se você usar memória cache, pode aumentar o desempenho geral de E/S por estes motivos:
@@ -120,6 +129,7 @@ Para um volume fino, a pré-busca de leitura em cache dinâmica está sempre des
 
 
 
+[[change-media-scan-settings]]
 == Alterar configurações de varredura de mídia
 
 A verificação de mídia detecta e corrige erros em blocos de disco que são lidos com pouca frequência pelos aplicativos. Essa verificação pode evitar perda de dados caso outras unidades no pool ou grupo de volume falhem, pois os dados das unidades com falha são reconstruídos usando informações de redundância e dados de outras unidades no pool ou grupo de volume.

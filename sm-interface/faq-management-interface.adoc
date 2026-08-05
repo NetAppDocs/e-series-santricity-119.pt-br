@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-are-the-supported-browsers]]
 == Quais são os navegadores compatíveis?
 
 SANtricity System Manager é compatível com estas versões de navegador.
@@ -54,12 +55,14 @@ Microsoft Edge
 |===
 
 
+[[what-are-the-keyboard-shortcuts]]
 == Quais são os atalhos de teclado?
 
 Você pode navegar pelo SANtricity System Manager usando apenas o teclado.
 
 
 
+[[overall-navigation]]
 === Navegação geral
 
 [cols="1a,1a"]
@@ -117,6 +120,7 @@ Digite
 |===
 
 
+[[table-navigation]]
 === Navegação na tabela
 
 [cols="1a,1a"]
@@ -146,6 +150,7 @@ Use a tecla Tab para selecionar um cabeçalho de coluna e, em seguida, pressione
 |===
 
 
+[[calendar-navigation]]
 === Navegação no calendário
 
 [cols="1a,1a"]
@@ -245,6 +250,7 @@ Escapar
 |===
 
 
+[[how-do-performance-statistics-for-individual-volumes-relate-to-the-total]]
 == Como as estatísticas de desempenho para volumes individuais se relacionam com o total?
 
 As estatísticas para pools e grupo de volume são calculadas agregando todos os volumes, incluindo volumes de capacidade reservada.
@@ -255,6 +261,7 @@ No entanto, para estatísticas de aplicativos e cargas de trabalho, apenas os vo
 
 
 
+[[why-does-data-display-as-zero-in-the-graphs-and-table]]
 == Por que os dados são exibidos como zero nos gráficos e na tabela?
 
 Quando um valor zero é exibido para um ponto de dados nos gráficos e na tabela, significa que não há atividade de E/S para o objeto naquele ponto no tempo. Essa situação pode ocorrer porque o host não está iniciando E/S para esse objeto, ou pode ser um problema com o próprio objeto.
@@ -315,6 +322,7 @@ Array de storage
 |===
 
 
+[[what-does-the-latency-graph-show]]
 == O que o gráfico de latência mostra?
 
 O gráfico de latência fornece estatísticas de latência, em milissegundos (ms), para volumes, grupos de volume, pools, aplicativos e cargas de trabalho. Este gráfico aparece nas guias Visualização Lógica, Visualização Física e Visualização de Aplicativos e Cargas de Trabalho.
@@ -328,6 +336,7 @@ Latência refere-se a qualquer atraso que ocorre durante a leitura ou gravação
 
 
 
+[[what-does-the-iops-graph-show]]
 == O que o gráfico de IOPS mostra?
 
 O gráfico de IOPS exibe estatísticas de operações de entrada/saída por segundo. Na página inicial, este gráfico exibe estatísticas para o array de storage. Nas guias Visualização Lógica, Visualização Física e Visualização de Aplicativos e Cargas de Trabalho do bloco Desempenho, este gráfico exibe estatísticas para o array de storage, volumes, grupos de volumes, pools, aplicativos e cargas de trabalho.
@@ -341,6 +350,7 @@ IOPS é a abreviação de _operações de entrada/saída (I/O) por segundo_. Pas
 
 
 
+[[what-does-the-mibs-graph-show]]
 == O que o gráfico de MiB/s mostra?
 
 O gráfico MiB/s exibe estatísticas de velocidade de transferência em mebibytes por segundo. Na página inicial, este gráfico exibe estatísticas para o array de storage. Nas guias Visualização Lógica, Visualização Física e Visualização de Aplicativos e Cargas de Trabalho do bloco Desempenho, este gráfico exibe estatísticas para o array de storage, volumes, grupos de volumes, pools, aplicativos e cargas de trabalho.
@@ -354,6 +364,7 @@ MiB/s é a abreviação de _mebibytes por segundo_, ou 1.048.576 bytes por segun
 
 
 
+[[what-does-the-cpu-graph-show]]
 == O que o gráfico de CPU mostra?
 
 O gráfico da CPU exibe estatísticas de capacidade de processamento para cada controlador (controlador A e controlador B). CPU é uma abreviação de _central processing unit_. Na página inicial, este gráfico exibe estatísticas para o array de storage. Na guia Visualização Física do bloco Desempenho, este gráfico exibe estatísticas para o array de storage e as unidades.
@@ -362,6 +373,7 @@ O gráfico da CPU mostra a porcentagem da capacidade de processamento da CPU sen
 
 
 
+[[what-does-the-headroom-graph-show]]
 == O que o gráfico Headroom mostra?
 
 O gráfico de Headroom está relacionado à capacidade de desempenho restante para os controladores do array de storage. Este gráfico é visível na página inicial e na guia Visão Física do bloco Desempenho.
@@ -370,6 +382,7 @@ O gráfico de margem disponível mostra a capacidade de desempenho restante dos 
 
 
 
+[[where-can-i-find-more-information-about-display-preferences]]
 == Onde posso encontrar mais informações sobre preferências de exibição?
 
 Para obter informações sobre as opções de exibição disponíveis:

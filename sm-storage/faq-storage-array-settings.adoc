@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-is-automatic-load-balancing]]
 == O que é balanceamento automático de carga?
 
 O recurso de balanceamento automático de carga proporciona balanceamento automático de I/O e garante que o tráfego de I/O proveniente dos hosts seja gerenciado e balanceado dinamicamente entre ambos os controladores.
@@ -37,6 +38,7 @@ Qualquer volume atribuído ao uso do SSD Cache de um controlador não é elegív
 ====
 
 
+[[what-is-controller-cache]]
 == O que é cache do controlador?
 
 O cache do controlador é um espaço de memória física que otimiza dois tipos de operações de E/S (entrada/saída): entre os controladores e hosts, e entre os controladores e discos.
@@ -60,6 +62,7 @@ O cache do controlador afeta o desempenho geral do array de storage de várias m
 ====
 
 
+[[what-is-cache-flushing]]
 == O que é cache flushing?
 
 Quando a quantidade de dados não gravados no cache atinge um determinado nível, o controlador grava periodicamente os dados em cache em uma unidade. Esse processo de gravação é chamado de "flushing".
@@ -79,6 +82,7 @@ O algoritmo baseado em idade especifica o período de tempo durante o qual os da
 ====
 
 
+[[what-is-cache-block-size]]
 == O que é o tamanho do bloco de cache?
 
 O controlador do array de storage organiza seu cache em "blocos", que são partes da memória que podem ter 8, 16 ou 32 KiB de tamanho. Todos os volumes no sistema de storage compartilham o mesmo espaço de cache; portanto, os volumes podem ter apenas um tamanho de bloco de cache.
@@ -87,6 +91,7 @@ Os aplicativos usam diferentes tamanhos de bloco, que podem ter um impacto no de
 
 
 
+[[when-should-i-synchronize-storage-array-clocks]]
 == Quando devo sincronizar os relógios do array de storage?
 
 Você deve sincronizar manualmente os relógios do controlador no array de storage se notar que os registros de data e hora exibidos no SANtricity System Manager não estão alinhados com os registros de data e hora exibidos no seu cliente (o computador que está acessando SANtricity System Manager pelo navegador). Essa tarefa só é necessária se o NTP (Network Time Protocol) não estiver habilitado no SANtricity System Manager.

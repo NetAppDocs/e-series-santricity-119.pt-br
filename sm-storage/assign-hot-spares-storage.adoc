@@ -64,6 +64,7 @@ A unidade é exibida em rosa na página de Hardware, o que indica que agora ela 
 
 
 
+[[results]]
 == Resultados
 
 Se uma unidade dentro de um grupo de volume RAID 1, RAID 5 ou RAID 6 falhar, o controlador usa automaticamente os dados de redundância para reconstruir os dados da unidade com falha para a hot spare.

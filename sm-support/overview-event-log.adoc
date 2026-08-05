@@ -17,6 +17,7 @@ Você pode usar o registro de eventos como uma ferramenta de diagnóstico comple
 
 
 
+[[event-categories]]
 == Categorias de eventos
 
 Os eventos no registro de eventos são categorizados com diferentes status. Eventos que exigem ação têm os seguintes status:
@@ -32,6 +33,7 @@ Eventos que são informativos e não exigem nenhuma ação imediata são os segu
 
 
 
+[[critical-events]]
 == Eventos críticos
 
 Eventos críticos indicam um problema com o array de storage. Se você resolver o evento crítico imediatamente, poderá evitar a perda de acesso aos dados.

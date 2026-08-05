@@ -10,7 +10,7 @@ settings:
   versions:
   - version-number: '11.9'
     url: "/e-series-santricity-119"
-  - version-number: '12.0'
+  - version-number: 12.x
     url: "/e-series-santricity"
   - version-number: '11.8'
     url: "/e-series-santricity-118"
@@ -56,7 +56,7 @@ sidebar:
         entries:
         - title: Visão geral
           url: "/sm-storage/overview-performance.html"
-        - title: "${post_edited_translations.segment}"
+        - title: Gráficos e diretrizes de desempenho
           url: "/sm-storage/performance-graphs-guidelines.html"
         - title: Terminologia de desempenho
           url: "/sm-storage/performance-terminology.html"
@@ -274,13 +274,13 @@ sidebar:
           url: "/sm-storage/assign-volumes.html"
       - title: Gerenciar hosts e clusters
         entries:
-        - title: "${post_edited_translations.segment}"
+        - title: Alterar tipo de host padrão
           url: "/sm-settings/change-default-host-type.html"
         - title: Desatribuir volumes
           url: "/sm-storage/unassign-volumes.html"
         - title: Excluir host ou cluster de hosts
           url: "/sm-storage/delete-host-or-host-cluster.html"
-        - title: "${post_edited_translations.segment}"
+        - title: Configurar relatório de conectividade de host
           url: "/sm-settings/set-host-connectivity-reporting.html"
       - title: Gerenciar configurações
         entries:

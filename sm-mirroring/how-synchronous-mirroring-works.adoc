@@ -24,12 +24,14 @@ Esse tipo de espelhamento é ideal para continuidade dos negócios, como recuper
 
 
 
+[[synchronous-mirroring-relationship]]
 == Relação de espelhamento síncrono
 
 Um relacionamento de espelhamento síncrono consiste em um volume primário e um volume secundário em arrays de storage separados. O array de storage que contém o volume primário geralmente está localizado no site primário e atende aos hosts ativos. O array de storage que contém o volume secundário geralmente está localizado em um site secundário e armazena uma réplica dos dados. O volume secundário é usado se o array de storage do volume primário estiver indisponível devido, por exemplo, a uma interrupção total de energia, um incêndio ou uma falha de hardware no site primário.
 
 
 
+[[synchronous-mirroring-session]]
 == Sessão de espelhamento síncrono
 
 O processo de configuração de espelhamento síncrono envolve configurar volumes em pares. Depois de criar um par espelhado, que consiste em um volume primário em um array de storage e um volume secundário em outro array de storage, você pode iniciar o espelhamento síncrono. As etapas do espelhamento síncrono são mostradas abaixo.
@@ -49,6 +51,7 @@ Como o aplicativo host precisa aguardar a gravação ocorrer no array de storage
 
 
 
+[[disaster-recovery]]
 == Recuperação de desastres
 
 O espelhamento síncrono mantém uma cópia dos dados que está fisicamente distante do local onde os dados residem. Se ocorrer um desastre no local primário, como uma interrupção ou uma inundação, os dados podem ser acessados rapidamente a partir do local secundário.
@@ -57,6 +60,7 @@ O volume secundário fica indisponível para os aplicativos host enquanto a oper
 
 
 
+[[synchronization-settings]]
 == Configurações de sincronização
 
 Ao criar um par espelhado, você também define a prioridade de sincronização e a política de ressincronização que o par espelhado usa para concluir a operação de ressincronização após uma interrupção de comunicação.
@@ -69,6 +73,7 @@ Você pode editar as configurações de sincronização de um par espelhado some
 
 
 
+[[unsynchronized-data]]
 == Dados não sincronizados
 
 Os volumes primário e secundário ficam dessincronizados quando o array de storage do volume primário não consegue gravar dados no volume secundário. Isso pode ser causado pelos seguintes problemas:
@@ -80,6 +85,7 @@ Os volumes primário e secundário ficam dessincronizados quando o array de stor
 
 
 
+[[orphaned-mirrored-pair]]
 == Par espelhado órfão
 
 Um volume de par espelhado órfão existe quando um volume membro foi removido de um lado (seja o lado primário ou o lado secundário), mas não do outro lado.
@@ -90,6 +96,7 @@ Você pode remover um par espelhado para corrigir um estado de par espelhado ór
 
 
 
+[[configuration-and-management]]
 == Configuração e gerenciamento
 
 Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a interface Unified Manager. Depois que o espelhamento estiver habilitado, você pode gerenciar os pares espelhados e as configurações de sincronização no System Manager.

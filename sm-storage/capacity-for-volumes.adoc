@@ -16,6 +16,7 @@ Os discos do seu array de storage fornecem a capacidade de storage físico para 
 
 
 
+[[using-capacity-to-create-and-expand-volumes]]
 == Usando a capacidade para criar e expandir volumes
 
 Você pode criar volumes a partir da capacidade não atribuída ou da capacidade livre em um pool ou volume group.
@@ -28,6 +29,7 @@ Após expandir a capacidade do volume, você deve aumentar manualmente o tamanho
 
 
 
+[[capacity-types-for-thick-volumes-and-thin-volumes]]
 == Tipos de capacidade para volumes espessos e volumes finos
 
 Você pode criar volumes espessos ou volumes finos. A capacidade relatada e a capacidade alocada são as mesmas para volumes espessos, mas são diferentes para volumes finos.
@@ -49,6 +51,7 @@ SANtricity System Manager não oferece uma opção para criar volumes thin. Se v
 ====
 
 
+[[capacity-limits-for-thick-volumes]]
 == Limites de capacidade para volumes espessos
 
 A capacidade mínima para um volume espesso é de 1 MiB, e a capacidade máxima é determinada pelo número e capacidade das drives no pool ou grupo de volume.
@@ -65,6 +68,7 @@ Ao criar um volume, uma capacidade adicional é pré-alocada para a migração d
 
 
 
+[[capacity-limits-for-thin-volumes]]
 == Limites de capacidade para volumes finos
 
 É possível criar volumes thin com uma grande capacidade reportada e uma capacidade alocada relativamente pequena, o que é benéfico para a utilização do storage e eficiência. Os volumes thin podem ajudar a simplificar a administração do storage, pois a capacidade alocada pode aumentar conforme as necessidades do aplicativo mudam, sem interromper o aplicativo, permitindo uma melhor utilização do storage.

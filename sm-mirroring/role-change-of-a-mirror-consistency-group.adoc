@@ -24,6 +24,7 @@ Analise as seguintes informações sobre a operação de alteração de função
 
 
 
+[[force-role-change]]
 == Forçar mudança de função
 
 Você pode forçar uma mudança de função entre grupos de consistência de espelhamento quando um problema de comunicação entre o array de storage local e o array de storage remoto estiver impedindo a promoção dos volumes membros dentro do grupo de consistência de espelhamento secundário ou o rebaixamento dos volumes membros dentro do grupo de consistência de espelhamento primário.
@@ -32,6 +33,7 @@ Você pode forçar o grupo de consistência de espelhamento no lado secundário 
 
 
 
+[[when-is-a-forced-promotion-allowed-and-not-allowed]]
 == Quando uma promoção forçada é permitida e quando não é permitida?
 
 A promoção forçada de um grupo de consistência de espelhamento só é permitida se todos os volumes membros do grupo de consistência de espelhamento tiverem sido sincronizados e possuírem pontos de recuperação consistentes.
@@ -46,6 +48,7 @@ A promoção forçada de um grupo de consistência de espelhamento não é permi
 
 
 
+[[mirror-group-role-conflict]]
 == Conflito de função do grupo de espelhamento
 
 Quando um problema de comunicação entre os arrays de storage local e remoto é resolvido, ocorre uma condição de Conflito de Função de Grupo de Espelhamento. Use o Recovery Guru para recuperar desse erro. Uma promoção forçada não é permitida ao resolver um conflito de função dupla.
@@ -54,6 +57,7 @@ Para evitar a condição de conflito de função do grupo de espelhamento e as e
 
 
 
+[[role-change-in-progress-state]]
 == Estado de mudança de função em andamento
 
 Se dois arrays de storage em uma configuração de espelhamento se tornarem desconectados, e o lado primário de um grupo de consistência de espelhamento for forçado a ser rebaixado para a função secundária, e o lado secundário de um grupo de consistência de espelhamento for forçado a ser promovido para a função primária, então, quando a comunicação for restaurada, os grupos de consistência de espelhamento em ambos os arrays de storage serão colocados no estado de Mudança de Função em Andamento.

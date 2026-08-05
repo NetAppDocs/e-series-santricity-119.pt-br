@@ -15,6 +15,7 @@ Ao criar e usar Snapshots, revise os seguintes requisitos e diretrizes.
 
 
 
+[[snapshot-images-and-snapshot-groups]]
 == Snapshot imagens instantâneas e grupos de instantâneos
 
 * Cada imagem de Snapshot está associada a exatamente um grupo de Snapshot.
@@ -29,6 +30,7 @@ Você pode visualizar os grupos de Snapshot na página Pools & Volume Groups.
 
 
 
+[[snapshot-consistency-group]]
 == Grupo de consistência Snapshot
 
 * Um grupo de consistência de Snapshot contém um grupo de Snapshot para cada volume que é membro do grupo de consistência de Snapshot.
@@ -39,6 +41,7 @@ Você pode visualizar os grupos de Snapshot na página Pools & Volume Groups.
 
 
 
+[[base-volume]]
 == Volume base
 
 * Um volume de Snapshot deve ter as mesmas configurações de Data Assurance (DA) e segurança que o volume base associado.
@@ -49,6 +52,7 @@ Você pode visualizar os grupos de Snapshot na página Pools & Volume Groups.
 
 
 
+[[reserved-capacity]]
 == Capacidade reservada
 
 * A capacidade reservada está associada a apenas um volume base.
@@ -58,6 +62,7 @@ Você pode visualizar os grupos de Snapshot na página Pools & Volume Groups.
 
 
 
+[[pending-snapshot-images]]
 == Imagens Snapshot pendentes
 
 A criação de Snapshot pode permanecer no estado Pendente nas seguintes condições:
@@ -68,6 +73,7 @@ A criação de Snapshot pode permanecer no estado Pendente nas seguintes condiç
 
 
 
+[[maximum-number-of-snapshot-images]]
 == Número máximo de imagens Snapshot
 
 * Se um volume for membro de um grupo de consistência de Snapshot, System Manager cria um grupo de Snapshot para esse volume membro. Esse grupo de Snapshot é contabilizado no número máximo permitido de grupos de Snapshot por volume base.
@@ -81,12 +87,14 @@ A criação de Snapshot pode permanecer no estado Pendente nas seguintes condiç
 
 
 
+[[auto-deletion]]
 == Exclusão automática
 
 Se o grupo de Snapshot ou grupo de consistência de Snapshot estiver habilitado para exclusão automática, System Manager exclui a imagem de Snapshot mais antiga quando o sistema cria uma nova para o grupo.
 
 
 
+[[rollback-operation]]
 == Operação de reverter
 
 * Não é possível executar as seguintes ações enquanto uma operação de reverter estiver em andamento:

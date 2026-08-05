@@ -24,6 +24,7 @@ Utilizar certificados assinados por uma CA é um procedimento de três etapas.
 
 
 
+[[step-1-complete-csrs-for-the-controllers]]
 == Etapa 1: preencha os CSRs para os controladores
 
 Primeiro, você deve gerar um arquivo de solicitação de assinatura de certificado (CSR) para cada controlador no array de storage.
@@ -85,6 +86,7 @@ Para um único controlador, um arquivo CSR é baixado para o seu sistema local. 
 
 
 
+[[step-2-submit-the-csr-files]]
 == Etapa 2: enviar os arquivos CSR
 
 Após criar os arquivos de solicitação de assinatura de certificado (CSR), envie os arquivos para uma autoridade certificadora (CA). E-Series systems exigem o formato PEM (codificação ASCII Base64) para certificados assinados, que inclui os seguintes tipos de arquivo: .pem, .crt, .cer ou .key.
@@ -103,6 +105,7 @@ Após criar os arquivos de solicitação de assinatura de certificado (CSR), env
 
 
 
+[[step-3-import-signed-certificates-for-controllers]]
 == Etapa 3: importar certificados assinados para controladores
 
 Após receber os certificados assinados da Certificate Authority (CA), importe os arquivos dos controladores.

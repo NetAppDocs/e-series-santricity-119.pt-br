@@ -15,6 +15,7 @@ O Gerenciamento de Acesso é um método de configurar autenticação no SANtrici
 
 
 
+[[what-authentication-methods-are-available]]
 == Quais métodos de autenticação estão disponíveis?
 
 Os seguintes métodos de autenticação estão disponíveis:
@@ -34,6 +35,7 @@ Saiba mais:
 
 
 
+[[how-do-i-configure-access-management]]
 == Como faço para configurar o Access Management?
 
 O software SANtricity vem pré-configurado para usar funções de usuário locais. Se você quiser usar LDAP, pode configurá-lo na página Access Management.

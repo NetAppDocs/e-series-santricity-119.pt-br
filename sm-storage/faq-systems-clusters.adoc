@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-are-hosts-and-host-clusters]]
 == O que são hosts e clusters de hosts?
 
 Um host é um servidor que envia E/S para um volume em um array de storage. Um cluster de hosts é um grupo de hosts. Você cria um cluster de hosts para facilitar a atribuição dos mesmos volumes a vários hosts.
@@ -26,12 +27,14 @@ O cluster de hosts é uma entidade lógica que você cria no SANtricity System M
 
 
 
+[[why-would-i-need-to-create-a-host-cluster]]
 == Por que eu precisaria criar um cluster de host?
 
 Você precisa criar um cluster de hosts se quiser que dois ou mais hosts compartilhem o acesso ao mesmo conjunto de volumes. Normalmente, os hosts individuais têm software de clustering instalado para coordenar o acesso aos volumes.
 
 
 
+[[how-do-i-know-which-host-operating-system-type-is-correct]]
 == Como posso saber qual tipo de sistema operacional do host é o correto?
 
 O campo Tipo de Sistema Operacional do Host contém o sistema operacional do host. Você pode selecionar o tipo de host recomendado na lista suspensa.
@@ -135,6 +138,7 @@ Se o tipo de sistema operacional do seu host estiver definido com esse valor, us
 |===
 
 
+[[what-are-hbas-and-adapter-ports]]
 == O que são HBAs e portas de adaptador?
 
 Um adaptador de barramento de host (HBA) é uma placa que reside em um host e contém uma ou mais portas de host. Uma porta de host é uma porta em um adaptador de barramento de host (HBA) que fornece a conexão física a um controlador e é usada para operações de I/O.
@@ -143,6 +147,7 @@ As portas do adaptador no HBA são chamadas de portas de host. A maioria dos HBA
 
 
 
+[[how-do-i-match-the-host-ports-to-a-host]]
 == Como faço para associar as portas do host a um host?
 
 Se você estiver criando um host manualmente, primeiro deve usar o utilitário de adaptador de barramento de host (HBA) apropriado disponível no host para determinar os identificadores de porta do host associados a cada HBA instalado no host.
@@ -156,6 +161,7 @@ Certifique-se de selecionar os identificadores de porta de host apropriados para
 ====
 
 
+[[how-do-i-create-chap-secrets]]
 == Como faço para criar segredos CHAP?
 
 Se você configurar a autenticação Challenge Handshake Authentication Protocol (CHAP) em qualquer host iSCSI conectado ao array de storage, você deverá inserir novamente o segredo CHAP do iniciador para cada host iSCSI.
@@ -166,6 +172,7 @@ Se você estiver usando autenticação mútua CHAP, também deve definir um segr
 
 
 
+[[what-is-the-default-cluster]]
 == Qual é o cluster padrão?
 
 O cluster padrão é uma entidade definida pelo sistema que permite que qualquer identificador de porta de host não associado que tenha feito login no array de storage acesse os volumes atribuídos ao cluster padrão. Um identificador de porta de host não associado é uma porta de host que não está logicamente associada a um host específico, mas está fisicamente instalada em um host e fez login no array de storage.
@@ -181,6 +188,7 @@ Inicialmente, você só pode atribuir volumes ao cluster padrão por meio da int
 
 
 
+[[what-is-host-connectivity-reporting]]
 == O que é o relatório de conectividade de host?
 
 Quando o relatório de conectividade de host está ativado, o array de storage monitora continuamente a conexão entre os controladores e os hosts configurados e, em seguida, alerta você se a conexão for interrompida.

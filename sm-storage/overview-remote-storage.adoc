@@ -16,6 +16,7 @@ Se você tiver o recurso de Remote Storage, poderá importar dados de um sistema
 
 
 
+[[what-is-the-remote-storage-feature]]
 == O que é o recurso de storage remoto?
 
 O recurso _Remote Storage_ permite importar dados de um sistema de storage remoto para um sistema de storage E-Series local. O sistema remoto pode ser outro sistema E-Series ou um sistema de outro fornecedor. Esse recurso é útil quando você deseja agilizar a migração de dados com o mínimo de tempo de inatividade, como durante atualizações de equipamentos.
@@ -33,6 +34,7 @@ Saiba mais:
 
 
 
+[[how-do-i-import-data-with-this-feature]]
 == Como faço para importar dados com esse recurso?
 
 Usando o assistente de Remote Storage, você mapeia um dispositivo de storage (a origem da importação de dados) para um volume de destino no sistema E-Series. Este assistente está disponível no menu:Storage[Remote storage].

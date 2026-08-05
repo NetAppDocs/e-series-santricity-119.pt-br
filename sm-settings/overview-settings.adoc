@@ -16,6 +16,7 @@ Você pode configurar SANtricity System Manager para algumas configurações ger
 
 
 
+[[what-settings-can-i-configure]]
 == Quais configurações posso configurar?
 
 As configurações do array incluem:
@@ -28,6 +29,7 @@ As configurações do array incluem:
 
 
 
+[[related-tasks]]
 == Tarefas relacionadas
 
 Saiba mais sobre tarefas relacionadas às System Settings:

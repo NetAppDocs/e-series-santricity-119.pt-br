@@ -15,6 +15,7 @@ A página Hardware fornece uma representação gráfica dos componentes físicos
 
 
 
+[[shelves]]
 == Prateleiras
 
 Um shelf é um componente que contém o hardware do array de storage (controladores, fontes de alimentação/ventoinhas e unidades de disco). Existem dois tipos de shelf:
@@ -41,6 +42,7 @@ Você pode executar as seguintes funções relacionadas aos compartimentos de ex
 
 
 
+[[controllers]]
 == Controladores
 
 Um controlador é o conjunto de hardware e firmware que implementa as funções do array de storage e de gerenciamento. Ele inclui a memória cache, o suporte a unidades e o suporte à interface com o host.
@@ -57,6 +59,7 @@ Você pode executar as seguintes funções relacionadas aos controladores:
 
 
 
+[[drives]]
 == Unidades
 
 O array de storage pode incluir discos rígidos (HDDs) ou unidades de estado sólido (SSDs). Dependendo do tamanho do compartimento, até 12, 24 ou 60 unidades podem ser instaladas no compartimento.

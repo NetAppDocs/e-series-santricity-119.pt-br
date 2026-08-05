@@ -23,6 +23,7 @@ O processo para criar um grupo de consistência de snapshot é um procedimento d
 
 
 
+[[step-1-add-members-to-snapshot-consistency-group]]
 == Etapa 1: adicione membros ao grupo de consistência de Snapshot
 
 Selecione os membros para especificar uma coleção de volumes que compõem o grupo de consistência de Snapshot. Quaisquer ações que você executar no grupo de consistência de Snapshot serão aplicadas uniformemente aos volumes membros selecionados.
@@ -43,6 +44,7 @@ A caixa de diálogo Criar Grupo de Consistência de Snapshot é exibida.
 
 
 
+[[step-2-reserve-capacity-for-snapshot-consistency-group]]
 == Etapa 2: reserve capacidade para grupo de consistência de Snapshot
 
 Associe a capacidade reservada ao grupo de consistência de snapshot. System Manager sugere os volumes e a capacidade com base nas propriedades do grupo de consistência de snapshot. Você pode aceitar a configuração de capacidade reservada recomendada ou personalizar o storage alocado.
@@ -74,6 +76,7 @@ Aloque a capacidade reservada usando as seguintes diretrizes.
 
 
 
+[[step-3-edit-settings-for-snapshot-consistency-group]]
 == Etapa 3: editar as configurações do grupo de consistência de Snapshot
 
 Aceite ou selecione as configurações de exclusão automática e os limites de alerta de capacidade reservada para o grupo de consistência de Snapshot.

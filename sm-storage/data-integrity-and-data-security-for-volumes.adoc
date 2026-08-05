@@ -15,6 +15,7 @@ Você pode habilitar volumes para usar o recurso Data Assurance (DA) e o recurso
 
 
 
+[[data-assurance]]
 == Garantia de dados
 
 O Data Assurance (DA) implementa o padrão T10 Protection Information (PI), que aumenta a integridade de dados ao verificar e corrigir erros que possam ocorrer durante a transferência de dados ao longo do caminho de E/S. O uso típico do recurso Data Assurance verifica a porção do caminho de E/S entre os controladores e as unidades. Os recursos do DA são apresentados nos níveis de pool e grupo de volume.
@@ -23,24 +24,28 @@ Quando esse recurso está habilitado, o array de storage anexa códigos de verif
 
 
 
+[[drive-security]]
 == Segurança da unidade
 
 A Segurança de Unidade é um recurso que impede o acesso não autorizado a dados em unidades com segurança habilitada quando removidas do array de storage. Essas unidades podem ser unidades com Full Disk Encryption (FDE) ou unidades certificadas para atender ao Federal Information Processing Standards 140-2 nível 2 (unidades FIPS).
 
 
 
+[[how-drive-security-works-at-the-drive-level]]
 === Como o Drive Security funciona no nível da unidade
 
 Uma unidade com recursos de segurança, seja FDE ou FIPS, criptografa os dados durante as gravações e os descriptografa durante as leituras. Essa criptografia e descriptografia não afetam o desempenho nem o fluxo de trabalho do usuário. Cada unidade possui sua própria chave de criptografia exclusiva, que nunca pode ser transferida da unidade.
 
 
 
+[[how-drive-security-works-at-the-volume-level]]
 === Como o Drive Security funciona no nível de volume
 
 Ao criar um pool ou grupo de volume a partir de drives secure-capable, você também pode habilitar Drive Security para esses pools ou grupos de volume. A opção Drive Security torna os drives e os grupos de volume e pools associados secure-enabled. Um pool ou grupo de volume pode conter tanto drives secure-capable quanto drives não secure-capable, mas todos os drives devem ser secure-capable para usar seus recursos de criptografia.
 
 
 
+[[how-to-implement-drive-security]]
 === Como implementar Drive Security
 
 Para implementar a Segurança do Drive, execute as seguintes etapas.

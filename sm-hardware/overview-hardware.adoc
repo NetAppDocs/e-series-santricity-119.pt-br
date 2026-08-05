@@ -15,6 +15,7 @@ Você pode verificar o status do componente na página Hardware e executar algum
 
 
 
+[[which-components-can-i-manage]]
 == Quais componentes posso gerenciar?
 
 Você pode verificar o status dos componentes e executar algumas funções relacionadas a esses componentes:
@@ -32,6 +33,7 @@ Saiba mais:
 
 
 
+[[how-do-i-view-hardware-components]]
 == Como faço para visualizar os componentes de hardware?
 
 Acesse a página Hardware, que fornece uma representação gráfica dos componentes físicos do array de storage. Você pode alternar entre as visualizações frontal e traseira dos gabinetes do array selecionando a guia *Unidades* ou *Controladores* no canto superior direito da visualização do gabinete.

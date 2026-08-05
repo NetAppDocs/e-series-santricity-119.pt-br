@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: SANtricity, System Manager, E-Series, configure, dns, server, addresses, 
 summary: 'O Domain Name System (DNS) é usado para resolver nomes de domínio totalmente qualificados para os controladores e um servidor Network Time Protocol (NTP). As portas de gerenciamento no array de storage podem suportar protocolos IPv4 ou IPv6 simultaneamente.' 
 ---
-= ${post_edited_translations.segment}
+= Configurar os endereços do servidor DNS no SANtricity System Manager
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -14,7 +14,7 @@ summary: 'O Domain Name System (DNS) é usado para resolver nomes de domínio to
 O Domain Name System (DNS) é usado para resolver nomes de domínio totalmente qualificados para os controladores e um servidor Network Time Protocol (NTP). As portas de gerenciamento no array de storage podem suportar protocolos IPv4 ou IPv6 simultaneamente.
 
 .Antes de começar
-* ${post_edited_translations.segment}
+* Um servidor DNS deve ser instalado e configurado na sua rede.
 * Você conhece o endereço do servidor DNS primário e um servidor DNS de backup opcional. Esses endereços podem ser endereços IPv4 ou endereços IPv6.
 
 
@@ -32,13 +32,13 @@ Se você já configurou as portas de gerenciamento do array de storage com Dynam
 +
 O gráfico muda para mostrar os controladores em vez das unidades de disco.
 
-. ${post_edited_translations.segment}
+. Selecione o controlador que deseja configurar.
 +
 O menu de contexto do controlador é exibido.
 
-. ${post_edited_translations.segment}
+. Selecione *Configurar servidor DNS*.
 +
-${post_edited_translations.segment}
+A caixa de diálogo Configurar Servidor do Sistema de Nomes de Domínio (DNS) é aberta.
 
 . Selecione uma das seguintes opções:
 +

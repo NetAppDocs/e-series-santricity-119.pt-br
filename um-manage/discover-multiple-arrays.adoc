@@ -25,6 +25,7 @@ A descoberta de arrays é um procedimento em várias etapas.
 
 
 
+[[step-1-enter-network-address]]
 == Etapa 1: insira o endereço de rede
 
 Você insere um intervalo de endereços de rede para pesquisar na sub-rede local. Qualquer array de storage acessado com sucesso aparece na página Discover e pode ser adicionado ao seu domínio de gerenciamento.
@@ -57,6 +58,7 @@ Unified Manager realiza uma verificação de credencial em cada array que você 
 
 
 
+[[step-2-resolve-self-signed-certificates-during-discovery]]
 == Etapa 2: resolver certificados autoassinados durante a descoberta
 
 Como parte do processo de descoberta, o sistema verifica se os arrays de storage estão usando certificados de uma fonte confiável.
@@ -73,6 +75,7 @@ Como parte do processo de descoberta, o sistema verifica se os arrays de storage
 
 
 
+[[step-3-resolve-untrusted-certificates-during-discovery]]
 == Etapa 3: resolver certificados não confiáveis durante a descoberta
 
 Certificados não confiáveis ocorrem quando um array de storage tenta estabelecer uma conexão segura com o Unified Manager, mas a conexão falha ao ser confirmada como segura. Durante o processo de descoberta do array, você pode resolver certificados não confiáveis importando um certificado de autoridade certificadora (CA) (ou certificado assinado por uma CA) emitido por uma terceira parte confiável.
@@ -109,6 +112,7 @@ Qualquer array de storage com problemas de certificado não confiáveis que não
 
 
 
+[[step-4-provide-passwords]]
 == Passo 4: forneça as senhas
 
 Você deve inserir as senhas dos arrays de storage que deseja adicionar ao seu domínio de gerenciamento.

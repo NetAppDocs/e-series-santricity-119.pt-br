@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-do-i-need-to-know-before-creating-a-security-key]]
 == O que preciso saber antes de criar uma chave de segurança?
 
 Uma chave de segurança é compartilhada entre controladores e unidades com segurança habilitada dentro de um array de storage. Se uma unidade com segurança habilitada for removida do array de storage, a chave de segurança protege os dados contra acesso não autorizado.
@@ -28,6 +29,7 @@ Você pode criar e gerenciar chaves de segurança usando um dos seguintes métod
 
 
 
+[[internal-key-management]]
 === Gerenciamento interno de chaves
 
 As chaves internas são mantidas e "`hidden`" em um local inacessível na memória persistente do controlador. Antes de criar uma chave de segurança interna, você deve fazer o seguinte:
@@ -40,6 +42,7 @@ Em seguida, você pode criar uma chave de segurança interna, o que envolve defi
 
 
 
+[[external-key-management]]
 === Gerenciamento de chaves externas
 
 As chaves externas são mantidas em um servidor de gerenciamento de chaves separado, usando um Key Management Interoperability Protocol (KMIP). Antes de criar uma chave de segurança externa, você deve fazer o seguinte:
@@ -60,12 +63,14 @@ Em seguida, você pode criar uma chave externa, o que envolve definir o endereç
 
 
 
+[[why-do-i-need-to-define-a-pass-phrase]]
 == Por que preciso definir uma frase secreta?
 
 A senha é usada para criptografar e descriptografar o arquivo de chave de segurança armazenado no cliente de gerenciamento local. Sem a senha, a chave de segurança não pode ser descriptografada e usada para desbloquear dados de uma unidade com segurança habilitada, caso ela seja reinstalada em outro array de storage.
 
 
 
+[[why-is-it-important-to-record-security-key-information]]
 == Por que é importante registrar as informações da chave de segurança?
 
 Se você perder as informações da chave de segurança e não tiver um backup, poderá perder dados ao realocar unidades com segurança habilitada ou ao atualizar um controlador. Você precisa da chave de segurança para desbloquear dados nas unidades.
@@ -74,6 +79,7 @@ Certifique-se de registrar o identificador da chave de segurança, a frase secre
 
 
 
+[[what-do-i-need-to-know-before-backing-up-a-security-key]]
 == O que preciso saber antes de fazer backup de uma chave de segurança?
 
 Se a sua chave de segurança original for corrompida e você não tiver um backup, você perderá o acesso aos dados nas unidades caso elas sejam migradas de um array de storage para outro.
@@ -99,6 +105,7 @@ A frase secreta para Drive Security não deve ser confundida com a senha de admi
 
 
 
+[[what-do-i-need-to-know-before-unlocking-secure-drives]]
 == O que preciso saber antes de desbloquear unidades seguras?
 
 Para desbloquear os dados de uma unidade com segurança ativada, você deve importar sua chave de segurança.
@@ -113,6 +120,7 @@ Antes de desbloquear unidades com segurança ativada, tenha em mente as seguinte
 
 
 
+[[what-is-readwrite-accessibility]]
 == O que é acessibilidade de leitura/gravação?
 
 A janela Configurações da unidade inclui informações sobre os atributos de segurança da unidade. "Leitura/gravação acessível" é um dos atributos que indica se os dados de uma unidade foram bloqueados.
@@ -121,6 +129,7 @@ Para visualizar os atributos de segurança da unidade, acesse a página Hardware
 
 
 
+[[what-do-i-need-to-know-about-validating-the-security-key]]
 == O que preciso saber sobre validar a chave de segurança?
 
 Após criar uma chave de segurança, você deve validar o arquivo da chave para garantir que não esteja corrompido.
@@ -134,6 +143,7 @@ Se a validação falhar, faça o seguinte:
 
 
 
+[[what-is-the-difference-between-internal-security-key-and-external-security-key-management]]
 == Qual é a diferença entre chave de segurança interna e gerenciamento externo de chave de segurança?
 
 Ao implementar o recurso de Segurança de Unidade, você pode usar uma chave de segurança interna ou externa para bloquear os dados quando uma unidade com segurança habilitada for removida do array de storage.

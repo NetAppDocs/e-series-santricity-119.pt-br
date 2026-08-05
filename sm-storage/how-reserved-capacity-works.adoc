@@ -17,6 +17,7 @@ A finalidade da capacidade reservada é armazenar as alterações de dados nesse
 
 
 
+[[copy-service-objects-that-use-reserved-capacity]]
 == Copiar objetos de serviço que usam capacidade reservada
 
 A capacidade reservada é o mecanismo de storage subjacente usado por esses objetos de serviço de cópia:
@@ -31,6 +32,7 @@ Ao criar ou expandir esses objetos de serviço de cópia, você deve criar nova 
 
 
 
+[[thin-volumes-and-reserved-capacity]]
 == Volumes finos e capacidade reservada
 
 Para um volume fino, se a capacidade máxima relatada de 256 TiB for atingida, você não poderá aumentar sua capacidade. Certifique-se de que a capacidade reservada do volume fino esteja definida para um tamanho maior que a capacidade máxima relatada. (Um volume fino é sempre thinly-provisioned, o que significa que a capacidade é alocada à medida que os dados são gravados no volume.)
@@ -43,6 +45,7 @@ Se você criar capacidade reservada usando um thin volume em um pool, revise as 
 
 
 
+[[capacity-alerts]]
 == Alertas de capacidade
 
 O objeto de serviço de cópia possui um aviso e limite de alerta de capacidade configurável, bem como uma resposta configurável quando a capacidade reservada está cheia.
@@ -51,6 +54,7 @@ Quando a capacidade reservada de um volume de objeto de serviço de cópia está
 
 
 
+[[orphaned-reserved-capacity-volumes]]
 == Volumes de capacidade reservada órfãos
 
 Um volume de capacidade reservada órfão é um volume que não armazena mais dados para operações do serviço de cópia porque seu objeto de serviço de cópia associado foi excluído. Quando o objeto de serviço de cópia foi excluído, seu volume de capacidade reservada também deveria ter sido excluído. No entanto, o volume de capacidade reservada não foi excluído.
@@ -61,6 +65,7 @@ System Manager alerta você sobre volumes de capacidade reservada órfãos com u
 
 
 
+[[characteristics-of-reserved-capacity]]
 == Características da capacidade reservada
 
 * A capacidade alocada à capacidade reservada precisa ser considerada durante a criação do volume para manter capacidade livre suficiente.

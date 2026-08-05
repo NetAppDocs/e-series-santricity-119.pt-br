@@ -15,6 +15,7 @@ Para gerenciar recursos de storage, primeiro você deve descobrir os arrays de s
 
 
 
+[[how-do-i-discover-arrays]]
 == Como faço para descobrir arrays?
 
 Use a página Adicionar/Descobrir para encontrar e adicionar os arrays de storage que deseja gerenciar na rede da sua organização. Você pode descobrir vários arrays ou pode descobrir apenas um array. Para fazer isso, insira os endereços IP da rede e, em seguida, o Unified Manager tentará conexões individuais com cada endereço IP nesse intervalo.
@@ -28,6 +29,7 @@ Saiba mais:
 
 
 
+[[how-do-i-manage-arrays]]
 == Como faço para gerenciar arrays?
 
 Após descobrir os arrays, acesse a página *Gerenciar - Todos*. Nessa página, você pode percorrer uma lista de arrays de storage descobertos em sua rede, visualizar o status deles e realizar operações em um único array ou em um grupo de arrays.

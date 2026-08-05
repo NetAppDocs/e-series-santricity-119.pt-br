@@ -18,6 +18,7 @@ Para configurar o recurso de armazenamento remoto, você deve configurar o hardw
 
 
 
+[[hardware-setup]]
 == Configuração de hardware
 
 Utilize o seguinte fluxo de trabalho para preparar as conexões de hardware.
@@ -55,6 +56,7 @@ No sistema de storage remoto:
 
 
 
+[[system-manager-setup]]
 == Configuração do System Manager
 
 Utilize o seguinte fluxo de trabalho para criar um objeto de storage remoto para a importação:

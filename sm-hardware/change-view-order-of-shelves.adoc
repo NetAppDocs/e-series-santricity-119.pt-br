@@ -15,5 +15,5 @@ Você pode alterar a ordem das prateleiras exibidas na página Hardware para cor
 
 .Passos
 . Selecione *Hardware*.
-. ${post_edited_translations.segment}
+. Na parte superior direita da visualização da prateleira, selecione as setas para cima ou para baixo para reorganizar a ordem das prateleiras exibidas na página de hardware.
 

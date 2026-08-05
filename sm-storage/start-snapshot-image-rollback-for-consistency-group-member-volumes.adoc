@@ -34,6 +34,7 @@ O processo para iniciar o rollback de uma imagem de Snapshot de um grupo de cons
 
 
 
+[[step-1-select-members]]
 == Passo 1: selecionar membros
 
 Você deve selecionar os volumes membros que serão revertidos.
@@ -56,6 +57,7 @@ A caixa de diálogo Iniciar reverter é exibida.
 
 
 
+[[step-2-review-capacity]]
 == Etapa 2: analisar a capacidade
 
 Se você selecionou volumes membros associados a mais de um objeto de capacidade reservada, como um grupo de Snapshot e um volume de capacidade reservada, você pode revisar e aumentar a capacidade reservada para o(s) volume(s) revertido(s).
@@ -77,6 +79,7 @@ A caixa de diálogo Edit Priority é exibida.
 
 
 
+[[step-3-edit-priority]]
 == Etapa 3: editar prioridade
 
 Você pode editar a prioridade da operação de reverter, se necessário.

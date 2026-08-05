@@ -15,6 +15,7 @@ Antes de importar uma configuração de storage de um array de storage para outr
 
 
 
+[[shelves]]
 == Prateleiras
 
 * As prateleiras onde os controladores residem devem ser idênticas nos arrays de origem e de destino.
@@ -24,6 +25,7 @@ Antes de importar uma configuração de storage de um array de storage para outr
 
 
 
+[[controllers]]
 == Controladores
 
 * O tipo de controlador pode ser diferente entre os arrays de origem e destino (por exemplo, importar de um E2800 para um E5700), mas o tipo de gabinete RBOD deve ser idêntico.
@@ -34,6 +36,7 @@ Antes de importar uma configuração de storage de um array de storage para outr
 
 
 
+[[status]]
 == Status
 
 * Os arrays de destino devem estar em status Ótimo.
@@ -42,6 +45,7 @@ Antes de importar uma configuração de storage de um array de storage para outr
 
 
 
+[[storage]]
 == Storage
 
 * A capacidade dos discos pode variar entre os arrays de origem e destino, desde que a capacidade de volume no destino seja maior que a da origem. (Um array de destino pode ter discos mais novos e com maior capacidade que não seriam totalmente configurados em volumes pela operação de replicação.)

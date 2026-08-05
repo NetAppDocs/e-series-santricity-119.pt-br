@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[how-does-asynchronous-mirroring-differ-from-synchronous-mirroring]]
 == Como o espelhamento assíncrono difere do espelhamento síncrono?
 
 O recurso de espelhamento assíncrono difere do recurso de espelhamento síncrono de uma maneira essencial: captura o estado do volume de origem em um determinado momento e copia apenas os dados que foram alterados desde a última captura de imagem.
@@ -112,6 +113,7 @@ Normalmente, deve estar a cerca de 10 km (6,2 milhas) do array de storage local 
 |===
 
 
+[[synchronous-mirroring-why-dont-i-see-all-my-volumes]]
 == Espelhamento síncrono - Por que não vejo todos os meus volumes?
 
 Ao selecionar um volume primário para um par espelhado, uma lista mostra todos os volumes elegíveis.
@@ -125,6 +127,7 @@ Os volumes que não são elegíveis para uso não são exibidos nessa lista. Vol
 
 
 
+[[synchronous-mirroring-why-dont-i-see-all-the-volumes-on-the-remote-storage-array]]
 == Espelhamento síncrono - Por que não vejo todos os volumes no array de storage remoto?
 
 Ao selecionar um volume secundário no array de storage remoto, uma lista mostra todos os volumes elegíveis para esse par espelhado.
@@ -144,6 +147,7 @@ Quaisquer volumes que não são elegíveis para uso não são exibidos nessa lis
 
 
 
+[[synchronous-mirroring-what-do-i-need-to-know-before-creating-a-mirrored-pair]]
 == Espelhamento síncrono - o que preciso saber antes de criar um par espelhado?
 
 Você configura pares espelhados na interface SANtricity Unified Manager e, em seguida, gerencia os pares no SANtricity System Manager.
@@ -163,6 +167,7 @@ Antes de criar um par espelhado, siga estas orientações:
 
 
 
+[[what-impact-does-synchronization-priority-have-on-synchronization-rates]]
 == Qual o impacto da prioridade de sincronização nas taxas de sincronização?
 
 A prioridade de sincronização define quanto tempo de processamento é alocado para atividades de sincronização em relação ao desempenho do sistema.
@@ -224,6 +229,7 @@ O tamanho do volume e as cargas de taxa de E/S do host afetam as comparações d
 
 
 
+[[why-is-it-recommended-to-use-a-manual-synchronization-policy]]
 == Por que é recomendável usar uma política de sincronização manual?
 
 A ressincronização manual é recomendada porque permite gerenciar o processo de ressincronização de uma forma que oferece a melhor oportunidade para recuperar dados.

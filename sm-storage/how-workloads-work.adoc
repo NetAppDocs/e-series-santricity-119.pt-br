@@ -19,6 +19,7 @@ Durante a criação de volumes, o sistema solicita que você responda a pergunta
 
 
 
+[[types-of-workloads]]
 == Tipos de cargas de trabalho
 
 Você pode criar dois tipos de cargas de trabalho: application-specific e outras.
@@ -39,6 +40,7 @@ Você pode revisar a configuração de volume recomendada e editar, adicionar ou
 
 
 
+[[application-and-workload-views]]
 == Visualizações de aplicativos e cargas de trabalho
 
 Para visualizar aplicativos e cargas de trabalho, inicie SANtricity System Manager. Nessa interface, você pode visualizar informações associadas a uma carga de trabalho específica de um aplicativo de algumas maneiras diferentes:

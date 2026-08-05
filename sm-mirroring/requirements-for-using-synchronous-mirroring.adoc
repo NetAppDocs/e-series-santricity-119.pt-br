@@ -16,6 +16,7 @@ Se você planeja usar espelhamento síncrono, tenha em mente os seguintes requis
 
 
 
+[[unified-manager]]
 == Unified Manager
 
 Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a interface Unified Manager. Unified Manager é instalado em um sistema host juntamente com o Web Services Proxy.
@@ -27,6 +28,7 @@ Para habilitar e configurar o espelhamento entre dois arrays, você deve usar a 
 
 
 
+[[storage-arrays]]
 == Array de storage
 
 [NOTE]
@@ -46,6 +48,7 @@ Espelhamento síncrono não está disponível no array de storage EF300/EF300C o
 
 
 
+[[supported-connections]]
 == Conexões suportadas
 
 A comunicação para espelhamento síncrono é suportada apenas em controladores com portas de host Fibre Channel (FC).
@@ -54,6 +57,7 @@ O espelhamento síncrono utiliza a porta de host de número mais alto em cada co
 
 
 
+[[mirrored-volume-candidates]]
 == Candidatos a volume espelhado
 
 * Nível RAID, parâmetros de armazenamento em cache e tamanho do segmento podem ser diferentes nos volumes primário e secundário de um par espelhado síncrono.
@@ -66,6 +70,7 @@ O espelhamento síncrono utiliza a porta de host de número mais alto em cada co
 
 
 
+[[reserved-capacity]]
 == Capacidade reservada
 
 * É necessária capacidade reservada para um volume primário e para um volume secundário para registrar informações de gravação para recuperar de reinicializações do controlador e outras interrupções temporárias.
@@ -74,6 +79,7 @@ O espelhamento síncrono utiliza a porta de host de número mais alto em cada co
 
 
 
+[[drive-security-feature]]
 == Recurso de segurança da unidade
 
 * Se você estiver usando unidades com recursos de segurança, o volume primário e o volume secundário devem ter configurações de segurança compatíveis. Essa restrição não é aplicada; portanto, você deve verificá-la por conta própria.

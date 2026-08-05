@@ -2,9 +2,9 @@
 permalink: sm-settings/enable-or-disable-legacy-management-interface.html 
 sidebar: sidebar 
 keywords: SANtricity, System Manager, E-Series, enable, disable, legacy, management, interface, 
-summary: ${post_edited_translations.segment} 
+summary: 'Você pode ativar ou desativar a interface de gerenciamento legada (SYMbol), que é um método de comunicação entre o array de storage e o cliente de gerenciamento.' 
 ---
-= ${post_edited_translations.segment}
+= Ativar ou desativar interface de gerenciamento legada no SANtricity System Manager
 :allow-uri-read: 
 :experimental: 
 :icons: font
@@ -12,19 +12,19 @@ summary: ${post_edited_translations.segment}
 
 
 [role="lead"]
-${post_edited_translations.segment}
+Você pode ativar ou desativar a interface de gerenciamento legada (SYMbol), que é um método de comunicação entre o array de storage e o cliente de gerenciamento.
 
 .Sobre esta tarefa
 Por padrão, a interface de gerenciamento legada está ativada. Se você desabilitá-la, o array de storage e o cliente de gerenciamento usarão um método de comunicação mais seguro (API REST sobre https); no entanto, certas ferramentas e tarefas podem ser afetadas se ela for desabilitada.
 
 [NOTE]
 ====
-${post_edited_translations.segment}
+Para o sistema de storage EF600, este recurso está desativado por padrão.
 
 ====
-${post_edited_translations.segment}
+A configuração afeta as operações da seguinte forma:
 
-* ${post_edited_translations.segment}
+* *Ativado* (padrão) — Configuração necessária para configurar espelhamento com a CLI e algumas outras ferramentas, como o adaptador OCI.
 * *Desativado* -- Configuração necessária para impor a confidencialidade nas comunicações entre o array de storage e o cliente de gerenciamento, e para acessar ferramentas externas. Configuração recomendada ao configurar um Directory Server (LDAP).
 
 

@@ -15,6 +15,7 @@ O recurso de espelhamento assíncrono fornece um mecanismo em nível de controla
 
 
 
+[[what-is-asynchronous-mirroring]]
 == O que é espelhamento assíncrono?
 
 O espelhamento assíncrono captura o estado do volume primário em um determinado momento e copia apenas os dados que foram alterados desde a última captura de imagem. O site primário pode ser atualizado imediatamente e o site secundário pode ser atualizado conforme a largura de banda permitir. As informações são armazenadas em cache e enviadas posteriormente, à medida que os recursos de rede se tornam disponíveis.
@@ -32,6 +33,7 @@ Saiba mais:
 
 
 
+[[how-do-i-configure-asynchronous-mirroring]]
 == Como faço para configurar espelhamento assíncrono?
 
 Você deve usar a interface do Unified Manager para realizar a configuração inicial de espelhamento entre os arrays. Depois de configurado, você pode gerenciar pares espelhados e grupos de consistência no System Manager.
@@ -45,6 +47,7 @@ Saiba mais:
 
 
 
+[[related-information]]
 == Informações relacionadas
 
 Saiba mais sobre conceitos relacionados ao espelhamento assíncrono:

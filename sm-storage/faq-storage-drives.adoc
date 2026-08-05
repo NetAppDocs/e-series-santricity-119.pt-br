@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-is-a-hot-spare-drive]]
 == O que é um hot spare?
 
 Hot spares atuam como unidades de espera em grupos de volume RAID 1, RAID 5 ou RAID 6. São unidades totalmente funcionais que não contêm dados. Se uma unidade falhar no grupo de volume, o controlador reconstrói automaticamente os dados da unidade com falha para um hot spare.
@@ -31,6 +32,7 @@ Unidades hot spare não são suportadas com pools. Em vez de unidades hot spare,
 ====
 
 
+[[what-is-preservation-capacity]]
 == O que é capacidade de preservação?
 
 A capacidade de preservação é a quantidade de capacidade (número de drives) reservada em um pool para suportar possíveis falhas de drives.
@@ -41,6 +43,7 @@ Os pools utilizam capacidade de preservação durante a reconstrução, enquanto
 
 
 
+[[why-would-i-logically-replace-a-drive]]
 == Por que eu substituiria logicamente uma unidade?
 
 Se uma unidade falhar ou se você quiser substituí-la por qualquer outro motivo, e houver uma unidade não atribuída em seu array de storage, você pode substituir logicamente a unidade com falha pela unidade não atribuída. Se você não tiver uma unidade não atribuída, poderá substituir fisicamente a unidade.
@@ -49,6 +52,7 @@ Os dados da unidade original são copiados ou reconstruídos na unidade de subst
 
 
 
+[[where-can-i-view-the-status-of-a-drive-undergoing-reconstruction]]
 == Onde posso visualizar o status de uma unidade em processo de reconstrução?
 
 Você pode visualizar o status da reconstrução da unidade no painel Operations in Progress.

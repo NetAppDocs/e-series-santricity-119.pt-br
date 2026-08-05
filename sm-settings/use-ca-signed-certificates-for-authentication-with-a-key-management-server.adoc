@@ -22,6 +22,7 @@ A autenticação entre os controladores e um servidor de gerenciamento de chaves
 
 
 
+[[step-1-complete-and-submit-csr-for-authentication-with-a-key-management-server]]
 == Etapa 1: preencha e envie o CSR para autenticação com um servidor de gerenciamento de chaves
 
 Primeiro, você deve gerar um arquivo de solicitação de assinatura de certificado (CSR) e, em seguida, usar o CSR para solicitar um certificado de cliente assinado de uma autoridade de certificação (CA) confiável pelo servidor de gerenciamento de chaves. Você também pode criar e baixar um certificado de cliente do servidor de gerenciamento de chaves usando o arquivo CSR baixado. Um certificado de cliente valida os controladores do array de storage, permitindo que o servidor de gerenciamento de chaves confie em suas solicitações do Key Management Interoperability Protocol (KMIP).
@@ -56,6 +57,7 @@ NOTE: É comum que o servidor de gerenciamento de chaves possua um recurso que g
 
 
 
+[[step-2-import-certificates-for-the-key-management-server]]
 == Etapa 2: importar certificados para o servidor de gerenciamento de chaves
 
 Como próximo passo, você importa certificados para autenticação entre o array de storage e o servidor de gerenciamento de chaves. Existem dois tipos de certificados: o certificado do cliente valida os controladores do array de storage, enquanto o certificado do servidor de gerenciamento de chaves valida o servidor. Você deve carregar tanto o arquivo de certificado do cliente para os controladores quanto o arquivo de certificado do servidor para o servidor de gerenciamento de chaves.

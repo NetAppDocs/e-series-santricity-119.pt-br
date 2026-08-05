@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[what-if-i-dont-see-all-of-my-hardware-components]]
 == E se eu não vir todos os meus componentes de hardware?
 
 Se você não visualizar todos os componentes de hardware na caixa de diálogo Verificar Hardware, isso pode significar que uma drive shelf não está conectada corretamente ou que uma shelf incompatível está instalada no array de storage.
@@ -24,6 +25,7 @@ Verifique se todas as gavetas de disco estão conectadas corretamente. Se tiver 
 
 
 
+[[what-if-i-dont-see-all-of-my-hosts]]
 == E se eu não vir todos os meus hosts?
 
 Se você não visualizar seus hosts conectados, então a detecção automática falhou, os hosts estão conectados incorretamente ou nenhum host está conectado no momento.
@@ -36,6 +38,7 @@ Você pode configurar hosts posteriormente, após concluir a configuração. Voc
 
 
 
+[[how-does-identifying-applications-help-me-manage-my-storage-array]]
 == Como a identificação de aplicativos me ajuda a gerenciar meu array de storage?
 
 Ao identificar aplicativos, SANtricity System Manager recomenda automaticamente uma configuração de volume que otimiza o storage com base no tipo de aplicativo.
@@ -44,6 +47,7 @@ A otimização de volumes por aplicação pode tornar as operações de storage 
 
 
 
+[[what-is-a-workload]]
 == O que é uma workload?
 
 Para algumas aplicações na sua rede, como SQL Server ou Exchange, você pode definir uma carga de trabalho que otimize o storage para essa aplicação.
@@ -54,6 +58,7 @@ Durante a criação de volumes, o sistema solicita que você responda a pergunta
 
 
 
+[[how-do-i-configure-the-delivery-method-for-autosupport]]
 == Como configuro o método de entrega para AutoSupport?
 
 Para acessar as tarefas de configuração para os métodos de entrega do AutoSupport, vá ao menu:Suporte[Central de Suporte] e, em seguida, clique na guia *AutoSupport*.
@@ -62,6 +67,7 @@ Os seguintes protocolos são suportados: HTTPS e SMTP.
 
 
 
+[[how-do-i-know-if-i-should-accept-the-recommended-pool-configuration]]
 == Como posso saber se devo aceitar a configuração de pool recomendada?
 
 Se você aceita a configuração de pool recomendada depende de alguns fatores.
@@ -77,6 +83,7 @@ Se você respondeu Sim a alguma dessas perguntas, considere rejeitar a configura
 
 
 
+[[santricity-system-manager-has-not-detected-any-hosts-what-do-i-do]]
 == SANtricity System Manager não detectou nenhum host. O que devo fazer?
 
 Se você não visualizar seus hosts conectados, então a detecção automática falhou, os hosts estão conectados incorretamente ou nenhum host está conectado no momento.

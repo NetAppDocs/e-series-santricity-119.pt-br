@@ -15,6 +15,7 @@ O status do espelho define o estado dos grupos de consistência do espelho e dos
 
 
 
+[[status-for-mirror-consistency-groups]]
 == Status para grupos de consistência de mirror
 
 [cols="25h,~"]
@@ -97,6 +98,7 @@ Uma promoção forçada não é permitida ao resolver um conflito de funções.
 |===
 
 
+[[status-for-mirrored-pairs]]
 == Status dos pares espelhados
 
 O status de um par espelhado indica se os dados no volume primário e no volume secundário estão sincronizados.

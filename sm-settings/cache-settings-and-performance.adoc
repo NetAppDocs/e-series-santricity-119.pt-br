@@ -24,6 +24,7 @@ As configurações de cache padrão atendem aos requisitos da maioria dos ambien
 
 
 
+[[storage-array-cache-settings]]
 == Configurações de cache do array de storage
 
 Para todos os volumes no array de storage, você pode especificar os seguintes valores na página System:
@@ -34,6 +35,7 @@ Para todos os volumes no array de storage, você pode especificar os seguintes v
 
 
 
+[[volume-cache-settings]]
 == Configurações de cache de volume
 
 Para volumes individuais em um array de storage, você pode especificar os seguintes valores na página Volumes (menu:Storage[Volumes]):

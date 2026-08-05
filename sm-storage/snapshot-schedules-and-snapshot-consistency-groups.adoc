@@ -21,12 +21,14 @@ Para gerenciar facilmente as operações de Snapshot para volumes base, você po
 
 
 
+[[snapshot-schedule]]
 == Agendamento do Snapshot
 
 Se você deseja tirar snapshots automaticamente para um volume base, pode criar um agendamento. Por exemplo, você pode definir um agendamento que tira imagens de snapshot todo sábado à meia-noite, no primeiro dia de cada mês ou em quaisquer datas e horários que você decidir. Após o máximo de 32 snapshots ser atingido para um único agendamento, você pode suspender os snapshots agendados, criar mais capacidade reservada ou excluir snapshots. Os snapshots podem ser excluídos manualmente ou automatizando o processo de exclusão. Após uma imagem de snapshot ser excluída, capacidade reservada adicional fica disponível para reutilização.
 
 
 
+[[snapshot-consistency-group]]
 == Grupo de consistência Snapshot
 
 Você cria um grupo de consistência de snapshot quando deseja garantir que as imagens de snapshot sejam criadas em vários volumes ao mesmo tempo. As ações de imagem de snapshot são executadas no grupo de consistência de snapshot como um todo. Por exemplo, você pode agendar snapshots sincronizados de todos os volumes com o mesmo timestamp. Grupos de consistência de snapshot são ideais para aplicativos que abrangem vários volumes, como aplicativos de banco de dados que armazenam logs em um volume e os arquivos de banco de dados em outro volume.

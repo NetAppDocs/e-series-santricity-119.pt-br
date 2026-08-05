@@ -16,6 +16,7 @@ Esta FAQ pode ajudar se você estiver apenas procurando uma resposta rápida par
 
 
 
+[[why-dont-i-see-all-my-volumes-hosts-or-host-clusters]]
 == Por que não vejo todos os meus volumes, hosts ou clusters de hosts?
 
 Volumes de Snapshot com um volume base habilitado para Data Assurance (DA) não podem ser atribuídos a um host que não seja compatível com DA. Você deve desabilitar DA no volume base antes que um volume de Snapshot possa ser atribuído a um host que não seja compatível com DA.
@@ -33,6 +34,7 @@ Não é possível desativar o DA em um volume associado a snapshots (grupos de c
 ====
 
 
+[[what-is-a-snapshot-image]]
 == O que é uma imagem Snapshot?
 
 Uma imagem de Snapshot é uma cópia lógica do conteúdo de um volume, capturada em um ponto no tempo. Imagens de Snapshot utilizam espaço mínimo de storage.
@@ -45,6 +47,7 @@ Os dados da imagem Snapshot são armazenados da seguinte forma:
 
 
 
+[[why-use-snapshot-images]]
 == Por que usar Snapshot?
 
 Você pode usar snapshots para se proteger e permitir a recuperação contra perda ou corrupção acidental ou maliciosa de dados.
@@ -61,12 +64,14 @@ O sistema retém várias imagens de Snapshot como pontos de restauração que vo
 
 
 
+[[what-kinds-of-volumes-can-be-used-for-snapshots]]
 == Que tipos de volumes podem ser usados para Snapshots?
 
 Volumes padrão e volumes finos são os únicos tipos de volumes que podem ser usados para armazenar imagens de Snapshot. Volumes não padrão não podem ser usados. O volume base pode residir em um pool ou grupo de volume.
 
 
 
+[[why-would-i-create-a-snapshot-consistency-group]]
 == Por que eu criaria um grupo de consistência de Snapshot?
 
 Você cria um grupo de consistência de snapshot quando deseja garantir que as imagens de snapshot sejam criadas em vários volumes ao mesmo tempo.
@@ -85,6 +90,7 @@ Você pode executar as seguintes operações de snapshot em um grupo de consist�
 
 
 
+[[what-is-a-snapshot-volume-and-when-does-it-need-reserved-capacity]]
 == O que é um volume de Snapshot e quando ele precisa de capacidade reservada?
 
 Um volume de snapshot permite que o host acesse os dados na imagem do snapshot. O volume de snapshot contém sua própria capacidade reservada, que salva quaisquer modificações no volume base sem afetar a imagem original do snapshot. As imagens de snapshot não são acessíveis para leitura ou gravação pelos hosts. Se você deseja ler ou gravar dados no snapshot, crie um volume de snapshot e atribua-o a um host.
@@ -97,6 +103,7 @@ Você pode criar dois tipos de volumes de Snapshot. O tipo de volume de Snapshot
 
 
 
+[[what-is-a-snapshot-group]]
 == O que é um grupo de Snapshot?
 
 Um grupo de Snapshot é uma coleção de imagens de Snapshot de ponto no tempo de um único volume base associado.
@@ -109,6 +116,7 @@ System Manager organiza as imagens de Snapshot em _grupos de Snapshot_. Grupos d
 
 
 
+[[why-would-i-disable-a-snapshot-volume]]
 == Por que eu desativaria um volume de Snapshot?
 
 Você desativa um volume de Snapshot quando deseja atribuir um volume de Snapshot diferente à imagem do Snapshot. Você pode reservar o volume de Snapshot desativado para uso posterior.
@@ -117,6 +125,7 @@ Se você não precisar mais do volume de Snapshot ou do volume de Snapshot do gr
 
 
 
+[[what-is-the-disabled-state]]
 == O que é o estado Disabled?
 
 Um volume de Snapshot com status Desativado não está atualmente atribuído a uma imagem de Snapshot. Para ativar o volume de Snapshot, você deve usar a operação de re-create para atribuir uma nova imagem de Snapshot ao volume de Snapshot desativado.
@@ -125,6 +134,7 @@ As características do volume de Snapshot são definidas pela imagem de Snapshot
 
 
 
+[[why-would-i-suspend-a-snapshot-schedule]]
 == Por que eu suspenderia um agendamento de Snapshot?
 
 Quando um agendamento é suspenso, a criação das imagens de Snapshot agendadas não ocorre. Você pode pausar um agendamento de Snapshot para economizar espaço de storage e, em seguida, retomar os Snapshots agendados posteriormente.

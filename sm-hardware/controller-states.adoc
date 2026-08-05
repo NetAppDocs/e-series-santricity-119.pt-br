@@ -15,6 +15,7 @@ Você pode colocar um controlador em três estados diferentes: online, offline e
 
 
 
+[[online-state]]
 == Estado online
 
 O estado online é o estado normal de funcionamento do controlador. Significa que o controlador está operando normalmente e está disponível para operações de I/O.
@@ -23,6 +24,7 @@ Ao colocar um controlador online, seu status é definido como ótimo.
 
 
 
+[[offline-state]]
 == Estado offline
 
 O estado offline é normalmente usado para preparar um controlador para substituição quando existem dois controladores no array de storage. Um controlador pode entrar no estado offline de duas maneiras: você pode emitir um comando explícito ou o controlador pode falhar. Um controlador pode sair do estado offline somente emitindo outro comando explícito ou substituindo o controlador com falha. Você só pode colocar um controlador offline se houver dois controladores no array de storage.
@@ -37,6 +39,7 @@ Quando um controlador está no estado offline, as seguintes condições são ver
 
 
 
+[[service-mode]]
 == Modo de serviço
 
 O Service Mode é normalmente usado apenas pelo suporte técnico para mover todos os volumes do array de storage para um controlador, permitindo que o outro controlador seja diagnosticado. Um controlador deve ser colocado manualmente em Service Mode e deve ser colocado manualmente online novamente após a conclusão da operação de serviço.

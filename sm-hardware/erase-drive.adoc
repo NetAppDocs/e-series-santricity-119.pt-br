@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: SANtricity, System Manager, E-Series, erase, drives, removal, 
 summary: Você pode usar a opção Apagar para preparar uma unidade não atribuída para remoção do sistema. Esse procedimento remove os dados permanentemente, garantindo que os dados não possam ser lidos novamente. 
 ---
-= ${post_edited_translations.segment}
+= Apagar unidades no SANtricity System Manager
 :allow-uri-read: 
 :experimental: 
 :icons: font
@@ -33,7 +33,7 @@ O gráfico muda para mostrar as unidades em vez dos controladores.
 
 . Opcionalmente, você pode usar os campos de filtro para visualizar todas as unidades não atribuídas na prateleira. Na lista suspensa *Mostrar unidades que são...*, selecione *Não atribuídas*.
 +
-${post_edited_translations.segment}
+A visualização da prateleira mostra apenas as unidades não atribuídas; todas as outras aparecem em cinza.
 
 . Para abrir o menu de contexto da unidade, clique em uma unidade que você deseja apagar. (Se você quiser selecionar várias unidades, pode fazer isso na caixa de diálogo Apagar Unidades.)
 +
@@ -44,7 +44,7 @@ ${post_edited_translations.segment}
 ====
 . No menu de contexto, selecione *Erase*.
 +
-${post_edited_translations.segment}
+A caixa de diálogo Apagar Unidades é aberta, mostrando todas as unidades elegíveis para uma operação de apagamento.
 
 . Se desejar, selecione unidades adicionais na tabela. Não é possível selecionar _todas_ as unidades; certifique-se de que uma unidade permaneça desmarcada.
 . Confirme a operação digitando  `erase` e depois clique em *Apagar*.
