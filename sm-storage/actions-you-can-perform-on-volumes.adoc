@@ -2,7 +2,7 @@
 permalink: sm-storage/actions-you-can-perform-on-volumes.html 
 sidebar: sidebar 
 keywords: SANtricity, System Manager, E-Series, volumes 
-summary: 'Você pode executar diversas ações diferentes em um volume: aumentar a capacidade, excluir, copiar, inicializar, redistribuir, alterar a propriedade, alterar as configurações de armazenamento em cache e alterar as configurações de verificação de mídia.' 
+summary: Você pode executar diversas ações diferentes em um volume, incluindo aumentar a capacidade, excluir, copiar, inicializar, redistribuir, alterar o proprietário, alterar as configurações de cache e alterar as configurações de verificação de mídia. 
 ---
 = Ações que você pode executar em volumes no SANtricity System Manager
 :allow-uri-read: 

@@ -1,7 +1,7 @@
 ---
 permalink: sm-support/collect-i-o-path-statistics.html 
 sidebar: sidebar 
-keywords: SANtricity, System Manager, E-Series, collect, i/o path, statistics 
+keywords: SANtricity, System Manager, E-Series, collect, i o path, statistics 
 summary: Você pode salvar o arquivo de estatísticas do caminho de E/S e enviá-lo para suporte técnico para análise. 
 ---
 = Coletar estatísticas do caminho de E/S no SANtricity System Manager

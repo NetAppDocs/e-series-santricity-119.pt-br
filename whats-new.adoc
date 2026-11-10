@@ -16,6 +16,13 @@ A tabela a seguir descreve os novos recursos no SANtricity System Manager 11.9.
 
 
 
+[[new-features-in-version-11-90r7]]
+== Novos recursos na versão 11.90R7
+
+Esta versão contém apenas correções de defeitos e nenhum novo recurso. Para mais informações sobre as alterações nesta versão, consulte o E-Series SANtricity OS 11.90R7 README.
+
+
+
 [[new-features-in-version-11-90r6]]
 == Novos recursos na versão 11.90R6
 
